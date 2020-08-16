@@ -1,4 +1,5 @@
 Digital miniature wargame build in JavaScript with the BabylonJS game engine.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

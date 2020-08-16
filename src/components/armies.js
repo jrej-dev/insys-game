@@ -1,5 +1,5 @@
 export const armies = {
-    specialForces: {
+    tabForces: {
         units: { 
           soldier: {
               class: "FS",
@@ -48,8 +48,8 @@ export const armies = {
             move: 4,
             defense: { roll: 1, success: 4 },
             melee: { roll: 2, success: 3 },
-            range: { roll: 1, success: 3, mods: { s: 1, m: 0, l: -2, xl: undefined } },
-            maxRange: 808,
+            range: { roll: 1, success: 3, mods: { s: 1, m: 0, l: -2, xl: -2 } },
+            maxRange: 1212,
             maxInGame: undefined,
             cost: 10
          }

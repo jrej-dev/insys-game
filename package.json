@@ -1,4 +1,5 @@
 {
+  "homepage": "http://jrejoire.github.io/insys-game",
   "name": "insys-game",
   "version": "0.1.0",
   "private": true,
@@ -17,6 +18,8 @@
     "tailwindcss": "^1.6.2"
   },
   "scripts": {
+    "predeploy": "npm run build:tailwind",
+    "deploy": "gh-pages -d build:tailwind",
     "build:tailwind": "tailwind build src/tailwind.css -o src/tailwind.output.css",
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
     "start": "npm-run-all build:tailwind --parallel watch:tailwind start:react",
@@ -40,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

@@ -91,7 +91,7 @@ const onSceneReady = scene => {
   diceMatWhite.diffuseColor = new BABYLON.Color3.White();
 
   var diceMatBlack = new BABYLON.StandardMaterial("diceMatBlack", scene);
-  diceMatBlack.diffuseColor = new BABYLON.Color3(106 / 255, 116 / 255, 129 / 255);
+  diceMatBlack.diffuseColor = new BABYLON.Color3(55 / 255, 71 / 255, 79 / 255);
 
   //var gameAreaTemplate = 'if( vPositionW.z  < -340.){ discard; } if( vPositionW.z  > 340.){ discard; } if( vPositionW.x  > 450.){ discard; } if( vPositionW.x  < -450.){ discard; }';
 
@@ -141,7 +141,7 @@ const onSceneReady = scene => {
   var players = {
     teamWhite: {
       player: "@jrej",
-      army: "rebels",
+      army: "outerRing",
       get armyStats() { return armies[this.army] },
       units: ["soldier", "soldier", "soldier"],
       minis: [],
@@ -152,7 +152,7 @@ const onSceneReady = scene => {
     },
     teamBlack: {
       player: "@inkito",
-      army: "sysTroops",
+      army: "tabForces",
       get armyStats() { return armies[this.army] },
       units: ["soldier", "soldier", "soldier"],
       minis: [],
@@ -369,13 +369,13 @@ const onSceneReady = scene => {
   LOS.position = new BABYLON.Vector3(0, 100, 0);
   var LOSM = BABYLON.MeshBuilder.CreateCylinder("lineOfSightm", { height: 0.1, diameter: 404 * 2 + miniWidth, tessellation: 256 }, scene);
   var LOSL = BABYLON.MeshBuilder.CreateCylinder("lineOfSightl", { height: 0.1, diameter: 808 * 2 + miniWidth, tessellation: 256 }, scene);
-  var LOSXL = BABYLON.MeshBuilder.CreateCylinder("lineOfSight", { height: 0.1, diameter: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2 + miniWidth, tessellation: 256 }, scene);
-  LOSXL.parent = LOSL.parent = LOSM.parent = LOS;
+  //var LOSXL = BABYLON.MeshBuilder.CreateCylinder("lineOfSight", { height: 0.1, diameter: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2 + miniWidth, tessellation: 256 }, scene);
+  /*LOSXL.parent =*/ LOSL.parent = LOSM.parent = LOS;
 
   var los = BABYLON.CSG.FromMesh(LOS);
   var losM = BABYLON.CSG.FromMesh(LOSM);
   var losL = BABYLON.CSG.FromMesh(LOSL);
-  var losXL = BABYLON.CSG.FromMesh(LOSXL);
+  //var losXL = BABYLON.CSG.FromMesh(LOSXL);
 
   var slicer = BABYLON.MeshBuilder.CreateBox("LOSTemplate", { width: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2, height: 2500, depth: 1 }, scene);
   slicer.rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(90), scene);
@@ -383,7 +383,7 @@ const onSceneReady = scene => {
   slicer.visibility = 0;
   var slicerCSG = BABYLON.CSG.FromMesh(slicer);
 
-  losXL = losXL.subtract(slicerCSG).subtract(losL).subtract(losM).subtract(los);
+  //losXL = losXL.subtract(slicerCSG).subtract(losL).subtract(losM).subtract(los);
 
   losL = losL.subtract(slicerCSG).subtract(losM).subtract(los);
 
@@ -394,17 +394,17 @@ const onSceneReady = scene => {
   var lineOfSight = los.toMesh("lineOfSightS");
   var lineOfSightM = losM.toMesh("lineOfSightM");
   var lineOfSightL = losL.toMesh("lineOfSightL");
-  var lineOfSightXL = losXL.toMesh("lineOfSight");
+  //var lineOfSightXL = losXL.toMesh("lineOfSight");
 
-  lineOfSightXL.parent = lineOfSightL.parent = lineOfSightM.parent = lineOfSight;
-  lineOfSightXL.isPickable = lineOfSightL.isPickable = lineOfSightM.isPickable = false;
+  /*lineOfSightXL.parent =*/ lineOfSightL.parent = lineOfSightM.parent = lineOfSight;
+  /*lineOfSightXL.isPickable =*/ lineOfSightL.isPickable = lineOfSightM.isPickable = false;
 
   lineOfSight.setEnabled(false);
   slicer.dispose();
   LOS.dispose();
   LOSM.dispose();
   LOSL.dispose();
-  LOSXL.dispose();
+  //LOSXL.dispose();
 
 
   const getLosColor = (unit, team, range) => {
@@ -481,12 +481,12 @@ const onSceneReady = scene => {
       blackMini1LOS.material = lineOfSightMatB;
       blackMini1LOS._children[0].material = lineOfSightMMatB;
       blackMini1LOS._children[1].material = lineOfSightLMatB
-      blackMini1LOS._children[2].material = lineOfSightXLMatB
+      //blackMini1LOS._children[2].material = lineOfSightXLMatB
 
       lineOfSightMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "s"); //blue
       lineOfSightMMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "m"); //green
       lineOfSightLMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "l"); //yellow
-      lineOfSightXLMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "xl"); //yellow
+      //lineOfSightXLMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "xl"); //yellow
 
       blackMini2 = blackMini1.clone();
       blackMini2.name = "blackMini";
@@ -555,16 +555,16 @@ const onSceneReady = scene => {
       whiteMini1LOS.parent = whiteMini1;
       whiteMini1LOS.position = new BABYLON.Vector3(0, 1, 0);
       whiteMini1LOS.rotation.y = BABYLON.Tools.ToRadians(-90);
-      whiteMini1LOS.setEnabled(false);
+      whiteMini1LOS.setEnabled(true);
       whiteMini1LOS.material = lineOfSightMatW;
       whiteMini1LOS._children[0].material = lineOfSightMMatW;
       whiteMini1LOS._children[1].material = lineOfSightLMatW;
-      whiteMini1LOS._children[2].material = lineOfSightXLMatW;
+      //whiteMini1LOS._children[2].material = lineOfSightXLMatW;
 
       lineOfSightMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "s"); //green
       lineOfSightMMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "m"); //blue
       lineOfSightLMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "l"); //yellow
-      lineOfSightXLMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "xl"); //red
+      //lineOfSightXLMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "xl"); //red
 
       whiteMini2 = whiteMini1.clone();
       whiteMini2.name = "whiteMini";

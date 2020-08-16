@@ -555,7 +555,7 @@ const onSceneReady = scene => {
       whiteMini1LOS.parent = whiteMini1;
       whiteMini1LOS.position = new BABYLON.Vector3(0, 1, 0);
       whiteMini1LOS.rotation.y = BABYLON.Tools.ToRadians(-90);
-      whiteMini1LOS.setEnabled(true);
+      whiteMini1LOS.setEnabled(false);
       whiteMini1LOS.material = lineOfSightMatW;
       whiteMini1LOS._children[0].material = lineOfSightMMatW;
       whiteMini1LOS._children[1].material = lineOfSightLMatW;
@@ -689,7 +689,7 @@ const onSceneReady = scene => {
   var map;
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "/Models/",
+    "./Models/",
     "setting.babylon",
     scene,
     function (newMeshes) {

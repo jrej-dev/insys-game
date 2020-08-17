@@ -1,7 +1,6 @@
 import React from 'react';
-import * as BABYLON from '@babylonjs/core/Legacy/legacy';
-//import * as BABYLON from 'babylonjs';
-//import * as Materials from 'babylonjs-materials';
+import * as BABYLON from '@babylonjs/core';
+import { CustomMaterial } from '@babylonjs/materials';
 import SceneComponent from './SceneComponent';
 import { armies } from './armies';
 import '../App.css';
@@ -93,45 +92,45 @@ const onSceneReady = scene => {
   var diceMatBlack = new BABYLON.StandardMaterial("diceMatBlack", scene);
   diceMatBlack.diffuseColor = new BABYLON.Color3(55 / 255, 71 / 255, 79 / 255);
 
-  //var gameAreaTemplate = 'if( vPositionW.z  < -340.){ discard; } if( vPositionW.z  > 340.){ discard; } if( vPositionW.x  > 450.){ discard; } if( vPositionW.x  < -450.){ discard; }';
+  var gameAreaTemplate = 'if( vPositionW.z  < -340.){ discard; } if( vPositionW.z  > 340.){ discard; } if( vPositionW.x  > 450.){ discard; } if( vPositionW.x  < -450.){ discard; }';
 
-  var moveAreaMat = new BABYLON.StandardMaterial("moveAreaMat", scene);
+  var moveAreaMat = new CustomMaterial("moveAreaMat", scene);
   moveAreaMat.alpha = 0.25;
-  //moveAreaMat.Fragment_Custom_Diffuse(gameAreaTemplate);
+  moveAreaMat.Fragment_Custom_Diffuse(gameAreaTemplate);
 
   var lineOfSightTransparency = 0.25;
 
-  var lineOfSightMatW = new BABYLON.StandardMaterial("losMatSW", scene);
+  var lineOfSightMatW = new CustomMaterial("losMatSW", scene);
   lineOfSightMatW.alpha = lineOfSightTransparency;
-  //lineOfSightMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightMMatW = new BABYLON.StandardMaterial("losMatMW", scene);
+  var lineOfSightMMatW = new CustomMaterial("losMatMW", scene);
   lineOfSightMMatW.alpha = lineOfSightTransparency;
-  //lineOfSightMMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightMMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightLMatW = new BABYLON.StandardMaterial("losMatLW", scene);
+  var lineOfSightLMatW = new CustomMaterial("losMatLW", scene);
   lineOfSightLMatW.alpha = lineOfSightTransparency;
-  //lineOfSightLMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightLMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightXLMatW = new BABYLON.StandardMaterial("losMatXLW", scene);
+  var lineOfSightXLMatW = new CustomMaterial("losMatXLW", scene);
   lineOfSightXLMatW.alpha = lineOfSightTransparency;
-  //lineOfSightXLMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightXLMatW.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightMatB = new BABYLON.StandardMaterial("losMatSB", scene);
+  var lineOfSightMatB = new CustomMaterial("losMatSB", scene);
   lineOfSightMatB.alpha = lineOfSightTransparency;
-  //lineOfSightMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightMMatB = new BABYLON.StandardMaterial("losMatMB", scene);
+  var lineOfSightMMatB = new CustomMaterial("losMatMB", scene);
   lineOfSightMMatB.alpha = lineOfSightTransparency;
-  //lineOfSightMMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightMMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightLMatB = new BABYLON.StandardMaterial("losMatLB", scene);
+  var lineOfSightLMatB = new CustomMaterial("losMatLB", scene);
   lineOfSightLMatB.alpha = lineOfSightTransparency;
-  //lineOfSightLMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightLMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
 
-  var lineOfSightXLMatB = new BABYLON.StandardMaterial("losMatXLB", scene);
+  var lineOfSightXLMatB = new CustomMaterial("losMatXLB", scene);
   lineOfSightXLMatB.alpha = lineOfSightTransparency;
-  //lineOfSightXLMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
+  lineOfSightXLMatB.Fragment_Custom_Diffuse(gameAreaTemplate);
 
   //Game initiation
   // Associate Users with teams (teamWhite || teamBlack);

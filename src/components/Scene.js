@@ -51,7 +51,7 @@ const onSceneReady = scene => {
 
   var background = BABYLON.MeshBuilder.CreateCylinder("background", { height: 1, diameter: 5000, tessellation: 5000 }, scene);
   var backgroundMaterial = new BABYLON.StandardMaterial("background", scene);
-  backgroundMaterial.opacityTexture = new BABYLON.Texture("./Textures/OpacityTemplate.png", scene);
+  backgroundMaterial.opacityTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/OpacityTemplate.png`, scene);
   backgroundMaterial.backFaceCulling = false;
   background.material = backgroundMaterial;
   background.translate(BABYLON.Axis.Y, -1, scene);
@@ -59,26 +59,26 @@ const onSceneReady = scene => {
   background.receiveShadows = true;
 
   var boardMaterial = new BABYLON.StandardMaterial("boardMaterial", scene);
-  boardMaterial.diffuseTexture = new BABYLON.Texture("./Textures/Wood/Wood_021_basecolor.jpg", scene);
-  boardMaterial.bumpTexture = new BABYLON.Texture("./Textures/Wood/Wood_021_normal.jpg", scene);
-  boardMaterial.ambientTexture = new BABYLON.Texture("./Textures/Wood/Wood_021_ambientOcclusion.jpg", scene);
+  boardMaterial.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Wood/Wood_021_basecolor.jpg`, scene);
+  boardMaterial.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Wood/Wood_021_normal.jpg`, scene);
+  boardMaterial.ambientTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
 
   var groundMaterial = new BABYLON.StandardMaterial("asphaltMaterial", scene);
-  groundMaterial.diffuseTexture = new BABYLON.Texture("./Textures/Asphalt/Asphalt_001_COLOR.jpg", scene);
-  groundMaterial.bumpTexture = new BABYLON.Texture("./Textures/Asphalt/Asphalt_001_NRM.jpg", scene);
-  groundMaterial.specularTexture = new BABYLON.Texture("./Textures/Asphalt/Asphalt_001_SPEC.jpg", scene);
-  groundMaterial.ambientTexture = new BABYLON.Texture("./Textures/Asphalt/Asphalt_001_OCC.jpg", scene);
+  groundMaterial.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
+  groundMaterial.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
+  groundMaterial.specularTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}//Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
+  groundMaterial.ambientTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
 
   var miniMaterial = new BABYLON.StandardMaterial("plasticMaterial", scene);
   miniMaterial.diffuseColor = new BABYLON.Color3(220 / 255, 220 / 255, 220 / 255);
 
   var tokenMaterialBlack = new BABYLON.StandardMaterial("tokenMaterial", scene);
-  tokenMaterialBlack.diffuseTexture = new BABYLON.Texture("./Textures/Token/Coin_low_Coin_material_BaseColor2.png", scene);
-  tokenMaterialBlack.bumpTexture = new BABYLON.Texture("./Textures/Token/Coin_low_Coin_material_Normal.png", scene);
+  tokenMaterialBlack.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_BaseColor2.png`, scene);
+  tokenMaterialBlack.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
 
   var tokenMaterialWhite = new BABYLON.StandardMaterial("tokenMaterial", scene);
-  tokenMaterialWhite.diffuseTexture = new BABYLON.Texture("./Textures/Token/Coin_low_Coin_material_BaseColor.png", scene);
-  tokenMaterialWhite.bumpTexture = new BABYLON.Texture("./Textures/Token/Coin_low_Coin_material_Normal.png", scene);
+  tokenMaterialWhite.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_BaseColor.png`, scene);
+  tokenMaterialWhite.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
 
   var baseMaterialBlack = new BABYLON.StandardMaterial("baseMaterial", scene);
   baseMaterialBlack.diffuseColor = new BABYLON.Color3.Black();
@@ -188,7 +188,7 @@ const onSceneReady = scene => {
   const importActionTokens = () => {
     BABYLON.SceneLoader.ImportMesh(
       "",
-      "./Models/",
+      `.${process.env.PUBLIC_URL}/Models/`,
       "token.babylon",
       scene,
       function (newMeshes) {
@@ -225,7 +225,7 @@ const onSceneReady = scene => {
   var dice = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "dice.babylon",
     scene,
     function (newMeshes) {
@@ -248,7 +248,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "dice2.babylon",
     scene,
     function (newMeshes) {
@@ -271,7 +271,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "dice3.babylon",
     scene,
     function (newMeshes) {
@@ -294,7 +294,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "dice4.babylon",
     scene,
     function (newMeshes) {
@@ -317,7 +317,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "dice5.babylon",
     scene,
     function (newMeshes) {
@@ -340,7 +340,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "dice6.babylon",
     scene,
     function (newMeshes) {
@@ -438,21 +438,18 @@ const onSceneReady = scene => {
   var blackMini1;
   var blackMini2;
   var blackMini3;
-  var blackMini1LOS
-  var blackMini2LOS
-  var blackMini3LOS
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "STLRW.babylon",
     scene,
     function (newMeshes) {
-      let blackBase1 = BABYLON.MeshBuilder.CreateCylinder("whiteBase", { height: 5.5, diameter: 27, tessellation: 128 }, scene);
+      let blackBase1 = BABYLON.MeshBuilder.CreateCylinder("whiteBase", { height: 2.5, diameter: 27, tessellation: 128 }, scene);
       blackBase1.material = baseMaterialBlack;
-      blackBase1.translate(BABYLON.Axis.Y, 25, scene);
+      blackBase1.translate(BABYLON.Axis.Y, 26.5, scene);
       blackBase1.translate(BABYLON.Axis.X, -300, scene);
 
-      blackMini1 = newMeshes[0];
+      blackMini1 = BABYLON.Mesh.MergeMeshes(newMeshes);
       blackMini1.translate(BABYLON.Axis.Y, 25, scene);
       blackMini1.translate(BABYLON.Axis.X, -300, scene);
       blackMini1.name = "blackMini";
@@ -472,7 +469,7 @@ const onSceneReady = scene => {
       blackMini1.collisionMask = 1;
 
 
-      blackMini1LOS = lineOfSight.clone();
+      var blackMini1LOS = lineOfSight.clone();
       blackMini1LOS.parent = blackMini1;
       blackMini1LOS.position = new BABYLON.Vector3(0, 1, 0);
       blackMini1LOS.rotation.y = BABYLON.Tools.ToRadians(-90);
@@ -481,6 +478,7 @@ const onSceneReady = scene => {
       blackMini1LOS._children[0].material = lineOfSightMMatB;
       blackMini1LOS._children[1].material = lineOfSightLMatB
       //blackMini1LOS._children[2].material = lineOfSightXLMatB
+      blackMini1.losMat = [lineOfSightMatB.name, lineOfSightMMatB.name, lineOfSightLMatB.name, lineOfSightXLMatB.name]
 
       lineOfSightMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "s"); //blue
       lineOfSightMMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "m"); //green
@@ -494,7 +492,7 @@ const onSceneReady = scene => {
       blackMini2.material = miniMaterial;
       blackMini2.actionManager = teamBlackActionManager;
       blackMini2.translate(BABYLON.Axis.Z, 200, scene);
-      blackMini2LOS = blackMini2._children[1];
+      var blackMini2LOS = blackMini2._children[1];
       blackMini2LOS.setEnabled(false);
 
       blackMini3 = blackMini1.clone();
@@ -504,7 +502,7 @@ const onSceneReady = scene => {
       blackMini3.material = miniMaterial;
       blackMini3.actionManager = teamBlackActionManager;
       blackMini3.translate(BABYLON.Axis.Z, -200, scene);
-      blackMini3LOS = blackMini3._children[1];
+      var blackMini3LOS = blackMini3._children[1];
       blackMini3LOS.setEnabled(false)
 
       shadowGenerator.getShadowMap().renderList.push(blackMini1, blackMini2, blackMini3);
@@ -517,23 +515,22 @@ const onSceneReady = scene => {
   var whiteMini2;
   var whiteMini3;
   var clonedMini;
-  var whiteMini1LOS
-  var whiteMini2LOS
-  var whiteMini3LOS
   //Consider looping through unit array of team
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "SKNCK.babylon",
     scene,
     function (newMeshes) {
-      let whiteBase1 = BABYLON.MeshBuilder.CreateCylinder("whiteBase", { height: 5.5, diameter: 27, tessellation: 128 }, scene);
+      let whiteBase1 = BABYLON.MeshBuilder.CreateCylinder("whiteBase", { height: 2.5, diameter: 27, tessellation: 128 }, scene);
       whiteBase1.material = baseMaterialWhite;
-      whiteBase1.translate(BABYLON.Axis.Y, 25, scene);
+      whiteBase1.translate(BABYLON.Axis.Y, 26.5, scene);
       whiteBase1.translate(BABYLON.Axis.X, 300, scene);
+      whiteBase1.translate(BABYLON.Axis.Z, 1.5, scene);
       whiteMini1 = BABYLON.Mesh.MergeMeshes(newMeshes);
       whiteMini1.translate(BABYLON.Axis.Y, 25, scene);
       whiteMini1.translate(BABYLON.Axis.X, 300, scene);
+      whiteMini1.translate(BABYLON.Axis.Z, 0, scene);
       whiteMini1.rotation.y = BABYLON.Tools.ToRadians(90);
       whiteMini1.name = "whiteMini";
       whiteMini1.id = "whiteMini1";
@@ -550,7 +547,7 @@ const onSceneReady = scene => {
       whiteMini1.width = getWidth(whiteMini1);
       whiteMini1.height = getHeight(whiteMini1);
 
-      whiteMini1LOS = lineOfSight.clone();
+      var whiteMini1LOS = lineOfSight.clone();
       whiteMini1LOS.parent = whiteMini1;
       whiteMini1LOS.position = new BABYLON.Vector3(0, 1, 0);
       whiteMini1LOS.rotation.y = BABYLON.Tools.ToRadians(-90);
@@ -559,6 +556,7 @@ const onSceneReady = scene => {
       whiteMini1LOS._children[0].material = lineOfSightMMatW;
       whiteMini1LOS._children[1].material = lineOfSightLMatW;
       //whiteMini1LOS._children[2].material = lineOfSightXLMatW;
+      whiteMini1.losMat = [lineOfSightMatW.name, lineOfSightMMatW.name, lineOfSightLMatW.name, lineOfSightXLMatW.name]
 
       lineOfSightMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "s"); //green
       lineOfSightMMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "m"); //blue
@@ -572,7 +570,7 @@ const onSceneReady = scene => {
       whiteMini2.material = miniMaterial;
       whiteMini2.actionManager = teamWhiteActionManager;
       whiteMini2.translate(BABYLON.Axis.Z, 200, scene);
-      whiteMini2LOS = whiteMini2._children[1];
+      var whiteMini2LOS = whiteMini2._children[1];
       whiteMini2LOS.setEnabled(false);
 
       whiteMini3 = whiteMini1.clone();
@@ -582,7 +580,7 @@ const onSceneReady = scene => {
       whiteMini3.material = miniMaterial;
       whiteMini3.actionManager = teamWhiteActionManager;
       whiteMini3.translate(BABYLON.Axis.Z, -200, scene);
-      whiteMini3LOS = whiteMini3._children[1];
+      var whiteMini3LOS = whiteMini3._children[1];
       whiteMini3LOS.setEnabled(false);
 
       shadowGenerator.getShadowMap().renderList.push(whiteBase1, whiteMini1, whiteMini2, whiteMini3);
@@ -593,7 +591,7 @@ const onSceneReady = scene => {
   var obstacles = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
+    `.${process.env.PUBLIC_URL}/Models/`,
     "container.babylon",
     scene,
     function (newMeshes) {
@@ -601,9 +599,6 @@ const onSceneReady = scene => {
 
       //container.material = diceMaterial;
       container.scaling = new BABYLON.Vector3(2, 2, 2);
-      container.translate(BABYLON.Axis.Y, 50, scene);
-      container.translate(BABYLON.Axis.X, 150, scene);
-      container.translate(BABYLON.Axis.Z, 125, scene);
       container.id = "obstacle1";
       container.name = "obstacle";
       container.receiveShadows = true;
@@ -621,9 +616,17 @@ const onSceneReady = scene => {
       var greenMat = new BABYLON.StandardMaterial(scene);
       greenMat.diffuseColor = new BABYLON.Color3(0.318, 0.502, 0.43);
 
+      var container0 = container.clone("obstacle")
+      container0.position = new BABYLON.Vector3(22, 0, 2.5);
       var container2 = container.clone("obstacle")
-      container2.position = new BABYLON.Vector3(200, 50, 125);
-      container2.material = greenMat;
+      container2.position = new BABYLON.Vector3(-22, 0, 2.5);
+
+      var container02 = BABYLON.Mesh.MergeMeshes([container0, container2]);
+      container02.material = redMat;
+      container02.name = container02.id = "obstacle";
+      container02.position = new BABYLON.Vector3(180, 50, 125);
+      container0.dispose();
+      container2.dispose();
 
       var container3 = container.clone("obstacle")
       container3.position = new BABYLON.Vector3(100, 50, -125);
@@ -640,36 +643,42 @@ const onSceneReady = scene => {
       container6.material = redMat;
 
       var container7 = container.clone("obstacle")
-      container7.position = new BABYLON.Vector3(-200, 50, -125);
-      container7.material = greenMat;
+      container7.position = new BABYLON.Vector3(22, 0, 2.5);
 
       var container8 = container.clone("obstacle")
-      container8.position = new BABYLON.Vector3(-150, 50, -125);
-      container8.material = greyMat;
+      container8.position = new BABYLON.Vector3(-22, 0, 2.5);
+
+      var container78 = BABYLON.Mesh.MergeMeshes([container7, container8]);
+      container78.material = greenMat;
+      container78.name = container78.id = "obstacle";
+      container78.position = new BABYLON.Vector3(-180, 50, -125);
+      container7.dispose();
+      container8.dispose();
 
       var container9 = container.clone("obstacle")
-      container9.position = new BABYLON.Vector3(-175, 100, -150);
+      container9.position = new BABYLON.Vector3(-180, 100, -150);
       container9.scaling.z = 1;
 
       var container10 = container.clone("obstacle")
-      container10.position = new BABYLON.Vector3(175, 100, 100);
+      container10.position = new BABYLON.Vector3(180, 100, 100);
       container10.scaling.z = 1;
       container10.material = greyMat;
 
       var container11 = container.clone("obstacle")
-      container11.position = new BABYLON.Vector3(250, 35, 150);
+      container11.position = new BABYLON.Vector3(250, 38, 150);
       container11.scaling.z = 1;
       container11.scaling.y = 1;
-      container11.material = greyMat;
+      container11.material = greenMat;
 
       var container12 = container.clone("obstacle")
-      container12.position = new BABYLON.Vector3(-250, 35, -100);
+      container12.position = new BABYLON.Vector3(-250, 38, -100);
       container12.scaling.z = 1;
       container12.scaling.y = 1;
       container12.material = redMat;
 
-      shadowGenerator.getShadowMap().renderList.push(container, container2, container3, container4, container5, container6, container7, container8, container9, container10, container11, container12);
-      obstacles.push(container, container2, container3, container4, container5, container6, container7, container8, container9, container10, container11, container12);
+      shadowGenerator.getShadowMap().renderList.push(container02, container3, container4, container5, container6, container78, container9, container10, container11, container12);
+      obstacles.push(container02, container3, container4, container5, container6, container78, container9, container10, container11, container12);
+      container.material = invisibleMaterial;
     }
   );
 
@@ -678,7 +687,7 @@ const onSceneReady = scene => {
   moveArea.material = invisibleMaterial;
   moveArea.actionManager = moveActionManager;
   moveArea.setEnabled(false);
-  moveArea.position = new BABYLON.Vector3(0, 27, 0);
+  moveArea.position = new BABYLON.Vector3(0, 26, 0);
 
   var moveArea2 = BABYLON.MeshBuilder.CreateCylinder("moveArea", { height: 0.25, diameter: miniWidth * 8 + miniWidth, tessellation: 256 }, scene);
   moveArea2.material = moveAreaMat;
@@ -688,8 +697,8 @@ const onSceneReady = scene => {
   var map;
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "./Models/",
-    "setting.babylon",
+    "",
+    `.${process.env.PUBLIC_URL}/Models/setting.babylon`,
     scene,
     function (newMeshes) {
       board = newMeshes[0];
@@ -746,7 +755,7 @@ const onSceneReady = scene => {
           hl.addMesh(moveArea, BABYLON.Color3.White());
           selected = currentMesh;
           previous.position = selected.position;
-          moveArea.position = new BABYLON.Vector3(currentMesh.position.x, currentMesh.position.y + 2, currentMesh.position.z)
+          moveArea.position = new BABYLON.Vector3(currentMesh.position.x, 26, currentMesh.position.z)
           moveArea.setEnabled(true);
         }
       }
@@ -759,17 +768,23 @@ const onSceneReady = scene => {
         selected.position = previous.position;
         selected.rotation = previous.rotation;
         moveArea.setEnabled(true);
-        moveArea.position = new BABYLON.Vector3(previous.position.x, previous.position.y + 2, previous.position.z);
+        moveArea.position = new BABYLON.Vector3(previous.position.x, 26, previous.position.z);
         selected._children[1].setEnabled(false);
-        canvas.removeEventListener("mousemove", rotateOnMouseMove);
-        rotate = false;
+        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
+        }
       }
+      canvas.removeEventListener("mousemove", rotateOnMouseMove);
+      rotate = false;
     } else if (selected && !rotate) {
       moveArea.setEnabled(false);
       hl.removeMesh(selected);
       hl.removeMesh(moveArea);
       scene.removeMesh(clonedMini);
       selected._children[1].setEnabled(false);
+      if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+        scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
+      }
       targetFurthestMini();
       selected = "";
       scene.hoverCursor = "pointer";
@@ -823,7 +838,7 @@ const onSceneReady = scene => {
     let directionRight = target.subtract(originRight);
     directionRight = BABYLON.Vector3.Normalize(directionRight);
 
-    let length = mini1.width / 2 + mini1.width;
+    let length = getWidth(mini1) / 2 + getWidth(mini1);
 
     let rayLeft = new BABYLON.Ray(originLeft, directionLeft, length);
     let rayRight = new BABYLON.Ray(originRight, directionRight, length);
@@ -866,6 +881,34 @@ const onSceneReady = scene => {
     };
   };
 
+  const isHigher = (mini1, mini2) => {
+    if (mini1.position.y > mini2.position.y + getHeight(mini2)) {
+      console.log(mini1.name + " is higher")
+      return true;
+    } else {
+      console.log(mini1.name + " is NOT Higher")
+      return false;
+    };
+  };
+
+  const whatIsUnderneath = (mini) => {
+    let origin = new BABYLON.Vector3(mini.position.x, mini.position.y, mini.position.z);
+
+    let direction = new BABYLON.Vector3(0, -1, 0);
+
+    let length = getHeight(mini);
+
+    let ray = new BABYLON.Ray(origin, direction, length);
+
+    let hits = scene.multiPickWithRay(ray);
+
+    if (hits.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
+      return hits.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+    } else if (hits.some(hit => hit.pickedMesh.name.includes("map"))) {
+      return hits.filter(hit => hit.pickedMesh.name.includes("map")).map(hit => hit.pickedMesh)[0]
+    }
+  };
+
   var handleLineOfSight = (ev) => {
     var enemyTarget = ev.meshUnderPointer;
     if (selected && noObstacle(selected, enemyTarget)) {
@@ -875,6 +918,9 @@ const onSceneReady = scene => {
 
       } else if (rangeToTarget(selected, enemyTarget)) {
         selected._children[1].setEnabled(true);
+        if (scene.getMeshByName(`groundLOS${selected.id}`)){
+          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
+        }
         moveArea.setEnabled(false);
 
         //In range position
@@ -883,6 +929,7 @@ const onSceneReady = scene => {
         //scene.hoverCursor = "url('./Cursors/unavailable.cur') 15 15, auto";
         moveArea.setEnabled(false);
         selected._children[1].setEnabled(true);
+        scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
       }
     }
   }
@@ -890,6 +937,9 @@ const onSceneReady = scene => {
   var cancelLineOfSight = () => {
     if (selected) {
       selected._children[1].setEnabled(false);
+      if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+        scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
+      }
       if (!rotate) {
         moveArea.setEnabled(true);
       }
@@ -1065,10 +1115,12 @@ const onSceneReady = scene => {
       var range = rangeToTarget(selected, enemyTarget);
 
       let coverMod = isInCover(selected, enemyTarget) ? 1 : 0;
-      var mods = coverMod + currentPlayer.army.units[selected.unit].range.mods[range];
+      let higherMod = isHigher(selected, enemyTarget) ? 1 : 0;
+      var mods = coverMod + higherMod + currentPlayer.army.units[selected.unit].range.mods[range];
 
       let enemyCoverMod = isInCover(enemyTarget, selected) ? 1 : 0;
-      let enemyMods = enemyCoverMod + enemyPlayer.army.units[enemyTarget.unit].range.mods[range];
+      let enemyHigherMod = isHigher(enemyTarget, selected) ? 1 : 0;
+      let enemyMods = enemyCoverMod + enemyHigherMod + enemyPlayer.army.units[enemyTarget.unit].range.mods[range];
 
       if (range && isInAngle(selected, enemyTarget)) {
         if (enemyTarget.intersectsMesh(selected, false) || range === "c") {
@@ -1200,9 +1252,56 @@ const onSceneReady = scene => {
         previous.position = selected.position;
         selected.position = clonedMini.position;
       }
-      moveArea.position = new BABYLON.Vector3(selected.position.x, selected.position.y + 2, selected.position.z);
+      moveArea.position = new BABYLON.Vector3(selected.position.x, 26, selected.position.z);
       moveArea.setEnabled(false);
       selected._children[1].setEnabled(true);
+
+      //Fragment diffuse on main LOS and creating ground LOS clone
+      if (whatIsUnderneath(selected) && whatIsUnderneath(selected).name.includes("obstacle")) {
+        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+          scene.getMeshByName(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
+          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
+        } else {
+          selected._children[1].clone(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
+        }
+
+        if (scene.getMeshByName("groundMoveArea")) {
+          scene.getMeshByName("groundMoveArea").position.y = selected.position.y - getHeight(selected) / 2 - 5;
+        } else {
+          moveArea.clone("groundMoveArea");
+          scene.getMeshByName("groundMoveArea").parent = moveArea;
+          scene.getMeshByName("groundMoveArea").position = new BABYLON.Vector3(0, selected.position.y - getHeight(selected) / 2 - 5, 0);
+        }
+
+        let obstacleTemplateArea = `if( vPositionW.z  < ${Math.round(whatIsUnderneath(selected).position.z - getLength(whatIsUnderneath(selected)) / 2)}.){ discard; } if( vPositionW.z  > ${Math.round(whatIsUnderneath(selected).position.z + getLength(whatIsUnderneath(selected)) / 2)}.){ discard; } if( vPositionW.x  > ${Math.round(whatIsUnderneath(selected).position.x + getWidth(whatIsUnderneath(selected)) / 2)}.){ discard; } if( vPositionW.x  < ${Math.round(whatIsUnderneath(selected).position.x - getWidth(whatIsUnderneath(selected)) / 2)}.){ discard; }`;
+        let highMat = new CustomMaterial("highMat", scene);
+        highMat.alpha = 0.25;
+        highMat.Fragment_Custom_Diffuse(obstacleTemplateArea);
+        highMat.diffuseColor = scene.getMaterialByName(selected.losMat[0]).diffuseColor;
+
+        selected._children[1].material = highMat;
+        selected._children[1]._children.forEach((los, index) => {
+          los.material = new CustomMaterial(`highMat${index}`, scene);
+          los.material.alpha = 0.25;
+          los.material.Fragment_Custom_Diffuse(obstacleTemplateArea);
+          los.material.diffuseColor = scene.getMaterialByName(selected.losMat[index + 1]).diffuseColor;
+        });
+        scene.getMeshByName("groundMoveArea").material = new CustomMaterial(`highMoveMat`, scene);
+        scene.getMeshByName("groundMoveArea").material.alpha = 0.25;
+        scene.getMeshByName("groundMoveArea").material.Fragment_Custom_Diffuse(obstacleTemplateArea);
+        scene.getMeshByName("groundMoveArea")._children.forEach(child => child.setEnabled(false));
+      } else {
+        selected._children[1].material = scene.getMaterialByName(selected.losMat[0]);
+        selected._children[1]._children.forEach((los, index) => los.material = scene.getMaterialByName(selected.losMat[index + 1]));
+        moveArea2.material = moveAreaMat;
+        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+          scene.getMeshByName(`groundLOS${selected.id}`).dispose();
+        }
+        if (scene.getMeshByName("groundMoveArea")) {
+          scene.getMeshByName("groundMoveArea").dispose();
+        }
+      };
+
       previous.rotation = selected.rotation.clone();
       rotate = true;
     }
@@ -1274,7 +1373,7 @@ const onSceneReady = scene => {
             );
             if (currentObstacle && currentObstacle.length > 0) {
               //Vertical move
-              clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, getHeight(currentObstacle[0]) + 26, getGroundPosition(evt).z);
+              clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, getHeight(currentObstacle[0]) + 25, getGroundPosition(evt).z);
             } else {
               //Regular move
               clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, 25, getGroundPosition(evt).z);
@@ -1300,9 +1399,7 @@ const onSceneReady = scene => {
       clonedMini = selected.clone();
       clonedMini.position = selected.position;
       clonedMini.isPickable = false;
-      var clonedMiniLOS = clonedMini._children[1];
-      clonedMiniLOS.setEnabled(false);
-      blackMini3LOS.setEnabled(false)
+      clonedMini._children.forEach(child => child.setEnabled(false));
 
       clonedMini.material = transparentMaterial;
       canvas.addEventListener("mousemove", onMouseMove, false);
@@ -1334,6 +1431,9 @@ const onSceneReady = scene => {
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function (ev) {
       if (selected && !rotate) {
         selected._children[1].setEnabled(false);
+        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
+        }
       }
       canvas.removeEventListener("mousemove", rotateOnMouseMove);
       canvas.removeEventListener("click", rotateAction);

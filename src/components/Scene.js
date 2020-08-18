@@ -948,7 +948,7 @@ const onSceneReady = scene => {
   }
 
   var targetFurthestMini = () => {
-    if (players[currentPlayer.team].minis) {
+    if (players[currentPlayer.team].minis && players[currentPlayer.team].minis.length > 0) {
       var miniPosition = players[currentPlayer.team].minis.map(mini => mini.position.x);
       var furthestMiniIndex = currentPlayer.team === "teamWhite" ? miniPosition.indexOf(Math.min(...miniPosition)) : miniPosition.indexOf(Math.max(...miniPosition));
       var furthestMini = players[currentPlayer.team].minis[furthestMiniIndex];
@@ -1240,7 +1240,7 @@ const onSceneReady = scene => {
         if (players[currentPlayer.team].turnActions === 0) {
           setTimeout(function () {
             switchPlayer();
-          }, 3000);
+          }, 3500);
         }
       }
     }

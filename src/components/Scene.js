@@ -6,6 +6,10 @@ import { armies } from './armies';
 import '../App.css';
 
 BABYLON.Animation.AllowMatricesInterpolation = true;
+var publicURL = "";
+if (process.env.NODE_ENV === "development"){
+  publicURL = process.env.PUBLIC_URL;
+}
 
 const onSceneReady = scene => {
   const canvas = scene.getEngine().getRenderingCanvas();
@@ -51,7 +55,7 @@ const onSceneReady = scene => {
 
   var background = BABYLON.MeshBuilder.CreateCylinder("background", { height: 1, diameter: 5000, tessellation: 5000 }, scene);
   var backgroundMaterial = new BABYLON.StandardMaterial("background", scene);
-  backgroundMaterial.opacityTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/OpacityTemplate.png`, scene);
+  backgroundMaterial.opacityTexture = new BABYLON.Texture(`.${publicURL}/Textures/OpacityTemplate.png`, scene);
   backgroundMaterial.backFaceCulling = false;
   background.material = backgroundMaterial;
   background.translate(BABYLON.Axis.Y, -1, scene);
@@ -59,26 +63,26 @@ const onSceneReady = scene => {
   background.receiveShadows = true;
 
   var boardMaterial = new BABYLON.StandardMaterial("boardMaterial", scene);
-  boardMaterial.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Wood/Wood_021_basecolor.jpg`, scene);
-  boardMaterial.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Wood/Wood_021_normal.jpg`, scene);
-  boardMaterial.ambientTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
+  boardMaterial.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Wood/Wood_021_basecolor.jpg`, scene);
+  boardMaterial.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Wood/Wood_021_normal.jpg`, scene);
+  boardMaterial.ambientTexture = new BABYLON.Texture(`.${publicURL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
 
   var groundMaterial = new BABYLON.StandardMaterial("asphaltMaterial", scene);
-  groundMaterial.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
-  groundMaterial.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
-  groundMaterial.specularTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}//Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
-  groundMaterial.ambientTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
+  groundMaterial.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
+  groundMaterial.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
+  groundMaterial.specularTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
+  groundMaterial.ambientTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
 
   var miniMaterial = new BABYLON.StandardMaterial("plasticMaterial", scene);
   miniMaterial.diffuseColor = new BABYLON.Color3(220 / 255, 220 / 255, 220 / 255);
 
   var tokenMaterialBlack = new BABYLON.StandardMaterial("tokenMaterial", scene);
-  tokenMaterialBlack.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_BaseColor2.png`, scene);
-  tokenMaterialBlack.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
+  tokenMaterialBlack.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_BaseColor2.png`, scene);
+  tokenMaterialBlack.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
 
   var tokenMaterialWhite = new BABYLON.StandardMaterial("tokenMaterial", scene);
-  tokenMaterialWhite.diffuseTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_BaseColor.png`, scene);
-  tokenMaterialWhite.bumpTexture = new BABYLON.Texture(`.${process.env.PUBLIC_URL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
+  tokenMaterialWhite.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_BaseColor.png`, scene);
+  tokenMaterialWhite.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
 
   var baseMaterialBlack = new BABYLON.StandardMaterial("baseMaterial", scene);
   baseMaterialBlack.diffuseColor = new BABYLON.Color3.Black();
@@ -188,7 +192,7 @@ const onSceneReady = scene => {
   const importActionTokens = () => {
     BABYLON.SceneLoader.ImportMesh(
       "",
-      `.${process.env.PUBLIC_URL}/Models/`,
+      `.${publicURL}/Models/`,
       "token.babylon",
       scene,
       function (newMeshes) {
@@ -225,7 +229,7 @@ const onSceneReady = scene => {
   var dice = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "dice.babylon",
     scene,
     function (newMeshes) {
@@ -248,7 +252,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "dice2.babylon",
     scene,
     function (newMeshes) {
@@ -271,7 +275,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "dice3.babylon",
     scene,
     function (newMeshes) {
@@ -294,7 +298,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "dice4.babylon",
     scene,
     function (newMeshes) {
@@ -317,7 +321,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "dice5.babylon",
     scene,
     function (newMeshes) {
@@ -340,7 +344,7 @@ const onSceneReady = scene => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "dice6.babylon",
     scene,
     function (newMeshes) {
@@ -440,7 +444,7 @@ const onSceneReady = scene => {
   var blackMini3;
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "STLRW.babylon",
     scene,
     function (newMeshes) {
@@ -518,7 +522,7 @@ const onSceneReady = scene => {
   //Consider looping through unit array of team
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "SKNCK.babylon",
     scene,
     function (newMeshes) {
@@ -591,7 +595,7 @@ const onSceneReady = scene => {
   var obstacles = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${process.env.PUBLIC_URL}/Models/`,
+    `.${publicURL}/Models/`,
     "container.babylon",
     scene,
     function (newMeshes) {
@@ -698,7 +702,7 @@ const onSceneReady = scene => {
   BABYLON.SceneLoader.ImportMesh(
     "",
     "",
-    `.${process.env.PUBLIC_URL}/Models/setting.babylon`,
+    `.${publicURL}/Models/setting.babylon`,
     scene,
     function (newMeshes) {
       board = newMeshes[0];

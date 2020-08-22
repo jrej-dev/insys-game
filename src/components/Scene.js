@@ -1,18 +1,26 @@
 import React from 'react';
 import * as BABYLON from '@babylonjs/core';
+import * as GUI from '@babylonjs/gui';
+import { AdvancedDynamicTexture } from '@babylonjs/gui/2D';
 import { CustomMaterial } from '@babylonjs/materials';
 import SceneComponent from './SceneComponent';
 import { armies } from './armies';
 import '../App.css';
 
 BABYLON.Animation.AllowMatricesInterpolation = true;
+
 var publicURL = "";
-if (process.env.NODE_ENV === "development"){
+if (process.env.NODE_ENV === "development") {
   publicURL = process.env.PUBLIC_URL;
 }
 
+
 const onSceneReady = scene => {
   const canvas = scene.getEngine().getRenderingCanvas();
+  var advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI(
+    "sceneUI"
+  );
+  advancedTexture.isForeground = true;
 
   var camera = new BABYLON.ArcRotateCamera("arcCamera",
     BABYLON.Tools.ToRadians(0),
@@ -39,6 +47,7 @@ const onSceneReady = scene => {
   shadowGenerator.usePoissonSampling = true;
 
   var hl = new BABYLON.HighlightLayer("hl1", scene);
+  hl.innerGlow = false;
 
   //Materials;
   var invisibleMaterial = new BABYLON.StandardMaterial("invisibleMaterial", scene);
@@ -94,7 +103,11 @@ const onSceneReady = scene => {
   diceMatWhite.diffuseColor = new BABYLON.Color3.White();
 
   var diceMatBlack = new BABYLON.StandardMaterial("diceMatBlack", scene);
-  diceMatBlack.diffuseColor = new BABYLON.Color3(55 / 255, 71 / 255, 79 / 255);
+  //diceMatBlack.diffuseColor = new BABYLON.Color3(55 / 255, 71 / 255, 79 / 255);
+  diceMatBlack.diffuseColor = new BABYLON.Color3.Black();
+
+  var diceMatRed = new BABYLON.StandardMaterial("diceMatRed", scene);
+  diceMatRed.diffuseColor = new BABYLON.Color3(164 / 255, 27 / 255, 7 / 255);
 
   var gameAreaTemplate = 'if( vPositionW.z  < -340.){ discard; } if( vPositionW.z  > 340.){ discard; } if( vPositionW.x  > 450.){ discard; } if( vPositionW.x  < -450.){ discard; }';
 
@@ -144,9 +157,9 @@ const onSceneReady = scene => {
   var players = {
     teamWhite: {
       player: "@jrej",
-      army: "outerRing",
+      army: "rebels",
       get armyStats() { return armies[this.army] },
-      units: ["soldier", "soldier", "soldier"],
+      units: ["OTTMK", "OTTMK", "OTTMK"],
       minis: [],
       startActions: 6,
       turnActions: 6,
@@ -157,7 +170,7 @@ const onSceneReady = scene => {
       player: "@inkito",
       army: "tabForces",
       get armyStats() { return armies[this.army] },
-      units: ["soldier", "soldier", "soldier"],
+      units: ["STLRW", "STLRW", "STLRW"],
       minis: [],
       startActions: 6,
       turnActions: 6,
@@ -369,7 +382,7 @@ const onSceneReady = scene => {
   var miniWidth = 25.25;
 
   var LOS = BABYLON.MeshBuilder.CreateCylinder("lineOfSights", { height: 0.1, diameter: 202 * 2 + miniWidth, tessellation: 256 }, scene);
-  LOS.position = new BABYLON.Vector3(0, 100, 0);
+  LOS.position = new BABYLON.Vector3(0, -100, 0);
   var LOSM = BABYLON.MeshBuilder.CreateCylinder("lineOfSightm", { height: 0.1, diameter: 404 * 2 + miniWidth, tessellation: 256 }, scene);
   var LOSL = BABYLON.MeshBuilder.CreateCylinder("lineOfSightl", { height: 0.1, diameter: 808 * 2 + miniWidth, tessellation: 256 }, scene);
   //var LOSXL = BABYLON.MeshBuilder.CreateCylinder("lineOfSight", { height: 0.1, diameter: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2 + miniWidth, tessellation: 256 }, scene);
@@ -382,7 +395,7 @@ const onSceneReady = scene => {
 
   var slicer = BABYLON.MeshBuilder.CreateBox("LOSTemplate", { width: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2, height: 2500, depth: 1 }, scene);
   slicer.rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(90), scene);
-  slicer.position = new BABYLON.Vector3(players[currentPlayer.team].armyStats.units.soldier.maxRange, 100, 0);
+  slicer.position = new BABYLON.Vector3(players[currentPlayer.team].armyStats.units.soldier.maxRange, -100, 0);
   slicer.visibility = 0;
   var slicerCSG = BABYLON.CSG.FromMesh(slicer);
 
@@ -400,7 +413,7 @@ const onSceneReady = scene => {
   //var lineOfSightXL = losXL.toMesh("lineOfSight");
 
   /*lineOfSightXL.parent =*/ lineOfSightL.parent = lineOfSightM.parent = lineOfSight;
-  /*lineOfSightXL.isPickable =*/ lineOfSightL.isPickable = lineOfSightM.isPickable = false;
+  /*lineOfSightXL.isPickable =*/ //lineOfSightL.isPickable = lineOfSightM.isPickable = lineOfSight.isPickable = false;
 
   lineOfSight.setEnabled(false);
   slicer.dispose();
@@ -427,170 +440,146 @@ const onSceneReady = scene => {
     }
   }
 
-  var getHeight = (mesh) => {
+  const getHeight = (mesh) => {
     return mesh.getBoundingInfo().boundingBox.extendSize.y * 2 * mesh.scaling.y
   };
 
-  var getWidth = (mesh) => {
+  const getWidth = (mesh) => {
     return mesh.getBoundingInfo().boundingBox.extendSize.x * 2 * mesh.scaling.x
   };
 
-  var getLength = (mesh) => {
+  const getLength = (mesh) => {
     return mesh.getBoundingInfo().boundingBox.extendSize.z * 2 * mesh.scaling.z
   };
 
-  var blackMini1;
-  var blackMini2;
-  var blackMini3;
+  const getControlByName = (name) => {
+    return advancedTexture._rootContainer._children.filter(control => control.name === name)[0]
+  }
+
+  async function asyncForEach(array, callback) {
+    for (let index = 0; index < array.length; index++) {
+      await callback(array[index], index, array);
+    }
+  }
+
+  var shield;
   BABYLON.SceneLoader.ImportMesh(
     "",
     `.${publicURL}/Models/`,
-    "STLRW.babylon",
+    "shield.babylon",
     scene,
     function (newMeshes) {
-      let blackBase1 = BABYLON.MeshBuilder.CreateCylinder("whiteBase", { height: 2.5, diameter: 27, tessellation: 128 }, scene);
-      blackBase1.material = baseMaterialBlack;
-      blackBase1.translate(BABYLON.Axis.Y, 26.5, scene);
-      blackBase1.translate(BABYLON.Axis.X, -300, scene);
+      shield = BABYLON.Mesh.MergeMeshes(newMeshes);
+      shield.scaling = new BABYLON.Vector3(6, 5, 10);
+      shield.translate(BABYLON.Axis.Y, 80, scene);
+      shadowGenerator.getShadowMap().renderList.push(shield);
+      shield.id = "shield";
+      shield.name = "shield";
 
-      blackMini1 = BABYLON.Mesh.MergeMeshes(newMeshes);
-      blackMini1.translate(BABYLON.Axis.Y, 25, scene);
-      blackMini1.translate(BABYLON.Axis.X, -300, scene);
-      blackMini1.name = "blackMini";
-      blackMini1.id = "blackMini1";
-      blackMini1.unit = "soldier";
-      blackMini1.rotation.y = BABYLON.Tools.ToRadians(-90);
-      blackMini1.material = miniMaterial;
-      blackMini1.actionManager = teamBlackActionManager;
-      blackMini1.enablePointerMoveEvents = true;
-
-      blackMini1.addChild(blackBase1);
-
-      blackMini1.width = getWidth(blackMini1);
-      blackMini1.height = getHeight(blackMini1);
-      blackMini1.checkCollisions = true;
-      blackMini1.collisionGroup = 1;
-      blackMini1.collisionMask = 1;
-
-
-      var blackMini1LOS = lineOfSight.clone();
-      blackMini1LOS.parent = blackMini1;
-      blackMini1LOS.position = new BABYLON.Vector3(0, 1, 0);
-      blackMini1LOS.rotation.y = BABYLON.Tools.ToRadians(-90);
-      blackMini1LOS.setEnabled(false);
-      blackMini1LOS.material = lineOfSightMatB;
-      blackMini1LOS._children[0].material = lineOfSightMMatB;
-      blackMini1LOS._children[1].material = lineOfSightLMatB
-      //blackMini1LOS._children[2].material = lineOfSightXLMatB
-      blackMini1.losMat = [lineOfSightMatB.name, lineOfSightMMatB.name, lineOfSightLMatB.name, lineOfSightXLMatB.name]
-
-      lineOfSightMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "s"); //blue
-      lineOfSightMMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "m"); //green
-      lineOfSightLMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "l"); //yellow
-      //lineOfSightXLMatB.diffuseColor = getLosColor(blackMini1.unit, "teamBlack", "xl"); //yellow
-
-      blackMini2 = blackMini1.clone();
-      blackMini2.name = "blackMini";
-      blackMini2.id = "blackMini2";
-      blackMini2.unit = "soldier";
-      blackMini2.material = miniMaterial;
-      blackMini2.actionManager = teamBlackActionManager;
-      blackMini2.translate(BABYLON.Axis.Z, 200, scene);
-      var blackMini2LOS = blackMini2._children[1];
-      blackMini2LOS.setEnabled(false);
-
-      blackMini3 = blackMini1.clone();
-      blackMini3.name = "blackMini";
-      blackMini3.id = "blackMini3";
-      blackMini3.unit = "soldier";
-      blackMini3.material = miniMaterial;
-      blackMini3.actionManager = teamBlackActionManager;
-      blackMini3.translate(BABYLON.Axis.Z, -200, scene);
-      var blackMini3LOS = blackMini3._children[1];
-      blackMini3LOS.setEnabled(false)
-
-      shadowGenerator.getShadowMap().renderList.push(blackMini1, blackMini2, blackMini3);
-      players.teamBlack.minis.push(blackMini1, blackMini2, blackMini3);
+      shield.setEnabled(false);
     }
   );
 
+  /*const createTextPlane = (mini) => {
+    let miniPlane = new BABYLON.Mesh.CreatePlane(`${mini.id}TextPlane`, 150, scene, true);
+    miniPlane.material = new BABYLON.StandardMaterial(`${mini.id}TextMat`, scene);
+    miniPlane.material.diffuseTexture = new BABYLON.DynamicTexture(`${mini.id}DynamicTexture`, { width: 100, height: 100 }, scene);
+    miniPlane.material.diffuseTexture.hasAlpha = true;
+    miniPlane.position = new BABYLON.Vector3(0, 40, 0);
+    miniPlane.parent = mini;
+    return miniPlane;
+  };*/
 
-  var whiteMini1;
-  var whiteMini2;
-  var whiteMini3;
+  const createBase = (mini, team) => {
+    let base = BABYLON.MeshBuilder.CreateCylinder(`${mini.id}Base`, { height: 2.5, diameter: 27, tessellation: 128 }, scene);
+    base.material = new BABYLON.StandardMaterial(`baseMaterial${mini.id}`, scene);
+    base.material.diffuseColor = team === "Black" ? new BABYLON.Color3.Black() : new BABYLON.Color3.White();
+    base.position = new BABYLON.Vector3(0, 1.5, 0);
+    base.parent = mini;
+    return base;
+  };
+
+  const createLOS = (mini, team) => {
+    var miniLOS = lineOfSight.clone();
+    miniLOS.id = `${mini.id}lineOfSight`;
+    miniLOS.name = `${mini.id}lineOfSight`;
+    miniLOS.parent = mini;
+    miniLOS.position = new BABYLON.Vector3(0, 1, 0);
+    miniLOS.rotation.y = BABYLON.Tools.ToRadians(-90);
+    miniLOS.setEnabled(false);
+    miniLOS.material = team === "Black" ? lineOfSightMatB : lineOfSightMatW;
+    miniLOS._children[0].material = team === "Black" ? lineOfSightMMatB : lineOfSightMMatW;
+    miniLOS._children[1].material = team === "Black" ? lineOfSightLMatB : lineOfSightLMatW;
+    //miniLOS._children[2].material = team === "Black" ? lineOfSightXLMatB : lineOfSightXLMatW;
+    if (team === "Black") {
+      mini.losMat = [lineOfSightMatB.name, lineOfSightMMatB.name, lineOfSightLMatB.name, lineOfSightXLMatB.name]
+      lineOfSightMatB.diffuseColor = getLosColor(mini.unit, `team${team}`, "s"); //blue
+      lineOfSightMMatB.diffuseColor = getLosColor(mini.unit, `team${team}`, "m"); //green
+      lineOfSightLMatB.diffuseColor = getLosColor(mini.unit, `team${team}`, "l"); //yellow
+      //lineOfSightXLMatB.diffuseColor = getLosColor(mini.unit, `team${team}`, "xl"); //yellow  
+    } else {
+      mini.losMat = [lineOfSightMatW.name, lineOfSightMMatW.name, lineOfSightLMatW.name, lineOfSightXLMatW.name]
+      lineOfSightMatW.diffuseColor = getLosColor(mini.unit, `team${team}`, "s"); //blue
+      lineOfSightMMatW.diffuseColor = getLosColor(mini.unit, `team${team}`, "m"); //green
+      lineOfSightLMatW.diffuseColor = getLosColor(mini.unit, `team${team}`, "l"); //yellow
+      //lineOfSightXLMatW.diffuseColor = getLosColor(mini.unit, `team${team}`, "xl"); //yellow
+    }
+    return miniLOS;
+  };
+
+  const createShield = (mini, team) => {
+    let miniShield = shield.clone(`${mini.id}shield`);
+    miniShield.material = new BABYLON.StandardMaterial(`shieldMaterial${mini.id}`, scene);
+    miniShield.material.diffuseColor = team === "Black" ? new BABYLON.Color3.Black() : new BABYLON.Color3.White();
+    miniShield.parent = mini;
+    miniShield.position = new BABYLON.Vector3(0, 55, 0);
+    miniShield.setEnabled(false);
+    return miniShield;
+  }
   var clonedMini;
-  //Consider looping through unit array of team
-  BABYLON.SceneLoader.ImportMesh(
-    "",
-    `.${publicURL}/Models/`,
-    "SKNCK.babylon",
-    scene,
-    function (newMeshes) {
-      let whiteBase1 = BABYLON.MeshBuilder.CreateCylinder("whiteBase", { height: 2.5, diameter: 27, tessellation: 128 }, scene);
-      whiteBase1.material = baseMaterialWhite;
-      whiteBase1.translate(BABYLON.Axis.Y, 26.5, scene);
-      whiteBase1.translate(BABYLON.Axis.X, 300, scene);
-      whiteBase1.translate(BABYLON.Axis.Z, 1.5, scene);
-      whiteMini1 = BABYLON.Mesh.MergeMeshes(newMeshes);
-      whiteMini1.translate(BABYLON.Axis.Y, 25, scene);
-      whiteMini1.translate(BABYLON.Axis.X, 300, scene);
-      whiteMini1.translate(BABYLON.Axis.Z, 0, scene);
-      whiteMini1.rotation.y = BABYLON.Tools.ToRadians(90);
-      whiteMini1.name = "whiteMini";
-      whiteMini1.id = "whiteMini1";
-      whiteMini1.unit = "soldier";
-      whiteMini1.material = miniMaterial;
-      whiteMini1.checkCollisions = true;
-      whiteMini1.actionManager = teamWhiteActionManager;
-      whiteMini1.collisionGroup = 1;
-      whiteMini1.collisionMask = 1;
+  //STLRW
+  const importMiniModel = (miniName, team, index) => {
+    BABYLON.SceneLoader.ImportMesh(
+      "",
+      `.${publicURL}/Models/`,
+      `${miniName}.babylon`,
+      scene,
+      function (newMeshes) {
+        let mini = BABYLON.Mesh.MergeMeshes(newMeshes);
+        mini.translate(BABYLON.Axis.Y, 25, scene);
+        mini.translate(BABYLON.Axis.X, team === "Black" ? -300 : 300, scene);
+        mini.translate(BABYLON.Axis.Z, -200 + 200 * index, scene);
+        mini.name = `${team.toLowerCase()}Mini`;
+        mini.id = `${team.toLowerCase()}Mini${index + 1}`;
+        mini.unit = "soldier";
+        mini.team = `team${team}`;
+        mini.rotation.y = team === "Black" ? BABYLON.Tools.ToRadians(-90) : BABYLON.Tools.ToRadians(90);
+        mini.material = miniMaterial;
+        mini.actionManager = team === "Black" ? teamBlackActionManager : teamWhiteActionManager;
+        mini.enablePointerMoveEvents = true;
 
-      whiteMini1.addChild(whiteBase1);
-      camera.setTarget(whiteMini1);
+        mini.width = getWidth(mini);
+        mini.height = getHeight(mini);
 
-      whiteMini1.width = getWidth(whiteMini1);
-      whiteMini1.height = getHeight(whiteMini1);
+        createBase(mini, team);
+        createLOS(mini, team);
+        createShield(mini, team);
+        //createTextPlane(mini);
 
-      var whiteMini1LOS = lineOfSight.clone();
-      whiteMini1LOS.parent = whiteMini1;
-      whiteMini1LOS.position = new BABYLON.Vector3(0, 1, 0);
-      whiteMini1LOS.rotation.y = BABYLON.Tools.ToRadians(-90);
-      whiteMini1LOS.setEnabled(false);
-      whiteMini1LOS.material = lineOfSightMatW;
-      whiteMini1LOS._children[0].material = lineOfSightMMatW;
-      whiteMini1LOS._children[1].material = lineOfSightLMatW;
-      //whiteMini1LOS._children[2].material = lineOfSightXLMatW;
-      whiteMini1.losMat = [lineOfSightMatW.name, lineOfSightMMatW.name, lineOfSightLMatW.name, lineOfSightXLMatW.name]
+        shadowGenerator.getShadowMap().renderList.push(mini);
+        players[`team${team}`].minis.push(mini);
+        if (players.teamWhite.minis && players.teamWhite.minis.length > 1) {
+          camera.setTarget(players.teamWhite.minis[1]);
+        }
+      }
+    );
+  }
 
-      lineOfSightMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "s"); //green
-      lineOfSightMMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "m"); //blue
-      lineOfSightLMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "l"); //yellow
-      //lineOfSightXLMatW.diffuseColor = getLosColor(whiteMini1.unit, "teamWhite", "xl"); //red
-
-      whiteMini2 = whiteMini1.clone();
-      whiteMini2.name = "whiteMini";
-      whiteMini2.id = "whiteMini2";
-      whiteMini2.unit = "soldier";
-      whiteMini2.material = miniMaterial;
-      whiteMini2.actionManager = teamWhiteActionManager;
-      whiteMini2.translate(BABYLON.Axis.Z, 200, scene);
-      var whiteMini2LOS = whiteMini2._children[1];
-      whiteMini2LOS.setEnabled(false);
-
-      whiteMini3 = whiteMini1.clone();
-      whiteMini3.name = "whiteMini";
-      whiteMini3.id = "whiteMini3";
-      whiteMini3.unit = "soldier";
-      whiteMini3.material = miniMaterial;
-      whiteMini3.actionManager = teamWhiteActionManager;
-      whiteMini3.translate(BABYLON.Axis.Z, -200, scene);
-      var whiteMini3LOS = whiteMini3._children[1];
-      whiteMini3LOS.setEnabled(false);
-
-      shadowGenerator.getShadowMap().renderList.push(whiteBase1, whiteMini1, whiteMini2, whiteMini3);
-      players.teamWhite.minis.push(whiteMini1, whiteMini2, whiteMini3);
-    }
-  );
+  const importAllModels = () => {
+    players.teamBlack.units.forEach((miniName, index) => importMiniModel(miniName, "Black", index))
+    players.teamWhite.units.forEach((miniName, index) => importMiniModel(miniName, "White", index))
+  }
+  importAllModels();
 
   var obstacles = [];
   BABYLON.SceneLoader.ImportMesh(
@@ -682,10 +671,10 @@ const onSceneReady = scene => {
 
       shadowGenerator.getShadowMap().renderList.push(container02, container3, container4, container5, container6, container78, container9, container10, container11, container12);
       obstacles.push(container02, container3, container4, container5, container6, container78, container9, container10, container11, container12);
-      container.material = invisibleMaterial;
+
+      container.setEnabled(false);
     }
   );
-
 
   var moveArea = BABYLON.MeshBuilder.CreateCylinder("moveArea", { height: 0.25, diameter: miniWidth * 8, tessellation: 256 }, scene);
   moveArea.material = invisibleMaterial;
@@ -736,11 +725,34 @@ const onSceneReady = scene => {
 
   //Mini selected by player1;
   var selected = "";
+  var targets = [];
+  var inAttack = false;
   var rotate = false;
   var previous = {
     position: null,
     rotation: null
   };
+
+  const cancelTargeting = () => {
+    targets.forEach(target => {
+      hl.removeMesh(target);
+      if (scene.getMeshByName(`${selected.id}To${target.id}`)) {
+        scene.removeMesh(scene.getMeshByName(`${selected.id}To${target.id}`));
+      }
+    });
+    targets = [];
+    if (scene.getMeshByName("directLOS")) {
+      scene.getMeshByName("directLOS").dispose();
+    }
+    players[enemyPlayer.team].minis.forEach(mini => {
+      if (scene.getMeshByName(`${mini.id}To${selected.id}`)) {
+        scene.removeMesh(scene.getMeshByName(`${mini.id}To${selected.id}`));
+      }
+      removeDiceStat(mini);
+      mini.diceAssigned = 0;
+    })
+    advancedTexture.removeControl(rollButton);
+  }
 
   var selection = function (evt) {
     //left click
@@ -748,13 +760,16 @@ const onSceneReady = scene => {
       let currentMesh = evt.meshUnderPointer;
       scene.hoverCursor = "pointer";
       if (selected === currentMesh) {
-        moveAction({ skip: true });
+        if (targets.length === 0) {
+          moveAction({ skip: true });
+        }
         //camera.setTarget(board);
-      } else if (currentMesh.id.includes("Mini")) {
+      } else if (currentMesh.name.includes("Mini")) {
         if (selected) {
           hl.removeMesh(selected);
         }
         if (currentPlayer.turnActions > 0) {
+          cancelTargeting();
           hl.addMesh(currentMesh, BABYLON.Color3.White());
           hl.addMesh(moveArea, BABYLON.Color3.White());
           selected = currentMesh;
@@ -767,13 +782,13 @@ const onSceneReady = scene => {
   }
 
   var cancelSelection = () => {
-    if (selected && rotate) {
+    if (selected && rotate && !inAttack) {
       if (previous.position) {
         selected.position = previous.position;
         selected.rotation = previous.rotation;
         moveArea.setEnabled(true);
         moveArea.position = new BABYLON.Vector3(previous.position.x, 26, previous.position.z);
-        selected._children[1].setEnabled(false);
+        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
         if (scene.getMeshByName(`groundLOS${selected.id}`)) {
           scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
         }
@@ -784,8 +799,9 @@ const onSceneReady = scene => {
       moveArea.setEnabled(false);
       hl.removeMesh(selected);
       hl.removeMesh(moveArea);
+      cancelTargeting();
       scene.removeMesh(clonedMini);
-      selected._children[1].setEnabled(false);
+      scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
       if (scene.getMeshByName(`groundLOS${selected.id}`)) {
         scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
       }
@@ -831,8 +847,8 @@ const onSceneReady = scene => {
   }
 
   const isInCover = (mini1, mini2) => {
-    let originLeft = new BABYLON.Vector3(mini1.position.x, mini1.position.y + 5, mini1.position.z - mini1.width / 2 + mini1.width * 0.25);
-    let originRight = new BABYLON.Vector3(mini1.position.x, mini1.position.y + 5, mini1.position.z + mini1.width / 2 - mini1.width * 0.25);
+    let originLeft = new BABYLON.Vector3(mini1.position.x, mini1.position.y + 5, mini1.position.z - mini1.width / 2);
+    let originRight = new BABYLON.Vector3(mini1.position.x, mini1.position.y + 5, mini1.position.z + mini1.width / 2);
 
     let target = new BABYLON.Vector3(mini2.position.x, mini2.position.y + 5, mini2.position.z);
 
@@ -856,13 +872,10 @@ const onSceneReady = scene => {
     let hitsRight = scene.multiPickWithRay(rayRight);
 
     if (hitsLeft.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
-      console.log(mini1.name + " is in cover!")
       return true;
     } else if (hitsRight.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
-      console.log(mini1.name + " is in cover!")
       return true;
     } else {
-      console.log(mini1.name + " is NOT in cover!")
       return false;
     }
   }
@@ -887,10 +900,8 @@ const onSceneReady = scene => {
 
   const isHigher = (mini1, mini2) => {
     if (mini1.position.y > mini2.position.y + getHeight(mini2)) {
-      console.log(mini1.name + " is higher")
       return true;
     } else {
-      console.log(mini1.name + " is NOT Higher")
       return false;
     };
   };
@@ -913,16 +924,32 @@ const onSceneReady = scene => {
     }
   };
 
+  var handleCoverLogo = (mini1, mini2) => {
+    if (isInCover(mini1, mini2)) {
+      scene.getMeshByName(`${mini1.id}shield`).setEnabled(true);
+    }
+    if (isInCover(mini2, mini1)) {
+      scene.getMeshByName(`${mini2.id}shield`).setEnabled(true);
+    }
+  };
+  
+  /*var removeCoverLogo = (mini) => {
+    if (scene.getMeshByName(`${mini.id}shield`)){
+      scene.getMeshByName(`${mini.id}shield`).setEnabled(false);
+    }
+  }*/
+
   var handleLineOfSight = (ev) => {
     var enemyTarget = ev.meshUnderPointer;
-    if (selected && noObstacle(selected, enemyTarget)) {
+    if (selected && rangeToTarget(selected, enemyTarget)) {
+      handleCoverLogo(selected, enemyTarget);
       if (enemyTarget.intersectsMesh(selected, false)) {
         //Melee position
         //scene.hoverCursor = "url('./Cursors/melee.cur') 10 10, auto";
 
       } else if (rangeToTarget(selected, enemyTarget)) {
-        selected._children[1].setEnabled(true);
-        if (scene.getMeshByName(`groundLOS${selected.id}`)){
+        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true)
+        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
           scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
         }
         moveArea.setEnabled(false);
@@ -932,19 +959,23 @@ const onSceneReady = scene => {
       } else if (!enemyTarget.intersectsMesh(selected, false) && !rangeToTarget(selected, enemyTarget)) {
         //scene.hoverCursor = "url('./Cursors/unavailable.cur') 15 15, auto";
         moveArea.setEnabled(false);
-        selected._children[1].setEnabled(true);
-        scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
+        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true)
+        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
+          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
+        }
       }
     }
   }
 
   var cancelLineOfSight = () => {
     if (selected) {
-      selected._children[1].setEnabled(false);
+      scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
+      scene.getMeshByName(`${selected.id}shield`).setEnabled(false);
+      players[enemyPlayer.team].minis.forEach(mini => scene.getMeshByName(`${mini.id}lineOfSight`).setEnabled(false));
       if (scene.getMeshByName(`groundLOS${selected.id}`)) {
         scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
       }
-      if (!rotate) {
+      if (!rotate && targets.length === 0) {
         moveArea.setEnabled(true);
       }
     }
@@ -957,8 +988,8 @@ const onSceneReady = scene => {
       var furthestMiniIndex = currentPlayer.team === "teamWhite" ? miniPosition.indexOf(Math.min(...miniPosition)) : miniPosition.indexOf(Math.max(...miniPosition));
       var furthestMini = players[currentPlayer.team].minis[furthestMiniIndex];
       var furthestTarget = BABYLON.Mesh.CreateSphere("targetSphere", { size: 10 }, scene);
-      furthestTarget.visibility = 0;
-      furthestTarget.position = new BABYLON.Vector3(furthestMini.position.x, furthestMini.position.y, 0);
+      furthestTarget.setEnabled(false);
+      furthestTarget.position = new BABYLON.Vector3(furthestMini.position.x, furthestMini.position.y + 30, 0);
       camera.setTarget(furthestTarget);
       setTimeout(() => {
         furthestTarget.dispose();
@@ -966,7 +997,7 @@ const onSceneReady = scene => {
     }
   };
 
-  var diceRoll = (rolls, blackMini, defense, selected) => {
+  var diceRoll = (rolls) => {
     let arrayResult = [];
     for (let i = 0; i < rolls; i++) {
       arrayResult.push(Math.floor(Math.random() * 6) + 1)
@@ -975,7 +1006,7 @@ const onSceneReady = scene => {
     return arrayResult;
   }
 
-  var cloneDice = (rolls, mini, delay) => {
+  var cloneDice = (rolls, mini, delay, save) => {
     var dicePosition1 = new BABYLON.Vector3(mini.position.x + 10, mini.position.y + 7, mini.position.z + 30)
     var dicePosition2 = new BABYLON.Vector3(mini.position.x + 10, mini.position.y + 7, mini.position.z + 45)
     var dicePosition3 = new BABYLON.Vector3(mini.position.x + -5, mini.position.y + 7, mini.position.z + 30)
@@ -991,9 +1022,11 @@ const onSceneReady = scene => {
 
     for (let i = 0; i < rolls.length; i++) {
       var diceIndex = i + 1
-      if (mini.name.includes("white")) {
+      if (save) {
+        dice[rolls[i] - 1].material = diceMatRed;
+      } else if (mini.name.includes("white")) {
         dice[rolls[i] - 1].material = diceMatWhite;
-      } else {
+      } else if (mini.name.includes("black")) {
         dice[rolls[i] - 1].material = diceMatBlack;
       }
 
@@ -1005,52 +1038,49 @@ const onSceneReady = scene => {
         dice[rolls[i] - 1].clone(`diceClone${i}`).position = dicePositions[i];
       }
 
-
       setTimeout(function () {
         scene.removeMesh(scene.getMeshByName(`diceClone${i}`));
       }, delay)
     }
   }
 
-  var compareRolls = (playerRolls, playerMod, enemyRolls, enemyMod) => {
+  var compareRolls = (mini1, mini1Rolls, mini1Mod, mini2, mini2Rolls, mini2Mod) => {
     //check if rolls successful, remove any unsuccessful rolls
-    var playerSuccess = playerRolls.filter(roll => roll + playerMod >= currentPlayer.army.units.soldier.range.success);
-    var enemySuccess = enemyRolls.filter(roll => roll + enemyMod >= enemyPlayer.army.units.soldier.range.success);
+    var mini1Success = mini1Rolls.filter(roll => roll + mini1Mod >= players[mini1.team].armyStats.units.soldier.range.success);
+    var mini2Success = mini2Rolls.filter(roll => roll + mini2Mod >= players[mini2.team].armyStats.units.soldier.defense.success);
 
     console.log("Player rolls:");
-    console.log(playerRolls);
-    console.log("He has a " + playerMod + " modifier to dice roll");
+    console.log(mini1Rolls);
+    console.log("He has a " + mini1Mod + " modifier to dice roll");
 
 
     console.log("Enemy rolls:");
-    console.log(enemyRolls);
-    console.log("He has a " + enemyMod + " modifier to dice roll");
+    console.log(mini2Rolls);
+    console.log("He has a " + mini2Mod + " modifier to dice roll");
 
     console.log("Player success rolls:")
-    console.log(playerSuccess);
+    console.log(mini1Success);
 
     console.log("Enemy Success rolls:")
-    console.log(enemySuccess);
-    //check if duplicates, remove duplicates player enemy
-    //var uniquePlayerRolls = [...playerSuccess];
-    //var uniqueEnemyRolls = [...enemySuccess];
+    console.log(mini2Success);
 
-    for (let i = 0; i < playerSuccess.length; i++) {
-      for (let j = 0; j < enemySuccess.length; j++) {
-        if (playerSuccess[i] === enemySuccess[j]) {
-          playerSuccess.splice(i, 1);
-          enemySuccess.splice(j, 1)
+    //check if duplicates, remove duplicates player enemy
+    for (let i = 0; i < mini1Success.length; i++) {
+      for (let j = 0; j < mini2Success.length; j++) {
+        if (mini1Success[i] === mini2Success[j]) {
+          mini1Success.splice(i, 1);
+          mini2Success.splice(j, 1)
         }
       }
     }
 
-    if (Math.max(...playerSuccess) > Math.max(...enemySuccess)) {
+    if (Math.max(...mini1Success) > Math.max(...mini2Success)) {
       //player with the highest numbers win.   
-      console.log("Player wins with a higher roll!");
-      return "player";
-    } else if (Math.max(...enemySuccess) > Math.max(...playerSuccess)) {
-      console.log("Enemy wins with a higher roll!");
-      return "enemy";
+      console.log(`${mini1.id} wins with a higher roll!`);
+      return mini1.name;
+    } else if (Math.max(...mini2Success) > Math.max(...mini1Success)) {
+      console.log(`${mini2.id} wins with a higher roll!`);
+      return mini2.name;
     } else {
       //if no result left or equal, both miss.
       return null
@@ -1110,145 +1140,212 @@ const onSceneReady = scene => {
     return winner;
   }
 
-  // Consider the option of choosing multiple targets
-  var onAttack = (ev) => {
-    let enemyTarget = ev.meshUnderPointer;
+  var getMods = (mini1, mini2) => {
+    let team = mini1.name.includes("white") ? "teamWhite" : "teamBlack";
+    let range = rangeToTarget(mini1, mini2);
+    let higherMod = isHigher(mini1, mini2) ? 1 : 0;
+    let coverMod = isInCover(mini2, mini1) ? -1 : 0;
+    let mods = coverMod + higherMod + players[team].armyStats.units[mini1.unit].range.mods[range];
+    return mods;
+  }
+
+  var onAttack = (mini1, mini2, response) => {
     let winner = "";
-    if (selected) {
-      var currentMesh = selected;
-      var range = rangeToTarget(selected, enemyTarget);
+    if (mini1) {
+      let range = rangeToTarget(mini1, mini2);
+      let mini1CoverMod = isInCover(mini1, mini2) ? 1 : 0;
+      let mini1Mods = getMods(mini1, mini2);
 
-      let coverMod = isInCover(selected, enemyTarget) ? 1 : 0;
-      let higherMod = isHigher(selected, enemyTarget) ? 1 : 0;
-      var mods = coverMod + higherMod + currentPlayer.army.units[selected.unit].range.mods[range];
+      let mini2CoverMod = isInCover(mini2, mini1) ? 1 : 0;
+      let mini2Mods = getMods(mini2, mini1);
 
-      let enemyCoverMod = isInCover(enemyTarget, selected) ? 1 : 0;
-      let enemyHigherMod = isHigher(enemyTarget, selected) ? 1 : 0;
-      let enemyMods = enemyCoverMod + enemyHigherMod + enemyPlayer.army.units[enemyTarget.unit].range.mods[range];
-
-      if (range && isInAngle(selected, enemyTarget)) {
-        if (enemyTarget.intersectsMesh(selected, false) || range === "c") {
+      if (range && isInAngle(mini1, mini2)) {
+        if (mini2.intersectsMesh(mini1, false) || range === "c") {
           //Melee attack
-          console.log('Stabbing ' + enemyTarget.id + " with " + selected.id)
-          console.log("Player target roll: " + currentPlayer.army.units[selected.unit].melee.success + "+")
-          let meleeRoll = diceRoll(currentPlayer.army.units[selected.unit].melee.roll);
+          console.log('Stabbing ' + mini2.id + " with " + mini1.id)
+          console.log("Player target roll: " + currentPlayer.army.units[mini1.unit].melee.success + "+")
+          let meleeRoll = diceRoll(currentPlayer.army.units[mini1.unit].melee.roll);
 
           //Generate Dice
-          cloneDice(meleeRoll, selected, 1000);
+          cloneDice(meleeRoll, mini1, 1000);
 
-          console.log("Enemy target roll: " + enemyPlayer.army.units[selected.unit].melee.success + "+")
-          let enemyMeleeRoll = diceRoll(1);
+          console.log("Enemy target roll: " + enemyPlayer.army.units[mini1.unit].melee.success + "+")
+          let mini2MeleeRoll = diceRoll(1);
           //Generate Dice
-          cloneDice(enemyMeleeRoll, enemyTarget, 1000);
+          cloneDice(mini2MeleeRoll, mini2, 1000);
 
-          winner = compareRolls(meleeRoll, 0, enemyMeleeRoll, 0);
+          winner = compareRolls(mini1, meleeRoll, 0, mini2, mini2MeleeRoll, 0);
+
         } else {
           //Range attack
-          var rolls = [];
+          var mini1rolls = [];
           var modedRolls = [];
-          var enemyRolls = [];
-          //var modedEnemyRolls = [];
+          var mini2Rolls = [];
 
-
-          console.log(`Shooting ${enemyTarget.id} with ${selected.id} at range ${range}.`)
+          console.log(`Shooting ${mini2.id} with ${mini1.id} at range ${range}.`)
           // Check for enemy roll (Should be enemy line of sight when rotation is implemented!)
-          console.log("Player target roll: " + currentPlayer.army.units[selected.unit].range.success + "+")
+          console.log(mini1.id + " target roll: " + currentPlayer.army.units[mini1.unit].range.success + "+")
 
-          rolls = diceRoll(currentPlayer.army.units[selected.unit].range.roll);
-          //Generate Dice
-          cloneDice(rolls, selected, 1000);
-
-          modedRolls = rolls.map(roll => roll + mods);
-
-          //Enemy Target Response
-          if (rangeToTarget(enemyTarget, selected)) {
-            console.log("Enemy target roll: " + enemyPlayer.army.units[enemyTarget.unit].range.success + "+")
-
-            enemyRolls = diceRoll(1);
-            //Generate Dice
-            cloneDice(enemyRolls, enemyTarget, 1000);
-
-            winner = compareRolls(rolls, mods, enemyRolls, enemyMods);
+          if (!response) {
+            mini1rolls = diceRoll(mini2.diceAssigned);
+          } else {
+            mini1rolls = diceRoll(1);
           }
 
-          //No response from enemy (range difference)
+          //Generate Dice
+          cloneDice(mini1rolls, mini1, 1000);
+
+          modedRolls = mini1rolls.map(roll => roll + mini1Mods);
+
+          //Enemy Target Response
+          if (rangeToTarget(mini2, mini1) && !response) {
+            console.log(mini2.id + " target roll: " + enemyPlayer.army.units[mini2.unit].range.success + "+")
+
+            mini2Rolls = diceRoll(1);
+            //Generate Dice
+            cloneDice(mini2Rolls, mini2, 1000);
+
+            winner = compareRolls(mini1, mini1rolls, mini1Mods, mini2, mini2Rolls, mini2Mods);
+          }
+
+          //No response from enemy (range difference || angle || one way response)
           if (!winner) {
-            if (modedRolls.some(roll => roll >= currentPlayer.army.units[selected.unit].range.success)) {
-              console.log("Success! You shot him!");
-              winner = "player"
+            if (modedRolls.some(roll => roll >= currentPlayer.army.units[mini1.unit].range.success)) {
+              if (!response) {
+                console.log("Player rolled:")
+                console.log(mini1rolls);
+                console.log("Success! You shot him!");
+              } else {
+                console.log("Enemy rolled:")
+                console.log(mini1rolls);
+                console.log("Hot damn! You got shot!");
+              }
+              winner = mini1.name;
             }
           }
         }
 
         //Defense Roll
-        if (winner === "player") {
-          console.log("Enemy is hit. Defense roll target: " + enemyPlayer.army.units[enemyTarget.unit].defense.success + "+");
-          if (enemyCoverMod > 0) {
-            console.log("Enemy has +1 to dice roll as he is in cover.")
+        if (winner === mini1.name) {
+          console.log(mini2.id + " is hit. Defense roll target: " + players[mini2.team].armyStats.units[mini2.unit].defense.success + "+");
+          if (mini2CoverMod > 0) {
+            console.log(mini2.id + " has +1 to dice roll as he is in cover.")
           }
-          let defenseRoll = diceRoll(enemyPlayer.army.units[enemyTarget.unit].defense.roll)
-          console.log("Enemy rolls : ");
+          let defenseRoll = diceRoll(players[mini2.team].armyStats.units[mini2.unit].defense.roll)
+          console.log(mini2.team + " player rolls : ");
           console.log(defenseRoll);
           setTimeout(function () {
-            cloneDice(defenseRoll, enemyTarget, 1250);
+            cloneDice(defenseRoll, mini2, 1250, true);
           }, 1250);
           //Cover modifiers to add here
-          if (defenseRoll.some(roll => roll + enemyCoverMod >= enemyPlayer.army.units[enemyTarget.unit].defense.success)) {
-            console.log("Defense roll successful. Enemy saved!");
+          if (defenseRoll.some(roll => roll + mini2CoverMod >= players[mini2.team].armyStats.units[mini2.unit].defense.success)) {
+            console.log("Defense roll successful. " + mini2.id + " saved!");
           } else {
-            console.log("Enemy killed!");
+            console.log(mini2.id + " killed!");
             setTimeout(function () {
-              enemyTarget.position = new BABYLON.Vector3(Math.floor(Math.random() * 190) - 200, 0, -440 + Math.floor(Math.random() * 30) - 15);
-              enemyTarget.name = "decor";
-              enemyTarget.isPickable = false
-              players[enemyPlayer.team].minis = players[enemyPlayer.team].minis.filter(mini => mini.id !== enemyTarget.id)
-              players[enemyPlayer.team].startActions -= 2
-              isTheGameOver();
-              cancelSelection();
+              mini2.position = new BABYLON.Vector3(Math.floor(Math.random() * 190) - 200, 0, -440 + Math.floor(Math.random() * 30) - 15);
+              mini2.name = "decor";
+              mini2.isPickable = false;
+              if (scene.getMeshByName(`${mini2.id}To${mini1.id}`)) {
+                scene.removeMesh(scene.getMeshByName(`${mini2.id}To${mini1.id}`));
+              }
+              players[mini2.team].minis = players[mini2.team].minis.filter(mini => mini.id !== mini2.id)
+              players[mini2.team].startActions -= 2
+              clearTarget(mini2);
+              if (response) {
+                cancelSelection();
+              }
             }, 2500);
           }
-        } else if (winner === "enemy") {
-          console.log("Player is hit. Defense roll target: " + currentPlayer.army.units[selected.unit].defense.success + "+")
-          if (coverMod > 0) {
-            console.log("Player has +1 to dice roll as he is in cover.")
+        } else if (winner === mini2.name) {
+          console.log(mini1.id + " is hit. Defense roll target: " + players[mini1.team].armyStats.units[mini1.unit].defense.success + "+")
+          if (mini1CoverMod > 0) {
+            console.log(mini1.id + " has +1 to dice roll as he is in cover.")
           }
-          let defenseRoll = diceRoll(currentPlayer.army.units[selected.unit].defense.roll, undefined, true, selected);
-          console.log("Player rolls : ");
+          let defenseRoll = diceRoll(players[mini1.team].armyStats.units[mini1.unit].defense.roll, null, true, mini1);
+          console.log(mini1.team + " player rolls : ");
           console.log(defenseRoll);
           setTimeout(function () {
-            cloneDice(defenseRoll, currentMesh, 1250);
+            cloneDice(defenseRoll, mini1, 1250, true);
           }, 1250);
-          if (defenseRoll.some(roll => roll + coverMod >= currentPlayer.army.units[selected.unit].defense.success)) {
-            console.log("Defense roll successful. Player mini saved!");
+          if (defenseRoll.some(roll => roll + mini1CoverMod >= players[mini1.team].armyStats.units[mini1.unit].defense.success)) {
+            console.log("Defense roll successful. " + mini1.id + " saved!");
           } else {
-            console.log("Player killed!");
+            console.log(mini1.id + " killed!");
             setTimeout(function () {
               camera.target = map;
-              currentMesh.position = new BABYLON.Vector3(200 - Math.floor(Math.random() * 190), 0, -440 + Math.floor(Math.random() * 30) - 15);
-              currentMesh.name = "decor";
-              currentMesh.isPickable = false
-              players[currentPlayer.team].minis = players[currentPlayer.team].minis.filter(mini => mini.id !== currentMesh.id)
-              players[currentPlayer.team].startActions -= 2
-              isTheGameOver();
+              mini1.position = new BABYLON.Vector3(200 - Math.floor(Math.random() * 190), 0, -440 + Math.floor(Math.random() * 30) - 15);
+              mini1.name = "decor";
+              mini1.isPickable = false
+              players[mini1.team].minis = players[mini1.team].minis.filter(mini => mini.id !== mini1.id)
+              players[mini1.team].startActions -= 2
               cancelSelection();
             }, 2500);
           }
         } else {
           console.log("No winners! Try again.")
         }
-
-        players[currentPlayer.team].turnActions -= 1;
-        scene.removeMesh(scene.getMeshByName("token"));
-        cancelSelection();
-
-        if (players[currentPlayer.team].turnActions === 0) {
-          setTimeout(function () {
-            switchPlayer();
-          }, 3500);
-        }
       }
     }
   }
+
+  const attackTargets = async () => {
+    inAttack = true;
+    const waitFor = (ms) => new Promise(r => setTimeout(r, ms));
+    if (selected && targets && targets.length > 0) {
+      let enemyResponse = players[enemyPlayer.team].minis.filter(mini =>
+        enemyPlayer.army.units[mini.unit].range.mods[rangeToTarget(mini, selected)] >= 0
+      );
+      let onWayResponse = enemyResponse.filter(enemy => !targets.some(target => target === enemy));
+
+      await asyncForEach(targets, async (target) => {
+        console.log(`Init attack on ${target.id}!`)
+        if (selected) {
+          onAttack(selected, target);
+        }
+        await waitFor(3000);
+        console.log(`Attack on ${target.id} completed!`)
+      });
+      if (onWayResponse) {
+        await asyncForEach(onWayResponse, async (enemy) => {
+          console.log(`Init one way attack from ${enemy.id}!`)
+          if (selected) {
+            onAttack(enemy, selected, true);
+          }
+          await waitFor(3000);
+          console.log(`One way attack from ${enemy.id} completed!`)
+        });
+      }
+      console.log('Done with attacks.');
+      players[currentPlayer.team].turnActions -= 1;
+      scene.removeMesh(scene.getMeshByName("token"));
+      cancelLineOfSight();
+      cancelSelection();
+      isTheGameOver();
+      inAttack = false;
+
+      if (players[currentPlayer.team].turnActions === 0) {
+        setTimeout(function () {
+          switchPlayer();
+        }, 3500);
+      }
+    }
+  }
+
+  var rollButton = GUI.Button.CreateSimpleButton("rollButton", "Roll Dice");
+  rollButton.width = "120px"
+  rollButton.height = "60px";
+  rollButton.color = "white";
+  rollButton.left = "40%";
+  rollButton.top = "30%";
+  rollButton.cornerRadius = 20;
+  rollButton.background = "black";
+  rollButton.zIndex = 2000;
+  rollButton.onPointerClickObservable.add(function () {
+    if (!inAttack) {
+      attackTargets();
+    }
+  });
 
   var moveAction = ({ skip }) => {
     if (selected) {
@@ -1258,7 +1355,7 @@ const onSceneReady = scene => {
       }
       moveArea.position = new BABYLON.Vector3(selected.position.x, 26, selected.position.z);
       moveArea.setEnabled(false);
-      selected._children[1].setEnabled(true);
+      scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true);
 
       //Fragment diffuse on main LOS and creating ground LOS clone
       if (whatIsUnderneath(selected) && whatIsUnderneath(selected).name.includes("obstacle")) {
@@ -1266,7 +1363,7 @@ const onSceneReady = scene => {
           scene.getMeshByName(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
           scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
         } else {
-          selected._children[1].clone(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
+          scene.getMeshByName(`${selected.id}lineOfSight`).clone(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
         }
 
         if (scene.getMeshByName("groundMoveArea")) {
@@ -1283,8 +1380,8 @@ const onSceneReady = scene => {
         highMat.Fragment_Custom_Diffuse(obstacleTemplateArea);
         highMat.diffuseColor = scene.getMaterialByName(selected.losMat[0]).diffuseColor;
 
-        selected._children[1].material = highMat;
-        selected._children[1]._children.forEach((los, index) => {
+        scene.getMeshByName(`${selected.id}lineOfSight`).material = highMat;
+        scene.getMeshByName(`${selected.id}lineOfSight`)._children.forEach((los, index) => {
           los.material = new CustomMaterial(`highMat${index}`, scene);
           los.material.alpha = 0.25;
           los.material.Fragment_Custom_Diffuse(obstacleTemplateArea);
@@ -1295,8 +1392,8 @@ const onSceneReady = scene => {
         scene.getMeshByName("groundMoveArea").material.Fragment_Custom_Diffuse(obstacleTemplateArea);
         scene.getMeshByName("groundMoveArea")._children.forEach(child => child.setEnabled(false));
       } else {
-        selected._children[1].material = scene.getMaterialByName(selected.losMat[0]);
-        selected._children[1]._children.forEach((los, index) => los.material = scene.getMaterialByName(selected.losMat[index + 1]));
+        scene.getMeshByName(`${selected.id}lineOfSight`).material = scene.getMaterialByName(selected.losMat[0]);
+        scene.getMeshByName(`${selected.id}lineOfSight`)._children.forEach((los, index) => los.material = scene.getMaterialByName(selected.losMat[index + 1]));
         moveArea2.material = moveAreaMat;
         if (scene.getMeshByName(`groundLOS${selected.id}`)) {
           scene.getMeshByName(`groundLOS${selected.id}`).dispose();
@@ -1398,6 +1495,134 @@ const onSceneReady = scene => {
     return null;
   }
 
+  const addTarget = (enemyTarget) => {
+    advancedTexture.addControl(rollButton);
+    updateDiceStat();
+    let targetColor = new BABYLON.Color3.Black();
+    if (selected && !targets.some(target => target.id === enemyTarget.id)) {
+      if (getLosColor(selected.unit, currentPlayer.team, rangeToTarget(selected, enemyTarget))) {
+        targetColor = getLosColor(selected.unit, currentPlayer.team, rangeToTarget(selected, enemyTarget));
+      }
+      hl.addMesh(enemyTarget, targetColor);
+      targets.push(enemyTarget);
+      // create direct line of sight
+      if (rangeToTarget(selected, enemyTarget) !== "c") {
+        createDirectLOS(selected, enemyTarget, false);
+      }
+      createDiceStat(enemyTarget);
+      targetResponse();
+    }
+  }
+
+  const clearTarget = (target) => {
+    if (target) {
+      target.diceAssigned = 0;
+    }
+    // Removed any target from the targets array with 0 dice assigned
+    targets.forEach((target, index) => {
+      if (target.diceAssigned === 0) {
+        targets.splice(index, 1);
+        hl.removeMesh(target);
+        removeDiceStat(target);
+        scene.removeMesh(scene.getMeshByName(`${selected.id}To${target.id}`));
+      }
+    });
+  }
+
+  const createDiceStat = (enemyTarget) => {
+    let roll = enemyTarget.diceAssigned;
+    let mods;
+    let success;
+    if (rangeToTarget(selected, enemyTarget) === "c") {
+      success = currentPlayer.army.units.soldier.melee.success;
+    } else {
+      mods = getMods(selected, enemyTarget);
+      success = currentPlayer.army.units.soldier.range.success - mods
+    }
+
+    let diceStat = new GUI.TextBlock(`${enemyTarget.id}diceStat`);
+    diceStat.text = `${roll}d${success}+`;
+    diceStat.color = "white";
+    diceStat.fontFamily = "Arial";
+    diceStat.fontSize = "15px";
+    advancedTexture.addControl(diceStat);
+
+    diceStat.linkWithMesh(enemyTarget);
+    diceStat.linkOffsetY = -40;
+  };
+
+  const removeDiceStat = (enemyTarget) => {
+    if (getControlByName(`${enemyTarget.id}diceStat`)) {
+      getControlByName(`${enemyTarget.id}diceStat`).dispose();
+    }
+  };
+
+  const updateDiceStat = () => {
+    if (targets && targets.length > 0) {
+      targets.forEach(target => {
+        removeDiceStat(target);
+        createDiceStat(target);
+      });
+    }
+  }
+
+  const assignTarget = (ev) => {
+    let enemyTarget = ev.meshUnderPointer;
+
+    var whoHasMoreDice = targets.map(target => target.diceAssigned).indexOf(Math.max(...targets.filter(target => target.id !== enemyTarget.id).map(target => target.diceAssigned)));
+    if (selected && enemyTarget && enemyTarget.name.includes("Mini") && noObstacle(selected, enemyTarget) && rangeToTarget(selected, enemyTarget)) {
+      moveArea.setEnabled(false);
+      if (targets.length === 0) {
+        enemyTarget.diceAssigned = currentPlayer.army.units[selected.unit].range.roll;
+        addTarget(enemyTarget);
+      } else if (whoHasMoreDice >= 0 && targets.reduce((acc, target) => acc + target.diceAssigned, 0) === currentPlayer.army.units[selected.unit].range.roll && targets.filter(target => target.id !== enemyTarget.id).every(target => target.diceAssigned >= 1)) {
+        enemyTarget.diceAssigned ? enemyTarget.diceAssigned += 1 : enemyTarget.diceAssigned = 1;
+        targets[whoHasMoreDice].diceAssigned -= 1;
+        addTarget(enemyTarget);
+        clearTarget();
+      } else {
+        if (targets.length > 1 && targets.every(target => target.diceAssigned === 1)) {
+          let removedTarget = targets.splice(targets.indexOf(targets[whoHasMoreDice]), 1)[0];
+          clearTarget(removedTarget);
+          enemyTarget.diceAssigned ? enemyTarget.diceAssigned += 1 : enemyTarget.diceAssigned = 1;
+          addTarget(enemyTarget);
+        }
+        if (enemyTarget.diceAssigned === currentPlayer.army.units[selected.unit].range.roll) {
+          clearTarget(enemyTarget);
+          cancelTargeting();
+        }
+      }
+    }
+  }
+
+  const createDirectLOS = (mini1, mini2, response) => {
+    let origin;
+    let target;
+    if (response) {
+      origin = new BABYLON.Vector3(mini1.position.x, mini1.position.y + getHeight(mini1) * 0.70, mini1.position.z);
+      target = new BABYLON.Vector3(mini2.position.x, mini2.position.y + getHeight(mini2) * 0.70, mini2.position.z);
+      let colorArray1 = [new BABYLON.Color4(215 / 255, 195 / 255, 58 / 255, 1), new BABYLON.Color4(0, 0, 0, 0)];
+      BABYLON.MeshBuilder.CreateLines(`${mini1.id}To${mini2.id}`, { points: [origin, target], colors: colorArray1, updatable: true }, scene);
+    } else {
+      origin = new BABYLON.Vector3(mini1.position.x, mini1.position.y + getHeight(mini1) * 0.80, mini1.position.z);
+      target = new BABYLON.Vector3(mini2.position.x, mini2.position.y + getHeight(mini2) * 0.80, mini2.position.z);
+      let colorArray2 = [new BABYLON.Color4(1, 1, 1, 1), new BABYLON.Color4(0, 0, 0, 0)]
+      BABYLON.MeshBuilder.CreateLines(`${mini1.id}To${mini2.id}`, { points: [origin, target], colors: colorArray2, updatable: true }, scene);
+    }
+  }
+
+  const targetResponse = () => {
+    if (selected && targets) {
+      players[enemyPlayer.team].minis.forEach(mini => {
+        if (!scene.getMeshByName(`${mini.id}To${selected.id}`)) {
+          if (enemyPlayer.army.units[mini.unit].range.mods[rangeToTarget(mini, selected)] >= 0 || scene.getMeshByName(`${selected.id}To${mini.id}`)) {
+            createDirectLOS(mini, selected, true);
+          }
+        }
+      })
+    }
+  }
+
   moveActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
       clonedMini = selected.clone();
@@ -1422,7 +1647,7 @@ const onSceneReady = scene => {
   mapActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
       if (selected && rotate) {
-        selected._children[1].setEnabled(true);
+        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true)
       }
       if (rotate) {
         canvas.addEventListener("mousemove", rotateOnMouseMove, false);
@@ -1434,7 +1659,7 @@ const onSceneReady = scene => {
   mapActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function (ev) {
       if (selected && !rotate) {
-        selected._children[1].setEnabled(false);
+        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
         if (scene.getMeshByName(`groundLOS${selected.id}`)) {
           scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
         }
@@ -1447,7 +1672,7 @@ const onSceneReady = scene => {
   //Select current player mini
   teamBlackActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickUpTrigger, function (ev) {
-      if (currentPlayer.team === "teamBlack") {
+      if (currentPlayer.team === "teamBlack" && !inAttack) {
         if (rotate) {
           rotateAction(ev);
         } else {
@@ -1459,8 +1684,9 @@ const onSceneReady = scene => {
   //Attack opposite team
   teamBlackActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function (ev) {
-      if (currentPlayer.team === "teamWhite" && !rotate) {
-        onAttack(ev);
+      if (currentPlayer.team === "teamWhite" && !rotate && !inAttack) {
+        //onAttack(ev);
+        assignTarget(ev);
       }
     })
   );
@@ -1468,7 +1694,7 @@ const onSceneReady = scene => {
   //LOS on opposite team
   teamBlackActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
-      if (currentPlayer.team === "teamWhite") {
+      if (currentPlayer.team === "teamWhite" && !inAttack) {
         handleLineOfSight(ev);
       }
     })
@@ -1477,7 +1703,7 @@ const onSceneReady = scene => {
   teamBlackActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function (ev) {
       if (currentPlayer.team === "teamWhite") {
-        cancelLineOfSight(ev);
+        cancelLineOfSight();
       }
     })
   );
@@ -1486,7 +1712,7 @@ const onSceneReady = scene => {
   //Select current player mini
   teamWhiteActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPickUpTrigger, function (ev) {
-      if (currentPlayer.team === "teamWhite") {
+      if (currentPlayer.team === "teamWhite" && !inAttack) {
         if (rotate) {
           rotateAction(ev);
         } else {
@@ -1499,16 +1725,16 @@ const onSceneReady = scene => {
   teamWhiteActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function (ev) {
       if (currentPlayer.team === "teamBlack" && !rotate) {
-        onAttack(ev);
+        //onAttack(ev);
+        assignTarget(ev);
       }
     })
   );
 
-
   //LOS on opposite team
   teamWhiteActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
-      if (currentPlayer.team === "teamBlack") {
+      if (currentPlayer.team === "teamBlack" && !inAttack) {
         handleLineOfSight(ev);
       }
     })
@@ -1517,7 +1743,7 @@ const onSceneReady = scene => {
   teamWhiteActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function (ev) {
       if (currentPlayer.team === "teamBlack") {
-        cancelLineOfSight(ev);
+        cancelLineOfSight();
       }
     })
   );

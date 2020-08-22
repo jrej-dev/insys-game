@@ -907,18 +907,33 @@ const onSceneReady = scene => {
   };
 
   const whatIsUnderneath = (mini) => {
-    let origin = new BABYLON.Vector3(mini.position.x, mini.position.y, mini.position.z);
+    let origin = new BABYLON.Vector3(mini.position.x, mini.position.y, mini.position.z + getWidth(mini) / 2);
+    let origin2 = new BABYLON.Vector3(mini.position.x, mini.position.y, mini.position.z - getWidth(mini) / 2);
+    let origin3 = new BABYLON.Vector3(mini.position.x + getWidth(mini) / 2, mini.position.y, mini.position.z);
+    let origin4 = new BABYLON.Vector3(mini.position.x - getWidth(mini) / 2, mini.position.y, mini.position.z);
 
     let direction = new BABYLON.Vector3(0, -1, 0);
 
-    let length = getHeight(mini);
+    let length = getHeight(mini) / 2;
 
     let ray = new BABYLON.Ray(origin, direction, length);
+    let ray2 = new BABYLON.Ray(origin2, direction, length);
+    let ray3 = new BABYLON.Ray(origin3, direction, length);
+    let ray4 = new BABYLON.Ray(origin4, direction, length);
 
     let hits = scene.multiPickWithRay(ray);
+    let hits2 = scene.multiPickWithRay(ray2);
+    let hits3 = scene.multiPickWithRay(ray3);
+    let hits4 = scene.multiPickWithRay(ray4);
 
     if (hits.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
       return hits.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+    } else if (hits2.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
+      return hits2.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+    } else if (hits3.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
+      return hits3.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+    } else if (hits4.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
+      return hits4.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
     } else if (hits.some(hit => hit.pickedMesh.name.includes("map"))) {
       return hits.filter(hit => hit.pickedMesh.name.includes("map")).map(hit => hit.pickedMesh)[0]
     }
@@ -928,21 +943,21 @@ const onSceneReady = scene => {
     if (isInCover(mini1, mini2)) {
       scene.getMeshByName(`${mini1.id}shield`).setEnabled(true);
     } else {
-      if (scene.getMeshByName(`${mini1.id}shield`)){
+      if (scene.getMeshByName(`${mini1.id}shield`)) {
         scene.getMeshByName(`${mini1.id}shield`).setEnabled(false);
       }
     }
     if (isInCover(mini2, mini1)) {
       scene.getMeshByName(`${mini2.id}shield`).setEnabled(true);
     } else {
-      if (scene.getMeshByName(`${mini2.id}shield`)){
+      if (scene.getMeshByName(`${mini2.id}shield`)) {
         scene.getMeshByName(`${mini2.id}shield`).setEnabled(false);
       }
     }
   };
-  
+
   var removeCoverLogo = (mini) => {
-    if (scene.getMeshByName(`${mini.id}shield`)){
+    if (scene.getMeshByName(`${mini.id}shield`)) {
       scene.getMeshByName(`${mini.id}shield`).setEnabled(false);
     }
   }
@@ -1565,7 +1580,7 @@ const onSceneReady = scene => {
       diceStat.fontFamily = "Arial";
       diceStat.fontSize = "15px";
       advancedTexture.addControl(diceStat);
-  
+
       diceStat.linkWithMesh(enemyTarget);
       diceStat.linkOffsetY = -40;
     }

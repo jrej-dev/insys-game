@@ -413,7 +413,7 @@ const onSceneReady = scene => {
   //var lineOfSightXL = losXL.toMesh("lineOfSight");
 
   /*lineOfSightXL.parent =*/ lineOfSightL.parent = lineOfSightM.parent = lineOfSight;
-  /*lineOfSightXL.isPickable =*/ //lineOfSightL.isPickable = lineOfSightM.isPickable = lineOfSight.isPickable = false;
+  /*lineOfSightXL.isPickable =*/ lineOfSightL.isPickable = lineOfSightM.isPickable = lineOfSight.isPickable = false;
 
   lineOfSight.setEnabled(false);
   slicer.dispose();
@@ -927,21 +927,29 @@ const onSceneReady = scene => {
   var handleCoverLogo = (mini1, mini2) => {
     if (isInCover(mini1, mini2)) {
       scene.getMeshByName(`${mini1.id}shield`).setEnabled(true);
+    } else {
+      if (scene.getMeshByName(`${mini1.id}shield`)){
+        scene.getMeshByName(`${mini1.id}shield`).setEnabled(false);
+      }
     }
     if (isInCover(mini2, mini1)) {
       scene.getMeshByName(`${mini2.id}shield`).setEnabled(true);
+    } else {
+      if (scene.getMeshByName(`${mini2.id}shield`)){
+        scene.getMeshByName(`${mini2.id}shield`).setEnabled(false);
+      }
     }
   };
   
-  /*var removeCoverLogo = (mini) => {
+  var removeCoverLogo = (mini) => {
     if (scene.getMeshByName(`${mini.id}shield`)){
       scene.getMeshByName(`${mini.id}shield`).setEnabled(false);
     }
-  }*/
+  }
 
   var handleLineOfSight = (ev) => {
     var enemyTarget = ev.meshUnderPointer;
-    if (selected && rangeToTarget(selected, enemyTarget)) {
+    if (selected && rangeToTarget(selected, enemyTarget) && calculateSuccess(selected, enemyTarget) <= 6) {
       handleCoverLogo(selected, enemyTarget);
       if (enemyTarget.intersectsMesh(selected, false)) {
         //Melee position
@@ -978,6 +986,10 @@ const onSceneReady = scene => {
       if (!rotate && targets.length === 0) {
         moveArea.setEnabled(true);
       }
+      removeCoverLogo(selected);
+      players[enemyPlayer.team].minis.forEach(mini => {
+        removeCoverLogo(mini);
+      })
     }
     scene.hoverCursor = "pointer";
   }
@@ -1250,7 +1262,8 @@ const onSceneReady = scene => {
                 scene.removeMesh(scene.getMeshByName(`${mini2.id}To${mini1.id}`));
               }
               players[mini2.team].minis = players[mini2.team].minis.filter(mini => mini.id !== mini2.id)
-              players[mini2.team].startActions -= 2
+              players[mini2.team].startActions -= 2;
+              removeCoverLogo(mini2);
               clearTarget(mini2);
               if (response) {
                 cancelSelection();
@@ -1278,7 +1291,8 @@ const onSceneReady = scene => {
               mini1.name = "decor";
               mini1.isPickable = false
               players[mini1.team].minis = players[mini1.team].minis.filter(mini => mini.id !== mini1.id)
-              players[mini1.team].startActions -= 2
+              players[mini1.team].startActions -= 2;
+              removeCoverLogo(mini1);
               cancelSelection();
             }, 2500);
           }
@@ -1474,7 +1488,7 @@ const onSceneReady = scene => {
             );
             if (currentObstacle && currentObstacle.length > 0) {
               //Vertical move
-              clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, getHeight(currentObstacle[0]) + 25, getGroundPosition(evt).z);
+              clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, getHeight(currentObstacle[0]) + 26, getGroundPosition(evt).z);
             } else {
               //Regular move
               clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, 25, getGroundPosition(evt).z);
@@ -1529,26 +1543,32 @@ const onSceneReady = scene => {
     });
   }
 
-  const createDiceStat = (enemyTarget) => {
-    let roll = enemyTarget.diceAssigned;
+  const calculateSuccess = (mini1, mini2) => {
     let mods;
     let success;
-    if (rangeToTarget(selected, enemyTarget) === "c") {
+    if (rangeToTarget(mini1, mini2) === "c") {
       success = currentPlayer.army.units.soldier.melee.success;
     } else {
-      mods = getMods(selected, enemyTarget);
+      mods = getMods(mini1, mini2);
       success = currentPlayer.army.units.soldier.range.success - mods
     }
+    return success
+  }
 
-    let diceStat = new GUI.TextBlock(`${enemyTarget.id}diceStat`);
-    diceStat.text = `${roll}d${success}+`;
-    diceStat.color = "white";
-    diceStat.fontFamily = "Arial";
-    diceStat.fontSize = "15px";
-    advancedTexture.addControl(diceStat);
-
-    diceStat.linkWithMesh(enemyTarget);
-    diceStat.linkOffsetY = -40;
+  const createDiceStat = (enemyTarget) => {
+    if (selected) {
+      let roll = enemyTarget.diceAssigned;
+      let success = calculateSuccess(selected, enemyTarget)
+      let diceStat = new GUI.TextBlock(`${enemyTarget.id}diceStat`);
+      diceStat.text = `${roll}d${success}+`;
+      diceStat.color = "white";
+      diceStat.fontFamily = "Arial";
+      diceStat.fontSize = "15px";
+      advancedTexture.addControl(diceStat);
+  
+      diceStat.linkWithMesh(enemyTarget);
+      diceStat.linkOffsetY = -40;
+    }
   };
 
   const removeDiceStat = (enemyTarget) => {
@@ -1570,7 +1590,7 @@ const onSceneReady = scene => {
     let enemyTarget = ev.meshUnderPointer;
 
     var whoHasMoreDice = targets.map(target => target.diceAssigned).indexOf(Math.max(...targets.filter(target => target.id !== enemyTarget.id).map(target => target.diceAssigned)));
-    if (selected && enemyTarget && enemyTarget.name.includes("Mini") && noObstacle(selected, enemyTarget) && rangeToTarget(selected, enemyTarget)) {
+    if (selected && enemyTarget && enemyTarget.name.includes("Mini") && rangeToTarget(selected, enemyTarget) && calculateSuccess(selected, enemyTarget) <= 6) {
       moveArea.setEnabled(false);
       if (targets.length === 0) {
         enemyTarget.diceAssigned = currentPlayer.army.units[selected.unit].range.roll;

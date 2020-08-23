@@ -1,10 +1,11 @@
 import { Engine, Scene } from '@babylonjs/core';
 import React, { useEffect, useRef, useState } from 'react';
+import StoreContext from '../../store/AppStore';
 
 export default (props) => {
+    const store = React.useContext(StoreContext);
     const reactCanvas = useRef(null);
     const { antialias, engineOptions, adaptToDeviceRatio, sceneOptions, onRender, onSceneReady, ...rest } = props;
-
     const [loaded, setLoaded] = useState(false);
     const [scene, setScene] = useState(null);
 
@@ -30,9 +31,9 @@ export default (props) => {
             const scene = new Scene(engine, sceneOptions);
             setScene(scene);
             if (scene.isReady()) {
-                props.onSceneReady(scene)
+                props.onSceneReady(scene, store.gameInfo.players, store.gameUpdate)
             } else {
-                scene.onReadyObservable.addOnce(scene => props.onSceneReady(scene));
+                scene.onReadyObservable.addOnce(scene => props.onSceneReady(scene, store.gameInfo.players, store.gameUpdate));
             }
 
             engine.runRenderLoop(() => {
@@ -48,7 +49,7 @@ export default (props) => {
                 scene.dispose();
             }
         }
-    }, [loaded, sceneOptions, props, onRender, scene])
+    }, [loaded, sceneOptions, props, onRender, scene, store.gameInfo.players, store.gameUpdate])
 
     return (
         <canvas ref={reactCanvas} {...rest} />

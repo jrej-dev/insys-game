@@ -4,8 +4,6 @@ import * as GUI from '@babylonjs/gui';
 import { AdvancedDynamicTexture } from '@babylonjs/gui/2D';
 import { CustomMaterial } from '@babylonjs/materials';
 import SceneComponent from './SceneComponent';
-import { armies } from './armies';
-import '../App.css';
 
 BABYLON.Animation.AllowMatricesInterpolation = true;
 
@@ -14,14 +12,12 @@ if (process.env.NODE_ENV === "development") {
   publicURL = process.env.PUBLIC_URL;
 }
 
-
-const onSceneReady = scene => {
+const onSceneReady = (scene, players, gameUpdate) => {
   const canvas = scene.getEngine().getRenderingCanvas();
   var advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI(
     "sceneUI"
   );
   advancedTexture.isForeground = true;
-
   var camera = new BABYLON.ArcRotateCamera("arcCamera",
     BABYLON.Tools.ToRadians(0),
     BABYLON.Tools.ToRadians(100),
@@ -153,32 +149,6 @@ const onSceneReady = scene => {
   // Associate Users with teams (teamWhite || teamBlack);
   // example: teamWhite.player = "@jrej";
   // example: teamBlack.player = "@inkito";
-
-  var players = {
-    teamWhite: {
-      player: "@jrej",
-      army: "rebels",
-      get armyStats() { return armies[this.army] },
-      units: ["OTTMK", "OTTMK", "OTTMK"],
-      minis: [],
-      startActions: 6,
-      turnActions: 6,
-      //Army value would be calculated at the time of unit selection
-      get armyValue() { return this.units.reduce((acc, value) => { return acc + this.armyStats["units"][value]["cost"] }, 0) }
-    },
-    teamBlack: {
-      player: "@inkito",
-      army: "tabForces",
-      get armyStats() { return armies[this.army] },
-      units: ["STLRW", "STLRW", "STLRW"],
-      minis: [],
-      startActions: 6,
-      turnActions: 6,
-      //Army value would be calculated at the time of unit selection
-      get armyValue() { return this.units.reduce((acc, value) => { return acc + this.armyStats["units"][value]["cost"] }, 0) }
-    }
-  };
-
   // Proceed to initiative roll to decide currentPlayer;
   var currentPlayer = {
     team: "teamWhite",
@@ -227,7 +197,7 @@ const onSceneReady = scene => {
           actionClone.position.z = actionToken.position.z + Math.floor(Math.random() * 30) - 15;
           dx = dx - randomX;
         };
-        players[currentPlayer.team].turnActions = players[currentPlayer.team].startActions;
+        gameUpdate.resetTurnActions(currentPlayer.team);
       }
     );
   }
@@ -538,6 +508,22 @@ const onSceneReady = scene => {
   }
   var clonedMini;
   //STLRW
+
+  var targetFurthestMini = () => {
+    if (players[currentPlayer.team].minis && players[currentPlayer.team].minis.length > 0) {
+      var miniPosition = players[currentPlayer.team].minis.map(mini => mini.position.x);
+      var furthestMiniIndex = currentPlayer.team === "teamWhite" ? miniPosition.indexOf(Math.min(...miniPosition)) : miniPosition.indexOf(Math.max(...miniPosition));
+      var furthestMini = players[currentPlayer.team].minis[furthestMiniIndex];
+      var furthestTarget = BABYLON.Mesh.CreateSphere("targetSphere", { size: 10 }, scene);
+      furthestTarget.setEnabled(false);
+      furthestTarget.position = new BABYLON.Vector3(furthestMini.position.x, furthestMini.position.y + 30, 0);
+      camera.setTarget(furthestTarget);
+      setTimeout(() => {
+        furthestTarget.dispose();
+      }, 1100)
+    }
+  };
+
   const importMiniModel = (miniName, team, index) => {
     BABYLON.SceneLoader.ImportMesh(
       "",
@@ -567,9 +553,9 @@ const onSceneReady = scene => {
         //createTextPlane(mini);
 
         shadowGenerator.getShadowMap().renderList.push(mini);
-        players[`team${team}`].minis.push(mini);
-        if (players.teamWhite.minis && players.teamWhite.minis.length > 1) {
-          camera.setTarget(players.teamWhite.minis[1]);
+        gameUpdate.addImportedMini(mini,`team${team}`);
+        if (players.teamWhite.minis && players.teamWhite.minis.length === players.teamWhite.units.length) {
+          targetFurthestMini();
         }
       }
     );
@@ -721,6 +707,7 @@ const onSceneReady = scene => {
       targetFurthestMini();
     }
     importActionTokens();
+    gameUpdate.setCurrentPlayer({name: currentPlayer.player, team: currentPlayer.team });
   };
 
   //Mini selected by player1;
@@ -1009,21 +996,6 @@ const onSceneReady = scene => {
     scene.hoverCursor = "pointer";
   }
 
-  var targetFurthestMini = () => {
-    if (players[currentPlayer.team].minis && players[currentPlayer.team].minis.length > 0) {
-      var miniPosition = players[currentPlayer.team].minis.map(mini => mini.position.x);
-      var furthestMiniIndex = currentPlayer.team === "teamWhite" ? miniPosition.indexOf(Math.min(...miniPosition)) : miniPosition.indexOf(Math.max(...miniPosition));
-      var furthestMini = players[currentPlayer.team].minis[furthestMiniIndex];
-      var furthestTarget = BABYLON.Mesh.CreateSphere("targetSphere", { size: 10 }, scene);
-      furthestTarget.setEnabled(false);
-      furthestTarget.position = new BABYLON.Vector3(furthestMini.position.x, furthestMini.position.y + 30, 0);
-      camera.setTarget(furthestTarget);
-      setTimeout(() => {
-        furthestTarget.dispose();
-      }, 1100)
-    }
-  };
-
   var diceRoll = (rolls) => {
     let arrayResult = [];
     for (let i = 0; i < rolls; i++) {
@@ -1276,8 +1248,7 @@ const onSceneReady = scene => {
               if (scene.getMeshByName(`${mini2.id}To${mini1.id}`)) {
                 scene.removeMesh(scene.getMeshByName(`${mini2.id}To${mini1.id}`));
               }
-              players[mini2.team].minis = players[mini2.team].minis.filter(mini => mini.id !== mini2.id)
-              players[mini2.team].startActions -= 2;
+              gameUpdate.removePlayerMini(mini2.id, mini2.team);
               removeCoverLogo(mini2);
               clearTarget(mini2);
               if (response) {
@@ -1305,8 +1276,7 @@ const onSceneReady = scene => {
               mini1.position = new BABYLON.Vector3(200 - Math.floor(Math.random() * 190), 0, -440 + Math.floor(Math.random() * 30) - 15);
               mini1.name = "decor";
               mini1.isPickable = false
-              players[mini1.team].minis = players[mini1.team].minis.filter(mini => mini.id !== mini1.id)
-              players[mini1.team].startActions -= 2;
+              gameUpdate.removePlayerMini(mini1.id, mini1.team);
               removeCoverLogo(mini1);
               cancelSelection();
             }, 2500);
@@ -1346,7 +1316,7 @@ const onSceneReady = scene => {
         });
       }
       console.log('Done with attacks.');
-      players[currentPlayer.team].turnActions -= 1;
+      gameUpdate.removeTurnAction(currentPlayer.team);
       scene.removeMesh(scene.getMeshByName("token"));
       cancelLineOfSight();
       cancelSelection();
@@ -1456,7 +1426,7 @@ const onSceneReady = scene => {
   var rotateAction = (evt) => {
     if (evt.which === 1 || evt.sourceEvent.which === 1) {
       if (selected && rotate) {
-        players[currentPlayer.team].turnActions -= 1;
+        gameUpdate.removeTurnAction(currentPlayer.team);
         scene.removeMesh(scene.getMeshByName("token"));
         rotate = false;
         previous.position = null;
@@ -1790,8 +1760,8 @@ const onSceneReady = scene => {
   }
 }
 
-export default () => (
-  <div >
-    <SceneComponent className="w-full h-full" antialias onSceneReady={onSceneReady} id='my-canvas' />
+export default (props) => (
+  <div>
+    <SceneComponent id='my-canvas' className="w-full h-full" antialias onSceneReady={onSceneReady} />
   </div>
 )

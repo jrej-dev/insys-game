@@ -152,7 +152,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   // Proceed to initiative roll to decide currentPlayer;
   var currentPlayer = {
     team: "teamWhite",
-    get player() { return players[this.team].player },
+    get name() { return players[this.team].name },
     get army() { return players[this.team].armyStats },
     get startActions() { return players[this.team].startActions },
     get turnActions() { return players[this.team].turnActions },
@@ -160,7 +160,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   var enemyPlayer = {
     get team() { return currentPlayer.team === "teamWhite" ? "teamBlack" : "teamWhite" },
-    get player() { return players[currentPlayer.team === "teamWhite" ? "teamBlack" : "teamWhite"].player },
+    get name() { return players[currentPlayer.team === "teamWhite" ? "teamBlack" : "teamWhite"].name },
     get army() { return players[currentPlayer.team === "teamWhite" ? "teamBlack" : "teamWhite"].armyStats }
   }
 
@@ -241,6 +241,8 @@ const onSceneReady = (scene, players, gameUpdate) => {
     function (newMeshes) {
       dice2 = BABYLON.Mesh.MergeMeshes(newMeshes);
       dice2.scaling = new BABYLON.Vector3(20, 20, 20);
+      dice2.rotation.y = BABYLON.Tools.ToRadians(90);
+      dice2.rotation.x = BABYLON.Tools.ToRadians(90);
       dice2.translate(BABYLON.Axis.Y, 33, scene);
       dice2.translate(BABYLON.Axis.X, 175, scene);
       dice2.translate(BABYLON.Axis.Z, 50, scene);
@@ -310,6 +312,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
     function (newMeshes) {
       dice5 = BABYLON.Mesh.MergeMeshes(newMeshes);
       dice5.scaling = new BABYLON.Vector3(20, 20, 20);
+      dice5.rotation.x = BABYLON.Tools.ToRadians(180);
       dice5.translate(BABYLON.Axis.Y, 33, scene);
       dice5.translate(BABYLON.Axis.X, 175, scene);
       dice5.translate(BABYLON.Axis.Z, 50, scene);
@@ -355,7 +358,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   LOS.position = new BABYLON.Vector3(0, -100, 0);
   var LOSM = BABYLON.MeshBuilder.CreateCylinder("lineOfSightm", { height: 0.1, diameter: 404 * 2 + miniWidth, tessellation: 256 }, scene);
   var LOSL = BABYLON.MeshBuilder.CreateCylinder("lineOfSightl", { height: 0.1, diameter: 808 * 2 + miniWidth, tessellation: 256 }, scene);
-  //var LOSXL = BABYLON.MeshBuilder.CreateCylinder("lineOfSight", { height: 0.1, diameter: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2 + miniWidth, tessellation: 256 }, scene);
+  //var LOSXL = BABYLON.MeshBuilder.CreateCylinder("lineOfSight", { height: 0.1, diameter: 2424 + miniWidth, tessellation: 256 }, scene);
   /*LOSXL.parent =*/ LOSL.parent = LOSM.parent = LOS;
 
   var los = BABYLON.CSG.FromMesh(LOS);
@@ -363,9 +366,9 @@ const onSceneReady = (scene, players, gameUpdate) => {
   var losL = BABYLON.CSG.FromMesh(LOSL);
   //var losXL = BABYLON.CSG.FromMesh(LOSXL);
 
-  var slicer = BABYLON.MeshBuilder.CreateBox("LOSTemplate", { width: players[currentPlayer.team].armyStats.units.soldier.maxRange * 2, height: 2500, depth: 1 }, scene);
+  var slicer = BABYLON.MeshBuilder.CreateBox("LOSTemplate", { width: 2424, height: 2500, depth: 1 }, scene);
   slicer.rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(90), scene);
-  slicer.position = new BABYLON.Vector3(players[currentPlayer.team].armyStats.units.soldier.maxRange, -100, 0);
+  slicer.position = new BABYLON.Vector3(1212, -100, 0);
   slicer.visibility = 0;
   var slicerCSG = BABYLON.CSG.FromMesh(slicer);
 
@@ -524,21 +527,22 @@ const onSceneReady = (scene, players, gameUpdate) => {
     }
   };
 
-  const importMiniModel = (miniName, team, index) => {
+  const importMiniModel = (miniUnit, team, index) => {
     BABYLON.SceneLoader.ImportMesh(
       "",
       `.${publicURL}/Models/`,
-      `${miniName}.babylon`,
+      `${miniUnit}.babylon`,
       scene,
       function (newMeshes) {
         let mini = BABYLON.Mesh.MergeMeshes(newMeshes);
         mini.translate(BABYLON.Axis.Y, 25, scene);
         mini.translate(BABYLON.Axis.X, team === "Black" ? -300 : 300, scene);
         mini.translate(BABYLON.Axis.Z, -200 + 200 * index, scene);
-        mini.name = `${team.toLowerCase()}Mini`;
         mini.id = `${team.toLowerCase()}Mini${index + 1}`;
-        mini.unit = "soldier";
+        mini.unit = miniUnit;
         mini.team = `team${team}`;
+        mini.class = players[mini.team].armyStats.units[miniUnit].class;
+        mini.name = players[mini.team].armyStats.units[miniUnit].name;
         mini.rotation.y = team === "Black" ? BABYLON.Tools.ToRadians(-90) : BABYLON.Tools.ToRadians(90);
         mini.material = miniMaterial;
         mini.actionManager = team === "Black" ? teamBlackActionManager : teamWhiteActionManager;
@@ -707,7 +711,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
       targetFurthestMini();
     }
     importActionTokens();
-    gameUpdate.setCurrentPlayer({name: currentPlayer.player, team: currentPlayer.team });
+    gameUpdate.setCurrentPlayer({name: currentPlayer.name, team: currentPlayer.team });
   };
 
   //Mini selected by player1;
@@ -751,7 +755,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
           moveAction({ skip: true });
         }
         //camera.setTarget(board);
-      } else if (currentMesh.name.includes("Mini")) {
+      } else if (currentMesh.id.includes("Mini")) {
         if (selected) {
           hl.removeMesh(selected);
         }
@@ -1023,9 +1027,9 @@ const onSceneReady = (scene, players, gameUpdate) => {
       var diceIndex = i + 1
       if (save) {
         dice[rolls[i] - 1].material = diceMatRed;
-      } else if (mini.name.includes("white")) {
+      } else if (mini.team.includes("White")) {
         dice[rolls[i] - 1].material = diceMatWhite;
-      } else if (mini.name.includes("black")) {
+      } else if (mini.team.includes("Black")) {
         dice[rolls[i] - 1].material = diceMatBlack;
       }
 
@@ -1045,23 +1049,24 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   var compareRolls = (mini1, mini1Rolls, mini1Mod, mini2, mini2Rolls, mini2Mod) => {
     //check if rolls successful, remove any unsuccessful rolls
-    var mini1Success = mini1Rolls.filter(roll => roll + mini1Mod >= players[mini1.team].armyStats.units.soldier.range.success);
-    var mini2Success = mini2Rolls.filter(roll => roll + mini2Mod >= players[mini2.team].armyStats.units.soldier.defense.success);
+    var mini1Success = mini1Rolls.filter(roll => roll + mini1Mod >= players[mini1.team].armyStats.units[mini1.unit].range.success);
+    var mini2Success = mini2Rolls.filter(roll => roll + mini2Mod >= players[mini2.team].armyStats.units[mini2.unit].defense.success);
+    
+    gameUpdate.log(`${currentPlayer.name} rolls ${mini1Rolls.toString()} with ${mini1Mod === 0 ? 'no' : mini1Mod > 0 ? `a + ${mini1Mod}` : `a ${mini1Mod}`} modifier to dice roll.`);
 
-    console.log("Player rolls:");
-    console.log(mini1Rolls);
-    console.log("He has a " + mini1Mod + " modifier to dice roll");
+    if (mini1Success.length > 0){
+      gameUpdate.log(`${currentPlayer.name}'s success ${mini1Success.length > 1 ? 'rolls are' : 'roll is'} ${mini1Success.toString()}.`);
+    } else {
+      gameUpdate.log(`${currentPlayer.name} has no successful rolls.`);
+    }
 
+    gameUpdate.log(`${enemyPlayer.name} rolls ${mini2Rolls.toString()} with ${mini2Mod === 0 ? 'no' : mini2Mod > 0 ? `a + ${mini2Mod}` : `a ${mini2Mod}`} modifier to dice roll.`);
 
-    console.log("Enemy rolls:");
-    console.log(mini2Rolls);
-    console.log("He has a " + mini2Mod + " modifier to dice roll");
-
-    console.log("Player success rolls:")
-    console.log(mini1Success);
-
-    console.log("Enemy Success rolls:")
-    console.log(mini2Success);
+    if (mini2Success.length > 0){
+      gameUpdate.log(`${enemyPlayer.name}'s success ${mini2Success.length > 1 ? 'rolls are' : 'roll is'} ${mini2Success.toString()}.`);
+    } else {
+      gameUpdate.log(`${enemyPlayer.name} has no successful rolls.`);
+    }
 
     //check if duplicates, remove duplicates player enemy
     for (let i = 0; i < mini1Success.length; i++) {
@@ -1075,11 +1080,11 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
     if (Math.max(...mini1Success) > Math.max(...mini2Success)) {
       //player with the highest numbers win.   
-      console.log(`${mini1.id} wins with a higher roll!`);
-      return mini1.name;
+      gameUpdate.log(`${currentPlayer.name} wins with a higher roll!`);
+      return mini1.id;
     } else if (Math.max(...mini2Success) > Math.max(...mini1Success)) {
-      console.log(`${mini2.id} wins with a higher roll!`);
-      return mini2.name;
+      gameUpdate.log(`${enemyPlayer.name} wins with a higher roll!`);
+      return mini2.id;
     } else {
       //if no result left or equal, both miss.
       return null
@@ -1090,8 +1095,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
     let rangeResult;
 
     let distance = BABYLON.Vector3.Distance(mini1.position, mini2.position) - mini2.width / 2;
-    let mini1Team = mini1.name === "whiteMini" ? "teamWhite" : "teamBlack";
-    let mini1MaxRange = players[mini1Team].armyStats.units[mini1.unit].maxRange
+    let mini1MaxRange = players[mini1.team].armyStats.units[mini1.unit].maxRange
     //close combat if minis base are within 1 inch
     if (distance <= mini1.width / 2 + mini2.width / 2) {
       rangeResult = "c";
@@ -1123,15 +1127,14 @@ const onSceneReady = (scene, players, gameUpdate) => {
   var isTheGameOver = () => {
     let winner = "";
     if (players.teamBlack.startActions === 0 && players.teamWhite.startActions === 0) {
-      console.log("tie")
       winner = null;
-      console.log("Game Over. No Winners this time.")
+      gameUpdate.log(`Game Over. It's a tie! No Winners this time.`);
     } else if (players.teamBlack.startActions === 0) {
       winner = "Team White";
-      console.log(`Game Over. ${winner} wins!`)
+      gameUpdate.log(`Game Over. ${players.teamWhite.name} wins!`);
     } else if (players.teamWhite.startActions === 0) {
       winner = "Team Black";
-      console.log(`Game Over. ${winner} wins!`)
+      gameUpdate.log(`Game Over. ${players.teamBlack.name} wins!`);
     } else {
       winner = undefined;
     }
@@ -1140,11 +1143,10 @@ const onSceneReady = (scene, players, gameUpdate) => {
   }
 
   var getMods = (mini1, mini2) => {
-    let team = mini1.name.includes("white") ? "teamWhite" : "teamBlack";
     let range = rangeToTarget(mini1, mini2);
     let higherMod = isHigher(mini1, mini2) ? 1 : 0;
     let coverMod = isInCover(mini2, mini1) ? -1 : 0;
-    let mods = coverMod + higherMod + players[team].armyStats.units[mini1.unit].range.mods[range];
+    let mods = coverMod + higherMod + players[mini1.team].armyStats.units[mini1.unit].range.mods[range];
     return mods;
   }
 
@@ -1161,14 +1163,14 @@ const onSceneReady = (scene, players, gameUpdate) => {
       if (range && isInAngle(mini1, mini2)) {
         if (mini2.intersectsMesh(mini1, false) || range === "c") {
           //Melee attack
-          console.log('Stabbing ' + mini2.id + " with " + mini1.id)
-          console.log("Player target roll: " + currentPlayer.army.units[mini1.unit].melee.success + "+")
+          gameUpdate.log(`Melee attack of the ${mini1.name} on the ${mini2.name}.`);
+          gameUpdate.log(`${currentPlayer.name}'s target roll is ${currentPlayer.army.units[mini1.unit].melee.success}+.`);
           let meleeRoll = diceRoll(currentPlayer.army.units[mini1.unit].melee.roll);
 
           //Generate Dice
           cloneDice(meleeRoll, mini1, 1000);
 
-          console.log("Enemy target roll: " + enemyPlayer.army.units[mini1.unit].melee.success + "+")
+          gameUpdate.log(`${enemyPlayer.name}'s target roll is ${enemyPlayer.army.units[mini1.unit].melee.success}+.`);
           let mini2MeleeRoll = diceRoll(1);
           //Generate Dice
           cloneDice(mini2MeleeRoll, mini2, 1000);
@@ -1177,70 +1179,67 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
         } else {
           //Range attack
-          var mini1rolls = [];
+          var mini1Rolls = [];
           var modedRolls = [];
           var mini2Rolls = [];
+          
+          gameUpdate.log(`${players[mini1.team].name} is shooting the ${mini2.name}${response? ' in response' : ""} with the ${mini1.name} at range ${range.toUpperCase()}.`);
+          gameUpdate.log(`${players[mini1.team].name}'s target roll is ${currentPlayer.army.units[mini1.unit].range.success}+.`);
 
-          console.log(`Shooting ${mini2.id} with ${mini1.id} at range ${range}.`)
           // Check for enemy roll (Should be enemy line of sight when rotation is implemented!)
-          console.log(mini1.id + " target roll: " + currentPlayer.army.units[mini1.unit].range.success + "+")
-
           if (!response) {
-            mini1rolls = diceRoll(mini2.diceAssigned);
+            mini1Rolls = diceRoll(mini2.diceAssigned);
           } else {
-            mini1rolls = diceRoll(1);
+            mini1Rolls = diceRoll(1);
           }
 
           //Generate Dice
-          cloneDice(mini1rolls, mini1, 1000);
+          cloneDice(mini1Rolls, mini1, 1000);
 
-          modedRolls = mini1rolls.map(roll => roll + mini1Mods);
+          modedRolls = mini1Rolls.map(roll => roll + mini1Mods);
 
           //Enemy Target Response
           if (rangeToTarget(mini2, mini1) && !response) {
-            console.log(mini2.id + " target roll: " + enemyPlayer.army.units[mini2.unit].range.success + "+")
+            gameUpdate.log(`${enemyPlayer.name}'s target roll is ${enemyPlayer.army.units[mini2.unit].defense.success}+.`);
 
             mini2Rolls = diceRoll(1);
             //Generate Dice
             cloneDice(mini2Rolls, mini2, 1000);
 
-            winner = compareRolls(mini1, mini1rolls, mini1Mods, mini2, mini2Rolls, mini2Mods);
+            winner = compareRolls(mini1, mini1Rolls, mini1Mods, mini2, mini2Rolls, mini2Mods);
           }
 
           //No response from enemy (range difference || angle || one way response)
           if (!winner) {
             if (modedRolls.some(roll => roll >= currentPlayer.army.units[mini1.unit].range.success)) {
               if (!response) {
-                console.log("Player rolled:")
-                console.log(mini1rolls);
-                console.log("Success! You shot him!");
+                gameUpdate.log(`${currentPlayer.name} rolls ${mini1Rolls.toString()}. Success! You shot your opponent's ${mini2.name}!`);
               } else {
-                console.log("Enemy rolled:")
-                console.log(mini1rolls);
-                console.log("Hot damn! You got shot!");
+                gameUpdate.log(`${enemyPlayer.name} rolls ${mini1Rolls.toString()}. Hot damn! The ${mini2.name} got shot!`);
               }
-              winner = mini1.name;
+              winner = mini1.id;
             }
           }
         }
 
         //Defense Roll
-        if (winner === mini1.name) {
-          console.log(mini2.id + " is hit. Defense roll target: " + players[mini2.team].armyStats.units[mini2.unit].defense.success + "+");
+        if (winner === mini1.id) {
+          gameUpdate.log(`${players[mini2.team].name}'s ${mini2.name} is hit. Defense roll target is ${players[mini2.team].armyStats.units[mini2.unit].defense.success}+`);
+
           if (mini2CoverMod > 0) {
-            console.log(mini2.id + " has +1 to dice roll as he is in cover.")
+            gameUpdate.log(`${players[mini2.team].name} has +1 to dice roll for ${mini2.id} as it is in cover.`);
           }
           let defenseRoll = diceRoll(players[mini2.team].armyStats.units[mini2.unit].defense.roll)
-          console.log(mini2.team + " player rolls : ");
-          console.log(defenseRoll);
+          gameUpdate.log(`${players[mini2.team].name} rolls ${defenseRoll.toString()}.`);
+
           setTimeout(function () {
             cloneDice(defenseRoll, mini2, 1250, true);
           }, 1250);
           //Cover modifiers to add here
           if (defenseRoll.some(roll => roll + mini2CoverMod >= players[mini2.team].armyStats.units[mini2.unit].defense.success)) {
-            console.log("Defense roll successful. " + mini2.id + " saved!");
+            gameUpdate.log(`Defense roll successful. The ${mini2.name} is saved!`);
           } else {
-            console.log(mini2.id + " killed!");
+            gameUpdate.log(`The ${mini2.name} is killed!`);
             setTimeout(function () {
               mini2.position = new BABYLON.Vector3(Math.floor(Math.random() * 190) - 200, 0, -440 + Math.floor(Math.random() * 30) - 15);
               mini2.name = "decor";
@@ -1256,21 +1255,22 @@ const onSceneReady = (scene, players, gameUpdate) => {
               }
             }, 2500);
           }
-        } else if (winner === mini2.name) {
-          console.log(mini1.id + " is hit. Defense roll target: " + players[mini1.team].armyStats.units[mini1.unit].defense.success + "+")
+        } else if (winner === mini2.id) {
+          gameUpdate.log(`${players[mini1.team].name}'s ${mini1.name} is hit. Defense roll target is ${players[mini2.team].armyStats.units[mini2.unit].defense.success}+`);
           if (mini1CoverMod > 0) {
-            console.log(mini1.id + " has +1 to dice roll as he is in cover.")
+            gameUpdate.log(`${players[mini1.team].name} has +1 to dice roll for the ${mini1.name} as it is in cover.`);
           }
           let defenseRoll = diceRoll(players[mini1.team].armyStats.units[mini1.unit].defense.roll, null, true, mini1);
-          console.log(mini1.team + " player rolls : ");
-          console.log(defenseRoll);
+          gameUpdate.log(`${players[mini1.team].name} rolls ${defenseRoll.toString()}.`);
+
           setTimeout(function () {
             cloneDice(defenseRoll, mini1, 1250, true);
           }, 1250);
           if (defenseRoll.some(roll => roll + mini1CoverMod >= players[mini1.team].armyStats.units[mini1.unit].defense.success)) {
-            console.log("Defense roll successful. " + mini1.id + " saved!");
+            gameUpdate.log(`Defense roll successful. The ${mini1.name} is saved!`);
+
           } else {
-            console.log(mini1.id + " killed!");
+            gameUpdate.log(`The ${mini1.name} is killed!`);
             setTimeout(function () {
               camera.target = map;
               mini1.position = new BABYLON.Vector3(200 - Math.floor(Math.random() * 190), 0, -440 + Math.floor(Math.random() * 30) - 15);
@@ -1282,7 +1282,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
             }, 2500);
           }
         } else {
-          console.log("No winners! Try again.")
+          gameUpdate.log("No winners! Try again.");
         }
       }
     }
@@ -1298,24 +1298,19 @@ const onSceneReady = (scene, players, gameUpdate) => {
       let onWayResponse = enemyResponse.filter(enemy => !targets.some(target => target === enemy));
 
       await asyncForEach(targets, async (target) => {
-        console.log(`Init attack on ${target.id}!`)
         if (selected) {
           onAttack(selected, target);
         }
         await waitFor(3000);
-        console.log(`Attack on ${target.id} completed!`)
       });
       if (onWayResponse) {
         await asyncForEach(onWayResponse, async (enemy) => {
-          console.log(`Init one way attack from ${enemy.id}!`)
           if (selected) {
             onAttack(enemy, selected, true);
           }
           await waitFor(3000);
-          console.log(`One way attack from ${enemy.id} completed!`)
         });
       }
-      console.log('Done with attacks.');
       gameUpdate.removeTurnAction(currentPlayer.team);
       scene.removeMesh(scene.getMeshByName("token"));
       cancelLineOfSight();
@@ -1532,10 +1527,10 @@ const onSceneReady = (scene, players, gameUpdate) => {
     let mods;
     let success;
     if (rangeToTarget(mini1, mini2) === "c") {
-      success = currentPlayer.army.units.soldier.melee.success;
+      success = currentPlayer.army.units[mini1.unit].melee.success;
     } else {
       mods = getMods(mini1, mini2);
-      success = currentPlayer.army.units.soldier.range.success - mods
+      success = currentPlayer.army.units[mini1.unit].range.success - mods
     }
     return success
   }
@@ -1575,7 +1570,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
     let enemyTarget = ev.meshUnderPointer;
 
     var whoHasMoreDice = targets.map(target => target.diceAssigned).indexOf(Math.max(...targets.filter(target => target.id !== enemyTarget.id).map(target => target.diceAssigned)));
-    if (selected && enemyTarget && enemyTarget.name.includes("Mini") && rangeToTarget(selected, enemyTarget) && calculateSuccess(selected, enemyTarget) <= 6) {
+    if (selected && enemyTarget && enemyTarget.id.includes("Mini") && rangeToTarget(selected, enemyTarget) && calculateSuccess(selected, enemyTarget) <= 6) {
       moveArea.setEnabled(false);
       if (targets.length === 0) {
         enemyTarget.diceAssigned = currentPlayer.army.units[selected.unit].range.roll;
@@ -1690,7 +1685,6 @@ const onSceneReady = (scene, players, gameUpdate) => {
   teamBlackActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function (ev) {
       if (currentPlayer.team === "teamWhite" && !rotate && !inAttack) {
-        //onAttack(ev);
         assignTarget(ev);
       }
     })
@@ -1729,8 +1723,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   //Attack opposite team
   teamWhiteActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnLeftPickTrigger, function (ev) {
-      if (currentPlayer.team === "teamBlack" && !rotate) {
-        //onAttack(ev);
+      if (currentPlayer.team === "teamBlack" && !rotate && !inAttack) {
         assignTarget(ev);
       }
     })

@@ -17,7 +17,7 @@ export default (props) => {
                 }
             }
             window.addEventListener('resize', resize);
-
+            
             return () => {
                 window.removeEventListener('resize', resize);
             }
@@ -43,15 +43,24 @@ export default (props) => {
                 scene.render();
             })
         }
-
+        reactCanvas.current.onwheel = function(event){
+            event.preventDefault();
+        };
+        
+        reactCanvas.current.onmousewheel = function(event){
+            event.preventDefault();
+        };
+        store.setCanvasHeight(reactCanvas.current.height);
+        
         return () => {
             if (scene !== null) {
                 scene.dispose();
             }
         }
-    }, [loaded, sceneOptions, props, onRender, scene, store.gameInfo.players, store.gameUpdate])
+    }, [loaded, sceneOptions, props, onRender, scene, store, store.gameInfo.players, store.gameUpdate])
+
 
     return (
-        <canvas ref={reactCanvas} {...rest} />
+        <canvas id="canvas" tabIndex="1" ref={reactCanvas} {...rest} />
     );
 }

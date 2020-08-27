@@ -28,38 +28,53 @@ var api = new hivesigner.Client({
 export function StoreProvider({ children }) {
     const store = useLocalStore(() => ({
         // State Variables
+        canvasHeight: 400,
         userDetail: {},
         loginLink: "",
         fullScreen: false,
+        generateTableNumber: () => {
+            return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
+        },
+        setTimer: () => {
+            setInterval(function(){
+                store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1; 
+            }, 1000);
+        },
+        setCanvasHeight: (height) => {
+           store.canvasHeight = height; 
+        },
         toggleFullScreen: () => {
             store.fullScreen = !store.fullScreen;
         },
         gameInfo: {
-            tableNumber: 1,
+            get tableNumber() { return store.generateTableNumber() },
             currentPlayer: {
-                get name() { return store.gameInfo.players[this.team].player },
+                get name() { return store.gameInfo.players[this.team].name },
                 team: "teamWhite",
             },
+            history: [],
             players: {
                 teamWhite: {
-                    player: "Jrej",
+                    name: "Jrej",
                     army: "rebels",
                     get armyStats() { return armies[this.army] },
                     units: ["OTTMK", "OTTMK", "OTTMK"],
                     minis: [],
                     startActions: 6,
                     turnActions: 6,
+                    timeLeft: 1500,
                     //Army value would be calculated at the time of unit selection
                     //get armyValue() { return this.units.reduce((acc, value) => { return acc + this.armyStats.units[value]["cost"] }, 0) }
                 },
                 teamBlack: {
-                    player: "Inkito",
+                    name: "Inkito",
                     army: "tabForces",
                     get armyStats() { return armies[this.army] },
                     units: ["STLRW", "STLRW", "STLRW"],
                     minis: [],
                     startActions: 6,
                     turnActions: 6,
+                    timeLeft: 1500,
                     //Army value would be calculated at the time of unit selection
                     //get armyValue() { return this.units.reduce((acc, value) => { return acc + this.armyStats["units"][value]["cost"] }, 0) }
                 }
@@ -68,6 +83,9 @@ export function StoreProvider({ children }) {
         gameUpdate: {
             setCurrentPlayer: (currentPlayer) => {
                 store.gameInfo.currentPlayer = currentPlayer;
+            },
+            log: (string) => {
+                store.gameInfo.history.push(string);
             },
             addImportedMini : (mini, team) => {
                 store.gameInfo.players[team].minis.push(mini);

@@ -1,13 +1,15 @@
 import React from 'react';
+import { armies } from '../../gameStats/armies';
 
-const UnitCard = ({ unit }) => {
+const UnitCard = ({ army, unitId }) => {
+    let unit = armies[army].units[unitId];
     return (
-        <div className="border flex-grow max-w-md lg:max-w-xs rounded-md m-4">
+        <div className="border flex-grow max-w-md lg:max-w-sm rounded-md m-4">
             <div id="unit-top-bar" className="flex flex-row bg-gray-800 justify-between items-center p-2">
                 <div className="flex flex-row">
-                    <h1 className={`mr-2 bg-${unit.color}-600 p-2 rounded-md`}>
+                    <h2 className={`mr-2 bg-${unit.color}-600 p-2 rounded-md`}>
                         {unit.army}
-                    </h1>
+                    </h2>
                     <h2 className="bg-gray-400 p-2 rounded-md">
                         {`${unit.class} unit`} 
                     </h2>

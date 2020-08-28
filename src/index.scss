@@ -1,16 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Droid Seriff", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
 
 body:not(.user-is-tabbing) {
   button:focus,
@@ -45,8 +43,8 @@ body::-webkit-scrollbar {
 
 body::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-  background-color: #4a5568 ;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #4a5568;
 }
 
 .loader {
@@ -56,11 +54,34 @@ body::-webkit-scrollbar-thumb {
 }
 
 @-webkit-keyframes spinner {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spinner {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@font-face {
+  font-family: 'Exan';
+  src: url('./fonts/Exan/Exan-Regular.eot');
+  src: url('./fonts/Exan/Exan-Regular.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/Exan/Exan-Regular.woff2') format('woff2'),
+      url('./fonts/Exan/Exan-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.text-xxl {
+  font-size: 70px;
 }

@@ -38,7 +38,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   //Colored backlight => 
   //light2.diffuse = new BABYLON.Color3(0.3, 0.2, 0.9);
   light2.intensity = 0.7;
-
+  
   var shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
   shadowGenerator.usePoissonSampling = true;
 
@@ -60,7 +60,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   var background = BABYLON.MeshBuilder.CreateCylinder("background", { height: 1, diameter: 5000, tessellation: 5000 }, scene);
   var backgroundMaterial = new BABYLON.StandardMaterial("background", scene);
-  backgroundMaterial.opacityTexture = new BABYLON.Texture(`.${publicURL}/Textures/OpacityTemplate.png`, scene);
+  backgroundMaterial.opacityTexture = new BABYLON.Texture(`${publicURL}/Textures/OpacityTemplate.png`, scene);
   backgroundMaterial.backFaceCulling = false;
   background.material = backgroundMaterial;
   background.translate(BABYLON.Axis.Y, -1, scene);
@@ -68,26 +68,26 @@ const onSceneReady = (scene, players, gameUpdate) => {
   background.receiveShadows = true;
 
   var boardMaterial = new BABYLON.StandardMaterial("boardMaterial", scene);
-  boardMaterial.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Wood/Wood_021_basecolor.jpg`, scene);
-  boardMaterial.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Wood/Wood_021_normal.jpg`, scene);
-  boardMaterial.ambientTexture = new BABYLON.Texture(`.${publicURL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
+  boardMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_basecolor.jpg`, scene);
+  boardMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_normal.jpg`, scene);
+  boardMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
 
   var groundMaterial = new BABYLON.StandardMaterial("asphaltMaterial", scene);
-  groundMaterial.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
-  groundMaterial.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
-  groundMaterial.specularTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
-  groundMaterial.ambientTexture = new BABYLON.Texture(`.${publicURL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
+  groundMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
+  groundMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
+  groundMaterial.specularTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
+  groundMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
 
   var miniMaterial = new BABYLON.StandardMaterial("plasticMaterial", scene);
   miniMaterial.diffuseColor = new BABYLON.Color3(220 / 255, 220 / 255, 220 / 255);
 
   var tokenMaterialBlack = new BABYLON.StandardMaterial("tokenMaterial", scene);
-  tokenMaterialBlack.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_BaseColor2.png`, scene);
-  tokenMaterialBlack.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
+  tokenMaterialBlack.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Token/Coin_low_Coin_material_BaseColor2.png`, scene);
+  tokenMaterialBlack.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
 
   var tokenMaterialWhite = new BABYLON.StandardMaterial("tokenMaterial", scene);
-  tokenMaterialWhite.diffuseTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_BaseColor.png`, scene);
-  tokenMaterialWhite.bumpTexture = new BABYLON.Texture(`.${publicURL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
+  tokenMaterialWhite.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Token/Coin_low_Coin_material_BaseColor.png`, scene);
+  tokenMaterialWhite.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Token/Coin_low_Coin_material_Normal.png`, scene);
 
   var baseMaterialBlack = new BABYLON.StandardMaterial("baseMaterial", scene);
   baseMaterialBlack.diffuseColor = new BABYLON.Color3.Black();
@@ -175,7 +175,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   const importActionTokens = () => {
     BABYLON.SceneLoader.ImportMesh(
       "",
-      `.${publicURL}/Models/`,
+      `${publicURL}/Models/`,
       "token.babylon",
       scene,
       function (newMeshes) {
@@ -212,7 +212,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   var dice = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "dice.babylon",
     scene,
     function (newMeshes) {
@@ -235,7 +235,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "dice2.babylon",
     scene,
     function (newMeshes) {
@@ -260,7 +260,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "dice3.babylon",
     scene,
     function (newMeshes) {
@@ -283,7 +283,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "dice4.babylon",
     scene,
     function (newMeshes) {
@@ -306,7 +306,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "dice5.babylon",
     scene,
     function (newMeshes) {
@@ -330,7 +330,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
 
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "dice6.babylon",
     scene,
     function (newMeshes) {
@@ -438,7 +438,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   var shield;
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "shield.babylon",
     scene,
     function (newMeshes) {
@@ -452,16 +452,6 @@ const onSceneReady = (scene, players, gameUpdate) => {
       shield.setEnabled(false);
     }
   );
-
-  /*const createTextPlane = (mini) => {
-    let miniPlane = new BABYLON.Mesh.CreatePlane(`${mini.id}TextPlane`, 150, scene, true);
-    miniPlane.material = new BABYLON.StandardMaterial(`${mini.id}TextMat`, scene);
-    miniPlane.material.diffuseTexture = new BABYLON.DynamicTexture(`${mini.id}DynamicTexture`, { width: 100, height: 100 }, scene);
-    miniPlane.material.diffuseTexture.hasAlpha = true;
-    miniPlane.position = new BABYLON.Vector3(0, 40, 0);
-    miniPlane.parent = mini;
-    return miniPlane;
-  };*/
 
   const createBase = (mini, team) => {
     let base = BABYLON.MeshBuilder.CreateCylinder(`${mini.id}Base`, { height: 2.5, diameter: 27, tessellation: 128 }, scene);
@@ -530,7 +520,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   const importMiniModel = (miniUnit, team, index) => {
     BABYLON.SceneLoader.ImportMesh(
       "",
-      `.${publicURL}/Models/`,
+      `${publicURL}/Models/`,
       `${miniUnit}.babylon`,
       scene,
       function (newMeshes) {
@@ -574,7 +564,7 @@ const onSceneReady = (scene, players, gameUpdate) => {
   var obstacles = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `.${publicURL}/Models/`,
+    `${publicURL}/Models/`,
     "container.babylon",
     scene,
     function (newMeshes) {
@@ -680,8 +670,8 @@ const onSceneReady = (scene, players, gameUpdate) => {
   var map;
   BABYLON.SceneLoader.ImportMesh(
     "",
-    "",
-    `.${publicURL}/Models/setting.babylon`,
+    `${publicURL}/Models/`,
+    "setting.babylon",
     scene,
     function (newMeshes) {
       board = newMeshes[0];
@@ -1239,8 +1229,8 @@ const onSceneReady = (scene, players, gameUpdate) => {
           if (defenseRoll.some(roll => roll + mini2CoverMod >= players[mini2.team].armyStats.units[mini2.unit].defense.success)) {
             gameUpdate.log(`Defense roll successful. The ${mini2.name} is saved!`);
           } else {
-            gameUpdate.log(`The ${mini2.name} is killed!`);
             setTimeout(function () {
+              gameUpdate.log(`The ${mini2.name} is killed!`);
               mini2.position = new BABYLON.Vector3(Math.floor(Math.random() * 190) - 200, 0, -440 + Math.floor(Math.random() * 30) - 15);
               mini2.name = "decor";
               mini2.isPickable = false;

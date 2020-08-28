@@ -29,19 +29,19 @@ export function StoreProvider({ children }) {
     const store = useLocalStore(() => ({
         // State Variables
         canvasHeight: 400,
-        userDetail: {},
+        userDetail: { name: "jrej" },
         loginLink: "",
         fullScreen: false,
         generateTableNumber: () => {
             return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
         },
         setTimer: () => {
-            setInterval(function(){
-                store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1; 
+            setInterval(function () {
+                store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1;
             }, 1000);
         },
         setCanvasHeight: (height) => {
-           store.canvasHeight = height; 
+            store.canvasHeight = height;
         },
         toggleFullScreen: () => {
             store.fullScreen = !store.fullScreen;
@@ -87,13 +87,13 @@ export function StoreProvider({ children }) {
             log: (string) => {
                 store.gameInfo.history.push(string);
             },
-            addImportedMini : (mini, team) => {
+            addImportedMini: (mini, team) => {
                 store.gameInfo.players[team].minis.push(mini);
             },
             removeTurnAction: (team) => {
                 store.gameInfo.players[team].turnActions -= 1;
             },
-            resetTurnActions : (team) => {
+            resetTurnActions: (team) => {
                 store.gameInfo.players[team].turnActions = store.gameInfo.players[team].startActions;
             },
             removePlayerMini: (id, team) => {

@@ -40,7 +40,7 @@ const Nav = () => {
                     <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4">
                         FAQ
                     </a>
-                    <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white ml-auto mr-4">
+                    <a href="https://hive.blog/@jrej" target="_blank" rel="noopener noreferrer" title="Inkito blog" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white ml-auto mr-4">
                         Blog
                     </a>
                     <Menu />

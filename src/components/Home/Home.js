@@ -12,20 +12,16 @@ import Footer from '../Nav/Footer';
 const Home = () => {
   //const store = React.useContext(StoreContext);
   const heroBackgrounds = ["https://images.hive.blog/DQmaQYit3CSSit1xauqfrw3TUt2Rk5fqEhU4H5LU6EfbWwF/1.png", "https://images.hive.blog/DQmWo2niRmPWpoQaDVSxybhJkDsZyMEDbSB2fcv6CH9gGNj/2.png"]
-  const [currentBackground, setCurrentBackground] = useState(true);
 
   useEffect(() => {
-    setInterval(() => {
-      setCurrentBackground(!currentBackground)
-    }, 8000)
-  }, [currentBackground])
+  }, [])
 
   return (
     <div className="w-full h-full overflow-x-hidden">
       <Nav />
       <div className="min-h-screen">
         <div className="vignette relative h-screen flex flex-col justify-center items-center">
-          <img id="hero-image" className="absolute w-screen h-full object-cover top-0" src={currentBackground ? heroBackgrounds[0] : heroBackgrounds[1]} alt="hero" />
+          <img id="hero-image" className="absolute w-screen h-full object-cover top-0" src={heroBackgrounds[1]} alt="hero" />
           <h1 id="hero-title" className="z-10 text-gray-300 text-40 lg:text-70">Miniaturena</h1>
           <h2 className="z-10 text-gray-300 text-xl text-center px-6 m-4">A digital miniature wargame on the blockchain.</h2>
           <h2 className="z-10 text-gray-300 text-xl">Collect - Build - Fight</h2>

@@ -14,6 +14,9 @@ module.exports = {
         "screen/4": "calc(100vh / 4)",
         "screen/5": "calc(100vh / 5)",
       }),
+      width: theme => ({
+        "3/10": "30%",
+      }),
     },
   },
   variants: { display: ["responsive", "hover", "focus"] },

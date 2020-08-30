@@ -8,7 +8,6 @@ import StoreContext from '../../store/AppStore';
 import Scene from '../Scene/Scene';
 //import Nav from './components/Nav/Nav';
 import GameNav from '../Nav/GameNav';
-import Footer from '../Nav/Footer';
 import Player from '../Sidebar/Player';
 import History from '../Sidebar/History';
 import InfoBar from '../Sidebar/InfoBar';
@@ -51,7 +50,6 @@ const GamePage = () => {
         </div>
         <SideBar />
       </div>
-      <Footer />
     </div>
   )
 };

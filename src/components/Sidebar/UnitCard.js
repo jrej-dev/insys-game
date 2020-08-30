@@ -4,18 +4,18 @@ import { armies } from '../../gameStats/armies';
 const UnitCard = ({ army, unitId }) => {
     let unit = armies[army].units[unitId];
     return (
-        <div className="border flex-grow max-w-md lg:max-w-sm rounded-md m-4">
+        <div className="border w-3/4 lg:w-3/10 rounded-md m-4">
             <div id="unit-top-bar" className="flex flex-row bg-gray-800 justify-between items-center p-2">
                 <div className="flex flex-row">
-                    <h2 className={`mr-2 bg-${unit.color}-600 p-2 rounded-md`}>
+                    <h2 className={`mr-2 bg-${unit.color}-600 p-2 rounded-md text-center`}>
                         {unit.army}
                     </h2>
-                    <h2 className="bg-gray-400 p-2 rounded-md">
+                    <h2 className="bg-gray-400 p-2 rounded-md text-center">
                         {`${unit.class} unit`} 
                     </h2>
                 </div>
                 <div className="flex flex-row justify-end items-center">
-                    <span className="text-red-500 hidden sm:block">Lives :</span>
+                    <span className="text-red-500 hidden sm:block">Lives</span>
                     <span className="dot rounded-full w-4 h-4 bg-red-500 ml-2"></span>
                 </div>
             </div>

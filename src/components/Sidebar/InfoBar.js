@@ -24,7 +24,7 @@ const InfoBar = ({ team }) => {
                                 <span className={`text-${team.includes("White") ? 'white' : 'black'} font-bold`}>{toJS(store.gameInfo.players[team].name)}</span>'s miniatures:
                             </h2>
                         </div>
-                        <div className="flex flex-row flex-wrap justify-center lg:justify-start items-center bg-gray-600 p-1 md:p-4 lg:px-12">
+                        <div className="flex flex-row flex-wrap justify-center lg:justify-start items-center bg-gray-600 p-4 lg:px-10">
                             {cards}
                         </div>
                     </div>

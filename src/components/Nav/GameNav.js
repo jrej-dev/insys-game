@@ -28,7 +28,7 @@ const GameNav = () => {
 
     const Progression = () => {
         return useObserver(() => {
-            if (toJS(store.gameInfo)) {                
+            if (toJS(store.gameInfo)) {
                 let percentWhiteLeft = Math.round(100 - (toJS(store.gameInfo.players.teamWhite.minis).length / toJS(store.gameInfo.players.teamWhite.units).length) * 100);
                 let percentBlackLeft = Math.round(100 - (toJS(store.gameInfo.players.teamBlack.minis).length / toJS(store.gameInfo.players.teamBlack.units).length) * 100);
 
@@ -45,14 +45,26 @@ const GameNav = () => {
         })
     }
 
+    function timeFormat(seconds) {
+        seconds = Number(seconds);
+        var d = Math.floor(seconds / (3600 * 24));
+        var h = Math.floor(seconds % (3600 * 24) / 3600);
+        var m = Math.floor(seconds % 3600 / 60);
+        var s = Math.floor(seconds % 60);
+
+        var dDisplay = d > 0 ? d + (d === 1 ? " day " : " days ") : "";
+        var hDisplay = h > 0 ? h + (h === 1 ? " hour " : " hours ") : "";
+        var mDisplay = m > 0 ? m + (m === 1 ? " minute " : " minutes ") : "";
+        var sDisplay = s > 0 ? s + (s === 1 ? " second" : " seconds") : "";
+        return dDisplay + hDisplay + mDisplay + sDisplay;
+    }
+
     const Timer = () => {
         return useObserver(() => {
-            if (toJS(store.gameInfo)) {  
-                let time = store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft; 
-                let minutes = Math.floor(time/60);
-                let seconds = time - minutes * 60;     
+            if (toJS(store.gameInfo)) {
+                let time = store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft;
                 return (
-                    <span className="font-semibold text-xl tracking-tight">{`${minutes}:${seconds === 0 ? '00' : seconds}`}</span>
+                    <span className="font-semibold text-xl tracking-tight">{timeFormat(time)}</span>
                 );
             } else {
                 return (

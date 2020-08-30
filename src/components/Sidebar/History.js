@@ -29,7 +29,7 @@ const History = () => {
                 )
             }
             return (
-                <div className="scroll-bar overflow-auto my-4 pb-1 mx-1 hidden lg:block w-auto" style={{height:store.canvasHeight * 1.75}}>
+                <div className="scroll-bar overflow-auto my-4 pb-1 mx-1 hidden lg:block w-auto" style={{height: 1100}}>
                     {history}
                 </div>
             )

@@ -53,8 +53,8 @@ const App = () => {
   return (
 
     <div className="font-mono w-full h-full overflow-x-hidden">
-      <Nav />
       <Router>
+        <Nav />
         <Switch >
           <Route exact path="/">
             <Home />
@@ -66,8 +66,8 @@ const App = () => {
             <Lobby />
           </Route>
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </div>
   )
 };

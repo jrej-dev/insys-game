@@ -6,9 +6,6 @@ import StoreContext from '../../store/AppStore';
 
 //Components
 import Scene from '../Scene/Scene';
-//import Nav from './components/Nav/Nav';
-import GameNav from '../Nav/GameNav';
-import Footer from '../Nav/Footer';
 import Player from '../Sidebar/Player';
 import History from '../Sidebar/History';
 import InfoBar from '../Sidebar/InfoBar';
@@ -42,7 +39,6 @@ const GamePage = () => {
 
   return (
     <div className="side-bar w-full h-full bg-gray-800 overflow-hidden">
-      <GameNav />
       <div className="flex flex-col-reverse lg:flex-row">
         <div className="w-full h-full">
           <Scene />
@@ -51,7 +47,6 @@ const GamePage = () => {
         </div>
         <SideBar />
       </div>
-      <Footer />
     </div>
   )
 };

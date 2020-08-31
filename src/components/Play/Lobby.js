@@ -12,7 +12,7 @@ import Nav from '../Nav/Nav';
 const Lobby = () => {
     const store = React.useContext(StoreContext);
     const [tables, setTables] = useState([]);
-    const ENDPOINT = "http://localhost:5000";
+    const ENDPOINT = "https://insys-node.herokuapp.com/";
     const socket = socketIOClient(ENDPOINT);
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const Lobby = () => {
 
     const fetchOpenTables = () => {
         console.log("fetching tables!")
-        fetch('http://localhost:5000/table', {
+        fetch(´${ENDPOINT}table´, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -63,7 +63,7 @@ const Lobby = () => {
     const createTable = () => {
         if (toJS(store.userDetail) && toJS(store.userDetail).name) {
             let user = toJS(store.userDetail);
-            fetch('http://localhost:5000/table/create', {
+            fetch(´${ENDPOINT}table/create´, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -91,7 +91,7 @@ const Lobby = () => {
     };
 
     const handleTableDelete = (player) => {
-        fetch('http://localhost:5000/table/delete', {
+        fetch(´${ENDPOINT}table/delete´, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -244,7 +244,6 @@ const Lobby = () => {
                                 <TableLines />
                             </tbody>
                         </table>
-                        {/*TableButtons*/}
                     </div>
                 </div>
             </div>

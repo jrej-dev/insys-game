@@ -29,3 +29,15 @@ h1 {
   top: 0; left: 0; bottom: 0; right: 0;
   box-shadow: inset 0px 0px 100px black;
 }
+
+/*Banner open/load animation*/
+.alert-banner {
+  -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+	/*Banner close animation*/
+.alert-banner input:checked ~ * {
+  -webkit-animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+      animation: slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;		
+}

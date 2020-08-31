@@ -13,6 +13,8 @@ import './App.scss';
 //Components
 import Home from './components/Home/Home';
 import GamePage from './components/Game/GamePage';
+import Nav from '../Nav/Nav';
+import Footer from '../Nav/Footer';
 
 const App = () => {
   const store = React.useContext(StoreContext);
@@ -38,6 +40,7 @@ const App = () => {
 
   return (
     <div className="font-mono">
+      <Nav />
       <Router>
         <Switch >
           <Route exact path="/">
@@ -48,6 +51,7 @@ const App = () => {
           </Route>
         </Switch>
       </Router>
+    <Footer />
     </div>
   )
 };

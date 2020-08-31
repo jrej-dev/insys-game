@@ -40,7 +40,7 @@ const Lobby = () => {
 
     const fetchOpenTables = () => {
         console.log("fetching tables!")
-        fetch(´${ENDPOINT}table´, {
+        fetch("https://insys-node.herokuapp.com/table", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -63,7 +63,7 @@ const Lobby = () => {
     const createTable = () => {
         if (toJS(store.userDetail) && toJS(store.userDetail).name) {
             let user = toJS(store.userDetail);
-            fetch(´${ENDPOINT}table/create´, {
+            fetch("https://insys-node.herokuapp.com/table/create", {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -91,7 +91,7 @@ const Lobby = () => {
     };
 
     const handleTableDelete = (player) => {
-        fetch(´${ENDPOINT}table/delete´, {
+        fetch("https://insys-node.herokuapp.com/table/delete", {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

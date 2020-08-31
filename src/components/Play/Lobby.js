@@ -164,9 +164,9 @@ const Lobby = () => {
                     if (table) {
                         rows.push(
                             <tr key={table._id} className="bg-gray-500 z-0">
-                                <td className="border px-4 py-2 text-center hidden lg:inline">{table._id}</td>
-                                <td className="border px-4 py-2 text-center hidden lg:inline">{timeSince(table.createdAt)}</td>
-                                <td className="border px-4 py-2 text-center capitalize hidden lg:inline">{table.player1}</td>
+                                <td className="border px-4 py-2 text-center hidden lg:table-cell">{table._id}</td>
+                                <td className="border px-4 py-2 text-center hidden lg:table-cell">{timeSince(table.createdAt)}</td>
+                                <td className="border px-4 py-2 text-center capitalize hidden lg:table-cell">{table.player1}</td>
                                 <td className="border px-4 py-2 text-center">{table.map}</td>
                                 <td className="border px-4 py-2 text-center">{timeFormat(table.playerTime)}</td>
                                 <td className="border px-4 py-2 text-center">{table.maxVal}</td>
@@ -226,9 +226,9 @@ const Lobby = () => {
                     <table className="table-auto w-full text-xs lg:text-base">
                         <thead>
                             <tr className="bg-gray-600">
-                                <th className="border px-4 text-center hidden lg:inline">Table ID</th>
-                                <th className="border px-4 text-center hidden lg:inline">Created</th>
-                                <th className="border px-4 text-center hidden lg:inline">Player</th>
+                                <th className="border px-4 text-center hidden lg:table-cell">Table ID</th>
+                                <th className="border px-4 text-center hidden lg:table-cell">Created</th>
+                                <th className="border px-4 text-center hidden lg:table-cell">Player</th>
                                 <th className="border px-4 text-center">Map</th>
                                 <th className="border px-4 text-center">Time Per Player</th>
                                 <th className="border px-4 text-center">Max Army Value</th>

@@ -6,9 +6,6 @@ import StoreContext from '../../store/AppStore';
 //import { Link } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 
-//Components
-import Nav from '../Nav/Nav';
-
 const Lobby = () => {
     const store = React.useContext(StoreContext);
     const [tables, setTables] = useState([]);
@@ -220,34 +217,31 @@ const Lobby = () => {
     }
 
     return (
-        <>
-            <Nav />
-            <div className="min-h-screen flex flex-col h-screen/2 items-center">
-                <div className="w-11/12 mt-6">
-                    <div className="flex flex-row justify-start w-full">
-                        <CreateTable />
-                    </div>
-                    <div className="flex flex-row">
-                        <table className="table-auto w-full z-0">
-                            <thead>
-                                <tr className="bg-gray-600">
-                                    <th className="border px-4 text-center">Table ID</th>
-                                    <th className="border px-4 text-center">Created</th>
-                                    <th className="border px-4 text-center">Player</th>
-                                    <th className="border px-4 text-center">Map</th>
-                                    <th className="border px-4 text-center">Time Per Player</th>
-                                    <th className="border px-4 text-center">Max Army Value</th>
-                                    <th className="border px-10"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <TableLines />
-                            </tbody>
-                        </table>
-                    </div>
+        <div className="min-h-screen flex flex-col h-screen/2 items-center">
+            <div className="w-11/12 mt-6">
+                <div className="flex flex-row justify-start w-full">
+                    <CreateTable />
+                </div>
+                <div className="flex flex-row">
+                    <table className="table-auto w-full z-0">
+                        <thead>
+                            <tr className="bg-gray-600">
+                                <th className="border px-4 text-center">Table ID</th>
+                                <th className="border px-4 text-center">Created</th>
+                                <th className="border px-4 text-center">Player</th>
+                                <th className="border px-4 text-center">Map</th>
+                                <th className="border px-4 text-center">Time Per Player</th>
+                                <th className="border px-4 text-center">Max Army Value</th>
+                                <th className="border px-10"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <TableLines />
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </>
+        </div>
     )
 };
 

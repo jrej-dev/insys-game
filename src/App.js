@@ -16,7 +16,7 @@ import GamePage from './components/Game/GamePage';
 
 import Lobby from './components/Play/Lobby';
 import Footer from './components/Nav/Footer';
-import Nav from '../Nav/Nav';
+import Nav from './components/Nav/Nav';
 
 const App = () => {
   const store = React.useContext(StoreContext);

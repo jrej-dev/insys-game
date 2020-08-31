@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useHistory
 } from "react-router-dom";
 //import { useObserver } from 'mobx-react';
 //import { toJS } from 'mobx';
@@ -21,7 +22,9 @@ import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {
   const store = React.useContext(StoreContext);
-
+  const history = useHistory();
+  
+  //history.push("/profile")
   useEffect(() => {
     store.temporalLogin();
     getUserDetail();

@@ -13,8 +13,10 @@ import './App.scss';
 //Components
 import Home from './components/Home/Home';
 import GamePage from './components/Game/GamePage';
+
 import Lobby from './components/Play/Lobby';
 import Footer from './components/Nav/Footer';
+import Nav from '../Nav/Nav';
 
 const App = () => {
   const store = React.useContext(StoreContext);
@@ -49,7 +51,9 @@ const App = () => {
   }
 
   return (
+
     <div className="font-mono w-full h-full overflow-x-hidden">
+      <Nav />
       <Router>
         <Switch >
           <Route exact path="/">

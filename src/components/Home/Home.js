@@ -6,7 +6,6 @@ import 'mobx-react-lite/batchingForReactDom';
 import { Link } from "react-router-dom";
 
 //Components
-import Nav from '../Nav/Nav';
 
 const Home = () => {
   //const store = React.useContext(StoreContext);
@@ -17,7 +16,6 @@ const Home = () => {
 
   return (
     <>
-      <Nav />
       <div className="min-h-screen">
         <div className="vignette relative h-screen flex flex-col justify-center items-center">
           <img id="hero-image" className="absolute w-screen h-full object-cover top-0" src={heroBackgrounds[1]} alt="hero" />

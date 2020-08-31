@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocalStore } from 'mobx-react';
 import { runInAction } from 'mobx';
 import { armies } from '../gameStats/armies';
+import socketIOClient from "socket.io-client";
 
 const StoreContext = React.createContext();
 
@@ -33,6 +34,7 @@ var api = new hivesigner.Client({
 export function StoreProvider({ children }) {
     const store = useLocalStore(() => ({
         // State Variables
+        socket: socketIOClient("https://insys-node.herokuapp.com/"),
         canvasHeight: 400,
         userDetail: {},
         userTable: {},

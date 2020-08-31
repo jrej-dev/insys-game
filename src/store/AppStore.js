@@ -18,18 +18,23 @@ opts.chainId =
 //Hivesigner
 var hivesigner = require('hivesigner');
 
+var publicURL = "https://miniaturena.com/";
+if (process.env.NODE_ENV === "development") {
+  publicURL = "http://localhost:3000/";
+}
+
 var api = new hivesigner.Client({
-    app: 'insys-game',
-    callbackURL: 'http://localhost:3000/insys-game',
+    app: 'miniaturena',
+    callbackURL: publicURL,
     accessToken: 'access_token',
-    scope: ['vote', 'posting'],
+    scope: [],
 });
 
 export function StoreProvider({ children }) {
     const store = useLocalStore(() => ({
         // State Variables
         canvasHeight: 400,
-        userDetail: { name: "jrej" },
+        userDetail: {},
         loginLink: "",
         fullScreen: false,
         generateTableNumber: () => {

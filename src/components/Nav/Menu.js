@@ -22,7 +22,7 @@ const Menu = () => {
           <a href={store.loginLink} title="Hivesigner login" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white">
             Login
           </a>
-          <p className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white">/</p>
+          <p className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white hidden lg:block">/</p>
           <a href="https://hiveonboard.com/create-account/" title="Hive register page" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white">Register</a>
         </div>
       )

@@ -83,7 +83,6 @@ const Nav = () => {
                         <Progression />
                     </div>
                 </div>
-
                 <div className="flex flex-col items-center justify-center">
                     <div className="flex flex-col items-center flex-shrink-0 text-white">
                         <PlayerTurn />
@@ -154,6 +153,5 @@ const Nav = () => {
         )
     }
 };
-
 
 export default Nav;

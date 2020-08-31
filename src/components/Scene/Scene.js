@@ -10,7 +10,6 @@ BABYLON.Animation.AllowMatricesInterpolation = true;
 var publicURL = "";
 if (process.env.NODE_ENV === "development") {
   publicURL = process.env.PUBLIC_URL;
-  console.log(publicURL);
 }
 
 const onSceneReady = (scene, players, gameUpdate) => {

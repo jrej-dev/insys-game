@@ -4,7 +4,6 @@ import { useObserver } from 'mobx-react';
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from '../../store/AppStore';
 //import { Link } from "react-router-dom";
-import socketIOClient from "socket.io-client";
 
 //Components
 import Nav from '../Nav/Nav';
@@ -12,28 +11,26 @@ import Nav from '../Nav/Nav';
 const Lobby = () => {
     const store = React.useContext(StoreContext);
     const [tables, setTables] = useState([]);
-    const ENDPOINT = "https://insys-node.herokuapp.com/";
-    const socket = socketIOClient(ENDPOINT);
-
+        
     useEffect(() => {
         fetchOpenTables();
     }, [])
 
     useEffect(() => {
-        socket.on("createdTable", function (data) {
+        store.socket.on("createdTable", function (data) {
             if (data) {
                 setTables([...tables, data]);
             }
         })
 
-        socket.on("deletedTable", function (data) {
+        store.socket.on("deletedTable", function (data) {
             if (data) {
                 setTables(tables.filter(table => table._id !== data._id));
             }
         })
 
         return () => {
-            socket.disconnect();
+            store.socket.disconnect();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tables])
@@ -78,7 +75,7 @@ const Lobby = () => {
                     if (response.msg) {
                         throw Error(response.msg);
                     }
-                    socket.emit('createTable', response.newTable);
+                    store.socket.emit('createTable', response.newTable);
                     console.log(response.newTable);
                     return response
                 })
@@ -106,7 +103,7 @@ const Lobby = () => {
                 if (response.msg) {
                     throw Error(response.msg);
                 }
-                socket.emit('deleteTable', response.deletedTable[0]);
+                store.socket.emit('deleteTable', response.deletedTable[0]);
                 return response
             })
             .catch(err => {

@@ -35,6 +35,7 @@ export function StoreProvider({ children }) {
         // State Variables
         canvasHeight: 400,
         userDetail: {},
+        userTable: {},
         loginLink: "",
         fullScreen: false,
         generateTableNumber: () => {
@@ -178,19 +179,46 @@ export function StoreProvider({ children }) {
                 api.me((err, res) => {
                     if (res) {
                         runInAction(() => {
-                            store.userDetail = res;
+                            store.userDetail = res;                         
                             if (access_token) {
                                 localStorage.setItem('access-token', JSON.stringify(access_token));
                             }
                             if (username) {
                                 localStorage.setItem('users', JSON.stringify(username));
                             }
+                            store.getUserTable();
                         })
                     }
                     if (err) {
                         console.log(err);
                     }
                 })
+            }
+        },
+        getUserTable: () => {
+            store.userTable = {};
+            if (store.userDetail && store.userDetail.name) {
+                fetch("https://insys-node.herokuapp.com/table", {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.msg) {
+                            throw Error(response.msg);
+                        }
+                        if (response && response.openTables) {
+                            runInAction(() => {
+                                store.userTable = response.openTables.filter(table => table.player1 === store.userDetail.name)[0];
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })                
             }
         },
     }));

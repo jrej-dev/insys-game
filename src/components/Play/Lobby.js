@@ -76,7 +76,7 @@ const Lobby = () => {
                         throw Error(response.msg);
                     }
                     store.socket.emit('createTable', response.newTable);
-                    console.log(response.newTable);
+                    store.socket.emit('joinTable', response.newTable._id);
                     return response
                 })
                 .catch(err => {

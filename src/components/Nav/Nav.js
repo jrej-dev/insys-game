@@ -8,12 +8,11 @@ import Menu from './Menu';
 
 const Nav = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [sound, /*setSound*/] = useState(false);
+    const store = React.useContext(StoreContext);
     
     if (window.location.pathname === "/game") {
-        const [menuOpen, setMenuOpen] = useState(false);
-        const [sound, /*setSound*/] = useState(false);
-        const store = React.useContext(StoreContext);
-        
         const PlayerTurn = () => {
             return useObserver(() => {
                 if (toJS(store.gameInfo)) {

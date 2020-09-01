@@ -3,7 +3,6 @@ import { useLocalStore } from 'mobx-react';
 import { runInAction } from 'mobx';
 import { armies } from '../gameStats/armies';
 import socketIOClient from "socket.io-client";
-
 const StoreContext = React.createContext();
 
 //Steem API
@@ -19,9 +18,11 @@ opts.chainId =
 //Hivesigner
 var hivesigner = require('hivesigner');
 
+var ENDPOINT = "https://insys-node.herokuapp.com/";
 var publicURL = "https://miniaturena.com/";
 if (process.env.NODE_ENV === "development") {
   publicURL = "http://localhost:3000/";
+  ENDPOINT = "http://localhost:5000/";
 }
 
 var api = new hivesigner.Client({
@@ -34,7 +35,7 @@ var api = new hivesigner.Client({
 export function StoreProvider({ children }) {
     const store = useLocalStore(() => ({
         // State Variables
-        socket: socketIOClient("https://insys-node.herokuapp.com/"),
+        socket: socketIOClient(ENDPOINT),
         canvasHeight: 400,
         userDetail: {},
         userTable: {},
@@ -200,7 +201,7 @@ export function StoreProvider({ children }) {
         getUserTable: () => {
             store.userTable = {};
             if (store.userDetail && store.userDetail.name) {
-                fetch("https://insys-node.herokuapp.com/table", {
+                fetch(`${ENDPOINT}table`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -212,9 +213,9 @@ export function StoreProvider({ children }) {
                         if (response.msg) {
                             throw Error(response.msg);
                         }
-                        if (response && response.openTables) {
+                        if (response) {
                             runInAction(() => {
-                                store.userTable = response.openTables.filter(table => table.player1 === store.userDetail.name)[0];
+                                store.userTable = response.filter(table => table.player1 === store.userDetail.name)[0];
                             })
                         }
                     })

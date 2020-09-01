@@ -3,10 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useHistory
 } from "react-router-dom";
-//import { useObserver } from 'mobx-react';
-//import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from './store/AppStore';
 import './App.scss';
@@ -22,20 +19,22 @@ import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {
   const store = React.useContext(StoreContext);
-  const history = useHistory();
+  var socket = store.socket;
   
-  //history.push("/profile")
   useEffect(() => {
     store.temporalLogin();
     getUserDetail();
     if (store.loginLink === "") {
       store.initHSLogin();
     }
+
     window.addEventListener('keydown', handleFirstTab);
     return () => {
+      socket.disconnect();
       window.removeEventListener('keydown', handleFirstTab);
     }
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   const getUserDetail = () => {
     const accessToken = localStorage.getItem('access-token');

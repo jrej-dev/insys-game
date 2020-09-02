@@ -15,6 +15,8 @@ import Home from './components/Home/Home';
 import GamePage from './components/Game/GamePage';
 
 import Lobby from './components/Play/Lobby';
+import ArmyBuilder from './components/Play/Armybuilder';
+import InitRoll from './components/Play/InitRoll';
 import Footer from './components/Nav/Footer';
 import Nav from './components/Nav/Nav';
 
@@ -64,6 +66,12 @@ const App = () => {
           </Route>
           <Route exact path="/play">
             <Lobby />
+          </Route>
+          <Route path="/build">
+            <ArmyBuilder />
+          </Route>
+          <Route path="/build">
+            <InitRoll />
           </Route>
         </Switch>
         <Footer />

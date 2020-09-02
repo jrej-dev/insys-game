@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { useObserver } from 'mobx-react';
-import { toJS } from 'mobx';
-import StoreContext from '../../store/AppStore';
 
+//Components
 import Menu from './Menu';
 import GameNav from './GameNav';
 
@@ -11,7 +9,6 @@ const Nav = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [sound, /*setSound*/] = useState(false);
-    const store = React.useContext(StoreContext);
     
     if (window.location.pathname.includes("/game")) {
         return (

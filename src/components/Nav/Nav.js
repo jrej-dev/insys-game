@@ -7,8 +7,6 @@ import GameNav from './GameNav';
 
 const Nav = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [sound, /*setSound*/] = useState(false);
     
     if (window.location.pathname.includes("/game")) {
         return (

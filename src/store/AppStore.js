@@ -39,6 +39,7 @@ export function StoreProvider({ children }) {
         canvasHeight: 400,
         userDetail: {},
         userTable: {},
+        userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW"],
         loginLink: "",
         fullScreen: false,
         generateTableNumber: () => {
@@ -215,7 +216,7 @@ export function StoreProvider({ children }) {
                         }
                         if (response) {
                             runInAction(() => {
-                                store.userTable = response.filter(table => table.player1 === store.userDetail.name)[0];
+                                store.userTable = response.filter(table => table.player1 === store.userDetail.name || table.player2 === store.userDetail.name)[0];
                             })
                         }
                     })

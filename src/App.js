@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from './store/AppStore';
@@ -15,12 +15,13 @@ import GamePage from './components/Game/GamePage';
 import Lobby from './components/Play/Lobby';
 import Footer from './components/Nav/Footer';
 import Nav from './components/Nav/Nav';
+import ArmyBuilder from './components/Play/ArmyBuilder';
 import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {
   const store = React.useContext(StoreContext);
   var socket = store.socket;
-  
+
   useEffect(() => {
     store.temporalLogin();
     getUserDetail();
@@ -54,13 +55,12 @@ const App = () => {
   }
 
   return (
-
     <div className="font-mono w-full h-full overflow-x-hidden">
       <Router>
         <Nav />
-        <TableBanner />
+        <TableBanner path={window.location.pathname}/>
         <Switch >
-          <Route exact path="/">
+          <Route exact path="/" >
             <Home />
           </Route>
           <Route exact path="/game">
@@ -68,6 +68,9 @@ const App = () => {
           </Route>
           <Route exact path="/play">
             <Lobby />
+          </Route>
+          <Route path="/build">
+            <ArmyBuilder />
           </Route>
         </Switch>
         <Footer />
@@ -77,4 +80,4 @@ const App = () => {
 };
 
 
-export default App;
+export default App

@@ -49,7 +49,7 @@ export function StoreProvider({ children }) {
             setInterval(function () {
                 store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1;
             }, 1000);
-        },
+        },        
         setCanvasHeight: (height) => {
             store.canvasHeight = height;
         },
@@ -224,6 +224,29 @@ export function StoreProvider({ children }) {
                         console.log(err);
                     })                
             }
+        },
+        setArmySelection: (tableId, username, selection) => {
+            fetch(`${ENDPOINT}setArmy`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.msg) {
+                        throw Error(response.msg);
+                    }
+                    if (response) {
+                        runInAction(() => {
+                            store.userTable = response.filter(table => table.player1 === store.userDetail.name || table.player2 === store.userDetail.name)[0];
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })   
         },
     }));
     return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>

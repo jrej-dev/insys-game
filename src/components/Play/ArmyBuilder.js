@@ -154,9 +154,11 @@ const ArmyBuilder = () => {
     if (toJS(store.userDetail) && toJS(store.userDetail).name) {
       setReady(!ready)
       if (ready) {
-        store.setArmySelection(tableId, toJS(store.userDetail).name, selection.map(mini => mini.id));
-        
-      }      
+        //store.setArmySelection(tableId, toJS(store.userDetail).name, selection.map(mini => mini.id));
+        socket.emit('setArmy', tableId, toJS(store.userDetail).name, selection.map(mini => mini.id));
+      } else {
+        socket.emit('setArmy', tableId, toJS(store.userDetail).name, []);
+      }
     }
   }
 

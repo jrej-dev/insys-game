@@ -225,7 +225,7 @@ export function StoreProvider({ children }) {
                     })                
             }
         },
-        setArmySelection: (tableId, username, selection) => {
+        /*setArmySelection: (tableId, username, selection) => {
             fetch(`${ENDPOINT}setArmy`, {
                 method: 'POST',
                 headers: {
@@ -246,7 +246,7 @@ export function StoreProvider({ children }) {
                 .catch(err => {
                     console.log(err);
                 })   
-        },
+        },*/
     }));
     return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 };

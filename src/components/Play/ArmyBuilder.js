@@ -15,7 +15,7 @@ const ArmyBuilder = () => {
   var tableId = "";
   
   useEffect(() => {
-    //getTableId
+    tableId = new URLSearchParams(document.location.search).get('table');
     //store.setTimer();
     //store.getUserMinis();
   },[])
@@ -155,6 +155,7 @@ const ArmyBuilder = () => {
       setReady(!ready)
       if (ready) {
         store.setArmySelection(tableId, toJS(store.userDetail).name, selection.map(mini => mini.id));
+        
       }      
     }
   }

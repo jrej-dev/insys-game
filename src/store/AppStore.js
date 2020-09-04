@@ -227,11 +227,12 @@ export function StoreProvider({ children }) {
         },
         setArmySelection: (tableId, username, selection) => {
             fetch(`${ENDPOINT}setArmy`, {
-                method: 'GET',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify({ selection: selection, username : username, tableId: tableId })
             })
                 .then(response => response.json())
                 .then(response => {
@@ -239,9 +240,7 @@ export function StoreProvider({ children }) {
                         throw Error(response.msg);
                     }
                     if (response) {
-                        runInAction(() => {
-                            store.userTable = response.filter(table => table.player1 === store.userDetail.name || table.player2 === store.userDetail.name)[0];
-                        })
+                        store.userTable = response;
                     }
                 })
                 .catch(err => {

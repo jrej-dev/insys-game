@@ -11,11 +11,14 @@ const ArmyBuilder = () => {
   const store = React.useContext(StoreContext);
   const [army, setArmy] = useState("tabForces");
   const [selection, setSelection] = useState([]);
-
+  const [ready, setReady] = useState(false);
+  var tableId = "";
+  
   useEffect(() => {
+    //getTableId
     //store.setTimer();
     //store.getUserMinis();
-  })
+  },[])
 
   const selectMini = (army, unitId, index) => {
     let armyValue = 0;
@@ -128,13 +131,45 @@ const ArmyBuilder = () => {
           <h1 className="text-center">Selected team</h1>
           <h2 className="mb-2 text-center">Max army value: 10</h2>
           <TeamSelection army={army}/>
+          <button
+                className={`
+                ${selection.length === 0 ? "opacity-50 cursor-not-allowed" : ""} 
+                ${ready ? "bg-transparent border-green-600 text-green" : "text-gray-600 border-gray-600"} 
+                w-full font-semibold my-2 py-2 px-4 border hover:text-white hover:border-white rounded`}
+                onClick={playerIsReady}
+              >
+                {
+                  ready?
+                  "Ready?":
+                  "Ready!"
+                }
+                
+          </button>
         </div>
       </div>
     );
   }
 
+  const playerIsReady = () => {
+    if (toJS(store.userDetail) && toJS(store.userDetail).name) {
+      setReady(!ready)
+      if (ready) {
+        store.setArmySelection(tableId, toJS(store.userDetail).name, selection.map(mini => mini.id));
+      }      
+    }
+  }
+
   return (
     <div className="w-full h-full bg-gray-600 overflow-hidden">
+      {
+        ready ?
+        <div className="alert-banner w-full">
+          <label className="flex items-center justify-center w-full p-2 bg-teal-400 shadow text-white">
+            Get ready to battle! You'll be redirected to the next phase once your opponent is all set.
+          </label>
+        </div> :
+        <></>
+      }
       <div className="flex flex-row">
         <SideBar army={army} setArmy={setArmy} />
         <div className="flex flex-col w-full h-auto bg-white p-4 text-center">

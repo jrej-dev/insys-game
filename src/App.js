@@ -17,7 +17,6 @@ import ArmyBuilder from './components/Play/Armybuilder';
 import InitRoll from './components/Play/InitRoll';
 import Footer from './components/Nav/Footer';
 import Nav from './components/Nav/Nav';
-import InitRoll from './components/Play/InitRoll';
 import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {

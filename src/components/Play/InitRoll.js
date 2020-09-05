@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useObserver } from 'mobx-react';
-import { toJS } from 'mobx';
+import React, { /*useEffect, useState*/ } from 'react';
+//import { useObserver } from 'mobx-react';
+//import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
-import StoreContext from '../../store/AppStore';
+//import StoreContext from '../../store/AppStore';
 
 const InitRoll = () => {
-  const store = React.useContext(StoreContext);
-  var tableId = new URLSearchParams(document.location.search).get('table');
-  var socket = store.socket;
+  //const store = React.useContext(StoreContext);
+  //var tableId = new URLSearchParams(document.location.search).get('table');
+  //var socket = store.socket;
 
   return (
     <div className="w-full h-full bg-gray-600 overflow-hidden">

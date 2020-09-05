@@ -175,28 +175,29 @@ const Lobby = () => {
                                 <td className="border px-1 md:px-4 py-2 text-center">{table.maxVal}</td>
                                 <td className="border text-center md:px-4">
                                     {
-                                        table.isFull ?
-                                            <h2>
-                                                Table full
-                                            </h2>
-                                            :
-                                            toJS(store.userDetail).name ?
-                                                toJS(store.userDetail).name !== table.player1 ?
+
+                                        toJS(store.userDetail).name ?
+                                            toJS(store.userDetail).name !== table.player1 ?
+                                                table.isFull ?
+                                                    <h2>
+                                                        Table full
+                                                    </h2>
+                                                    :
                                                     <button
                                                         className="bg-transparent hover:bg-gray-700 text-gray-700 font-semibold hover:text-white m-1 md:m-4 py-2 px-1 md:px-4 border border-gray-700 hover:border-transparent rounded"
                                                         onClick={() => handleTableJoin(table._id, toJS(store.userDetail).name)}
                                                     >
                                                         Join
-                                                </button>
-                                                    :
-                                                    <button
-                                                        className="bg-transparent hover:bg-gray-700 text-gray-700 font-semibold hover:text-white m-1 md:m-4 py-2 px-1 md:px-4 border border-gray-700 hover:border-transparent rounded"
-                                                        onClick={() => handleTableDelete(table._id)}
-                                                    >
-                                                        Delete
-                                                </button>
+                                                    </button>
                                                 :
-                                                "-"
+                                                <button
+                                                    className="bg-transparent hover:bg-gray-700 text-gray-700 font-semibold hover:text-white m-1 md:m-4 py-2 px-1 md:px-4 border border-gray-700 hover:border-transparent rounded"
+                                                    onClick={() => handleTableDelete(table._id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            :
+                                            "-"
                                     }
                                 </td>
                             </tr>

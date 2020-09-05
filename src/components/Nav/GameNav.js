@@ -9,6 +9,7 @@ const GameNav = ({ preGame, build, init }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [sound, /*setSound*/] = useState(false);
     const store = React.useContext(StoreContext);
+    var tableId = new URLSearchParams(document.location.search).get('table');
 
     const PlayerTurn = () => {
         return useObserver(() => {
@@ -89,15 +90,15 @@ const GameNav = ({ preGame, build, init }) => {
                         </Link>
                     </h1>
                 </div>
-                <div className="text-sm flex flex-col justify-center items-center">
+                <div className="text-sm flex flex-col justify-center items-center lg:items-start">
                     <p className="block mt-0 inline-block mt-0 text-gray-400 mr-4 hidden md:block">
-                        {`Table #${store.gameInfo.tableNumber}`}
+                        {`Table ${tableId ? "#" + tableId : "demo"}`}
                     </p>
                     {
                         preGame ?
-                            <></>
-                            :
-                            <Progression />
+                        <></>
+                        :
+                        <Progression />
                     }
                 </div>
             </div>
@@ -106,18 +107,20 @@ const GameNav = ({ preGame, build, init }) => {
                 <div className="flex flex-col items-center flex-shrink-0 text-white">
                     {
                         build ?
-                            <h2>
+                            <h1>
                                 Army Builder
-                        </h2>
+                            </h1>
                             :
                             init ?
-                                <h2>
-                                    Initiative
-                        </h2>
+                                <h1>
+                                    Initiative Roll
+                                </h1>
                                 :
+                                <>
                                 <PlayerTurn />
+                                <Timer />
+                                </>
                     }
-                    <Timer />
                 </div>
             </div>
 

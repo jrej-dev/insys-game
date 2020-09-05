@@ -16,6 +16,7 @@ import Lobby from './components/Play/Lobby';
 import Footer from './components/Nav/Footer';
 import Nav from './components/Nav/Nav';
 import ArmyBuilder from './components/Play/ArmyBuilder';
+import InitRoll from './components/Play/InitRoll';
 import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {
@@ -58,7 +59,7 @@ const App = () => {
     <div className="font-mono w-full h-full overflow-x-hidden">
       <Router>
         <Nav />
-        <TableBanner path={window.location.pathname}/>
+        <TableBanner />
         <Switch >
           <Route exact path="/" >
             <Home />
@@ -71,6 +72,9 @@ const App = () => {
           </Route>
           <Route path="/build">
             <ArmyBuilder />
+          </Route>
+          <Route path="/init">
+            <InitRoll />
           </Route>
         </Switch>
         <Footer />

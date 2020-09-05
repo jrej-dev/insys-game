@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory, withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //Components
@@ -7,16 +8,18 @@ import GameNav from './GameNav';
 
 const Nav = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    
-    if (window.location.pathname.includes("/game")) {
+    const history = useHistory();
+    const href = history.location.pathname + history.location.search;
+
+    if (href.includes("/game")) {
         return (
             <GameNav />
         )
-    } else if (window.location.pathname.includes("/build?table")) {
+    } else if (href.includes("/build?table")) {
         return (
             <GameNav preGame={true} build={true}/>
         )  
-    } else if (window.location.pathname.includes("/init?table")) {
+    } else if (href.includes("/init?table")) {
         return (
             <GameNav preGame={true} init={true}/>
         )  
@@ -41,8 +44,8 @@ const Nav = () => {
                 }>
                     <div className="text-lg lg:flex lg:flex-grow w-full items-center">
                         <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4" to="/play">Play</Link>
-                        <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4" to="/game">Game</Link>
-                        <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4">
+                        <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4" to="/game">Demo</Link>
+                        {/*<a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4">
                             Store
                         </a>
                         <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4">
@@ -53,7 +56,7 @@ const Nav = () => {
                         </a>
                         <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4">
                             FAQ
-                        </a>
+                        </a>*/}
                         <a href="https://hive.blog/@jrej" target="_blank" rel="noopener noreferrer" title="Inkito blog" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white ml-auto mr-4">
                             Blog
                         </a>
@@ -65,4 +68,4 @@ const Nav = () => {
     }
 };
 
-export default Nav;
+export default withRouter(Nav);

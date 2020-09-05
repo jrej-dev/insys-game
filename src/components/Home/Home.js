@@ -22,9 +22,9 @@ const Home = () => {
         <h2 className="z-10 text-gray-300 text-xl text-center px-6 m-4">A digital miniature wargame on the blockchain.</h2>
         <h2 className="z-10 text-gray-300 text-xl">Collect - Build - Fight</h2>
         <button className="z-10 bg-transparent hover:bg-gray-500 text-gray-600 font-semibold hover:text-white mt-12 mb-40 py-2 px-4 border border-gray-500 hover:border-transparent rounded">
-          <Link to="/play">
+          <Link to="/game">
             Try it now for free
-            </Link>
+          </Link>
         </button>
       </div>
     </div>

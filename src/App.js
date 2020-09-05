@@ -2,10 +2,8 @@ import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
-//import { useObserver } from 'mobx-react';
-//import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from './store/AppStore';
 import './App.scss';
@@ -19,9 +17,13 @@ import ArmyBuilder from './components/Play/Armybuilder';
 import InitRoll from './components/Play/InitRoll';
 import Footer from './components/Nav/Footer';
 import Nav from './components/Nav/Nav';
+import ArmyBuilder from './components/Play/ArmyBuilder';
+import InitRoll from './components/Play/InitRoll';
+import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {
   const store = React.useContext(StoreContext);
+  var socket = store.socket;
 
   useEffect(() => {
     store.temporalLogin();
@@ -29,11 +31,14 @@ const App = () => {
     if (store.loginLink === "") {
       store.initHSLogin();
     }
+
     window.addEventListener('keydown', handleFirstTab);
     return () => {
+      socket.disconnect();
       window.removeEventListener('keydown', handleFirstTab);
     }
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   const getUserDetail = () => {
     const accessToken = localStorage.getItem('access-token');
@@ -53,12 +58,12 @@ const App = () => {
   }
 
   return (
-
     <div className="font-mono w-full h-full overflow-x-hidden">
       <Router>
         <Nav />
+        <TableBanner />
         <Switch >
-          <Route exact path="/">
+          <Route exact path="/" >
             <Home />
           </Route>
           <Route exact path="/game">
@@ -70,7 +75,7 @@ const App = () => {
           <Route path="/build">
             <ArmyBuilder />
           </Route>
-          <Route path="/build">
+          <Route path="/init">
             <InitRoll />
           </Route>
         </Switch>
@@ -81,4 +86,4 @@ const App = () => {
 };
 
 
-export default App;
+export default App

@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocalStore } from 'mobx-react';
 import { runInAction } from 'mobx';
 import { armies } from '../gameStats/armies';
-
+import socketIOClient from "socket.io-client";
 const StoreContext = React.createContext();
 
 //Steem API
@@ -18,9 +18,11 @@ opts.chainId =
 //Hivesigner
 var hivesigner = require('hivesigner');
 
+var ENDPOINT = "https://insys-node.herokuapp.com/";
 var publicURL = "https://miniaturena.com/";
 if (process.env.NODE_ENV === "development") {
   publicURL = "http://localhost:3000/";
+  ENDPOINT = "http://localhost:5000/";
 }
 
 var api = new hivesigner.Client({
@@ -33,8 +35,11 @@ var api = new hivesigner.Client({
 export function StoreProvider({ children }) {
     const store = useLocalStore(() => ({
         // State Variables
+        socket: socketIOClient(ENDPOINT),
         canvasHeight: 400,
         userDetail: {},
+        userTable: {},
+        userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW"],
         loginLink: "",
         fullScreen: false,
         generateTableNumber: () => {
@@ -44,7 +49,7 @@ export function StoreProvider({ children }) {
             setInterval(function () {
                 store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1;
             }, 1000);
-        },
+        },        
         setCanvasHeight: (height) => {
             store.canvasHeight = height;
         },
@@ -178,13 +183,14 @@ export function StoreProvider({ children }) {
                 api.me((err, res) => {
                     if (res) {
                         runInAction(() => {
-                            store.userDetail = res;
+                            store.userDetail = res;                         
                             if (access_token) {
                                 localStorage.setItem('access-token', JSON.stringify(access_token));
                             }
                             if (username) {
                                 localStorage.setItem('users', JSON.stringify(username));
                             }
+                            store.getUserTable();
                         })
                     }
                     if (err) {
@@ -193,6 +199,54 @@ export function StoreProvider({ children }) {
                 })
             }
         },
+        getUserTable: () => {
+            store.userTable = {};
+            if (store.userDetail && store.userDetail.name) {
+                fetch(`${ENDPOINT}table`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.msg) {
+                            throw Error(response.msg);
+                        }
+                        if (response) {
+                            runInAction(() => {
+                                store.userTable = response.filter(table => table.player1 === store.userDetail.name || table.player2 === store.userDetail.name)[0];
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })                
+            }
+        },
+        /*setArmySelection: (tableId, username, selection) => {
+            fetch(`${ENDPOINT}setArmy`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ selection: selection, username : username, tableId: tableId })
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.msg) {
+                        throw Error(response.msg);
+                    }
+                    if (response) {
+                        store.userTable = response;
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })   
+        },*/
     }));
     return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 };

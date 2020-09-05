@@ -5,7 +5,6 @@ import { useObserver } from 'mobx-react';
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from '../../store/AppStore';
 //import { Link } from "react-router-dom";
-//import socketIOClient from "socket.io-client";
 
 const Lobby = () => {
     var ENDPOINT = "https://insys-node.herokuapp.com/";
@@ -179,7 +178,7 @@ const Lobby = () => {
                                         table.isFull ?
                                             <h2>
                                                 Table full
-                                        </h2>
+                                            </h2>
                                             :
                                             toJS(store.userDetail).name ?
                                                 toJS(store.userDetail).name !== table.player1 ?

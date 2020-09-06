@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from './store/AppStore';
@@ -21,7 +21,7 @@ import TableBanner from './components/Nav/TableBanner';
 
 const App = () => {
   const store = React.useContext(StoreContext);
-  var socket = store.socket;
+  //var socket = store.socket;
 
   useEffect(() => {
     store.temporalLogin();
@@ -32,7 +32,6 @@ const App = () => {
 
     window.addEventListener('keydown', handleFirstTab);
     return () => {
-      socket.disconnect();
       window.removeEventListener('keydown', handleFirstTab);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

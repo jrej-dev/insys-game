@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
@@ -12,8 +13,20 @@ const ArmyBuilder = () => {
   const [army, setArmy] = useState("tabForces");
   const [selection, setSelection] = useState([]);
   const [ready, setReady] = useState(false);
+  const history = useHistory();
   var tableId = new URLSearchParams(document.location.search).get('table');
   var socket = store.socket;
+
+  useEffect(() => {
+    if (!socket._callbacks.$redirect) {
+      socket.on("redirect", function (url) {
+          console.log("redirect");
+          history.push(url)
+          store.getUserTable();
+      })
+    }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const selectMini = (army, unitId, index) => {
     let armyValue = 0;

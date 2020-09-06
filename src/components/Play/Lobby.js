@@ -51,7 +51,7 @@ const Lobby = () => {
                 store.getUserTable();
             }
         })
-
+        
         socket.on("redirect", function (url) {
             history.push(url)
             store.getUserTable();

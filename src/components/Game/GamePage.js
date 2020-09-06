@@ -15,6 +15,9 @@ const GamePage = () => {
 
   useEffect(() => {
     store.setTimer();
+    return () => {
+      store.clearTimer()
+    }
   })
 
   const SideBar = () => {

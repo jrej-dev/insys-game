@@ -46,10 +46,20 @@ export function StoreProvider({ children }) {
             return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
         },
         setTimer: () => {
-            setInterval(function () {
+            store.interval = setInterval(function () {
                 store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1;
             }, 1000);
-        },        
+        }, 
+        clearTimer: () => {
+            clearInterval(store.interval);
+        },
+        resetGame: () =>  {
+            store.gameInfo.players.teamWhite.timeLeft = 1500;
+            store.gameInfo.players.teamWhite.minis = [];
+
+            store.gameInfo.players.teamBlack.timeLeft = 1500;
+            store.gameInfo.players.teamBlack.minis = [];
+        },    
         setCanvasHeight: (height) => {
             store.canvasHeight = height;
         },

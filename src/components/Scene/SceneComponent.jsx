@@ -19,6 +19,7 @@ export default (props) => {
             window.addEventListener('resize', resize);
             
             return () => {
+                store.resetGame();
                 window.removeEventListener('resize', resize);
             }
         }

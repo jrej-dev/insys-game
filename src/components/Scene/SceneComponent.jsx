@@ -23,7 +23,7 @@ export default (props) => {
                 window.removeEventListener('resize', resize);
             }
         }
-    }, [scene]);
+    }, [scene, store]);
 
     useEffect(() => {
         if (!loaded) {

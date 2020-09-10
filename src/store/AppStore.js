@@ -39,6 +39,7 @@ export function StoreProvider({ children }) {
         canvasHeight: 400,
         userDetail: {},
         userTable: {},
+        get units() { let units; for (let unit of Object.values(armies).map(object => object.units)){ units[Object.keys(unit)] = Object.values(unit)[0]}; return units; },
         userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW"],
         loginLink: "",
         fullScreen: false,
@@ -212,7 +213,7 @@ export function StoreProvider({ children }) {
         getUserTable: () => {
             store.userTable = {};
             if (store.userDetail && store.userDetail.name) {
-                fetch(`${ENDPOINT}table`, {
+                fetch(`${ENDPOINT}table/?player=${store.userDetail.name}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -226,7 +227,7 @@ export function StoreProvider({ children }) {
                         }
                         if (response) {
                             runInAction(() => {
-                                store.userTable = response.filter(table => table.player1 === store.userDetail.name || table.player2 === store.userDetail.name)[0];
+                                store.userTable = response;
                             })
                         }
                     })
@@ -235,28 +236,32 @@ export function StoreProvider({ children }) {
                     })                
             }
         },
-        /*setArmySelection: (tableId, username, selection) => {
-            fetch(`${ENDPOINT}setArmy`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ selection: selection, username : username, tableId: tableId })
-            })
-                .then(response => response.json())
-                .then(response => {
-                    if (response.msg) {
-                        throw Error(response.msg);
-                    }
-                    if (response) {
-                        store.userTable = response;
-                    }
+        getTableById: (tableId) => {
+            store.userTable = {};
+            if (tableId) {
+                fetch(`${ENDPOINT}table/?tableId=${tableId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
                 })
-                .catch(err => {
-                    console.log(err);
-                })   
-        },*/
+                    .then(response => response.json())
+                    .then(response => {
+                        if (response.msg) {
+                            throw Error(response.msg);
+                        }
+                        if (response) {
+                            runInAction(() => {
+                                store.userTable = response;
+                            })
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })                
+            }
+        },
     }));
     return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>
 };

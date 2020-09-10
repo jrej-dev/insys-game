@@ -214,7 +214,7 @@ const Lobby = () => {
     const CreateButton = () => {
         return useObserver(() => {
             if (toJS(store.userDetail) && toJS(store.userDetail).name) {
-                if (toJS(store.userTable)) {
+                if (toJS(store.userTable) && toJS(store.userTable).player1) {
                     return (
                         <button className="bg-gray-500 font-semibold text-white m-4 p-2 md:px-4 border border-transparent rounded opacity-50 cursor-not-allowed">
                             Create Table

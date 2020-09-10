@@ -104,7 +104,7 @@ const GameNav = ({ preGame, build, init }) => {
             </div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="flex flex-col items-center flex-shrink-0 text-white">
+                <div className="flex flex-col items-center flex-shrink-0 text-white text-center">
                     {
                         build ?
                             <h1>

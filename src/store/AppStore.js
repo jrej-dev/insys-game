@@ -39,7 +39,7 @@ export function StoreProvider({ children }) {
         canvasHeight: 400,
         userDetail: {},
         userTable: {},
-        get units() { let units; for (let unit of Object.values(armies).map(object => object.units)){ units[Object.keys(unit)] = Object.values(unit)[0]}; return units; },
+        get unitStats() {var units = []; for (let unit of Object.values(armies).map(object => object.units)){ units[Object.keys(unit)[0]] = Object.values(unit)[0]}; return units;},
         userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW"],
         loginLink: "",
         fullScreen: false,

@@ -67,6 +67,16 @@ export function StoreProvider({ children }) {
         toggleFullScreen: () => {
             store.fullScreen = !store.fullScreen;
         },
+        setInitRoll: (player, num) => {
+            if (store.userTable.player1 === player) {
+                store.userTable.player1InitRoll = num;
+            } else if (store.userTable.player2 === player) {
+                store.userTable.player2InitRoll = num;
+            }
+        },
+        setInitWinner: (winner) => {
+            store.userTable.initWinner = winner;
+        },
         gameInfo: {
             get tableNumber() { return store.generateTableNumber() },
             currentPlayer: {

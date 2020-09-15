@@ -17,12 +17,15 @@ const InitRoll = () => {
 
   useEffect(() => {
     if (!socket._callbacks.$redirect) {
+      console.log("redirect activated");
+      socket.emit('checkJoin', tableId);
       socket.on("redirect", function (url) {
+        console.log(url)
         history.push(url)
         store.getUserTable();
       })
     }
-
+    
     socket.on("opponentInitRoll", function (player, roll) {
       store.setInitRoll(player, roll);
       if (toJS(store.userTable).player1 === player && reactDice1) {
@@ -33,8 +36,10 @@ const InitRoll = () => {
     })
 
     socket.on("initRollWinner", function (initWinner) {
-      if (!toJS(store.userTable).initWinner) {
-        store.setInitWinner(initWinner);
+      if (!toJS(store.userTable).initWinner || toJS(store.userTable).initWinner === "none") {
+        setTimeout(() => {
+          store.setInitWinner(initWinner);
+        },2000);
       }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,13 +53,13 @@ const InitRoll = () => {
   const PlayerUnits = ({ player }) => {
     return useObserver(() => {
       let units = [];
-      if (toJS(store.userTable) && toJS(store.userTable)[`${player}Army`]) {
-        for (const [i, unitId] of toJS(store.userTable)[`${player}Army`].entries()) {
+      if (toJS(store.userTable) && toJS(store.userTable)[`${player}Units`] && toJS(store.unitStats)) {
+        for (const [i, unitId] of toJS(store.userTable)[`${player}Units`].entries()) {
           units.push(
             <div key={i} className="w-40 md:w-48 m-2">
-              <img className="rounded-t-lg" src={store.unitStats[unitId].image} alt="" />
+              <img className="rounded-t-lg" src={toJS(store.unitStats)[unitId].image} alt="" />
               <div className="w-full p-2 flex justify-center items-center bg-white">
-                <p className="text-center">{store.unitStats[unitId].name}</p>
+                <p className="text-center">{toJS(store.unitStats)[unitId].name}</p>
               </div>
             </div>
           )
@@ -196,7 +201,7 @@ const InitRoll = () => {
         </div> :
         <></>*/
       }
-      <div className="w-screen text-center bg-gradient-to-r from-gray-700 via-white to-gray-700 p-4">
+      <div className="w-screen min-h-screen text-center bg-gradient-to-r from-gray-700 via-white to-gray-700 p-4">
         <div className="flex flex-col md:flex-row w-full lg:h-screen md:items-stretch items-center md:justify-around">
           <PlayerUnits player={"player1"} />
           <div className="w-3/10 flex flex-col justify-center items-center">

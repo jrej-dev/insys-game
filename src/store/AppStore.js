@@ -39,27 +39,37 @@ export function StoreProvider({ children }) {
         canvasHeight: 400,
         userDetail: {},
         userTable: {},
-        get unitStats() {var units = []; for (let unit of Object.values(armies).map(object => object.units)){ units[Object.keys(unit)[0]] = Object.values(unit)[0]}; return units;},
+        gameInfo: {},
+        battleReport: false,
+        get unitStats() {
+            var units = {}; 
+            for (let unit of Object.values(armies).map(object => object.units)){ 
+                units[Object.keys(unit)[0]] = Object.values(unit)[0]
+            }; 
+            return units;
+        },
         userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW"],
         loginLink: "",
         fullScreen: false,
-        generateTableNumber: () => {
-            return Math.floor(Math.random() * Math.floor(Math.random() * Date.now()));
-        },
         setTimer: () => {
-            store.interval = setInterval(function () {
-                store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1;
-            }, 1000);
+            if (store.gameInfo && store.gameInfo.players) {
+                store.interval = setInterval(function () {
+                    store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft -= 1;
+                }, 1000);
+            }
         }, 
         clearTimer: () => {
             clearInterval(store.interval);
         },
         resetGame: () =>  {
-            store.gameInfo.players.teamWhite.timeLeft = 1500;
-            store.gameInfo.players.teamWhite.minis = [];
-
-            store.gameInfo.players.teamBlack.timeLeft = 1500;
-            store.gameInfo.players.teamBlack.minis = [];
+            store.battleReport = false;
+            if (store.gameInfo && store.gameInfo.players) {
+                //store.gameInfo.players.teamWhite.timeLeft = 1500;
+                //store.gameInfo.players.teamBlack.timeLeft = 1500;
+                store.gameInfo.players.teamWhite.minis = [];
+                store.gameInfo.players.teamBlack.minis = [];
+                store.getUserTable();
+            }
         },    
         setCanvasHeight: (height) => {
             store.canvasHeight = height;
@@ -77,61 +87,122 @@ export function StoreProvider({ children }) {
         setInitWinner: (winner) => {
             store.userTable.initWinner = winner;
         },
-        gameInfo: {
-            get tableNumber() { return store.generateTableNumber() },
-            currentPlayer: {
-                get name() { return store.gameInfo.players[this.team].name },
-                team: "teamWhite",
-            },
-            history: [],
-            players: {
-                teamWhite: {
-                    name: "Jrej",
-                    army: "rebels",
-                    get armyStats() { return armies[this.army] },
-                    units: ["OTTMK", "OTTMK", "OTTMK"],
-                    minis: [],
-                    startActions: 6,
-                    turnActions: 6,
-                    timeLeft: 1500,
-                    //Army value would be calculated at the time of unit selection
-                    //get armyValue() { return this.units.reduce((acc, value) => { return acc + this.armyStats.units[value]["cost"] }, 0) }
-                },
-                teamBlack: {
-                    name: "Inkito",
-                    army: "tabForces",
-                    get armyStats() { return armies[this.army] },
-                    units: ["STLRW", "STLRW", "STLRW"],
-                    minis: [],
-                    startActions: 6,
-                    turnActions: 6,
-                    timeLeft: 1500,
-                    //Army value would be calculated at the time of unit selection
-                    //get armyValue() { return this.units.reduce((acc, value) => { return acc + this.armyStats["units"][value]["cost"] }, 0) }
+        setGameInfo: async(tableId) => {
+            await store.getTableById(tableId);
+            if (store.userTable && store.userTable._id === tableId) {
+                var whitePlayer = store.userTable.teamWhite;
+                var blackPlayer = store.userTable.teamBlack;
+
+                store.gameInfo = {
+                    tableNumber: store.userTable._id,
+                    currentPlayer: store.userTable.currentPlayer,
+                    history: store.userTable.history,
+                    winner: {},
+                    maxVal: store.userTable.maxVal,
+                    players: {
+                        teamWhite: {
+                            name: store.userTable[whitePlayer],
+                            army: store.userTable[`${whitePlayer}Army`],
+                            armyStats: armies[store.userTable[`${whitePlayer}Army`]],
+                            units: store.userTable[`${whitePlayer}Units`],
+                            miniData: store.userTable[`${whitePlayer}Minis`],
+                            minis: [],
+                            startActions: store.userTable[`${whitePlayer}StartActions`],
+                            turnActions: store.userTable[`${whitePlayer}TurnActions`],
+                            timeLeft: store.userTable.playerTime,
+                        },
+                        teamBlack: {
+                            name: store.userTable[blackPlayer],
+                            army: store.userTable[`${blackPlayer}Army`],
+                            armyStats: armies[store.userTable[`${blackPlayer}Army`]],
+                            units: store.userTable[`${blackPlayer}Units`],
+                            miniData: store.userTable[`${blackPlayer}Minis`],
+                            minis: [],
+                            startActions: store.userTable[`${blackPlayer}StartActions`],
+                            turnActions: store.userTable[`${blackPlayer}TurnActions`],
+                            timeLeft: store.userTable.playerTime,
+                        }
+                    }
+
                 }
+
+                return store.gameInfo;
             }
         },
         gameUpdate: {
-            setCurrentPlayer: (currentPlayer) => {
+            setCurrentPlayer: (currentPlayer, socketCB) => {
                 store.gameInfo.currentPlayer = currentPlayer;
+                if (!socketCB){
+                    store.socket.emit('setCurrentPlayer', store.gameInfo.tableNumber, currentPlayer);
+                }
             },
-            log: (string) => {
+            log: (string, socketCB) => {
                 store.gameInfo.history.push(string);
+                if (!socketCB){
+                    store.socket.emit('log', store.gameInfo.tableNumber, string);
+                }
             },
-            addImportedMini: (mini, team) => {
-                store.gameInfo.players[team].minis.push(mini);
+            addImportedMini: (mini, team, socketCB) => {
+                if (store.gameInfo && store.gameInfo.players) {
+                    if (mini.name !== "decor") {
+                        if (!store.gameInfo.players[team].minis.some(object => object.id === mini.id)){
+                            store.gameInfo.players[team].minis.push(mini);
+                        }
+                    }
+                    if (!socketCB) {
+                        store.socket.emit('addImportedMini', store.gameInfo.tableNumber, team, {id: mini.id, name: mini.name, unit: mini.unit, team: mini.team, position: mini.position, rotation: mini.rotation});
+                    }
+                }   
             },
-            removeTurnAction: (team) => {
+            removeTurnAction: (team, socketCB) => {
                 store.gameInfo.players[team].turnActions -= 1;
+                if (!socketCB){
+                    store.socket.emit('removeTurnAction', store.gameInfo.tableNumber, team);
+                }
             },
-            resetTurnActions: (team) => {
+            resetTurnActions: (team, socketCB) => {
                 store.gameInfo.players[team].turnActions = store.gameInfo.players[team].startActions;
+                if (!socketCB){
+                    store.socket.emit('resetTurnActions', store.gameInfo.tableNumber, team);
+                }
             },
-            removePlayerMini: (id, team) => {
+            removePlayerMini: (id, team, socketCB) => {
                 //Remove mini from mini array.
-                //Remove 2 actions from start actions.
+                //Remove 2 actions from start actions.¨
                 store.gameInfo.players[team].minis = store.gameInfo.players[team].minis.filter(mini => mini.id !== id)
-                store.gameInfo.players[team].startActions -= 2;
+                store.gameInfo.players[team].startActions = store.gameInfo.players[team].minis.length * 2;
+                if (!socketCB){
+                    store.socket.emit('removePlayerMini', store.gameInfo.tableNumber, id, team);
+                }
+            },
+            movePlayerMini: (id, team, position, rotation, decor) => {
+                store.socket.emit('movePlayerMini', store.gameInfo.tableNumber, id, team, position, rotation, decor);
+            },
+            setMiniPosition : (data) => {
+                const {miniId, team, position, rotation} = data;
+                if (position && rotation) {
+                    let mini = store.gameInfo.players[team].minis.filter(mini => mini.id === miniId)[0];
+                    if (mini) {
+                        mini.position = position;
+                        mini.rotation = rotation;
+                    }
+                }
+            },
+            gameOver: (winner, noRedirect, socketCB) => {
+                //display winner pop up
+                store.gameInfo.winner = winner;
+                let tableId = store.userTable._id || store.gameInfo.tableNumber
+                if (socketCB) {
+                    store.battleReport = true;
+                } else {
+                    setTimeout(()=> {
+                        store.battleReport = true;
+                        store.socket.emit('gameOver', tableId, winner, noRedirect);
+                        store.handleTableDelete(tableId, noRedirect);
+                    },1000)
+                }
+                //record player stats to database
+                //delete table on server
             }
         },
         //Temporal
@@ -211,7 +282,9 @@ export function StoreProvider({ children }) {
                             if (username) {
                                 localStorage.setItem('users', JSON.stringify(username));
                             }
-                            store.getUserTable();
+                            if (!store.userTable || !store.userTable.players) {
+                                store.getUserTable();
+                            }
                         })
                     }
                     if (err) {
@@ -246,10 +319,10 @@ export function StoreProvider({ children }) {
                     })                
             }
         },
-        getTableById: (tableId) => {
+        getTableById: async (tableId) => {
             store.userTable = {};
             if (tableId) {
-                fetch(`${ENDPOINT}table/?tableId=${tableId}`, {
+                await fetch(`${ENDPOINT}table/?tableId=${tableId}`, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
@@ -265,12 +338,36 @@ export function StoreProvider({ children }) {
                             runInAction(() => {
                                 store.userTable = response;
                             })
+                            return response
                         }
                     })
                     .catch(err => {
                         console.log(err);
                     })                
             }
+        },
+        handleTableDelete: (tableId, noRedirect) => {
+            fetch(`${ENDPOINT}table/delete`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tableId: tableId
+                })
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.msg) {
+                        throw Error(response.msg);
+                    }
+                    store.socket.emit('deleteTable', response, noRedirect);
+                    return response
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         },
     }));
     return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>

@@ -29,7 +29,6 @@ const App = () => {
     if (store.loginLink === "") {
       store.initHSLogin();
     }
-
     window.addEventListener('keydown', handleFirstTab);
     return () => {
       window.removeEventListener('keydown', handleFirstTab);

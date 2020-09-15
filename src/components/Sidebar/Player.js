@@ -17,8 +17,8 @@ const Player = ({team, playerName, actionsLeft, minisLeft, isCurrentPlayer}) => 
             </div>
             <div className="flex flex-col flex-grow justify-center">
                 <div className="flex flex-col md:flex-row flex-wrap w-full items-center justify-center lg:justify-between">
-                    <p className={`mt-0 mr-2 lg:ml-4 lg:mr-0 font-bold text-${team}`}>{playerName}</p>
-                    <p className="mt-0 lg:ml-4">Time left</p>
+                    <p className={`mt-0 mr-2 lg:ml-4 lg:mr-0 font-bold text-${team} capitalize`}>{playerName}</p>
+                    {/*<p className="mt-0 lg:ml-4">Time left</p>*/}
                 </div>
                 <div className="flex flex-row flex-wrap justify-center items-center lg:justify-between lg:ml-4">
                     <div className="flex flex-row flex-wrap actions mr-2">

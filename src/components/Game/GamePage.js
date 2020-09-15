@@ -76,12 +76,12 @@ const GamePage = () => {
 
   const PlayerStats = ({username, team}) => {
     return (
-      <div className="flex flex-row items-center justify-between w-full p-4">
-        <div className="flex flex-row items-center">
+      <div className="flex flex-col sm:flex-row items-center justify-between w-full p-4">
+        <div className="flex flex-col sm:flex-row items-center">
           <img className={`z-10 w-12 h-12 rounded-full flex items-center justify-center border border-black`} src={`https://images.hive.blog/u/${username.toLowerCase()}/avatar`} alt="" /> 
           <p className="capitalize m-2">{username}</p>
         </div>
-        <p>Score {getScore(team)}</p>
+        <p className="mt-2 sm:mt-0">Score {getScore(team)}</p>
       </div>
     )
   }
@@ -93,7 +93,7 @@ const GamePage = () => {
         let winner = toJS(store.gameInfo).winner;
         let looser = {name: winner.team === "teamWhite" ? players.teamBlack.name : players.teamWhite.name, team: winner.team === "teamWhite" ? "teamBlack" : "teamWhite"}
         return (
-          <div className="fixed mt-10 w-10/12 md:w-7/12 h-screen/1.5 bg-gray-100 p-4 z-20 pin-x-auto rounded-lg border border-gray-700">
+          <div className="absolute mt-10 w-10/12 md:w-7/12 h-auto lg:h-screen/1.5 bg-gray-100 p-4 z-20 pin-x-auto rounded-lg border border-gray-700">
             <div className="flex flex-col justify-between h-full p-4 text-center">
               <div>
                 <h1 className="mb-6">
@@ -106,7 +106,7 @@ const GamePage = () => {
                   <h2>Winner is {<span className="capitalize font-bold">{winner.name}</span>}</h2>
                 }
               </div>
-              <div className="flex flex-col items-start mx-16 divide-y divide-gray-400 mb-8">
+              <div className="flex flex-col justify-center items-start sm:mx-16 divide-y divide-gray-400 mb-8">
                 <div className="px-4 py-2">
                   <h2>Game Results:</h2>
                 </div>
@@ -114,7 +114,7 @@ const GamePage = () => {
                 <PlayerStats username={looser.name} team={looser.team}/>
               </div>
 
-              <div className="flex flex-row justify-around items-center mx-16">
+              <div className="flex flex-row justify-around items-center sm:mx-16">
                 <button onClick={() => history.push("/")} className="border border-gray-800 hover:border-white hover:text-white m-2 py-2 px-2 md:px-10 hover:bg-gray-500 rounded whitespace-no-wrap">Go Home</button>
                 <button onClick={() => history.push("/play")} className="border border-gray-800 hover:border-white hover:text-white m-2 py-2 px-2 md:px-10 hover:bg-teal-400 rounded whitespace-no-wrap">Battle</button>
               </div>

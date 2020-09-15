@@ -90,7 +90,7 @@ const ArmyBuilder = () => {
 
   const SideBar = ({ army, setArmy }) => {
     return (
-      <div className="flex flex-col h-screen items-center w-3/12">
+      <div className="flex flex-col h-screen items-center w-5/12 sm:w-3/12">
         <div className="w-10/12 mx-2 text-center">
           <div>
             <h1 className="m-4"> Select an army </h1>
@@ -186,7 +186,7 @@ const ArmyBuilder = () => {
       }
       <div className="flex flex-row">
         <SideBar army={army} setArmy={setArmy} />
-        <div className="flex flex-col w-full h-auto bg-white p-4 text-center">
+        <div className="flex flex-col w-7/12 sm:w-full h-auto bg-white p-4 text-center">
           <h1>Select your miniatures</h1>
           <UserMinis army={army} />
         </div>

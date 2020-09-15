@@ -15,7 +15,7 @@ const GameNav = ({ preGame, build, init }) => {
         return useObserver(() => {
             if (toJS(store.gameInfo) && toJS(store.gameInfo).currentPlayer) {
                 return (
-                    <div className="flex flex-row">
+                    <div className="flex-row hidden sm:flex">
                         <span className="capitalize">{toJS(store.gameInfo).currentPlayer.name}</span>
                         <span className="block mt-0 inline-block text-gray-400">
                             's turn

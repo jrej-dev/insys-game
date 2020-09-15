@@ -4,7 +4,7 @@ import { armies } from '../../gameStats/armies';
 const UnitStack = ({ army, unitId }) => {
     let unit = armies[army].units[unitId];
     return (
-        <div className="border rounded-md m-4" style={{ width: "14em" }}>
+        <div className="border rounded-md m-1 sm:m-4 w-40 sm:w-56">
             <div id="unit-top-bar" className="flex flex-row bg-gray-800 justify-between items-center p-2">
                 <div className="flex flex-row">
                     <h2 className="bg-gray-400 p-2 rounded-md text-center">
@@ -34,21 +34,21 @@ const UnitStack = ({ army, unitId }) => {
                 <table className="table-fixed w-full">
                     <thead>
                         <tr className="bg-gray-600">
-                            <th className="border px-2">Melee</th>
-                            <th className="border px-2">Ranged</th>
-                            <th className="border px-2">Defense</th>
+                            <th className="border sm:px-2 text-xs sm:text-base">Melee</th>
+                            <th className="border sm:px-2 text-xs sm:text-base">Ranged</th>
+                            <th className="border sm:px-2 text-xs sm:text-base">Defense</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="bg-gray-500">
-                            <td className="border px-4 py-2 text-center">{`${unit.melee.roll}d${unit.melee.success}+`}</td>
-                            <td className="border px-4 py-2 text-center">{`${unit.range.roll}d${unit.range.success}+`}</td>
-                            <td className="border px-4 py-2 text-center">{`${unit.defense.roll}d${unit.defense.success}+`}</td>
+                            <td className="border sm:px-4 py-2 text-center text-sm sm:text-base">{`${unit.melee.roll}d${unit.melee.success}+`}</td>
+                            <td className="border sm:px-4 py-2 text-center text-sm sm:text-base">{`${unit.range.roll}d${unit.range.success}+`}</td>
+                            <td className="border sm:px-4 py-2 text-center text-sm sm:text-base">{`${unit.defense.roll}d${unit.defense.success}+`}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div id="unit-spec-bar" className="flex flex-row p-2 h-8 bg-white items-center">
+            <div id="unit-spec-bar" className="flex flex-row p-2 h-auto bg-white items-center text-left">
                 {`Special abilities: ${unit.specials}`}
             </div>
         </div>

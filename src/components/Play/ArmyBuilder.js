@@ -165,16 +165,16 @@ const ArmyBuilder = () => {
     if (toJS(store.userDetail) && toJS(store.userDetail).name) {
       if (selection.length > 0 && !ready) {
         setReady(true);
-        socket.emit('setArmy', tableId, toJS(store.userDetail).name, selection.map(mini => mini.id));
+        socket.emit('setArmy', tableId, toJS(store.userDetail).name, selection.map(mini => mini.id), army);
       } else if (ready) {
         setReady(false);
-        socket.emit('setArmy', tableId, toJS(store.userDetail).name, []);
+        socket.emit('setArmy', tableId, toJS(store.userDetail).name, [], "");
       }
     }
   }
 
   return (
-    <div className="w-full h-full bg-gray-600 overflow-hidden">
+    <div className="w-full h-full min-h-screen bg-gray-600 overflow-hidden">
       {
         ready ?
         <div className="alert-banner w-full">

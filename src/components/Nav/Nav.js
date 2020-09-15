@@ -44,7 +44,6 @@ const Nav = () => {
                 }>
                     <div className="text-lg lg:flex lg:flex-grow w-full items-center">
                         <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4" to="/play">Play</Link>
-                        <Link className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4" to="/game">Demo</Link>
                         {/*<a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-gray-400 hover:text-white mr-4">
                             Store
                         </a>

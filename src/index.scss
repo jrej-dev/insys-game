@@ -90,3 +90,14 @@ body::-webkit-scrollbar-thumb {
   font-size: 70px;
 }
 
+.pin-xy-auto {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pin-x-auto {
+  left: 50%;
+  transform: translateX(-50%);
+}
+

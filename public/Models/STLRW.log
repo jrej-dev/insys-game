@@ -13,14 +13,14 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 	Python World class constructor completed
 	processing begun of mesh:  Medium Creature
 		WARNING: No materials have been assigned: 
-		num positions      :  63202
-		num normals        :  63202
+		num positions      :  38074
+		num normals        :  38074
 		num tangents       :  0
 		num uvs            :  0
 		num uvs2           :  0
 		num colors         :  0
-		num triangles      :  21219
-		WARNING: # of 0 area faces found:  9
+		num triangles      :  12731
+		WARNING: # of 0 area faces found:  5
 	processing begun of camera (UniversalCamera):  Camera.001
 	processing begun of light (POINT):  Lamp.000
 	processing begun of light (POINT):  Lamp.001
@@ -28,4 +28,4 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 	writing mesh:  Medium Creature
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 1.8134 secs
+elapsed time:  0 min, 1.8059 secs

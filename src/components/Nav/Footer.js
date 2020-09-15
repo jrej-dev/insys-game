@@ -8,9 +8,6 @@ const Footer = () => {
                 <li>
                     <Link className="px-4 block lg:inline-block lg:mt-0 text-gray-400 hover:text-white" to="/play">Play</Link>
                 </li>
-                <li>
-                    <Link className="px-4 block lg:inline-block lg:mt-0 text-gray-400 hover:text-white" to="/game">Demo</Link>
-                </li>
                 {/*
                 <li className="block lg:inline-block lg:mt-0 text-gray-400 hover:text-white mx-4">
                     Store

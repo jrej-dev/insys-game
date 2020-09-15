@@ -90,30 +90,6 @@ const Lobby = () => {
         }
     };
 
-    const handleTableDelete = (tableId) => {
-        fetch(`${ENDPOINT}table/delete`, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                tableId: tableId
-            })
-        })
-            .then(response => response.json())
-            .then(response => {
-                if (response.msg) {
-                    throw Error(response.msg);
-                }
-                socket.emit('deleteTable', response);
-                return response
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
-
     const handleTableJoin = (tableId, player) => {
         socket.emit('joinTable', tableId, player);
     }
@@ -192,7 +168,7 @@ const Lobby = () => {
                                                 :
                                                 <button
                                                     className="bg-transparent hover:bg-gray-700 text-gray-700 font-semibold hover:text-white m-1 md:m-4 py-2 px-1 md:px-4 border border-gray-700 hover:border-transparent rounded"
-                                                    onClick={() => handleTableDelete(table._id)}
+                                                    onClick={() => store.handleTableDelete(table._id, true)}
                                                 >
                                                     Delete
                                                 </button>
@@ -214,7 +190,7 @@ const Lobby = () => {
     const CreateButton = () => {
         return useObserver(() => {
             if (toJS(store.userDetail) && toJS(store.userDetail).name) {
-                if (toJS(store.userTable)) {
+                if (toJS(store.userTable) && toJS(store.userTable).player1) {
                     return (
                         <button className="bg-gray-500 font-semibold text-white m-4 p-2 md:px-4 border border-transparent rounded opacity-50 cursor-not-allowed">
                             Create Table
@@ -241,7 +217,7 @@ const Lobby = () => {
 
     return (
         <div className="min-h-screen flex flex-col h-screen/2 items-center">
-            <div className="w-11/12 mt-6">
+            <div className="w-11/12 mt-6 min-h-screen">
                 <div className="flex flex-row justify-start w-full">
                     <CreateButton />
                 </div>

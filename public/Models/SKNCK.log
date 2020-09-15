@@ -28,16 +28,16 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 			Baking texture, type: GLOSSY, mapped using: UVMap
 			processing texture Medium_Creature_baked_GLOSSY
 				texture type:  specularTexture, mapped using: "UVMap"
-			bake time:  0 min, 4.1302 secs
+			bake time:  0 min, 4.9215 secs
 		Custom split normals with tangents being used
-		num positions      :  44049
-		num normals        :  44049
-		num tangents       :  176196
-		num uvs            :  88098
+		num positions      :  17174
+		num normals        :  17174
+		num tangents       :  68696
+		num uvs            :  34348
 		num uvs2           :  0
 		num colors         :  0
-		num triangles      :  43574
-		WARNING: # of 0 area faces found:  1077
+		num triangles      :  13070
+		WARNING: # of 0 area faces found:  843
 	processing begun of camera (UniversalCamera):  Camera.001
 	processing begun of light (POINT):  Lamp.000
 	processing begun of light (POINT):  Lamp.001
@@ -45,4 +45,4 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 	writing mesh:  Medium Creature
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 10.4314 secs
+elapsed time:  0 min, 6.7683 secs

@@ -10,13 +10,13 @@ const TableBanner = () => {
   const history = useHistory();
   const href = history.location.pathname + history.location.search;
   return useObserver(() => {
-    if (toJS(store.userDetail) && toJS(store.userDetail).name && toJS(store.userTable) && !toJS(store.userTable).isFull) {
+    if (toJS(store.userDetail) && toJS(store.userDetail).name && toJS(store.userTable) && toJS(store.userTable).player1 && !toJS(store.userTable).isFull) {
       return (
         <div className="alert-banner w-full">
-          <label className="items-center justify-center w-full p-2 bg-teal-400 shadow text-white hidden md:flex">
+          <label className="items-center justify-center w-full p-2 bg-teal-400 shadow text-white text-center hidden lg:flex">
             You have created a table. You'll be redirected to the game once another player has joined.
           </label>
-          <label className="flex items-center justify-center w-full p-2 bg-teal-400 shadow text-center text-white md:hidden">
+          <label className="flex items-center justify-center w-full p-2 bg-teal-400 shadow text-center text-white lg:hidden">
             Table created. Waiting for another player to redirect...
           </label>
         </div>

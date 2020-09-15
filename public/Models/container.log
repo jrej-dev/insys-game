@@ -9,7 +9,7 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 		Vert Color Precision:  3
 		Mat Weight Precision:  2
 		Keep Z-up r-handed  :  no
-		Texture directory   :  C:\Users\jrejo\OneDrive\Documents\Coding\Insys\Models\
+		Texture directory   :  C:\Users\jrejo\OneDrive\Documents\Coding\insys-game\public\Models\
 	Python World class constructor completed
 	WARNING: No active camera has been assigned, or is not in a currently selected Blender layer
 	processing begun of mesh:  container
@@ -17,16 +17,16 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 		processing begun of material:  vaneri
 		processing begun of multimaterial:  container.Multimaterial#0
 		Custom split normals with tangents being used
-		num positions      :  11633
-		num normals        :  11633
-		num tangents       :  46532
-		num uvs            :  23266
+		num positions      :  6900
+		num normals        :  6900
+		num tangents       :  27600
+		num uvs            :  13800
 		num uvs2           :  0
 		num colors         :  0
-		num triangles      :  4965
-		WARNING: # of 0 area faces found:  33
+		num triangles      :  2481
+		WARNING: # of 0 area faces found:  26
 ========= Writing of JSON file started =========
 	writing mesh:  container
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.7711 secs
+elapsed time:  0 min, 0.7694 secs

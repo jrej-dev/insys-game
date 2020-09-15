@@ -4,20 +4,23 @@ import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
 import StoreContext from '../../store/AppStore';
 //import { createPortal } from 'react-dom';
+import GameMenu from './GameMenu';
 
 const GameNav = ({ preGame, build, init }) => {
-    const [menuOpen, setMenuOpen] = useState(false);
     const [sound, /*setSound*/] = useState(false);
     const store = React.useContext(StoreContext);
     var tableId = new URLSearchParams(document.location.search).get('table');
 
     const PlayerTurn = () => {
         return useObserver(() => {
-            if (toJS(store.gameInfo)) {
+            if (toJS(store.gameInfo) && toJS(store.gameInfo).currentPlayer) {
                 return (
-                    <p className="block mt-0 inline-block text-gray-400">
-                        {toJS(store.gameInfo.currentPlayer.name)}'s turn
-                    </p>
+                    <div className="flex flex-row">
+                        <span className="capitalize">{toJS(store.gameInfo).currentPlayer.name}</span>
+                        <span className="block mt-0 inline-block text-gray-400">
+                            's turn
+                        </span>
+                    </div>
                 );
             } else {
                 return (
@@ -29,9 +32,9 @@ const GameNav = ({ preGame, build, init }) => {
 
     const Progression = () => {
         return useObserver(() => {
-            if (toJS(store.gameInfo)) {
-                let percentWhiteLeft = Math.round(100 - (toJS(store.gameInfo.players.teamWhite.minis).length / toJS(store.gameInfo.players.teamWhite.units).length) * 100);
-                let percentBlackLeft = Math.round(100 - (toJS(store.gameInfo.players.teamBlack.minis).length / toJS(store.gameInfo.players.teamBlack.units).length) * 100);
+            if (toJS(store.gameInfo) && toJS(store.gameInfo).players && toJS(store.gameInfo).players.teamWhite.minis.length === toJS(store.gameInfo).players.teamWhite.units.length && toJS(store.gameInfo).players.teamBlack.minis.length === toJS(store.gameInfo).players.teamBlack.units.length) {
+                let percentWhiteLeft = Math.round(100 - (toJS(store.gameInfo).players.teamWhite.minis.length / toJS(store.gameInfo).players.teamWhite.units.length * 100));
+                let percentBlackLeft = Math.round(100 - (toJS(store.gameInfo).players.teamBlack.minis.length / toJS(store.gameInfo).players.teamBlack.units.length * 100));
 
                 return (
                     <p className="hidden lg:block mt-0 inline-block mt-0 text-gray-400 mr-4">
@@ -46,7 +49,7 @@ const GameNav = ({ preGame, build, init }) => {
         })
     }
 
-    function timeFormat(seconds) {
+    /*function timeFormat(seconds) {
         seconds = Number(seconds);
         var d = Math.floor(seconds / (3600 * 24));
         var h = Math.floor(seconds % (3600 * 24) / 3600);
@@ -62,12 +65,12 @@ const GameNav = ({ preGame, build, init }) => {
 
     const Timer = () => {
         return useObserver(() => {
-            if (toJS(store.gameInfo)) {
+            if (toJS(store.gameInfo) && toJS(store.gameInfo).players) {
                 let time;
                 if (preGame) {
-                    time = store.gameInfo.players[store.gameInfo.currentPlayer.team].minis.length * 30;
+                    time = toJS(store.gameInfo).players[store.gameInfo.currentPlayer.team].minis.length * 30;
                 } else {
-                    time = store.gameInfo.players[store.gameInfo.currentPlayer.team].timeLeft;
+                    time = toJS(store.gameInfo).players[store.gameInfo.currentPlayer.team].timeLeft;
                 }
                 return (
                     <span className="font-semibold text-xl tracking-tight">{timeFormat(time)}</span>
@@ -78,7 +81,7 @@ const GameNav = ({ preGame, build, init }) => {
                 )
             }
         })
-    }
+    }*/
 
     return (
         <nav className="flex items-center justify-between lg:flex-wrap bg-gray-700 p-4">
@@ -96,15 +99,15 @@ const GameNav = ({ preGame, build, init }) => {
                     </p>
                     {
                         preGame ?
-                        <></>
-                        :
-                        <Progression />
+                            <></>
+                            :
+                            <Progression />
                     }
                 </div>
             </div>
 
             <div className="flex flex-col items-center justify-center">
-                <div className="flex flex-col items-center flex-shrink-0 text-white">
+                <div className="flex flex-col items-center flex-shrink-0 text-white text-center">
                     {
                         build ?
                             <h1>
@@ -117,14 +120,14 @@ const GameNav = ({ preGame, build, init }) => {
                                 </h1>
                                 :
                                 <>
-                                <PlayerTurn />
-                                <Timer />
+                                    <PlayerTurn />
+                                    {/*<Timer />*/}
                                 </>
                     }
                 </div>
             </div>
 
-            <div className="flex flex-row">
+            <div className="flex flex-row items-center">
                 {
                     preGame ?
                         <></>
@@ -142,9 +145,7 @@ const GameNav = ({ preGame, build, init }) => {
                             </button>
                         </>
                 }
-                <button onClick={() => setMenuOpen(!menuOpen)} type="button" className="flex items-center px-3 py-2 rounded text-gray-200 border-gray-400 hover:text-white hover:border-white">
-                    <svg viewBox="0 0 20 20" fill="currentColor" className="cog w-6 h-6"><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd"></path></svg>
-                </button>
+                <GameMenu />
             </div>
         </nav>
     )

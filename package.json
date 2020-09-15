@@ -40,6 +40,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "https://insys-node.herokuapp.com/",
   "browserslist": {
     "production": [
       ">0.2%",

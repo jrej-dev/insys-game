@@ -101,3 +101,14 @@ body::-webkit-scrollbar-thumb {
   transform: translateX(-50%);
 }
 
+@media only screen and (hover: none) and (pointer: coarse){
+
+#tables {
+  display: none;
+}
+#warning {
+  display: flex;
+}
+  
+}
+

@@ -66,7 +66,6 @@ export function StoreProvider({ children }) {
             if (store.gameInfo && store.gameInfo.players) {
                 //store.gameInfo.players.teamWhite.timeLeft = 1500;
                 //store.gameInfo.players.teamBlack.timeLeft = 1500;
-                console.log("test");
                 store.gameInfo = {};
                 store.getUserTable();
             }

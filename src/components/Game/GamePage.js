@@ -15,17 +15,15 @@ const GamePage = () => {
   const store = React.useContext(StoreContext);
   const history = useHistory();
   var socket = store.socket;
-  var tableId = new URLSearchParams(document.location.search).get('table');
 
   useEffect(() => {
     if (!socket._callbacks.$redirect) {
-      socket.emit('checkJoin', tableId);
       socket.on("redirect", function (url) {
         history.push(url)
         store.getUserTable();
       })
     }
-    
+
     socket.on('battleReport', function(winner, noRedirect){
       store.gameUpdate.gameOver(winner, noRedirect, true)
     });

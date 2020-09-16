@@ -66,8 +66,8 @@ export function StoreProvider({ children }) {
             if (store.gameInfo && store.gameInfo.players) {
                 //store.gameInfo.players.teamWhite.timeLeft = 1500;
                 //store.gameInfo.players.teamBlack.timeLeft = 1500;
-                store.gameInfo.players.teamWhite.minis = [];
-                store.gameInfo.players.teamBlack.minis = [];
+                console.log("test");
+                store.gameInfo = {};
                 store.getUserTable();
             }
         },    
@@ -311,6 +311,9 @@ export function StoreProvider({ children }) {
                         if (response) {
                             runInAction(() => {
                                 store.userTable = response;
+                                if (response._id) {
+                                    store.socket.emit('checkJoin', response._id);
+                                }
                             })
                         }
                     })
@@ -337,6 +340,7 @@ export function StoreProvider({ children }) {
                         if (response) {
                             runInAction(() => {
                                 store.userTable = response;
+                                store.socket.emit('checkJoin', tableId);
                             })
                             return response
                         }

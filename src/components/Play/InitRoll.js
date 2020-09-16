@@ -17,10 +17,7 @@ const InitRoll = () => {
 
   useEffect(() => {
     if (!socket._callbacks.$redirect) {
-      console.log("redirect activated");
-      socket.emit('checkJoin', tableId);
       socket.on("redirect", function (url) {
-        console.log(url)
         history.push(url)
         store.getUserTable();
       })

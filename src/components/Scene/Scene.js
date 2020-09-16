@@ -497,12 +497,12 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         shadowGenerator.getShadowMap().renderList.push(mini);
         gameUpdate.addImportedMini(mini,`team${team}`, miniData);
       
-        if (gameInfo.players.teamWhite.minis && gameInfo.players.teamWhite.minis.length > 0 && gameInfo.players.teamBlack.minis && gameInfo.players.teamBlack.minis.length > 0) {
-          if (user.team === "teamWhite"){
-            targetFurthestMini("teamWhite");
-          } else {
-            targetFurthestMini("teamBlack");
-          }
+        if (user.team === "teamWhite" && gameInfo.players.teamWhite.minis && gameInfo.players.teamWhite.minis.length > 0){
+          targetFurthestMini("teamWhite");
+        } else if (user.team === "teamBlack" && gameInfo.players.teamBlack.minis && gameInfo.players.teamBlack.minis.length > 0) {
+          targetFurthestMini("teamBlack");
+        } else if (map) {
+          camera.setTarget(map);
         }
       }
     );

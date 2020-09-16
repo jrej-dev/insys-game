@@ -143,7 +143,7 @@ const Lobby = () => {
                     if (table) {
                         rows.push(
                             <tr key={table._id} className="bg-gray-500">
-                                <td className="border px-1 md:px-4 py-2 text-center hidden md:table-cell">{table._id}</td>
+                                <td className="border px-1 md:px-4 py-2 text-center hidden md:table-cell">{table._id.slice(0,10)}</td>
                                 <td className="border px-1 md:px-4 py-2 text-center hidden md:table-cell">{timeSince(table.createdAt)}</td>
                                 <td className="border px-1 md:px-4 py-2 text-center capitalize hidden md:table-cell">{table.player1}</td>
                                 <td className="border px-1 md:px-4 py-2 text-center">{table.map}</td>

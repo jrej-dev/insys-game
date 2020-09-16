@@ -20,9 +20,8 @@ const ArmyBuilder = () => {
   useEffect(() => {
     if (!socket._callbacks.$redirect) {
       socket.on("redirect", function (url) {
-          console.log("redirect");
-          history.push(url)
-          store.getUserTable();
+        history.push(url)
+        store.getUserTable();
       })
     }
       // eslint-disable-next-line react-hooks/exhaustive-deps

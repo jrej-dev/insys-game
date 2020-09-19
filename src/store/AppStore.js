@@ -48,7 +48,7 @@ export function StoreProvider({ children }) {
             }; 
             return units;
         },
-        userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW"],
+        userMinis: ["OTTMK","OTTMK","OTTMK","SKNCK","SKNCK","SKNCK","STLRW","STLRW","STLRW","BACRC","BACRC","BACRC","WBORK","WBORK","WBORK"],
         loginLink: "",
         fullScreen: false,
         setTimer: () => {

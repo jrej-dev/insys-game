@@ -41,8 +41,8 @@ const GamePage = () => {
         return (
           <div className={`${store.fullScreen ? "hidden" : ""} flex flex-col justify-start lg:w-3/12`} >
             <div className="flex flex-row lg:flex-col items-center justify-center" >
-              <Player team={"white"} playerName={toJS(store.gameInfo).players.teamWhite.name} actionsLeft={toJS(store.gameInfo.players.teamWhite.turnActions)} minisLeft={toJS(store.gameInfo.players.teamWhite.minis.length)} isCurrentPlayer={toJS(store.gameInfo.currentPlayer.name) === toJS(store.gameInfo.players.teamWhite.name) ? true : false} />
-              <Player team={"black"} playerName={toJS(store.gameInfo).players.teamBlack.name} actionsLeft={toJS(store.gameInfo.players.teamBlack.turnActions)} minisLeft={toJS(store.gameInfo.players.teamBlack.minis.length)} isCurrentPlayer={toJS(store.gameInfo.currentPlayer.name) === toJS(store.gameInfo.players.teamBlack.name) ? true : false} />
+              <Player team={"white"} playerName={toJS(store.gameInfo).players.teamWhite.name} actionsLeft={toJS(store.gameInfo).players.teamWhite.turnActions} minisLeft={toJS(store.gameInfo.players.teamWhite.minis.length)} isCurrentPlayer={toJS(store.gameInfo.currentPlayer.name) === toJS(store.gameInfo.players.teamWhite.name) ? true : false} />
+              <Player team={"black"} playerName={toJS(store.gameInfo).players.teamBlack.name} actionsLeft={toJS(store.gameInfo).players.teamBlack.turnActions} minisLeft={toJS(store.gameInfo.players.teamBlack.minis.length)} isCurrentPlayer={toJS(store.gameInfo.currentPlayer.name) === toJS(store.gameInfo.players.teamBlack.name) ? true : false} />
             </div>
             <History />
           </div>

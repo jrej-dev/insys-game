@@ -23,6 +23,7 @@ export const armies = {
     units: {
       WBORK: {
         name: "Whiteboot troop",
+        image:"https://images.hive.blog/DQmXaLmE7TXt6S7p15vnemdUWyey4ZG5bhEtbYVoxNec7ic/WBORK.png",
         army:"SYS Troops",
         class: "Light",
         color: "blue",
@@ -82,8 +83,9 @@ export const armies = {
     units: {
       BACRC: {
         name: "Bac warrior",
+        image: "https://images.hive.blog/DQmQko4fXKRLSutURGKJKRxZCAE343MHSR2W1MANavLCgdi/BACRC.png",
         army:"Void Warriors",
-        class: "Light unit",
+        class: "Light",
         color: "purple",
         specials: "N/A",
         equipment: {range: "Assault rifle" , melee: "Chainsaw attachment"},

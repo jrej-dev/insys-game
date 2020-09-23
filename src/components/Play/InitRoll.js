@@ -64,7 +64,7 @@ const InitRoll = () => {
       }
       if (units && units.length > 0) {
         return (
-          <div className="flex flex-col justify-start w-full md:w-3/10 my-6 md:my-12" >
+          <div className="flex flex-col justify-start w-full md:w-3/10 mt-6 mb-6 md:mb-20" >
             <h1 className="md:m-4">{toJS(store.userTable)[player]}</h1>
             <div className="lg:h-full flex flex-col flex-wrap md:justify-around items-center">
               {units}

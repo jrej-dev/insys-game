@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { toJS } from 'mobx';
 import { useObserver } from 'mobx-react';
 import 'mobx-react-lite/batchingForReactDom';
 import StoreContext from '../../store/AppStore';
 //import { Link } from "react-router-dom";
+import { maps } from '../../gameStats/maps';
 
 const Lobby = () => {
     var ENDPOINT = "https://insys-node.herokuapp.com/";
@@ -13,41 +14,26 @@ const Lobby = () => {
     }
     const store = React.useContext(StoreContext);
     const history = useHistory();
-    const [tables, setTables] = useState([]);
     var socket = store.socket;
 
     useEffect(() => {
-        fetch(`${ENDPOINT}table`, {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        })
-            .then(response => response.json())
-            .then(response => {
-                if (response.msg) {
-                    throw Error(response.msg);
-                }
-                setTables(response);
-                return response
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        store.getTables();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ENDPOINT])
 
     useEffect(() => {
         socket.on("createdTable", function (data) {
             if (data) {
-                setTables([...tables, data]);
+                store.setTables([...store.tables, data]);
+                store.getTables();
                 store.getUserTable();
             }
         })
 
         socket.on("deletedTable", function (tableId) {
             if (tableId) {
-                setTables([...tables.filter(table => table._id !== tableId)]);
+                store.setTables([...store.tables.filter(table => table._id !== tableId)]);
+                store.getTables();
                 store.getUserTable();
             }
         })
@@ -110,9 +96,8 @@ const Lobby = () => {
 
     function timeSince(date) {
         var seconds = Math.floor((Date.now() - date) / 1000);
-
         var interval = seconds / 31536000;
-
+        
         if (interval > 1) {
             return Math.floor(interval) + " years ago";
         }
@@ -138,15 +123,24 @@ const Lobby = () => {
     const TableLines = () => {
         return useObserver(() => {
             let rows = [];
-            if (tables && tables.length > 0) {
-                for (let table of tables) {
+            if (store.tables && store.tables.length > 0) {
+                let freeTables = [...store.tables.filter(table => table.isFull === false), ...store.tables.filter(table => table.isFull === true)];
+                for (let table of freeTables) {
                     if (table) {
                         rows.push(
                             <tr key={table._id} className="bg-gray-500">
                                 <td className="border px-1 md:px-4 py-2 text-center hidden md:table-cell">{table._id.slice(0, 10)}</td>
                                 <td className="border px-1 md:px-4 py-2 text-center hidden md:table-cell">{timeSince(table.createdAt)}</td>
-                                <td className="border px-1 md:px-4 py-2 text-center capitalize hidden md:table-cell">{table.player1}</td>
-                                <td className="border px-1 md:px-4 py-2 text-center">{table.map}</td>
+                                <td className="border px-1 md:px-4 py-2 hidden md:table-cell">
+                                    <div className="flex flex-col justify-center items-center">
+                                        <img className={`w-10 h-10 rounded-full`} src={`https://images.hive.blog/u/${table.player1.toLowerCase()}/avatar`} alt="" />
+                                        <p className="capitalize">{table.player1}</p>
+                                    </div>
+                                </td>
+                                <td className="border px-1 py-2 text-center flex flex-col items-center justify-center">
+                                    <img src={maps[table.map].image} alt="map" className="w-64"/>
+                                    <p className="capitalize">{table.map}</p>
+                                </td>
                                 <td className="border px-1 md:px-4 py-2 text-center">{timeFormat(table.playerTime)}</td>
                                 <td className="border px-1 md:px-4 py-2 text-center">{table.maxVal}</td>
                                 <td className="border text-center md:px-4">
@@ -216,12 +210,12 @@ const Lobby = () => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col h-screen items-center">
+        <div className="min-h-screen flex flex-col h-auto items-center">
             <div id="tables" className="w-11/12 mt-6 min-h-screen">
                 <div className="flex flex-row justify-start w-full">
                     <CreateButton />
                 </div>
-                <div className="flex flex-row">
+                <div className="flex flex-row mb-10">
                     <table className="table-auto w-full text-xs lg:text-base">
                         <thead>
                             <tr className="bg-gray-600">
@@ -244,7 +238,7 @@ const Lobby = () => {
                 <div className="border border-gray-900 bg-gray-600 rounded-lg m-10 p-10 sm:p-12 max-w-lg h-auto flex flex-col items-center">
                     <div className="flex flex-col items-center justify-center m-2">
                         <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="white">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
                         <h1 className="font-bold">Warning</h1>
                     </div>

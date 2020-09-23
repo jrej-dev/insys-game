@@ -1,0 +1,3940 @@
+Exporter version: 6.4.3, Blender version: 2.83.3
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  5
+		Vert Color Precision:  5
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\jrejo\OneDrive\Documents\Coding\insys-game\public\Models\Terrain\
+	Python World class constructor completed
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of mesh:  border_sm4.006
+		processing begun of material:  Material.050
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm4.005
+		processing begun of material:  Material.049
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  fountain
+		processing begun of material:  wire_124165082.008
+		processing begun of material:  wire_220220220.012
+		processing begun of material:  wire_082165145.007
+		processing begun of material:  wire_038000038.094
+		processing begun of material:  wire_165103082.007
+		processing begun of material:  wire_127063079.007
+		processing begun of material:  wire_165041000.007
+		processing begun of material:  wire_082145165.007
+			WARNING: unsupported node type(ShaderNodeRGB) will trigger baking
+			WARNING: unsupported node type(ShaderNodeBsdfTranslucent) will trigger baking
+		processing begun of material:  wire_000000127.007
+		processing begun of material:  wire_220220220.008
+		processing begun of material:  wire_038038000.007
+		processing begun of material:  Material.035
+			WARNING: unsupported node type(ShaderNodeRGB) will trigger baking
+			WARNING: Metal channel baking required, but not possible, ignored
+			WARNING: Roughness channel baking required, but not possible, ignored
+			WARNING: Refraction channel baking required, but not possible, ignored
+			Baking texture, type: DIFFUSE, mapped using: BakingUV
+			processing texture fountain_baked_DIFFUSE
+				texture type:  diffuseTexture, mapped using: "BakingUV"
+			Baking texture, type: GLOSSY, mapped using: BakingUV
+			processing texture fountain_baked_GLOSSY
+				texture type:  specularTexture, mapped using: "BakingUV"
+			bake time:  0 min, 7.2136 secs
+		num positions      :  2229
+		num normals        :  2229
+		num tangents       :  0
+		num uvs            :  4458
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  888
+	processing begun of mesh:  garden
+		processing begun of material:  Material.033
+		processing begun of material:  wire_127095063.087
+		processing begun of material:  wire_038019019.087
+		processing begun of material:  wire_191127255.087
+		processing begun of material:  wire_082124165.087
+		processing begun of material:  wire_124165082.093
+		processing begun of material:  wire_063095127.087
+		processing begun of material:  wire_159255127.087
+		processing begun of material:  wire_082165145.093
+		processing begun of material:  wire_038000038.093
+		processing begun of material:  wire_165103082.093
+		processing begun of material:  wire_127063079.093
+		processing begun of material:  wire_084084084.087
+		processing begun of material:  wire_038038000.093
+		processing begun of material:  wire_220220220.099
+		processing begun of material:  wire_165041000.093
+		processing begun of material:  wire_082145165.093
+		processing begun of material:  wire_000000127.093
+		processing begun of material:  wire_127095063.086
+		processing begun of material:  wire_038019019.086
+		processing begun of material:  wire_191127255.086
+		processing begun of material:  wire_082124165.086
+		processing begun of material:  wire_124165082.092
+		processing begun of material:  wire_063095127.086
+		processing begun of material:  wire_159255127.086
+		processing begun of material:  wire_082165145.092
+		processing begun of material:  wire_038000038.092
+		processing begun of material:  wire_165103082.092
+		processing begun of material:  wire_127063079.092
+		processing begun of material:  wire_084084084.086
+		processing begun of material:  wire_038038000.092
+		processing begun of material:  wire_220220220.098
+		processing begun of material:  wire_165041000.092
+		processing begun of material:  wire_082145165.092
+		processing begun of material:  wire_000000127.092
+		processing begun of material:  wire_127095063.085
+		processing begun of material:  wire_038019019.085
+		processing begun of material:  wire_191127255.085
+		processing begun of material:  wire_082124165.085
+		processing begun of material:  wire_124165082.091
+		processing begun of material:  wire_063095127.085
+		processing begun of material:  wire_159255127.085
+		processing begun of material:  wire_082165145.091
+		processing begun of material:  wire_038000038.091
+		processing begun of material:  wire_165103082.091
+		processing begun of material:  wire_127063079.091
+		processing begun of material:  wire_084084084.085
+		processing begun of material:  wire_038038000.091
+		processing begun of material:  wire_220220220.097
+		processing begun of material:  wire_165041000.091
+		processing begun of material:  wire_082145165.091
+		processing begun of material:  wire_000000127.091
+		processing begun of material:  wire_127095063.084
+		processing begun of material:  wire_038019019.084
+		processing begun of material:  wire_191127255.084
+		processing begun of material:  wire_082124165.084
+		processing begun of material:  wire_124165082.090
+		processing begun of material:  wire_063095127.084
+		processing begun of material:  wire_159255127.084
+		processing begun of material:  wire_082165145.090
+		processing begun of material:  wire_038000038.090
+		processing begun of material:  wire_165103082.090
+		processing begun of material:  wire_127063079.090
+		processing begun of material:  wire_084084084.084
+		processing begun of material:  wire_038038000.090
+		processing begun of material:  wire_220220220.096
+		processing begun of material:  wire_165041000.090
+		processing begun of material:  wire_082145165.090
+		processing begun of material:  wire_000000127.090
+		processing begun of material:  wire_127095063.083
+		processing begun of material:  wire_038019019.083
+		processing begun of material:  wire_191127255.083
+		processing begun of material:  wire_082124165.083
+		processing begun of material:  wire_124165082.089
+		processing begun of material:  wire_063095127.083
+		processing begun of material:  wire_159255127.083
+		processing begun of material:  wire_082165145.089
+		processing begun of material:  wire_038000038.089
+		processing begun of material:  wire_165103082.089
+		processing begun of material:  wire_127063079.089
+		processing begun of material:  wire_084084084.083
+		processing begun of material:  wire_038038000.089
+		processing begun of material:  wire_220220220.095
+		processing begun of material:  wire_165041000.089
+		processing begun of material:  wire_082145165.089
+		processing begun of material:  wire_000000127.089
+		processing begun of material:  wire_127095063.082
+		processing begun of material:  wire_038019019.082
+		processing begun of material:  wire_191127255.082
+		processing begun of material:  wire_082124165.082
+		processing begun of material:  wire_124165082.088
+		processing begun of material:  wire_063095127.082
+		processing begun of material:  wire_159255127.082
+		processing begun of material:  wire_082165145.088
+		processing begun of material:  wire_038000038.088
+		processing begun of material:  wire_165103082.088
+		processing begun of material:  wire_127063079.088
+		processing begun of material:  wire_084084084.082
+		processing begun of material:  wire_038038000.088
+		processing begun of material:  wire_220220220.094
+		processing begun of material:  wire_165041000.088
+		processing begun of material:  wire_082145165.088
+		processing begun of material:  wire_000000127.088
+		processing begun of material:  wire_127095063.081
+		processing begun of material:  wire_038019019.081
+		processing begun of material:  wire_191127255.081
+		processing begun of material:  wire_082124165.081
+		processing begun of material:  wire_124165082.087
+		processing begun of material:  wire_063095127.081
+		processing begun of material:  wire_159255127.081
+		processing begun of material:  wire_082165145.087
+		processing begun of material:  wire_038000038.087
+		processing begun of material:  wire_165103082.087
+		processing begun of material:  wire_127063079.087
+		processing begun of material:  wire_084084084.081
+		processing begun of material:  wire_038038000.087
+		processing begun of material:  wire_220220220.093
+		processing begun of material:  wire_165041000.087
+		processing begun of material:  wire_082145165.087
+		processing begun of material:  wire_000000127.087
+		processing begun of material:  wire_127095063.080
+		processing begun of material:  wire_038019019.080
+		processing begun of material:  wire_191127255.080
+		processing begun of material:  wire_082124165.080
+		processing begun of material:  wire_124165082.086
+		processing begun of material:  wire_063095127.080
+		processing begun of material:  wire_159255127.080
+		processing begun of material:  wire_082165145.086
+		processing begun of material:  wire_038000038.086
+		processing begun of material:  wire_165103082.086
+		processing begun of material:  wire_127063079.086
+		processing begun of material:  wire_084084084.080
+		processing begun of material:  wire_038038000.086
+		processing begun of material:  wire_220220220.092
+		processing begun of material:  wire_165041000.086
+		processing begun of material:  wire_082145165.086
+		processing begun of material:  wire_000000127.086
+		processing begun of material:  wire_127095063.079
+		processing begun of material:  wire_038019019.079
+		processing begun of material:  wire_191127255.079
+		processing begun of material:  wire_082124165.079
+		processing begun of material:  wire_124165082.085
+		processing begun of material:  wire_063095127.079
+		processing begun of material:  wire_159255127.079
+		processing begun of material:  wire_082165145.085
+		processing begun of material:  wire_038000038.085
+		processing begun of material:  wire_165103082.085
+		processing begun of material:  wire_127063079.085
+		processing begun of material:  wire_084084084.079
+		processing begun of material:  wire_038038000.085
+		processing begun of material:  wire_220220220.091
+		processing begun of material:  wire_165041000.085
+		processing begun of material:  wire_082145165.085
+		processing begun of material:  wire_000000127.085
+		processing begun of material:  wire_127095063.078
+		processing begun of material:  wire_038019019.078
+		processing begun of material:  wire_191127255.078
+		processing begun of material:  wire_082124165.078
+		processing begun of material:  wire_124165082.084
+		processing begun of material:  wire_063095127.078
+		processing begun of material:  wire_159255127.078
+		processing begun of material:  wire_082165145.084
+		processing begun of material:  wire_038000038.084
+		processing begun of material:  wire_165103082.084
+		processing begun of material:  wire_127063079.084
+		processing begun of material:  wire_084084084.078
+		processing begun of material:  wire_038038000.084
+		processing begun of material:  wire_220220220.090
+		processing begun of material:  wire_165041000.084
+		processing begun of material:  wire_082145165.084
+		processing begun of material:  wire_000000127.084
+		processing begun of material:  wire_127095063.077
+		processing begun of material:  wire_038019019.077
+		processing begun of material:  wire_191127255.077
+		processing begun of material:  wire_082124165.077
+		processing begun of material:  wire_124165082.083
+		processing begun of material:  wire_063095127.077
+		processing begun of material:  wire_159255127.077
+		processing begun of material:  wire_082165145.083
+		processing begun of material:  wire_038000038.083
+		processing begun of material:  wire_165103082.083
+		processing begun of material:  wire_127063079.083
+		processing begun of material:  wire_084084084.077
+		processing begun of material:  wire_038038000.083
+		processing begun of material:  wire_220220220.089
+		processing begun of material:  wire_165041000.083
+		processing begun of material:  wire_082145165.083
+		processing begun of material:  wire_000000127.083
+		processing begun of material:  wire_127095063.076
+		processing begun of material:  wire_038019019.076
+		processing begun of material:  wire_191127255.076
+		processing begun of material:  wire_082124165.076
+		processing begun of material:  wire_124165082.082
+		processing begun of material:  wire_063095127.076
+		processing begun of material:  wire_159255127.076
+		processing begun of material:  wire_082165145.082
+		processing begun of material:  wire_038000038.082
+		processing begun of material:  wire_165103082.082
+		processing begun of material:  wire_127063079.082
+		processing begun of material:  wire_084084084.076
+		processing begun of material:  wire_038038000.082
+		processing begun of material:  wire_220220220.088
+		processing begun of material:  wire_165041000.082
+		processing begun of material:  wire_082145165.082
+		processing begun of material:  wire_000000127.082
+		processing begun of material:  wire_127095063.075
+		processing begun of material:  wire_038019019.075
+		processing begun of material:  wire_191127255.075
+		processing begun of material:  wire_082124165.075
+		processing begun of material:  wire_124165082.081
+		processing begun of material:  wire_063095127.075
+		processing begun of material:  wire_159255127.075
+		processing begun of material:  wire_082165145.081
+		processing begun of material:  wire_038000038.081
+		processing begun of material:  wire_165103082.081
+		processing begun of material:  wire_127063079.081
+		processing begun of material:  wire_084084084.075
+		processing begun of material:  wire_038038000.081
+		processing begun of material:  wire_220220220.087
+		processing begun of material:  wire_165041000.081
+		processing begun of material:  wire_082145165.081
+		processing begun of material:  wire_000000127.081
+		processing begun of material:  wire_127095063.074
+		processing begun of material:  wire_038019019.074
+		processing begun of material:  wire_191127255.074
+		processing begun of material:  wire_082124165.074
+		processing begun of material:  wire_124165082.080
+		processing begun of material:  wire_063095127.074
+		processing begun of material:  wire_159255127.074
+		processing begun of material:  wire_082165145.080
+		processing begun of material:  wire_038000038.080
+		processing begun of material:  wire_165103082.080
+		processing begun of material:  wire_127063079.080
+		processing begun of material:  wire_084084084.074
+		processing begun of material:  wire_038038000.080
+		processing begun of material:  wire_220220220.086
+		processing begun of material:  wire_165041000.080
+		processing begun of material:  wire_082145165.080
+		processing begun of material:  wire_000000127.080
+		processing begun of material:  wire_127095063.073
+		processing begun of material:  wire_038019019.073
+		processing begun of material:  wire_191127255.073
+		processing begun of material:  wire_082124165.073
+		processing begun of material:  wire_124165082.079
+		processing begun of material:  wire_063095127.073
+		processing begun of material:  wire_159255127.073
+		processing begun of material:  wire_082165145.079
+		processing begun of material:  wire_038000038.079
+		processing begun of material:  wire_165103082.079
+		processing begun of material:  wire_127063079.079
+		processing begun of material:  wire_084084084.073
+		processing begun of material:  wire_038038000.079
+		processing begun of material:  wire_220220220.085
+		processing begun of material:  wire_165041000.079
+		processing begun of material:  wire_082145165.079
+		processing begun of material:  wire_000000127.079
+		processing begun of material:  wire_127095063.072
+		processing begun of material:  wire_038019019.072
+		processing begun of material:  wire_191127255.072
+		processing begun of material:  wire_082124165.072
+		processing begun of material:  wire_124165082.078
+		processing begun of material:  wire_063095127.072
+		processing begun of material:  wire_159255127.072
+		processing begun of material:  wire_082165145.078
+		processing begun of material:  wire_038000038.078
+		processing begun of material:  wire_165103082.078
+		processing begun of material:  wire_127063079.078
+		processing begun of material:  wire_084084084.072
+		processing begun of material:  wire_038038000.078
+		processing begun of material:  wire_220220220.084
+		processing begun of material:  wire_165041000.078
+		processing begun of material:  wire_082145165.078
+		processing begun of material:  wire_000000127.078
+		processing begun of material:  wire_127095063.071
+		processing begun of material:  wire_038019019.071
+		processing begun of material:  wire_191127255.071
+		processing begun of material:  wire_082124165.071
+		processing begun of material:  wire_124165082.077
+		processing begun of material:  wire_063095127.071
+		processing begun of material:  wire_159255127.071
+		processing begun of material:  wire_082165145.077
+		processing begun of material:  wire_038000038.077
+		processing begun of material:  wire_165103082.077
+		processing begun of material:  wire_127063079.077
+		processing begun of material:  wire_084084084.071
+		processing begun of material:  wire_038038000.077
+		processing begun of material:  wire_220220220.083
+		processing begun of material:  wire_165041000.077
+		processing begun of material:  wire_082145165.077
+		processing begun of material:  wire_000000127.077
+		processing begun of material:  wire_127095063.070
+		processing begun of material:  wire_038019019.070
+		processing begun of material:  wire_191127255.070
+		processing begun of material:  wire_082124165.070
+		processing begun of material:  wire_124165082.076
+		processing begun of material:  wire_063095127.070
+		processing begun of material:  wire_159255127.070
+		processing begun of material:  wire_082165145.076
+		processing begun of material:  wire_038000038.076
+		processing begun of material:  wire_165103082.076
+		processing begun of material:  wire_127063079.076
+		processing begun of material:  wire_084084084.070
+		processing begun of material:  wire_038038000.076
+		processing begun of material:  wire_220220220.082
+		processing begun of material:  wire_165041000.076
+		processing begun of material:  wire_082145165.076
+		processing begun of material:  wire_000000127.076
+		processing begun of material:  wire_127095063.069
+		processing begun of material:  wire_038019019.069
+		processing begun of material:  wire_191127255.069
+		processing begun of material:  wire_082124165.069
+		processing begun of material:  wire_124165082.075
+		processing begun of material:  wire_063095127.069
+		processing begun of material:  wire_159255127.069
+		processing begun of material:  wire_082165145.075
+		processing begun of material:  wire_038000038.075
+		processing begun of material:  wire_165103082.075
+		processing begun of material:  wire_127063079.075
+		processing begun of material:  wire_084084084.069
+		processing begun of material:  wire_038038000.075
+		processing begun of material:  wire_220220220.081
+		processing begun of material:  wire_165041000.075
+		processing begun of material:  wire_082145165.075
+		processing begun of material:  wire_000000127.075
+		processing begun of material:  wire_127095063.068
+		processing begun of material:  wire_038019019.068
+		processing begun of material:  wire_191127255.068
+		processing begun of material:  wire_082124165.068
+		processing begun of material:  wire_124165082.074
+		processing begun of material:  wire_063095127.068
+		processing begun of material:  wire_159255127.068
+		processing begun of material:  wire_082165145.074
+		processing begun of material:  wire_038000038.074
+		processing begun of material:  wire_165103082.074
+		processing begun of material:  wire_127063079.074
+		processing begun of material:  wire_084084084.068
+		processing begun of material:  wire_038038000.074
+		processing begun of material:  wire_220220220.080
+		processing begun of material:  wire_165041000.074
+		processing begun of material:  wire_082145165.074
+		processing begun of material:  wire_000000127.074
+		processing begun of material:  wire_127095063.067
+		processing begun of material:  wire_038019019.067
+		processing begun of material:  wire_191127255.067
+		processing begun of material:  wire_082124165.067
+		processing begun of material:  wire_124165082.073
+		processing begun of material:  wire_063095127.067
+		processing begun of material:  wire_159255127.067
+		processing begun of material:  wire_082165145.073
+		processing begun of material:  wire_038000038.073
+		processing begun of material:  wire_165103082.073
+		processing begun of material:  wire_127063079.073
+		processing begun of material:  wire_084084084.067
+		processing begun of material:  wire_038038000.073
+		processing begun of material:  wire_220220220.079
+		processing begun of material:  wire_165041000.073
+		processing begun of material:  wire_082145165.073
+		processing begun of material:  wire_000000127.073
+		processing begun of material:  wire_127095063.066
+		processing begun of material:  wire_038019019.066
+		processing begun of material:  wire_191127255.066
+		processing begun of material:  wire_082124165.066
+		processing begun of material:  wire_124165082.072
+		processing begun of material:  wire_063095127.066
+		processing begun of material:  wire_159255127.066
+		processing begun of material:  wire_082165145.072
+		processing begun of material:  wire_038000038.072
+		processing begun of material:  wire_165103082.072
+		processing begun of material:  wire_127063079.072
+		processing begun of material:  wire_084084084.066
+		processing begun of material:  wire_038038000.072
+		processing begun of material:  wire_220220220.078
+		processing begun of material:  wire_165041000.072
+		processing begun of material:  wire_082145165.072
+		processing begun of material:  wire_000000127.072
+		processing begun of material:  wire_127095063.065
+		processing begun of material:  wire_038019019.065
+		processing begun of material:  wire_191127255.065
+		processing begun of material:  wire_082124165.065
+		processing begun of material:  wire_124165082.071
+		processing begun of material:  wire_063095127.065
+		processing begun of material:  wire_159255127.065
+		processing begun of material:  wire_082165145.071
+		processing begun of material:  wire_038000038.071
+		processing begun of material:  wire_165103082.071
+		processing begun of material:  wire_127063079.071
+		processing begun of material:  wire_084084084.065
+		processing begun of material:  wire_038038000.071
+		processing begun of material:  wire_220220220.077
+		processing begun of material:  wire_165041000.071
+		processing begun of material:  wire_082145165.071
+		processing begun of material:  wire_000000127.071
+		processing begun of material:  wire_127095063.064
+		processing begun of material:  wire_038019019.064
+		processing begun of material:  wire_191127255.064
+		processing begun of material:  wire_082124165.064
+		processing begun of material:  wire_124165082.070
+		processing begun of material:  wire_063095127.064
+		processing begun of material:  wire_159255127.064
+		processing begun of material:  wire_082165145.070
+		processing begun of material:  wire_038000038.070
+		processing begun of material:  wire_165103082.070
+		processing begun of material:  wire_127063079.070
+		processing begun of material:  wire_084084084.064
+		processing begun of material:  wire_038038000.070
+		processing begun of material:  wire_220220220.076
+		processing begun of material:  wire_165041000.070
+		processing begun of material:  wire_082145165.070
+		processing begun of material:  wire_000000127.070
+		processing begun of material:  wire_127095063.031
+		processing begun of material:  wire_038019019.031
+		processing begun of material:  wire_191127255.031
+		processing begun of material:  wire_082124165.031
+		processing begun of material:  wire_124165082.037
+		processing begun of material:  wire_063095127.031
+		processing begun of material:  wire_159255127.031
+		processing begun of material:  wire_082165145.037
+		processing begun of material:  wire_038000038.037
+		processing begun of material:  wire_165103082.037
+		processing begun of material:  wire_127063079.037
+		processing begun of material:  wire_084084084.031
+		processing begun of material:  wire_038038000.037
+		processing begun of material:  wire_220220220.043
+		processing begun of material:  wire_165041000.037
+		processing begun of material:  wire_082145165.037
+		processing begun of material:  wire_000000127.037
+		processing begun of material:  wire_127095063.028
+		processing begun of material:  wire_038019019.028
+		processing begun of material:  wire_191127255.028
+		processing begun of material:  wire_082124165.028
+		processing begun of material:  wire_124165082.034
+		processing begun of material:  wire_063095127.028
+		processing begun of material:  wire_159255127.028
+		processing begun of material:  wire_082165145.034
+		processing begun of material:  wire_038000038.034
+		processing begun of material:  wire_165103082.034
+		processing begun of material:  wire_127063079.034
+		processing begun of material:  wire_084084084.028
+		processing begun of material:  wire_038038000.034
+		processing begun of material:  wire_220220220.040
+		processing begun of material:  wire_165041000.034
+		processing begun of material:  wire_082145165.034
+		processing begun of material:  wire_000000127.034
+		processing begun of material:  wire_127095063.029
+		processing begun of material:  wire_038019019.029
+		processing begun of material:  wire_191127255.029
+		processing begun of material:  wire_082124165.029
+		processing begun of material:  wire_124165082.035
+		processing begun of material:  wire_063095127.029
+		processing begun of material:  wire_159255127.029
+		processing begun of material:  wire_082165145.035
+		processing begun of material:  wire_038000038.035
+		processing begun of material:  wire_165103082.035
+		processing begun of material:  wire_127063079.035
+		processing begun of material:  wire_084084084.029
+		processing begun of material:  wire_038038000.035
+		processing begun of material:  wire_220220220.041
+		processing begun of material:  wire_165041000.035
+		processing begun of material:  wire_082145165.035
+		processing begun of material:  wire_000000127.035
+		processing begun of material:  wire_127095063.030
+		processing begun of material:  wire_038019019.030
+		processing begun of material:  wire_191127255.030
+		processing begun of material:  wire_082124165.030
+		processing begun of material:  wire_124165082.036
+		processing begun of material:  wire_063095127.030
+		processing begun of material:  wire_159255127.030
+		processing begun of material:  wire_082165145.036
+		processing begun of material:  wire_038000038.036
+		processing begun of material:  wire_165103082.036
+		processing begun of material:  wire_127063079.036
+		processing begun of material:  wire_084084084.030
+		processing begun of material:  wire_038038000.036
+		processing begun of material:  wire_220220220.042
+		processing begun of material:  wire_165041000.036
+		processing begun of material:  wire_082145165.036
+		processing begun of material:  wire_000000127.036
+		processing begun of material:  wire_127095063
+		processing begun of material:  wire_038019019
+		processing begun of material:  wire_191127255
+		processing begun of material:  wire_082124165
+		processing begun of material:  wire_124165082
+		processing begun of material:  wire_063095127
+		processing begun of material:  wire_159255127
+		processing begun of material:  wire_082165145
+		processing begun of material:  wire_038000038
+		processing begun of material:  wire_165103082
+		processing begun of material:  wire_127063079
+		processing begun of material:  wire_084084084
+		processing begun of material:  wire_038038000
+		processing begun of material:  wire_220220220
+		processing begun of material:  wire_165041000
+		processing begun of material:  wire_082145165
+		processing begun of material:  wire_000000127
+		processing begun of material:  wire_127095063.011
+		processing begun of material:  wire_038019019.011
+		processing begun of material:  wire_191127255.011
+		processing begun of material:  wire_082124165.011
+		processing begun of material:  wire_124165082.017
+		processing begun of material:  wire_063095127.011
+		processing begun of material:  wire_159255127.011
+		processing begun of material:  wire_082165145.017
+		processing begun of material:  wire_038000038.017
+		processing begun of material:  wire_165103082.017
+		processing begun of material:  wire_127063079.017
+		processing begun of material:  wire_084084084.011
+		processing begun of material:  wire_038038000.017
+		processing begun of material:  wire_220220220.023
+		processing begun of material:  wire_165041000.017
+		processing begun of material:  wire_082145165.017
+		processing begun of material:  wire_000000127.017
+		processing begun of material:  wire_127095063.010
+		processing begun of material:  wire_038019019.010
+		processing begun of material:  wire_191127255.010
+		processing begun of material:  wire_082124165.010
+		processing begun of material:  wire_124165082.016
+		processing begun of material:  wire_063095127.010
+		processing begun of material:  wire_159255127.010
+		processing begun of material:  wire_082165145.016
+		processing begun of material:  wire_038000038.016
+		processing begun of material:  wire_165103082.016
+		processing begun of material:  wire_127063079.016
+		processing begun of material:  wire_084084084.010
+		processing begun of material:  wire_038038000.016
+		processing begun of material:  wire_220220220.022
+		processing begun of material:  wire_165041000.016
+		processing begun of material:  wire_082145165.016
+		processing begun of material:  wire_000000127.016
+		processing begun of material:  wire_127095063.009
+		processing begun of material:  wire_038019019.009
+		processing begun of material:  wire_191127255.009
+		processing begun of material:  wire_082124165.009
+		processing begun of material:  wire_124165082.015
+		processing begun of material:  wire_063095127.009
+		processing begun of material:  wire_159255127.009
+		processing begun of material:  wire_082165145.015
+		processing begun of material:  wire_038000038.015
+		processing begun of material:  wire_165103082.015
+		processing begun of material:  wire_127063079.015
+		processing begun of material:  wire_084084084.009
+		processing begun of material:  wire_038038000.015
+		processing begun of material:  wire_220220220.021
+		processing begun of material:  wire_165041000.015
+		processing begun of material:  wire_082145165.015
+		processing begun of material:  wire_000000127.015
+		processing begun of material:  wire_127095063.015
+		processing begun of material:  wire_038019019.015
+		processing begun of material:  wire_191127255.015
+		processing begun of material:  wire_082124165.015
+		processing begun of material:  wire_124165082.021
+		processing begun of material:  wire_063095127.015
+		processing begun of material:  wire_159255127.015
+		processing begun of material:  wire_082165145.021
+		processing begun of material:  wire_038000038.021
+		processing begun of material:  wire_165103082.021
+		processing begun of material:  wire_127063079.021
+		processing begun of material:  wire_084084084.015
+		processing begun of material:  wire_038038000.021
+		processing begun of material:  wire_220220220.027
+		processing begun of material:  wire_165041000.021
+		processing begun of material:  wire_082145165.021
+		processing begun of material:  wire_000000127.021
+		processing begun of material:  wire_127095063.012
+		processing begun of material:  wire_038019019.012
+		processing begun of material:  wire_191127255.012
+		processing begun of material:  wire_082124165.012
+		processing begun of material:  wire_124165082.018
+		processing begun of material:  wire_063095127.012
+		processing begun of material:  wire_159255127.012
+		processing begun of material:  wire_082165145.018
+		processing begun of material:  wire_038000038.018
+		processing begun of material:  wire_165103082.018
+		processing begun of material:  wire_127063079.018
+		processing begun of material:  wire_084084084.012
+		processing begun of material:  wire_038038000.018
+		processing begun of material:  wire_220220220.024
+		processing begun of material:  wire_165041000.018
+		processing begun of material:  wire_082145165.018
+		processing begun of material:  wire_000000127.018
+		processing begun of material:  wire_127095063.013
+		processing begun of material:  wire_038019019.013
+		processing begun of material:  wire_191127255.013
+		processing begun of material:  wire_082124165.013
+		processing begun of material:  wire_124165082.019
+		processing begun of material:  wire_063095127.013
+		processing begun of material:  wire_159255127.013
+		processing begun of material:  wire_082165145.019
+		processing begun of material:  wire_038000038.019
+		processing begun of material:  wire_165103082.019
+		processing begun of material:  wire_127063079.019
+		processing begun of material:  wire_084084084.013
+		processing begun of material:  wire_038038000.019
+		processing begun of material:  wire_220220220.025
+		processing begun of material:  wire_165041000.019
+		processing begun of material:  wire_082145165.019
+		processing begun of material:  wire_000000127.019
+		processing begun of material:  wire_127095063.014
+		processing begun of material:  wire_038019019.014
+		processing begun of material:  wire_191127255.014
+		processing begun of material:  wire_082124165.014
+		processing begun of material:  wire_124165082.020
+		processing begun of material:  wire_063095127.014
+		processing begun of material:  wire_159255127.014
+		processing begun of material:  wire_082165145.020
+		processing begun of material:  wire_038000038.020
+		processing begun of material:  wire_165103082.020
+		processing begun of material:  wire_127063079.020
+		processing begun of material:  wire_084084084.014
+		processing begun of material:  wire_038038000.020
+		processing begun of material:  wire_220220220.026
+		processing begun of material:  wire_165041000.020
+		processing begun of material:  wire_082145165.020
+		processing begun of material:  wire_000000127.020
+		processing begun of material:  wire_127095063.019
+		processing begun of material:  wire_038019019.019
+		processing begun of material:  wire_191127255.019
+		processing begun of material:  wire_082124165.019
+		processing begun of material:  wire_124165082.025
+		processing begun of material:  wire_063095127.019
+		processing begun of material:  wire_159255127.019
+		processing begun of material:  wire_082165145.025
+		processing begun of material:  wire_038000038.025
+		processing begun of material:  wire_165103082.025
+		processing begun of material:  wire_127063079.025
+		processing begun of material:  wire_084084084.019
+		processing begun of material:  wire_038038000.025
+		processing begun of material:  wire_220220220.031
+		processing begun of material:  wire_165041000.025
+		processing begun of material:  wire_082145165.025
+		processing begun of material:  wire_000000127.025
+		processing begun of material:  wire_127095063.016
+		processing begun of material:  wire_038019019.016
+		processing begun of material:  wire_191127255.016
+		processing begun of material:  wire_082124165.016
+		processing begun of material:  wire_124165082.022
+		processing begun of material:  wire_063095127.016
+		processing begun of material:  wire_159255127.016
+		processing begun of material:  wire_082165145.022
+		processing begun of material:  wire_038000038.022
+		processing begun of material:  wire_165103082.022
+		processing begun of material:  wire_127063079.022
+		processing begun of material:  wire_084084084.016
+		processing begun of material:  wire_038038000.022
+		processing begun of material:  wire_220220220.028
+		processing begun of material:  wire_165041000.022
+		processing begun of material:  wire_082145165.022
+		processing begun of material:  wire_000000127.022
+		processing begun of material:  wire_127095063.017
+		processing begun of material:  wire_038019019.017
+		processing begun of material:  wire_191127255.017
+		processing begun of material:  wire_082124165.017
+		processing begun of material:  wire_124165082.023
+		processing begun of material:  wire_063095127.017
+		processing begun of material:  wire_159255127.017
+		processing begun of material:  wire_082165145.023
+		processing begun of material:  wire_038000038.023
+		processing begun of material:  wire_165103082.023
+		processing begun of material:  wire_127063079.023
+		processing begun of material:  wire_084084084.017
+		processing begun of material:  wire_038038000.023
+		processing begun of material:  wire_220220220.029
+		processing begun of material:  wire_165041000.023
+		processing begun of material:  wire_082145165.023
+		processing begun of material:  wire_000000127.023
+		processing begun of material:  wire_127095063.018
+		processing begun of material:  wire_038019019.018
+		processing begun of material:  wire_191127255.018
+		processing begun of material:  wire_082124165.018
+		processing begun of material:  wire_124165082.024
+		processing begun of material:  wire_063095127.018
+		processing begun of material:  wire_159255127.018
+		processing begun of material:  wire_082165145.024
+		processing begun of material:  wire_038000038.024
+		processing begun of material:  wire_165103082.024
+		processing begun of material:  wire_127063079.024
+		processing begun of material:  wire_084084084.018
+		processing begun of material:  wire_038038000.024
+		processing begun of material:  wire_220220220.030
+		processing begun of material:  wire_165041000.024
+		processing begun of material:  wire_082145165.024
+		processing begun of material:  wire_000000127.024
+		processing begun of material:  wire_127095063.023
+		processing begun of material:  wire_038019019.023
+		processing begun of material:  wire_191127255.023
+		processing begun of material:  wire_082124165.023
+		processing begun of material:  wire_124165082.029
+		processing begun of material:  wire_063095127.023
+		processing begun of material:  wire_159255127.023
+		processing begun of material:  wire_082165145.029
+		processing begun of material:  wire_038000038.029
+		processing begun of material:  wire_165103082.029
+		processing begun of material:  wire_127063079.029
+		processing begun of material:  wire_084084084.023
+		processing begun of material:  wire_038038000.029
+		processing begun of material:  wire_220220220.035
+		processing begun of material:  wire_165041000.029
+		processing begun of material:  wire_082145165.029
+		processing begun of material:  wire_000000127.029
+		processing begun of material:  wire_127095063.020
+		processing begun of material:  wire_038019019.020
+		processing begun of material:  wire_191127255.020
+		processing begun of material:  wire_082124165.020
+		processing begun of material:  wire_124165082.026
+		processing begun of material:  wire_063095127.020
+		processing begun of material:  wire_159255127.020
+		processing begun of material:  wire_082165145.026
+		processing begun of material:  wire_038000038.026
+		processing begun of material:  wire_165103082.026
+		processing begun of material:  wire_127063079.026
+		processing begun of material:  wire_084084084.020
+		processing begun of material:  wire_038038000.026
+		processing begun of material:  wire_220220220.032
+		processing begun of material:  wire_165041000.026
+		processing begun of material:  wire_082145165.026
+		processing begun of material:  wire_000000127.026
+		processing begun of material:  wire_127095063.021
+		processing begun of material:  wire_038019019.021
+		processing begun of material:  wire_191127255.021
+		processing begun of material:  wire_082124165.021
+		processing begun of material:  wire_124165082.027
+		processing begun of material:  wire_063095127.021
+		processing begun of material:  wire_159255127.021
+		processing begun of material:  wire_082165145.027
+		processing begun of material:  wire_038000038.027
+		processing begun of material:  wire_165103082.027
+		processing begun of material:  wire_127063079.027
+		processing begun of material:  wire_084084084.021
+		processing begun of material:  wire_038038000.027
+		processing begun of material:  wire_220220220.033
+		processing begun of material:  wire_165041000.027
+		processing begun of material:  wire_082145165.027
+		processing begun of material:  wire_000000127.027
+		processing begun of material:  wire_127095063.022
+		processing begun of material:  wire_038019019.022
+		processing begun of material:  wire_191127255.022
+		processing begun of material:  wire_082124165.022
+		processing begun of material:  wire_124165082.028
+		processing begun of material:  wire_063095127.022
+		processing begun of material:  wire_159255127.022
+		processing begun of material:  wire_082165145.028
+		processing begun of material:  wire_038000038.028
+		processing begun of material:  wire_165103082.028
+		processing begun of material:  wire_127063079.028
+		processing begun of material:  wire_084084084.022
+		processing begun of material:  wire_038038000.028
+		processing begun of material:  wire_220220220.034
+		processing begun of material:  wire_165041000.028
+		processing begun of material:  wire_082145165.028
+		processing begun of material:  wire_000000127.028
+		processing begun of material:  wire_127095063.027
+		processing begun of material:  wire_038019019.027
+		processing begun of material:  wire_191127255.027
+		processing begun of material:  wire_082124165.027
+		processing begun of material:  wire_124165082.033
+		processing begun of material:  wire_063095127.027
+		processing begun of material:  wire_159255127.027
+		processing begun of material:  wire_082165145.033
+		processing begun of material:  wire_038000038.033
+		processing begun of material:  wire_165103082.033
+		processing begun of material:  wire_127063079.033
+		processing begun of material:  wire_084084084.027
+		processing begun of material:  wire_038038000.033
+		processing begun of material:  wire_220220220.039
+		processing begun of material:  wire_165041000.033
+		processing begun of material:  wire_082145165.033
+		processing begun of material:  wire_000000127.033
+		processing begun of material:  wire_127095063.024
+		processing begun of material:  wire_038019019.024
+		processing begun of material:  wire_191127255.024
+		processing begun of material:  wire_082124165.024
+		processing begun of material:  wire_124165082.030
+		processing begun of material:  wire_063095127.024
+		processing begun of material:  wire_159255127.024
+		processing begun of material:  wire_082165145.030
+		processing begun of material:  wire_038000038.030
+		processing begun of material:  wire_165103082.030
+		processing begun of material:  wire_127063079.030
+		processing begun of material:  wire_084084084.024
+		processing begun of material:  wire_038038000.030
+		processing begun of material:  wire_220220220.036
+		processing begun of material:  wire_165041000.030
+		processing begun of material:  wire_082145165.030
+		processing begun of material:  wire_000000127.030
+		processing begun of material:  wire_127095063.025
+		processing begun of material:  wire_038019019.025
+		processing begun of material:  wire_191127255.025
+		processing begun of material:  wire_082124165.025
+		processing begun of material:  wire_124165082.031
+		processing begun of material:  wire_063095127.025
+		processing begun of material:  wire_159255127.025
+		processing begun of material:  wire_082165145.031
+		processing begun of material:  wire_038000038.031
+		processing begun of material:  wire_165103082.031
+		processing begun of material:  wire_127063079.031
+		processing begun of material:  wire_084084084.025
+		processing begun of material:  wire_038038000.031
+		processing begun of material:  wire_220220220.037
+		processing begun of material:  wire_165041000.031
+		processing begun of material:  wire_082145165.031
+		processing begun of material:  wire_000000127.031
+		processing begun of material:  wire_127095063.026
+		processing begun of material:  wire_038019019.026
+		processing begun of material:  wire_191127255.026
+		processing begun of material:  wire_082124165.026
+		processing begun of material:  wire_124165082.032
+		processing begun of material:  wire_063095127.026
+		processing begun of material:  wire_159255127.026
+		processing begun of material:  wire_082165145.032
+		processing begun of material:  wire_038000038.032
+		processing begun of material:  wire_165103082.032
+		processing begun of material:  wire_127063079.032
+		processing begun of material:  wire_084084084.026
+		processing begun of material:  wire_038038000.032
+		processing begun of material:  wire_220220220.038
+		processing begun of material:  wire_165041000.032
+		processing begun of material:  wire_082145165.032
+		processing begun of material:  wire_000000127.032
+		processing begun of material:  wire_127095063.043
+		processing begun of material:  wire_038019019.043
+		processing begun of material:  wire_191127255.043
+		processing begun of material:  wire_082124165.043
+		processing begun of material:  wire_124165082.049
+		processing begun of material:  wire_063095127.043
+		processing begun of material:  wire_159255127.043
+		processing begun of material:  wire_082165145.049
+		processing begun of material:  wire_038000038.049
+		processing begun of material:  wire_165103082.049
+		processing begun of material:  wire_127063079.049
+		processing begun of material:  wire_084084084.043
+		processing begun of material:  wire_038038000.049
+		processing begun of material:  wire_220220220.055
+		processing begun of material:  wire_165041000.049
+		processing begun of material:  wire_082145165.049
+		processing begun of material:  wire_000000127.049
+		processing begun of material:  wire_127095063.040
+		processing begun of material:  wire_038019019.040
+		processing begun of material:  wire_191127255.040
+		processing begun of material:  wire_082124165.040
+		processing begun of material:  wire_124165082.046
+		processing begun of material:  wire_063095127.040
+		processing begun of material:  wire_159255127.040
+		processing begun of material:  wire_082165145.046
+		processing begun of material:  wire_038000038.046
+		processing begun of material:  wire_165103082.046
+		processing begun of material:  wire_127063079.046
+		processing begun of material:  wire_084084084.040
+		processing begun of material:  wire_038038000.046
+		processing begun of material:  wire_220220220.052
+		processing begun of material:  wire_165041000.046
+		processing begun of material:  wire_082145165.046
+		processing begun of material:  wire_000000127.046
+		processing begun of material:  wire_127095063.041
+		processing begun of material:  wire_038019019.041
+		processing begun of material:  wire_191127255.041
+		processing begun of material:  wire_082124165.041
+		processing begun of material:  wire_124165082.047
+		processing begun of material:  wire_063095127.041
+		processing begun of material:  wire_159255127.041
+		processing begun of material:  wire_082165145.047
+		processing begun of material:  wire_038000038.047
+		processing begun of material:  wire_165103082.047
+		processing begun of material:  wire_127063079.047
+		processing begun of material:  wire_084084084.041
+		processing begun of material:  wire_038038000.047
+		processing begun of material:  wire_220220220.053
+		processing begun of material:  wire_165041000.047
+		processing begun of material:  wire_082145165.047
+		processing begun of material:  wire_000000127.047
+		processing begun of material:  wire_127095063.042
+		processing begun of material:  wire_038019019.042
+		processing begun of material:  wire_191127255.042
+		processing begun of material:  wire_082124165.042
+		processing begun of material:  wire_124165082.048
+		processing begun of material:  wire_063095127.042
+		processing begun of material:  wire_159255127.042
+		processing begun of material:  wire_082165145.048
+		processing begun of material:  wire_038000038.048
+		processing begun of material:  wire_165103082.048
+		processing begun of material:  wire_127063079.048
+		processing begun of material:  wire_084084084.042
+		processing begun of material:  wire_038038000.048
+		processing begun of material:  wire_220220220.054
+		processing begun of material:  wire_165041000.048
+		processing begun of material:  wire_082145165.048
+		processing begun of material:  wire_000000127.048
+		processing begun of material:  wire_127095063.035
+		processing begun of material:  wire_038019019.035
+		processing begun of material:  wire_191127255.035
+		processing begun of material:  wire_082124165.035
+		processing begun of material:  wire_124165082.041
+		processing begun of material:  wire_063095127.035
+		processing begun of material:  wire_159255127.035
+		processing begun of material:  wire_082165145.041
+		processing begun of material:  wire_038000038.041
+		processing begun of material:  wire_165103082.041
+		processing begun of material:  wire_127063079.041
+		processing begun of material:  wire_084084084.035
+		processing begun of material:  wire_038038000.041
+		processing begun of material:  wire_220220220.047
+		processing begun of material:  wire_165041000.041
+		processing begun of material:  wire_082145165.041
+		processing begun of material:  wire_000000127.041
+		processing begun of material:  wire_127095063.032
+		processing begun of material:  wire_038019019.032
+		processing begun of material:  wire_191127255.032
+		processing begun of material:  wire_082124165.032
+		processing begun of material:  wire_124165082.038
+		processing begun of material:  wire_063095127.032
+		processing begun of material:  wire_159255127.032
+		processing begun of material:  wire_082165145.038
+		processing begun of material:  wire_038000038.038
+		processing begun of material:  wire_165103082.038
+		processing begun of material:  wire_127063079.038
+		processing begun of material:  wire_084084084.032
+		processing begun of material:  wire_038038000.038
+		processing begun of material:  wire_220220220.044
+		processing begun of material:  wire_165041000.038
+		processing begun of material:  wire_082145165.038
+		processing begun of material:  wire_000000127.038
+		processing begun of material:  wire_127095063.033
+		processing begun of material:  wire_038019019.033
+		processing begun of material:  wire_191127255.033
+		processing begun of material:  wire_082124165.033
+		processing begun of material:  wire_124165082.039
+		processing begun of material:  wire_063095127.033
+		processing begun of material:  wire_159255127.033
+		processing begun of material:  wire_082165145.039
+		processing begun of material:  wire_038000038.039
+		processing begun of material:  wire_165103082.039
+		processing begun of material:  wire_127063079.039
+		processing begun of material:  wire_084084084.033
+		processing begun of material:  wire_038038000.039
+		processing begun of material:  wire_220220220.045
+		processing begun of material:  wire_165041000.039
+		processing begun of material:  wire_082145165.039
+		processing begun of material:  wire_000000127.039
+		processing begun of material:  wire_127095063.034
+		processing begun of material:  wire_038019019.034
+		processing begun of material:  wire_191127255.034
+		processing begun of material:  wire_082124165.034
+		processing begun of material:  wire_124165082.040
+		processing begun of material:  wire_063095127.034
+		processing begun of material:  wire_159255127.034
+		processing begun of material:  wire_082165145.040
+		processing begun of material:  wire_038000038.040
+		processing begun of material:  wire_165103082.040
+		processing begun of material:  wire_127063079.040
+		processing begun of material:  wire_084084084.034
+		processing begun of material:  wire_038038000.040
+		processing begun of material:  wire_220220220.046
+		processing begun of material:  wire_165041000.040
+		processing begun of material:  wire_082145165.040
+		processing begun of material:  wire_000000127.040
+		processing begun of material:  wire_127095063.039
+		processing begun of material:  wire_038019019.039
+		processing begun of material:  wire_191127255.039
+		processing begun of material:  wire_082124165.039
+		processing begun of material:  wire_124165082.045
+		processing begun of material:  wire_063095127.039
+		processing begun of material:  wire_159255127.039
+		processing begun of material:  wire_082165145.045
+		processing begun of material:  wire_038000038.045
+		processing begun of material:  wire_165103082.045
+		processing begun of material:  wire_127063079.045
+		processing begun of material:  wire_084084084.039
+		processing begun of material:  wire_038038000.045
+		processing begun of material:  wire_220220220.051
+		processing begun of material:  wire_165041000.045
+		processing begun of material:  wire_082145165.045
+		processing begun of material:  wire_000000127.045
+		processing begun of material:  wire_127095063.036
+		processing begun of material:  wire_038019019.036
+		processing begun of material:  wire_191127255.036
+		processing begun of material:  wire_082124165.036
+		processing begun of material:  wire_124165082.042
+		processing begun of material:  wire_063095127.036
+		processing begun of material:  wire_159255127.036
+		processing begun of material:  wire_082165145.042
+		processing begun of material:  wire_038000038.042
+		processing begun of material:  wire_165103082.042
+		processing begun of material:  wire_127063079.042
+		processing begun of material:  wire_084084084.036
+		processing begun of material:  wire_038038000.042
+		processing begun of material:  wire_220220220.048
+		processing begun of material:  wire_165041000.042
+		processing begun of material:  wire_082145165.042
+		processing begun of material:  wire_000000127.042
+		processing begun of material:  wire_127095063.037
+		processing begun of material:  wire_038019019.037
+		processing begun of material:  wire_191127255.037
+		processing begun of material:  wire_082124165.037
+		processing begun of material:  wire_124165082.043
+		processing begun of material:  wire_063095127.037
+		processing begun of material:  wire_159255127.037
+		processing begun of material:  wire_082165145.043
+		processing begun of material:  wire_038000038.043
+		processing begun of material:  wire_165103082.043
+		processing begun of material:  wire_127063079.043
+		processing begun of material:  wire_084084084.037
+		processing begun of material:  wire_038038000.043
+		processing begun of material:  wire_220220220.049
+		processing begun of material:  wire_165041000.043
+		processing begun of material:  wire_082145165.043
+		processing begun of material:  wire_000000127.043
+		processing begun of material:  wire_127095063.038
+		processing begun of material:  wire_038019019.038
+		processing begun of material:  wire_191127255.038
+		processing begun of material:  wire_082124165.038
+		processing begun of material:  wire_124165082.044
+		processing begun of material:  wire_063095127.038
+		processing begun of material:  wire_159255127.038
+		processing begun of material:  wire_082165145.044
+		processing begun of material:  wire_038000038.044
+		processing begun of material:  wire_165103082.044
+		processing begun of material:  wire_127063079.044
+		processing begun of material:  wire_084084084.038
+		processing begun of material:  wire_038038000.044
+		processing begun of material:  wire_220220220.050
+		processing begun of material:  wire_165041000.044
+		processing begun of material:  wire_082145165.044
+		processing begun of material:  wire_000000127.044
+		processing begun of material:  wire_127095063.044
+		processing begun of material:  wire_038019019.044
+		processing begun of material:  wire_191127255.044
+		processing begun of material:  wire_082124165.044
+		processing begun of material:  wire_124165082.050
+		processing begun of material:  wire_063095127.044
+		processing begun of material:  wire_159255127.044
+		processing begun of material:  wire_082165145.050
+		processing begun of material:  wire_038000038.050
+		processing begun of material:  wire_165103082.050
+		processing begun of material:  wire_127063079.050
+		processing begun of material:  wire_084084084.044
+		processing begun of material:  wire_038038000.050
+		processing begun of material:  wire_220220220.056
+		processing begun of material:  wire_165041000.050
+		processing begun of material:  wire_082145165.050
+		processing begun of material:  wire_000000127.050
+		processing begun of material:  wire_127095063.047
+		processing begun of material:  wire_038019019.047
+		processing begun of material:  wire_191127255.047
+		processing begun of material:  wire_082124165.047
+		processing begun of material:  wire_124165082.053
+		processing begun of material:  wire_063095127.047
+		processing begun of material:  wire_159255127.047
+		processing begun of material:  wire_082165145.053
+		processing begun of material:  wire_038000038.053
+		processing begun of material:  wire_165103082.053
+		processing begun of material:  wire_127063079.053
+		processing begun of material:  wire_084084084.047
+		processing begun of material:  wire_038038000.053
+		processing begun of material:  wire_220220220.059
+		processing begun of material:  wire_165041000.053
+		processing begun of material:  wire_082145165.053
+		processing begun of material:  wire_000000127.053
+		processing begun of material:  wire_127095063.046
+		processing begun of material:  wire_038019019.046
+		processing begun of material:  wire_191127255.046
+		processing begun of material:  wire_082124165.046
+		processing begun of material:  wire_124165082.052
+		processing begun of material:  wire_063095127.046
+		processing begun of material:  wire_159255127.046
+		processing begun of material:  wire_082165145.052
+		processing begun of material:  wire_038000038.052
+		processing begun of material:  wire_165103082.052
+		processing begun of material:  wire_127063079.052
+		processing begun of material:  wire_084084084.046
+		processing begun of material:  wire_038038000.052
+		processing begun of material:  wire_220220220.058
+		processing begun of material:  wire_165041000.052
+		processing begun of material:  wire_082145165.052
+		processing begun of material:  wire_000000127.052
+		processing begun of material:  wire_127095063.045
+		processing begun of material:  wire_038019019.045
+		processing begun of material:  wire_191127255.045
+		processing begun of material:  wire_082124165.045
+		processing begun of material:  wire_124165082.051
+		processing begun of material:  wire_063095127.045
+		processing begun of material:  wire_159255127.045
+		processing begun of material:  wire_082165145.051
+		processing begun of material:  wire_038000038.051
+		processing begun of material:  wire_165103082.051
+		processing begun of material:  wire_127063079.051
+		processing begun of material:  wire_084084084.045
+		processing begun of material:  wire_038038000.051
+		processing begun of material:  wire_220220220.057
+		processing begun of material:  wire_165041000.051
+		processing begun of material:  wire_082145165.051
+		processing begun of material:  wire_000000127.051
+		processing begun of material:  wire_127095063.063
+		processing begun of material:  wire_038019019.063
+		processing begun of material:  wire_191127255.063
+		processing begun of material:  wire_082124165.063
+		processing begun of material:  wire_124165082.069
+		processing begun of material:  wire_063095127.063
+		processing begun of material:  wire_159255127.063
+		processing begun of material:  wire_082165145.069
+		processing begun of material:  wire_038000038.069
+		processing begun of material:  wire_165103082.069
+		processing begun of material:  wire_127063079.069
+		processing begun of material:  wire_084084084.063
+		processing begun of material:  wire_038038000.069
+		processing begun of material:  wire_220220220.075
+		processing begun of material:  wire_165041000.069
+		processing begun of material:  wire_082145165.069
+		processing begun of material:  wire_000000127.069
+		processing begun of material:  wire_127095063.062
+		processing begun of material:  wire_038019019.062
+		processing begun of material:  wire_191127255.062
+		processing begun of material:  wire_082124165.062
+		processing begun of material:  wire_124165082.068
+		processing begun of material:  wire_063095127.062
+		processing begun of material:  wire_159255127.062
+		processing begun of material:  wire_082165145.068
+		processing begun of material:  wire_038000038.068
+		processing begun of material:  wire_165103082.068
+		processing begun of material:  wire_127063079.068
+		processing begun of material:  wire_084084084.062
+		processing begun of material:  wire_038038000.068
+		processing begun of material:  wire_220220220.074
+		processing begun of material:  wire_165041000.068
+		processing begun of material:  wire_082145165.068
+		processing begun of material:  wire_000000127.068
+		processing begun of material:  wire_127095063.061
+		processing begun of material:  wire_038019019.061
+		processing begun of material:  wire_191127255.061
+		processing begun of material:  wire_082124165.061
+		processing begun of material:  wire_124165082.067
+		processing begun of material:  wire_063095127.061
+		processing begun of material:  wire_159255127.061
+		processing begun of material:  wire_082165145.067
+		processing begun of material:  wire_038000038.067
+		processing begun of material:  wire_165103082.067
+		processing begun of material:  wire_127063079.067
+		processing begun of material:  wire_084084084.061
+		processing begun of material:  wire_038038000.067
+		processing begun of material:  wire_220220220.073
+		processing begun of material:  wire_165041000.067
+		processing begun of material:  wire_082145165.067
+		processing begun of material:  wire_000000127.067
+		processing begun of material:  wire_127095063.060
+		processing begun of material:  wire_038019019.060
+		processing begun of material:  wire_191127255.060
+		processing begun of material:  wire_082124165.060
+		processing begun of material:  wire_124165082.066
+		processing begun of material:  wire_063095127.060
+		processing begun of material:  wire_159255127.060
+		processing begun of material:  wire_082165145.066
+		processing begun of material:  wire_038000038.066
+		processing begun of material:  wire_165103082.066
+		processing begun of material:  wire_127063079.066
+		processing begun of material:  wire_084084084.060
+		processing begun of material:  wire_038038000.066
+		processing begun of material:  wire_220220220.072
+		processing begun of material:  wire_165041000.066
+		processing begun of material:  wire_082145165.066
+		processing begun of material:  wire_000000127.066
+		processing begun of material:  wire_127095063.059
+		processing begun of material:  wire_038019019.059
+		processing begun of material:  wire_191127255.059
+		processing begun of material:  wire_082124165.059
+		processing begun of material:  wire_124165082.065
+		processing begun of material:  wire_063095127.059
+		processing begun of material:  wire_159255127.059
+		processing begun of material:  wire_082165145.065
+		processing begun of material:  wire_038000038.065
+		processing begun of material:  wire_165103082.065
+		processing begun of material:  wire_127063079.065
+		processing begun of material:  wire_084084084.059
+		processing begun of material:  wire_038038000.065
+		processing begun of material:  wire_220220220.071
+		processing begun of material:  wire_165041000.065
+		processing begun of material:  wire_082145165.065
+		processing begun of material:  wire_000000127.065
+		processing begun of material:  wire_127095063.058
+		processing begun of material:  wire_038019019.058
+		processing begun of material:  wire_191127255.058
+		processing begun of material:  wire_082124165.058
+		processing begun of material:  wire_124165082.064
+		processing begun of material:  wire_063095127.058
+		processing begun of material:  wire_159255127.058
+		processing begun of material:  wire_082165145.064
+		processing begun of material:  wire_038000038.064
+		processing begun of material:  wire_165103082.064
+		processing begun of material:  wire_127063079.064
+		processing begun of material:  wire_084084084.058
+		processing begun of material:  wire_038038000.064
+		processing begun of material:  wire_220220220.070
+		processing begun of material:  wire_165041000.064
+		processing begun of material:  wire_082145165.064
+		processing begun of material:  wire_000000127.064
+		processing begun of material:  wire_127095063.057
+		processing begun of material:  wire_038019019.057
+		processing begun of material:  wire_191127255.057
+		processing begun of material:  wire_082124165.057
+		processing begun of material:  wire_124165082.063
+		processing begun of material:  wire_063095127.057
+		processing begun of material:  wire_159255127.057
+		processing begun of material:  wire_082165145.063
+		processing begun of material:  wire_038000038.063
+		processing begun of material:  wire_165103082.063
+		processing begun of material:  wire_127063079.063
+		processing begun of material:  wire_084084084.057
+		processing begun of material:  wire_038038000.063
+		processing begun of material:  wire_220220220.069
+		processing begun of material:  wire_165041000.063
+		processing begun of material:  wire_082145165.063
+		processing begun of material:  wire_000000127.063
+		processing begun of material:  wire_127095063.056
+		processing begun of material:  wire_038019019.056
+		processing begun of material:  wire_191127255.056
+		processing begun of material:  wire_082124165.056
+		processing begun of material:  wire_124165082.062
+		processing begun of material:  wire_063095127.056
+		processing begun of material:  wire_159255127.056
+		processing begun of material:  wire_082165145.062
+		processing begun of material:  wire_038000038.062
+		processing begun of material:  wire_165103082.062
+		processing begun of material:  wire_127063079.062
+		processing begun of material:  wire_084084084.056
+		processing begun of material:  wire_038038000.062
+		processing begun of material:  wire_220220220.068
+		processing begun of material:  wire_165041000.062
+		processing begun of material:  wire_082145165.062
+		processing begun of material:  wire_000000127.062
+		processing begun of material:  wire_127095063.055
+		processing begun of material:  wire_038019019.055
+		processing begun of material:  wire_191127255.055
+		processing begun of material:  wire_082124165.055
+		processing begun of material:  wire_124165082.061
+		processing begun of material:  wire_063095127.055
+		processing begun of material:  wire_159255127.055
+		processing begun of material:  wire_082165145.061
+		processing begun of material:  wire_038000038.061
+		processing begun of material:  wire_165103082.061
+		processing begun of material:  wire_127063079.061
+		processing begun of material:  wire_084084084.055
+		processing begun of material:  wire_038038000.061
+		processing begun of material:  wire_220220220.067
+		processing begun of material:  wire_165041000.061
+		processing begun of material:  wire_082145165.061
+		processing begun of material:  wire_000000127.061
+		processing begun of material:  wire_127095063.054
+		processing begun of material:  wire_038019019.054
+		processing begun of material:  wire_191127255.054
+		processing begun of material:  wire_082124165.054
+		processing begun of material:  wire_124165082.060
+		processing begun of material:  wire_063095127.054
+		processing begun of material:  wire_159255127.054
+		processing begun of material:  wire_082165145.060
+		processing begun of material:  wire_038000038.060
+		processing begun of material:  wire_165103082.060
+		processing begun of material:  wire_127063079.060
+		processing begun of material:  wire_084084084.054
+		processing begun of material:  wire_038038000.060
+		processing begun of material:  wire_220220220.066
+		processing begun of material:  wire_165041000.060
+		processing begun of material:  wire_082145165.060
+		processing begun of material:  wire_000000127.060
+		processing begun of material:  wire_127095063.053
+		processing begun of material:  wire_038019019.053
+		processing begun of material:  wire_191127255.053
+		processing begun of material:  wire_082124165.053
+		processing begun of material:  wire_124165082.059
+		processing begun of material:  wire_063095127.053
+		processing begun of material:  wire_159255127.053
+		processing begun of material:  wire_082165145.059
+		processing begun of material:  wire_038000038.059
+		processing begun of material:  wire_165103082.059
+		processing begun of material:  wire_127063079.059
+		processing begun of material:  wire_084084084.053
+		processing begun of material:  wire_038038000.059
+		processing begun of material:  wire_220220220.065
+		processing begun of material:  wire_165041000.059
+		processing begun of material:  wire_082145165.059
+		processing begun of material:  wire_000000127.059
+		processing begun of material:  wire_127095063.052
+		processing begun of material:  wire_038019019.052
+		processing begun of material:  wire_191127255.052
+		processing begun of material:  wire_082124165.052
+		processing begun of material:  wire_124165082.058
+		processing begun of material:  wire_063095127.052
+		processing begun of material:  wire_159255127.052
+		processing begun of material:  wire_082165145.058
+		processing begun of material:  wire_038000038.058
+		processing begun of material:  wire_165103082.058
+		processing begun of material:  wire_127063079.058
+		processing begun of material:  wire_084084084.052
+		processing begun of material:  wire_038038000.058
+		processing begun of material:  wire_220220220.064
+		processing begun of material:  wire_165041000.058
+		processing begun of material:  wire_082145165.058
+		processing begun of material:  wire_000000127.058
+		processing begun of material:  wire_127095063.051
+		processing begun of material:  wire_038019019.051
+		processing begun of material:  wire_191127255.051
+		processing begun of material:  wire_082124165.051
+		processing begun of material:  wire_124165082.057
+		processing begun of material:  wire_063095127.051
+		processing begun of material:  wire_159255127.051
+		processing begun of material:  wire_082165145.057
+		processing begun of material:  wire_038000038.057
+		processing begun of material:  wire_165103082.057
+		processing begun of material:  wire_127063079.057
+		processing begun of material:  wire_084084084.051
+		processing begun of material:  wire_038038000.057
+		processing begun of material:  wire_220220220.063
+		processing begun of material:  wire_165041000.057
+		processing begun of material:  wire_082145165.057
+		processing begun of material:  wire_000000127.057
+		processing begun of material:  wire_127095063.050
+		processing begun of material:  wire_038019019.050
+		processing begun of material:  wire_191127255.050
+		processing begun of material:  wire_082124165.050
+		processing begun of material:  wire_124165082.056
+		processing begun of material:  wire_063095127.050
+		processing begun of material:  wire_159255127.050
+		processing begun of material:  wire_082165145.056
+		processing begun of material:  wire_038000038.056
+		processing begun of material:  wire_165103082.056
+		processing begun of material:  wire_127063079.056
+		processing begun of material:  wire_084084084.050
+		processing begun of material:  wire_038038000.056
+		processing begun of material:  wire_220220220.062
+		processing begun of material:  wire_165041000.056
+		processing begun of material:  wire_082145165.056
+		processing begun of material:  wire_000000127.056
+		processing begun of material:  wire_127095063.049
+		processing begun of material:  wire_038019019.049
+		processing begun of material:  wire_191127255.049
+		processing begun of material:  wire_082124165.049
+		processing begun of material:  wire_124165082.055
+		processing begun of material:  wire_063095127.049
+		processing begun of material:  wire_159255127.049
+		processing begun of material:  wire_082165145.055
+		processing begun of material:  wire_038000038.055
+		processing begun of material:  wire_165103082.055
+		processing begun of material:  wire_127063079.055
+		processing begun of material:  wire_084084084.049
+		processing begun of material:  wire_038038000.055
+		processing begun of material:  wire_220220220.061
+		processing begun of material:  wire_165041000.055
+		processing begun of material:  wire_082145165.055
+		processing begun of material:  wire_000000127.055
+		processing begun of material:  wire_127095063.048
+		processing begun of material:  wire_038019019.048
+		processing begun of material:  wire_191127255.048
+		processing begun of material:  wire_082124165.048
+		processing begun of material:  wire_124165082.054
+		processing begun of material:  wire_063095127.048
+		processing begun of material:  wire_159255127.048
+		processing begun of material:  wire_082165145.054
+		processing begun of material:  wire_038000038.054
+		processing begun of material:  wire_165103082.054
+		processing begun of material:  wire_127063079.054
+		processing begun of material:  wire_084084084.048
+		processing begun of material:  wire_038038000.054
+		processing begun of material:  wire_220220220.060
+		processing begun of material:  wire_165041000.054
+		processing begun of material:  wire_082145165.054
+		processing begun of material:  wire_000000127.054
+			processing texture Ground037_2K_Color2
+				texture type:  diffuseTexture, mapped using: "UVMap"
+			processing texture Ground037_2K_Roughness
+				WARNING: Exception during copy:
+					[Errno 2] No such file or directory: 'C:\\Users\\jrejo\\OneDrive\\Documents\\Insys development\\Models\\Maps\\..\\..\\Coding\\insys-game\\public\\Textures\\Grass\\Ground037_2K_Roughness.jpg'
+				texture type:  value not meaningful 2, mapped using: "UVMap"
+		processing begun of multimaterial:  suburbia_map.Multimaterial#0
+		Custom split normals with tangents being used
+		num positions      :  1607
+		num normals        :  1607
+		num tangents       :  6428
+		num uvs            :  3214
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  652
+	processing begun of mesh:  flowerpot
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		processing begun of material:  Material.042
+		processing begun of multimaterial:  suburbia_map.Multimaterial#1
+		Custom split normals with tangents being used
+		num positions      :  3816
+		num normals        :  3816
+		num tangents       :  15264
+		num uvs            :  7632
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1532
+	processing begun of mesh:  flowerpot.002
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		processing begun of material:  Material.042
+		registered as also a user of material:  wire_127095063.001
+		registered as also a user of material:  wire_038019019.001
+		registered as also a user of material:  wire_191127255.001
+		registered as also a user of material:  wire_082124165.001
+		registered as also a user of material:  wire_124165082.002
+		registered as also a user of material:  wire_063095127.001
+		registered as also a user of material:  wire_159255127.001
+		registered as also a user of material:  wire_082165145.001
+		registered as also a user of material:  wire_038000038.001
+		registered as also a user of material:  wire_165103082.001
+		registered as also a user of material:  wire_127063079.001
+		registered as also a user of material:  wire_084084084.001
+		registered as also a user of material:  wire_038038000.002
+		registered as also a user of material:  wire_220220220.002
+		registered as also a user of material:  wire_165041000.001
+		registered as also a user of material:  wire_082145165.001
+		registered as also a user of material:  wire_000000127.001
+		registered as also a user of material:  Material.042
+		processing begun of multimaterial:  suburbia_map.Multimaterial#2
+		Custom split normals with tangents being used
+		num positions      :  3833
+		num normals        :  3833
+		num tangents       :  15332
+		num uvs            :  7666
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1532
+	processing begun of mesh:  flowerpot.004
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		processing begun of material:  Material.042
+		registered as also a user of material:  wire_127095063.001
+		registered as also a user of material:  wire_038019019.001
+		registered as also a user of material:  wire_191127255.001
+		registered as also a user of material:  wire_082124165.001
+		registered as also a user of material:  wire_124165082.002
+		registered as also a user of material:  wire_063095127.001
+		registered as also a user of material:  wire_159255127.001
+		registered as also a user of material:  wire_082165145.001
+		registered as also a user of material:  wire_038000038.001
+		registered as also a user of material:  wire_165103082.001
+		registered as also a user of material:  wire_127063079.001
+		registered as also a user of material:  wire_084084084.001
+		registered as also a user of material:  wire_038038000.002
+		registered as also a user of material:  wire_220220220.002
+		registered as also a user of material:  wire_165041000.001
+		registered as also a user of material:  wire_082145165.001
+		registered as also a user of material:  wire_000000127.001
+		registered as also a user of material:  Material.042
+		processing begun of multimaterial:  suburbia_map.Multimaterial#3
+		Custom split normals with tangents being used
+		num positions      :  3842
+		num normals        :  3842
+		num tangents       :  15368
+		num uvs            :  7684
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1532
+	processing begun of mesh:  flowerpot.005
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		processing begun of material:  Material.042
+		registered as also a user of material:  wire_127095063.001
+		registered as also a user of material:  wire_038019019.001
+		registered as also a user of material:  wire_191127255.001
+		registered as also a user of material:  wire_082124165.001
+		registered as also a user of material:  wire_124165082.002
+		registered as also a user of material:  wire_063095127.001
+		registered as also a user of material:  wire_159255127.001
+		registered as also a user of material:  wire_082165145.001
+		registered as also a user of material:  wire_038000038.001
+		registered as also a user of material:  wire_165103082.001
+		registered as also a user of material:  wire_127063079.001
+		registered as also a user of material:  wire_084084084.001
+		registered as also a user of material:  wire_038038000.002
+		registered as also a user of material:  wire_220220220.002
+		registered as also a user of material:  wire_165041000.001
+		registered as also a user of material:  wire_082145165.001
+		registered as also a user of material:  wire_000000127.001
+		registered as also a user of material:  Material.042
+		processing begun of multimaterial:  suburbia_map.Multimaterial#4
+		Custom split normals with tangents being used
+		num positions      :  3835
+		num normals        :  3835
+		num tangents       :  15340
+		num uvs            :  7670
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1532
+	processing begun of mesh:  flowerpot.001
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		processing begun of material:  Material.042
+		registered as also a user of material:  wire_127095063.001
+		registered as also a user of material:  wire_038019019.001
+		registered as also a user of material:  wire_191127255.001
+		registered as also a user of material:  wire_082124165.001
+		registered as also a user of material:  wire_124165082.002
+		registered as also a user of material:  wire_063095127.001
+		registered as also a user of material:  wire_159255127.001
+		registered as also a user of material:  wire_082165145.001
+		registered as also a user of material:  wire_038000038.001
+		registered as also a user of material:  wire_165103082.001
+		registered as also a user of material:  wire_127063079.001
+		registered as also a user of material:  wire_084084084.001
+		registered as also a user of material:  wire_038038000.002
+		registered as also a user of material:  wire_220220220.002
+		registered as also a user of material:  wire_165041000.001
+		registered as also a user of material:  wire_082145165.001
+		registered as also a user of material:  wire_000000127.001
+		registered as also a user of material:  Material.042
+		processing begun of multimaterial:  suburbia_map.Multimaterial#5
+		Custom split normals with tangents being used
+		num positions      :  3836
+		num normals        :  3836
+		num tangents       :  15344
+		num uvs            :  7672
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1532
+	processing begun of mesh:  flowerpot.003
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		processing begun of material:  Material.042
+		registered as also a user of material:  wire_127095063.001
+		registered as also a user of material:  wire_038019019.001
+		registered as also a user of material:  wire_191127255.001
+		registered as also a user of material:  wire_082124165.001
+		registered as also a user of material:  wire_124165082.002
+		registered as also a user of material:  wire_063095127.001
+		registered as also a user of material:  wire_159255127.001
+		registered as also a user of material:  wire_082165145.001
+		registered as also a user of material:  wire_038000038.001
+		registered as also a user of material:  wire_165103082.001
+		registered as also a user of material:  wire_127063079.001
+		registered as also a user of material:  wire_084084084.001
+		registered as also a user of material:  wire_038038000.002
+		registered as also a user of material:  wire_220220220.002
+		registered as also a user of material:  wire_165041000.001
+		registered as also a user of material:  wire_082145165.001
+		registered as also a user of material:  wire_000000127.001
+		registered as also a user of material:  Material.042
+		processing begun of multimaterial:  suburbia_map.Multimaterial#6
+		Custom split normals with tangents being used
+		num positions      :  3817
+		num normals        :  3817
+		num tangents       :  15268
+		num uvs            :  7634
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1532
+	processing begun of mesh:  building
+		processing begun of material:  wire_124165082.011
+		processing begun of material:  wire_220220220.011
+		processing begun of material:  wire_082165145.003
+		processing begun of material:  wire_038000038.003
+		processing begun of material:  wire_165103082.003
+		processing begun of material:  wire_127063079.003
+		processing begun of material:  wire_165041000.003
+		processing begun of material:  wire_082145165.003
+		processing begun of material:  wire_000000127.003
+		processing begun of material:  wire_220220220.003
+		processing begun of material:  wire_038038000.001
+		processing begun of multimaterial:  suburbia_map.Multimaterial#7
+		Custom split normals with tangents being used
+		num positions      :  9019
+		num normals        :  9019
+		num tangents       :  36076
+		num uvs            :  18038
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  3214
+	processing begun of mesh:  ladder1
+		processing begun of material:  wire_127095063.004
+		processing begun of material:  wire_038019019.004
+		processing begun of material:  wire_191127255.004
+		processing begun of material:  wire_082124165.004
+		processing begun of material:  wire_124165082.004
+		processing begun of material:  wire_063095127.004
+		processing begun of material:  wire_159255127.004
+		processing begun of material:  wire_082165145.004
+		processing begun of material:  wire_038000038.004
+		processing begun of material:  wire_165103082.004
+		processing begun of material:  wire_127063079.004
+		processing begun of material:  wire_084084084.004
+		processing begun of material:  wire_038038000.004
+		processing begun of material:  wire_220220220.004
+		processing begun of material:  wire_165041000.004
+		processing begun of material:  wire_082145165.004
+		processing begun of material:  wire_000000127.004
+		processing begun of multimaterial:  suburbia_map.Multimaterial#8
+		Custom split normals with tangents being used
+		num positions      :  1155
+		num normals        :  1155
+		num tangents       :  4620
+		num uvs            :  2310
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  582
+	processing begun of mesh:  border_lg1
+		processing begun of material:  Material.005
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2
+		processing begun of material:  Material.004
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1
+		processing begun of material:  Material.002
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2
+		processing begun of material:  Material
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm3
+		processing begun of material:  Material.001
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  ladder1.003
+		processing begun of material:  wire_127095063.004
+		processing begun of material:  wire_038019019.004
+		processing begun of material:  wire_191127255.004
+		processing begun of material:  wire_082124165.004
+		processing begun of material:  wire_124165082.004
+		processing begun of material:  wire_063095127.004
+		processing begun of material:  wire_159255127.004
+		processing begun of material:  wire_082165145.004
+		processing begun of material:  wire_038000038.004
+		processing begun of material:  wire_165103082.004
+		processing begun of material:  wire_127063079.004
+		processing begun of material:  wire_084084084.004
+		processing begun of material:  wire_038038000.004
+		processing begun of material:  wire_220220220.004
+		processing begun of material:  wire_165041000.004
+		processing begun of material:  wire_082145165.004
+		processing begun of material:  wire_000000127.004
+		processing begun of material:  wire_127095063.088
+		processing begun of material:  wire_038019019.088
+		processing begun of material:  wire_191127255.088
+		processing begun of material:  wire_082124165.088
+		processing begun of material:  wire_124165082.096
+		processing begun of material:  wire_063095127.088
+		processing begun of material:  wire_159255127.088
+		processing begun of material:  wire_082165145.096
+		processing begun of material:  wire_038000038.097
+		processing begun of material:  wire_165103082.096
+		processing begun of material:  wire_127063079.096
+		processing begun of material:  wire_084084084.088
+		processing begun of material:  wire_038038000.096
+		processing begun of material:  wire_220220220.104
+		processing begun of material:  wire_165041000.096
+		processing begun of material:  wire_082145165.096
+		processing begun of material:  wire_000000127.096
+		registered as also a user of material:  wire_127095063.004
+		registered as also a user of material:  wire_038019019.004
+		registered as also a user of material:  wire_191127255.004
+		registered as also a user of material:  wire_082124165.004
+		registered as also a user of material:  wire_124165082.004
+		registered as also a user of material:  wire_063095127.004
+		registered as also a user of material:  wire_159255127.004
+		registered as also a user of material:  wire_082165145.004
+		registered as also a user of material:  wire_038000038.004
+		registered as also a user of material:  wire_165103082.004
+		registered as also a user of material:  wire_127063079.004
+		registered as also a user of material:  wire_084084084.004
+		registered as also a user of material:  wire_038038000.004
+		registered as also a user of material:  wire_220220220.004
+		registered as also a user of material:  wire_165041000.004
+		registered as also a user of material:  wire_082145165.004
+		registered as also a user of material:  wire_000000127.004
+		processing begun of multimaterial:  suburbia_map.Multimaterial#9
+		Custom split normals with tangents being used
+		num positions      :  2315
+		num normals        :  2315
+		num tangents       :  9260
+		num uvs            :  4630
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1164
+	processing begun of mesh:  border_lg1.006
+		processing begun of material:  Material.005
+		registered as also a user of material:  Material.005
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2.006
+		processing begun of material:  Material.004
+		registered as also a user of material:  Material.004
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1.006
+		processing begun of material:  Material.002
+		registered as also a user of material:  Material.002
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2.006
+		processing begun of material:  Material
+		registered as also a user of material:  Material
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm3.003
+		processing begun of material:  Material.001
+		registered as also a user of material:  Material.001
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  building.004
+		processing begun of material:  wire_124165082.095
+		processing begun of material:  wire_220220220.103
+		processing begun of material:  wire_082165145.095
+		processing begun of material:  wire_038000038.096
+		processing begun of material:  wire_165103082.095
+		processing begun of material:  wire_127063079.095
+		processing begun of material:  wire_165041000.095
+		processing begun of material:  wire_082145165.095
+		processing begun of material:  wire_000000127.095
+		processing begun of material:  wire_220220220.102
+		processing begun of material:  wire_038038000.095
+		processing begun of material:  wire_124165082.011
+		processing begun of material:  wire_220220220.011
+		processing begun of material:  wire_082165145.003
+		processing begun of material:  wire_038000038.003
+		processing begun of material:  wire_165103082.003
+		processing begun of material:  wire_127063079.003
+		processing begun of material:  wire_165041000.003
+		processing begun of material:  wire_082145165.003
+		processing begun of material:  wire_000000127.003
+		processing begun of material:  wire_220220220.003
+		processing begun of material:  wire_038038000.001
+		registered as also a user of material:  wire_124165082.011
+		registered as also a user of material:  wire_220220220.011
+		registered as also a user of material:  wire_082165145.003
+		registered as also a user of material:  wire_038000038.003
+		registered as also a user of material:  wire_165103082.003
+		registered as also a user of material:  wire_127063079.003
+		registered as also a user of material:  wire_165041000.003
+		registered as also a user of material:  wire_082145165.003
+		registered as also a user of material:  wire_000000127.003
+		registered as also a user of material:  wire_220220220.003
+		registered as also a user of material:  wire_038038000.001
+		processing begun of multimaterial:  suburbia_map.Multimaterial#10
+		Custom split normals with tangents being used
+		num positions      :  18019
+		num normals        :  18019
+		num tangents       :  72076
+		num uvs            :  36038
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  6428
+	processing begun of mesh:  border_lg1.007
+		processing begun of material:  Material.038
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg1.001
+		processing begun of material:  Material.006
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2.001
+		processing begun of material:  Material.007
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1.001
+		processing begun of material:  Material.009
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2.001
+		processing begun of material:  Material.011
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm3.001
+		processing begun of material:  Material.010
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm4.001
+		processing begun of material:  Material.008
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  building.001
+		processing begun of material:  wire_124165082.001
+		processing begun of material:  wire_220220220.001
+		processing begun of material:  wire_082165145.006
+		processing begun of material:  wire_038000038.006
+		processing begun of material:  wire_165103082.006
+		processing begun of material:  wire_127063079.006
+		processing begun of material:  wire_165041000.006
+		processing begun of material:  wire_082145165.006
+		processing begun of material:  wire_000000127.006
+		processing begun of material:  wire_220220220.007
+		processing begun of material:  wire_038038000.006
+		processing begun of multimaterial:  suburbia_map.Multimaterial#11
+		Custom split normals with tangents being used
+		num positions      :  8982
+		num normals        :  8982
+		num tangents       :  35928
+		num uvs            :  17964
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  3214
+	processing begun of mesh:  ladder2.001
+		processing begun of material:  wire_127095063.001
+		processing begun of material:  wire_038019019.001
+		processing begun of material:  wire_191127255.001
+		processing begun of material:  wire_082124165.001
+		processing begun of material:  wire_124165082.002
+		processing begun of material:  wire_063095127.001
+		processing begun of material:  wire_159255127.001
+		processing begun of material:  wire_082165145.001
+		processing begun of material:  wire_038000038.001
+		processing begun of material:  wire_165103082.001
+		processing begun of material:  wire_127063079.001
+		processing begun of material:  wire_084084084.001
+		processing begun of material:  wire_038038000.002
+		processing begun of material:  wire_220220220.002
+		processing begun of material:  wire_165041000.001
+		processing begun of material:  wire_082145165.001
+		processing begun of material:  wire_000000127.001
+		registered as also a user of material:  wire_127095063.001
+		registered as also a user of material:  wire_038019019.001
+		registered as also a user of material:  wire_191127255.001
+		registered as also a user of material:  wire_082124165.001
+		registered as also a user of material:  wire_124165082.002
+		registered as also a user of material:  wire_063095127.001
+		registered as also a user of material:  wire_159255127.001
+		registered as also a user of material:  wire_082165145.001
+		registered as also a user of material:  wire_038000038.001
+		registered as also a user of material:  wire_165103082.001
+		registered as also a user of material:  wire_127063079.001
+		registered as also a user of material:  wire_084084084.001
+		registered as also a user of material:  wire_038038000.002
+		registered as also a user of material:  wire_220220220.002
+		registered as also a user of material:  wire_165041000.001
+		registered as also a user of material:  wire_082145165.001
+		registered as also a user of material:  wire_000000127.001
+		processing begun of multimaterial:  suburbia_map.Multimaterial#12
+		Custom split normals with tangents being used
+		num positions      :  1154
+		num normals        :  1154
+		num tangents       :  4616
+		num uvs            :  2308
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  582
+	processing begun of mesh:  border_lg1.002
+		processing begun of material:  Material.017
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2.002
+		processing begun of material:  Material.016
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1.002
+		processing begun of material:  Material.014
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2.002
+		processing begun of material:  Material.012
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  block.003
+		processing begun of material:  wire_124165082.005
+		processing begun of material:  wire_220220220.005
+		processing begun of material:  wire_082165145.005
+		processing begun of material:  wire_038000038.005
+		processing begun of material:  wire_165103082.005
+		processing begun of material:  wire_127063079.005
+		processing begun of material:  wire_165041000.005
+		processing begun of material:  wire_082145165.005
+		processing begun of material:  wire_000000127.005
+		processing begun of material:  wire_220220220.009
+		processing begun of material:  wire_038038000.005
+		processing begun of multimaterial:  suburbia_map.Multimaterial#13
+		Custom split normals with tangents being used
+		num positions      :  3685
+		num normals        :  3685
+		num tangents       :  14740
+		num uvs            :  7370
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1310
+		WARNING: # of 0 area faces found:  24
+	processing begun of mesh:  block.001
+		processing begun of material:  wire_124165082.009
+		processing begun of material:  wire_220220220.013
+		processing begun of material:  wire_082165145.010
+		processing begun of material:  wire_038000038.010
+		processing begun of material:  wire_165103082.010
+		processing begun of material:  wire_127063079.010
+		processing begun of material:  wire_165041000.010
+		processing begun of material:  wire_082145165.010
+		processing begun of material:  wire_000000127.010
+		processing begun of material:  wire_220220220.014
+		processing begun of material:  wire_038038000.010
+		processing begun of multimaterial:  suburbia_map.Multimaterial#14
+		Custom split normals with tangents being used
+		num positions      :  1850
+		num normals        :  1850
+		num tangents       :  7400
+		num uvs            :  3700
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  680
+		WARNING: # of 0 area faces found:  24
+	processing begun of mesh:  border_lg1.003
+		processing begun of material:  Material.018
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2.003
+		processing begun of material:  Material.019
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1.003
+		processing begun of material:  Material.020
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2.003
+		processing begun of material:  Material.021
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  block.002
+		processing begun of material:  wire_124165082.010
+		processing begun of material:  wire_220220220.016
+		processing begun of material:  wire_082165145.011
+		processing begun of material:  wire_038000038.011
+		processing begun of material:  wire_165103082.011
+		processing begun of material:  wire_127063079.011
+		processing begun of material:  wire_165041000.011
+		processing begun of material:  wire_082145165.011
+		processing begun of material:  wire_000000127.011
+		processing begun of material:  wire_220220220.015
+		processing begun of material:  wire_038038000.011
+		processing begun of multimaterial:  suburbia_map.Multimaterial#15
+		Custom split normals with tangents being used
+		num positions      :  3681
+		num normals        :  3681
+		num tangents       :  14724
+		num uvs            :  7362
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1310
+		WARNING: # of 0 area faces found:  24
+	processing begun of mesh:  border_sm1.004
+		processing begun of material:  Material.023
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2.004
+		processing begun of material:  Material.022
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm4.003
+		processing begun of material:  Material.047
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm4.004
+		processing begun of material:  Material.048
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  ladder1.004
+		processing begun of material:  wire_127095063.119
+		processing begun of material:  wire_038019019.119
+		processing begun of material:  wire_191127255.119
+		processing begun of material:  wire_082124165.119
+		processing begun of material:  wire_124165082.127
+		processing begun of material:  wire_063095127.119
+		processing begun of material:  wire_159255127.119
+		processing begun of material:  wire_082165145.127
+		processing begun of material:  wire_038000038.128
+		processing begun of material:  wire_165103082.127
+		processing begun of material:  wire_127063079.127
+		processing begun of material:  wire_084084084.119
+		processing begun of material:  wire_038038000.127
+		processing begun of material:  wire_220220220.135
+		processing begun of material:  wire_165041000.127
+		processing begun of material:  wire_082145165.127
+		processing begun of material:  wire_000000127.126
+		processing begun of multimaterial:  suburbia_map.Multimaterial#16
+		Custom split normals with tangents being used
+		num positions      :  1155
+		num normals        :  1155
+		num tangents       :  4620
+		num uvs            :  2310
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  582
+	processing begun of mesh:  border_lg1.005
+		processing begun of material:  Material.031
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2.005
+		processing begun of material:  Material.030
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1.005
+		processing begun of material:  Material.028
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2.005
+		processing begun of material:  Material.026
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm3.002
+		processing begun of material:  Material.027
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm4.002
+		processing begun of material:  Material.029
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  building.002
+		processing begun of material:  wire_124165082.014
+		processing begun of material:  wire_220220220.020
+		processing begun of material:  wire_082165145.012
+		processing begun of material:  wire_038000038.012
+		processing begun of material:  wire_165103082.012
+		processing begun of material:  wire_127063079.012
+		processing begun of material:  wire_165041000.012
+		processing begun of material:  wire_082145165.012
+		processing begun of material:  wire_000000127.012
+		processing begun of material:  wire_220220220.017
+		processing begun of material:  wire_038038000.012
+		processing begun of multimaterial:  suburbia_map.Multimaterial#17
+		Custom split normals with tangents being used
+		num positions      :  9053
+		num normals        :  9053
+		num tangents       :  36212
+		num uvs            :  18106
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  3214
+	processing begun of mesh:  ladder1.002
+		processing begun of material:  wire_127095063.007
+		processing begun of material:  wire_038019019.007
+		processing begun of material:  wire_191127255.007
+		processing begun of material:  wire_082124165.007
+		processing begun of material:  wire_124165082.012
+		processing begun of material:  wire_063095127.007
+		processing begun of material:  wire_159255127.007
+		processing begun of material:  wire_082165145.013
+		processing begun of material:  wire_038000038.013
+		processing begun of material:  wire_165103082.013
+		processing begun of material:  wire_127063079.013
+		processing begun of material:  wire_084084084.007
+		processing begun of material:  wire_038038000.013
+		processing begun of material:  wire_220220220.018
+		processing begun of material:  wire_165041000.013
+		processing begun of material:  wire_082145165.013
+		processing begun of material:  wire_000000127.013
+		processing begun of multimaterial:  suburbia_map.Multimaterial#18
+		Custom split normals with tangents being used
+		num positions      :  1155
+		num normals        :  1155
+		num tangents       :  4620
+		num uvs            :  2310
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  582
+	processing begun of mesh:  barricade
+		processing begun of material:  wire_127095063.089
+		processing begun of material:  wire_038019019.089
+		processing begun of material:  wire_191127255.089
+		processing begun of material:  wire_082124165.089
+		processing begun of material:  wire_124165082.097
+		processing begun of material:  wire_063095127.089
+		processing begun of material:  wire_159255127.089
+		processing begun of material:  wire_082165145.097
+		processing begun of material:  wire_038000038.098
+		processing begun of material:  wire_165103082.097
+		processing begun of material:  wire_127063079.097
+		processing begun of material:  wire_084084084.089
+		processing begun of material:  wire_038038000.097
+		processing begun of material:  wire_220220220.105
+		processing begun of material:  wire_165041000.097
+		processing begun of material:  wire_082145165.097
+		processing begun of material:  wire_000000127.097
+		processing begun of multimaterial:  suburbia_map.Multimaterial#19
+		Custom split normals with tangents being used
+		num positions      :  664
+		num normals        :  664
+		num tangents       :  2656
+		num uvs            :  1328
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.001
+		processing begun of material:  wire_127095063.090
+		processing begun of material:  wire_038019019.090
+		processing begun of material:  wire_191127255.090
+		processing begun of material:  wire_082124165.090
+		processing begun of material:  wire_124165082.098
+		processing begun of material:  wire_063095127.090
+		processing begun of material:  wire_159255127.090
+		processing begun of material:  wire_082165145.098
+		processing begun of material:  wire_038000038.099
+		processing begun of material:  wire_165103082.098
+		processing begun of material:  wire_127063079.098
+		processing begun of material:  wire_084084084.090
+		processing begun of material:  wire_038038000.098
+		processing begun of material:  wire_220220220.106
+		processing begun of material:  wire_165041000.098
+		processing begun of material:  wire_082145165.098
+		processing begun of material:  wire_000000127.098
+		processing begun of multimaterial:  suburbia_map.Multimaterial#20
+		Custom split normals with tangents being used
+		num positions      :  662
+		num normals        :  662
+		num tangents       :  2648
+		num uvs            :  1324
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.002
+		processing begun of material:  wire_127095063.091
+		processing begun of material:  wire_038019019.091
+		processing begun of material:  wire_191127255.091
+		processing begun of material:  wire_082124165.091
+		processing begun of material:  wire_124165082.099
+		processing begun of material:  wire_063095127.091
+		processing begun of material:  wire_159255127.091
+		processing begun of material:  wire_082165145.099
+		processing begun of material:  wire_038000038.100
+		processing begun of material:  wire_165103082.099
+		processing begun of material:  wire_127063079.099
+		processing begun of material:  wire_084084084.091
+		processing begun of material:  wire_038038000.099
+		processing begun of material:  wire_220220220.107
+		processing begun of material:  wire_165041000.099
+		processing begun of material:  wire_082145165.099
+		processing begun of material:  wire_000000127.099
+		processing begun of multimaterial:  suburbia_map.Multimaterial#21
+		Custom split normals with tangents being used
+		num positions      :  665
+		num normals        :  665
+		num tangents       :  2660
+		num uvs            :  1330
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.003
+		processing begun of material:  wire_127095063.092
+		processing begun of material:  wire_038019019.092
+		processing begun of material:  wire_191127255.092
+		processing begun of material:  wire_082124165.092
+		processing begun of material:  wire_124165082.100
+		processing begun of material:  wire_063095127.092
+		processing begun of material:  wire_159255127.092
+		processing begun of material:  wire_082165145.100
+		processing begun of material:  wire_038000038.101
+		processing begun of material:  wire_165103082.100
+		processing begun of material:  wire_127063079.100
+		processing begun of material:  wire_084084084.092
+		processing begun of material:  wire_038038000.100
+		processing begun of material:  wire_220220220.108
+		processing begun of material:  wire_165041000.100
+		processing begun of material:  wire_082145165.100
+		processing begun of material:  wire_000000127.100
+		processing begun of multimaterial:  suburbia_map.Multimaterial#22
+		Custom split normals with tangents being used
+		num positions      :  666
+		num normals        :  666
+		num tangents       :  2664
+		num uvs            :  1332
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.004
+		processing begun of material:  wire_127095063.093
+		processing begun of material:  wire_038019019.093
+		processing begun of material:  wire_191127255.093
+		processing begun of material:  wire_082124165.093
+		processing begun of material:  wire_124165082.101
+		processing begun of material:  wire_063095127.093
+		processing begun of material:  wire_159255127.093
+		processing begun of material:  wire_082165145.101
+		processing begun of material:  wire_038000038.102
+		processing begun of material:  wire_165103082.101
+		processing begun of material:  wire_127063079.101
+		processing begun of material:  wire_084084084.093
+		processing begun of material:  wire_038038000.101
+		processing begun of material:  wire_220220220.109
+		processing begun of material:  wire_165041000.101
+		processing begun of material:  wire_082145165.101
+		processing begun of material:  wire_000000127.101
+		processing begun of multimaterial:  suburbia_map.Multimaterial#23
+		Custom split normals with tangents being used
+		num positions      :  665
+		num normals        :  665
+		num tangents       :  2660
+		num uvs            :  1330
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.005
+		processing begun of material:  wire_127095063.094
+		processing begun of material:  wire_038019019.094
+		processing begun of material:  wire_191127255.094
+		processing begun of material:  wire_082124165.094
+		processing begun of material:  wire_124165082.102
+		processing begun of material:  wire_063095127.094
+		processing begun of material:  wire_159255127.094
+		processing begun of material:  wire_082165145.102
+		processing begun of material:  wire_038000038.103
+		processing begun of material:  wire_165103082.102
+		processing begun of material:  wire_127063079.102
+		processing begun of material:  wire_084084084.094
+		processing begun of material:  wire_038038000.102
+		processing begun of material:  wire_220220220.110
+		processing begun of material:  wire_165041000.102
+		processing begun of material:  wire_082145165.102
+		processing begun of material:  wire_000000127.102
+		processing begun of multimaterial:  suburbia_map.Multimaterial#24
+		Custom split normals with tangents being used
+		num positions      :  662
+		num normals        :  662
+		num tangents       :  2648
+		num uvs            :  1324
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.006
+		processing begun of material:  wire_127095063.095
+		processing begun of material:  wire_038019019.095
+		processing begun of material:  wire_191127255.095
+		processing begun of material:  wire_082124165.095
+		processing begun of material:  wire_124165082.103
+		processing begun of material:  wire_063095127.095
+		processing begun of material:  wire_159255127.095
+		processing begun of material:  wire_082165145.103
+		processing begun of material:  wire_038000038.104
+		processing begun of material:  wire_165103082.103
+		processing begun of material:  wire_127063079.103
+		processing begun of material:  wire_084084084.095
+		processing begun of material:  wire_038038000.103
+		processing begun of material:  wire_220220220.111
+		processing begun of material:  wire_165041000.103
+		processing begun of material:  wire_082145165.103
+		processing begun of material:  wire_000000127.103
+		processing begun of multimaterial:  suburbia_map.Multimaterial#25
+		Custom split normals with tangents being used
+		num positions      :  665
+		num normals        :  665
+		num tangents       :  2660
+		num uvs            :  1330
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.007
+		processing begun of material:  wire_127095063.107
+		processing begun of material:  wire_038019019.107
+		processing begun of material:  wire_191127255.107
+		processing begun of material:  wire_082124165.107
+		processing begun of material:  wire_124165082.115
+		processing begun of material:  wire_063095127.107
+		processing begun of material:  wire_159255127.107
+		processing begun of material:  wire_082165145.115
+		processing begun of material:  wire_038000038.116
+		processing begun of material:  wire_165103082.115
+		processing begun of material:  wire_127063079.115
+		processing begun of material:  wire_084084084.107
+		processing begun of material:  wire_038038000.115
+		processing begun of material:  wire_220220220.123
+		processing begun of material:  wire_165041000.115
+		processing begun of material:  wire_082145165.115
+		processing begun of material:  wire_000000127.114
+		processing begun of multimaterial:  suburbia_map.Multimaterial#26
+		Custom split normals with tangents being used
+		num positions      :  661
+		num normals        :  661
+		num tangents       :  2644
+		num uvs            :  1322
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.017
+		processing begun of material:  wire_127095063.005
+		processing begun of material:  wire_038019019.005
+		processing begun of material:  wire_191127255.005
+		processing begun of material:  wire_082124165.005
+		processing begun of material:  wire_124165082.007
+		processing begun of material:  wire_063095127.005
+		processing begun of material:  wire_159255127.005
+		processing begun of material:  wire_082165145.009
+		processing begun of material:  wire_038000038.008
+		processing begun of material:  wire_165103082.009
+		processing begun of material:  wire_127063079.009
+		processing begun of material:  wire_084084084.005
+		processing begun of material:  wire_038038000.009
+		processing begun of material:  wire_220220220.100
+		processing begun of material:  wire_165041000.009
+		processing begun of material:  wire_082145165.009
+		processing begun of material:  wire_000000127.009
+		processing begun of multimaterial:  suburbia_map.Multimaterial#27
+		Custom split normals with tangents being used
+		num positions      :  664
+		num normals        :  664
+		num tangents       :  2656
+		num uvs            :  1328
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  barricade.016
+		processing begun of material:  wire_127095063.003
+		processing begun of material:  wire_038019019.003
+		processing begun of material:  wire_191127255.003
+		processing begun of material:  wire_082124165.003
+		processing begun of material:  wire_124165082.006
+		processing begun of material:  wire_063095127.003
+		processing begun of material:  wire_159255127.003
+		processing begun of material:  wire_082165145.008
+		processing begun of material:  wire_038000038.007
+		processing begun of material:  wire_165103082.008
+		processing begun of material:  wire_127063079.008
+		processing begun of material:  wire_084084084.003
+		processing begun of material:  wire_038038000.008
+		processing begun of material:  wire_220220220.010
+		processing begun of material:  wire_165041000.008
+		processing begun of material:  wire_082145165.008
+		processing begun of material:  wire_000000127.008
+		processing begun of multimaterial:  suburbia_map.Multimaterial#28
+		Custom split normals with tangents being used
+		num positions      :  665
+		num normals        :  665
+		num tangents       :  2660
+		num uvs            :  1330
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  295
+	processing begun of mesh:  ladder1.001
+		processing begun of material:  wire_127095063.002
+		processing begun of material:  wire_038019019.002
+		processing begun of material:  wire_191127255.002
+		processing begun of material:  wire_082124165.002
+		processing begun of material:  wire_124165082.003
+		processing begun of material:  wire_063095127.002
+		processing begun of material:  wire_159255127.002
+		processing begun of material:  wire_082165145.002
+		processing begun of material:  wire_038000038.002
+		processing begun of material:  wire_165103082.002
+		processing begun of material:  wire_127063079.002
+		processing begun of material:  wire_084084084.002
+		processing begun of material:  wire_038038000.003
+		processing begun of material:  wire_220220220.006
+		processing begun of material:  wire_165041000.002
+		processing begun of material:  wire_082145165.002
+		processing begun of material:  wire_000000127.002
+		processing begun of multimaterial:  suburbia_map.Multimaterial#29
+		Custom split normals with tangents being used
+		num positions      :  1148
+		num normals        :  1148
+		num tangents       :  4592
+		num uvs            :  2296
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  592
+	processing begun of mesh:  decor_bars.001
+		processing begun of material:  wire_127095063.117
+		processing begun of material:  wire_038019019.117
+		processing begun of material:  wire_191127255.117
+		processing begun of material:  wire_082124165.117
+		processing begun of material:  wire_124165082.125
+		processing begun of material:  wire_063095127.117
+		processing begun of material:  wire_159255127.117
+		processing begun of material:  wire_082165145.125
+		processing begun of material:  wire_038000038.126
+		processing begun of material:  wire_165103082.125
+		processing begun of material:  wire_127063079.125
+		processing begun of material:  wire_084084084.117
+		processing begun of material:  wire_038038000.125
+		processing begun of material:  wire_220220220.133
+		processing begun of material:  wire_165041000.125
+		processing begun of material:  wire_082145165.125
+		processing begun of material:  wire_000000127.124
+		processing begun of multimaterial:  suburbia_map.Multimaterial#30
+		Custom split normals with tangents being used
+		num positions      :  207
+		num normals        :  207
+		num tangents       :  828
+		num uvs            :  414
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  decor_bars
+		processing begun of material:  wire_127095063.118
+		processing begun of material:  wire_038019019.118
+		processing begun of material:  wire_191127255.118
+		processing begun of material:  wire_082124165.118
+		processing begun of material:  wire_124165082.126
+		processing begun of material:  wire_063095127.118
+		processing begun of material:  wire_159255127.118
+		processing begun of material:  wire_082165145.126
+		processing begun of material:  wire_038000038.127
+		processing begun of material:  wire_165103082.126
+		processing begun of material:  wire_127063079.126
+		processing begun of material:  wire_084084084.118
+		processing begun of material:  wire_038038000.126
+		processing begun of material:  wire_220220220.134
+		processing begun of material:  wire_165041000.126
+		processing begun of material:  wire_082145165.126
+		processing begun of material:  wire_000000127.125
+		processing begun of multimaterial:  suburbia_map.Multimaterial#31
+		Custom split normals with tangents being used
+		num positions      :  209
+		num normals        :  209
+		num tangents       :  836
+		num uvs            :  418
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  passage
+		processing begun of material:  wire_127095063.108
+		processing begun of material:  wire_038019019.108
+		processing begun of material:  wire_191127255.108
+		processing begun of material:  wire_082124165.108
+		processing begun of material:  wire_124165082.116
+		processing begun of material:  wire_063095127.108
+		processing begun of material:  wire_159255127.108
+		processing begun of material:  wire_082165145.116
+		processing begun of material:  wire_038000038.117
+		processing begun of material:  wire_165103082.116
+		processing begun of material:  wire_127063079.116
+		processing begun of material:  wire_084084084.108
+		processing begun of material:  wire_038038000.116
+		processing begun of material:  wire_220220220.124
+		processing begun of material:  wire_165041000.116
+		processing begun of material:  wire_082145165.116
+		processing begun of material:  wire_000000127.115
+		processing begun of material:  wire_127095063.110
+		processing begun of material:  wire_038019019.110
+		processing begun of material:  wire_191127255.110
+		processing begun of material:  wire_082124165.110
+		processing begun of material:  wire_124165082.118
+		processing begun of material:  wire_063095127.110
+		processing begun of material:  wire_159255127.110
+		processing begun of material:  wire_082165145.118
+		processing begun of material:  wire_038000038.119
+		processing begun of material:  wire_165103082.118
+		processing begun of material:  wire_127063079.118
+		processing begun of material:  wire_084084084.110
+		processing begun of material:  wire_038038000.118
+		processing begun of material:  wire_220220220.126
+		processing begun of material:  wire_165041000.118
+		processing begun of material:  wire_082145165.118
+		processing begun of material:  wire_000000127.117
+		processing begun of multimaterial:  suburbia_map.Multimaterial#32
+		Custom split normals with tangents being used
+		num positions      :  38
+		num normals        :  38
+		num tangents       :  152
+		num uvs            :  76
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  17
+	processing begun of mesh:  decor.001
+		processing begun of material:  wire_127095063.097
+		processing begun of material:  wire_038019019.097
+		processing begun of material:  wire_191127255.097
+		processing begun of material:  wire_082124165.097
+		processing begun of material:  wire_124165082.105
+		processing begun of material:  wire_063095127.097
+		processing begun of material:  wire_159255127.097
+		processing begun of material:  wire_082165145.105
+		processing begun of material:  wire_038000038.105
+		processing begun of material:  wire_165103082.105
+		processing begun of material:  wire_127063079.105
+		processing begun of material:  wire_084084084.097
+		processing begun of material:  wire_038038000.105
+		processing begun of material:  wire_220220220.113
+		processing begun of material:  wire_165041000.105
+		processing begun of material:  wire_082145165.105
+		processing begun of material:  wire_000000127.105
+		processing begun of multimaterial:  suburbia_map.Multimaterial#33
+		Custom split normals with tangents being used
+		num positions      :  431
+		num normals        :  431
+		num tangents       :  1724
+		num uvs            :  862
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor
+		processing begun of material:  wire_127095063.098
+		processing begun of material:  wire_038019019.098
+		processing begun of material:  wire_191127255.098
+		processing begun of material:  wire_082124165.098
+		processing begun of material:  wire_124165082.106
+		processing begun of material:  wire_063095127.098
+		processing begun of material:  wire_159255127.098
+		processing begun of material:  wire_082165145.106
+		processing begun of material:  wire_038000038.106
+		processing begun of material:  wire_165103082.106
+		processing begun of material:  wire_127063079.106
+		processing begun of material:  wire_084084084.098
+		processing begun of material:  wire_038038000.106
+		processing begun of material:  wire_220220220.114
+		processing begun of material:  wire_165041000.106
+		processing begun of material:  wire_082145165.106
+		processing begun of material:  wire_000000127.106
+		processing begun of multimaterial:  suburbia_map.Multimaterial#34
+		Custom split normals with tangents being used
+		num positions      :  427
+		num normals        :  427
+		num tangents       :  1708
+		num uvs            :  854
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor_bars.003
+		processing begun of material:  wire_127095063.117
+		processing begun of material:  wire_038019019.117
+		processing begun of material:  wire_191127255.117
+		processing begun of material:  wire_082124165.117
+		processing begun of material:  wire_124165082.125
+		processing begun of material:  wire_063095127.117
+		processing begun of material:  wire_159255127.117
+		processing begun of material:  wire_082165145.125
+		processing begun of material:  wire_038000038.126
+		processing begun of material:  wire_165103082.125
+		processing begun of material:  wire_127063079.125
+		processing begun of material:  wire_084084084.117
+		processing begun of material:  wire_038038000.125
+		processing begun of material:  wire_220220220.133
+		processing begun of material:  wire_165041000.125
+		processing begun of material:  wire_082145165.125
+		processing begun of material:  wire_000000127.124
+		registered as also a user of material:  wire_127095063.117
+		registered as also a user of material:  wire_038019019.117
+		registered as also a user of material:  wire_191127255.117
+		registered as also a user of material:  wire_082124165.117
+		registered as also a user of material:  wire_124165082.125
+		registered as also a user of material:  wire_063095127.117
+		registered as also a user of material:  wire_159255127.117
+		registered as also a user of material:  wire_082165145.125
+		registered as also a user of material:  wire_038000038.126
+		registered as also a user of material:  wire_165103082.125
+		registered as also a user of material:  wire_127063079.125
+		registered as also a user of material:  wire_084084084.117
+		registered as also a user of material:  wire_038038000.125
+		registered as also a user of material:  wire_220220220.133
+		registered as also a user of material:  wire_165041000.125
+		registered as also a user of material:  wire_082145165.125
+		registered as also a user of material:  wire_000000127.124
+		processing begun of multimaterial:  suburbia_map.Multimaterial#35
+		Custom split normals with tangents being used
+		num positions      :  200
+		num normals        :  200
+		num tangents       :  800
+		num uvs            :  400
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  decor_bars.002
+		processing begun of material:  wire_127095063.118
+		processing begun of material:  wire_038019019.118
+		processing begun of material:  wire_191127255.118
+		processing begun of material:  wire_082124165.118
+		processing begun of material:  wire_124165082.126
+		processing begun of material:  wire_063095127.118
+		processing begun of material:  wire_159255127.118
+		processing begun of material:  wire_082165145.126
+		processing begun of material:  wire_038000038.127
+		processing begun of material:  wire_165103082.126
+		processing begun of material:  wire_127063079.126
+		processing begun of material:  wire_084084084.118
+		processing begun of material:  wire_038038000.126
+		processing begun of material:  wire_220220220.134
+		processing begun of material:  wire_165041000.126
+		processing begun of material:  wire_082145165.126
+		processing begun of material:  wire_000000127.125
+		registered as also a user of material:  wire_127095063.118
+		registered as also a user of material:  wire_038019019.118
+		registered as also a user of material:  wire_191127255.118
+		registered as also a user of material:  wire_082124165.118
+		registered as also a user of material:  wire_124165082.126
+		registered as also a user of material:  wire_063095127.118
+		registered as also a user of material:  wire_159255127.118
+		registered as also a user of material:  wire_082165145.126
+		registered as also a user of material:  wire_038000038.127
+		registered as also a user of material:  wire_165103082.126
+		registered as also a user of material:  wire_127063079.126
+		registered as also a user of material:  wire_084084084.118
+		registered as also a user of material:  wire_038038000.126
+		registered as also a user of material:  wire_220220220.134
+		registered as also a user of material:  wire_165041000.126
+		registered as also a user of material:  wire_082145165.126
+		registered as also a user of material:  wire_000000127.125
+		processing begun of multimaterial:  suburbia_map.Multimaterial#36
+		Custom split normals with tangents being used
+		num positions      :  198
+		num normals        :  198
+		num tangents       :  792
+		num uvs            :  396
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  passage.006
+		processing begun of material:  wire_127095063.108
+		processing begun of material:  wire_038019019.108
+		processing begun of material:  wire_191127255.108
+		processing begun of material:  wire_082124165.108
+		processing begun of material:  wire_124165082.116
+		processing begun of material:  wire_063095127.108
+		processing begun of material:  wire_159255127.108
+		processing begun of material:  wire_082165145.116
+		processing begun of material:  wire_038000038.117
+		processing begun of material:  wire_165103082.116
+		processing begun of material:  wire_127063079.116
+		processing begun of material:  wire_084084084.108
+		processing begun of material:  wire_038038000.116
+		processing begun of material:  wire_220220220.124
+		processing begun of material:  wire_165041000.116
+		processing begun of material:  wire_082145165.116
+		processing begun of material:  wire_000000127.115
+		processing begun of material:  wire_127095063.110
+		processing begun of material:  wire_038019019.110
+		processing begun of material:  wire_191127255.110
+		processing begun of material:  wire_082124165.110
+		processing begun of material:  wire_124165082.118
+		processing begun of material:  wire_063095127.110
+		processing begun of material:  wire_159255127.110
+		processing begun of material:  wire_082165145.118
+		processing begun of material:  wire_038000038.119
+		processing begun of material:  wire_165103082.118
+		processing begun of material:  wire_127063079.118
+		processing begun of material:  wire_084084084.110
+		processing begun of material:  wire_038038000.118
+		processing begun of material:  wire_220220220.126
+		processing begun of material:  wire_165041000.118
+		processing begun of material:  wire_082145165.118
+		processing begun of material:  wire_000000127.117
+		registered as also a user of material:  wire_127095063.108
+		registered as also a user of material:  wire_038019019.108
+		registered as also a user of material:  wire_191127255.108
+		registered as also a user of material:  wire_082124165.108
+		registered as also a user of material:  wire_124165082.116
+		registered as also a user of material:  wire_063095127.108
+		registered as also a user of material:  wire_159255127.108
+		registered as also a user of material:  wire_082165145.116
+		registered as also a user of material:  wire_038000038.117
+		registered as also a user of material:  wire_165103082.116
+		registered as also a user of material:  wire_127063079.116
+		registered as also a user of material:  wire_084084084.108
+		registered as also a user of material:  wire_038038000.116
+		registered as also a user of material:  wire_220220220.124
+		registered as also a user of material:  wire_165041000.116
+		registered as also a user of material:  wire_082145165.116
+		registered as also a user of material:  wire_000000127.115
+		registered as also a user of material:  wire_127095063.110
+		registered as also a user of material:  wire_038019019.110
+		registered as also a user of material:  wire_191127255.110
+		registered as also a user of material:  wire_082124165.110
+		registered as also a user of material:  wire_124165082.118
+		registered as also a user of material:  wire_063095127.110
+		registered as also a user of material:  wire_159255127.110
+		registered as also a user of material:  wire_082165145.118
+		registered as also a user of material:  wire_038000038.119
+		registered as also a user of material:  wire_165103082.118
+		registered as also a user of material:  wire_127063079.118
+		registered as also a user of material:  wire_084084084.110
+		registered as also a user of material:  wire_038038000.118
+		registered as also a user of material:  wire_220220220.126
+		registered as also a user of material:  wire_165041000.118
+		registered as also a user of material:  wire_082145165.118
+		registered as also a user of material:  wire_000000127.117
+		processing begun of multimaterial:  suburbia_map.Multimaterial#37
+		Custom split normals with tangents being used
+		num positions      :  36
+		num normals        :  36
+		num tangents       :  144
+		num uvs            :  72
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  17
+	processing begun of mesh:  decor.006
+		processing begun of material:  wire_127095063.097
+		processing begun of material:  wire_038019019.097
+		processing begun of material:  wire_191127255.097
+		processing begun of material:  wire_082124165.097
+		processing begun of material:  wire_124165082.105
+		processing begun of material:  wire_063095127.097
+		processing begun of material:  wire_159255127.097
+		processing begun of material:  wire_082165145.105
+		processing begun of material:  wire_038000038.105
+		processing begun of material:  wire_165103082.105
+		processing begun of material:  wire_127063079.105
+		processing begun of material:  wire_084084084.097
+		processing begun of material:  wire_038038000.105
+		processing begun of material:  wire_220220220.113
+		processing begun of material:  wire_165041000.105
+		processing begun of material:  wire_082145165.105
+		processing begun of material:  wire_000000127.105
+		registered as also a user of material:  wire_127095063.097
+		registered as also a user of material:  wire_038019019.097
+		registered as also a user of material:  wire_191127255.097
+		registered as also a user of material:  wire_082124165.097
+		registered as also a user of material:  wire_124165082.105
+		registered as also a user of material:  wire_063095127.097
+		registered as also a user of material:  wire_159255127.097
+		registered as also a user of material:  wire_082165145.105
+		registered as also a user of material:  wire_038000038.105
+		registered as also a user of material:  wire_165103082.105
+		registered as also a user of material:  wire_127063079.105
+		registered as also a user of material:  wire_084084084.097
+		registered as also a user of material:  wire_038038000.105
+		registered as also a user of material:  wire_220220220.113
+		registered as also a user of material:  wire_165041000.105
+		registered as also a user of material:  wire_082145165.105
+		registered as also a user of material:  wire_000000127.105
+		processing begun of multimaterial:  suburbia_map.Multimaterial#38
+		Custom split normals with tangents being used
+		num positions      :  443
+		num normals        :  443
+		num tangents       :  1772
+		num uvs            :  886
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor.007
+		processing begun of material:  wire_127095063.098
+		processing begun of material:  wire_038019019.098
+		processing begun of material:  wire_191127255.098
+		processing begun of material:  wire_082124165.098
+		processing begun of material:  wire_124165082.106
+		processing begun of material:  wire_063095127.098
+		processing begun of material:  wire_159255127.098
+		processing begun of material:  wire_082165145.106
+		processing begun of material:  wire_038000038.106
+		processing begun of material:  wire_165103082.106
+		processing begun of material:  wire_127063079.106
+		processing begun of material:  wire_084084084.098
+		processing begun of material:  wire_038038000.106
+		processing begun of material:  wire_220220220.114
+		processing begun of material:  wire_165041000.106
+		processing begun of material:  wire_082145165.106
+		processing begun of material:  wire_000000127.106
+		registered as also a user of material:  wire_127095063.098
+		registered as also a user of material:  wire_038019019.098
+		registered as also a user of material:  wire_191127255.098
+		registered as also a user of material:  wire_082124165.098
+		registered as also a user of material:  wire_124165082.106
+		registered as also a user of material:  wire_063095127.098
+		registered as also a user of material:  wire_159255127.098
+		registered as also a user of material:  wire_082165145.106
+		registered as also a user of material:  wire_038000038.106
+		registered as also a user of material:  wire_165103082.106
+		registered as also a user of material:  wire_127063079.106
+		registered as also a user of material:  wire_084084084.098
+		registered as also a user of material:  wire_038038000.106
+		registered as also a user of material:  wire_220220220.114
+		registered as also a user of material:  wire_165041000.106
+		registered as also a user of material:  wire_082145165.106
+		registered as also a user of material:  wire_000000127.106
+		processing begun of multimaterial:  suburbia_map.Multimaterial#39
+		Custom split normals with tangents being used
+		num positions      :  443
+		num normals        :  443
+		num tangents       :  1772
+		num uvs            :  886
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor_bars.004
+		processing begun of material:  wire_127095063.117
+		processing begun of material:  wire_038019019.117
+		processing begun of material:  wire_191127255.117
+		processing begun of material:  wire_082124165.117
+		processing begun of material:  wire_124165082.125
+		processing begun of material:  wire_063095127.117
+		processing begun of material:  wire_159255127.117
+		processing begun of material:  wire_082165145.125
+		processing begun of material:  wire_038000038.126
+		processing begun of material:  wire_165103082.125
+		processing begun of material:  wire_127063079.125
+		processing begun of material:  wire_084084084.117
+		processing begun of material:  wire_038038000.125
+		processing begun of material:  wire_220220220.133
+		processing begun of material:  wire_165041000.125
+		processing begun of material:  wire_082145165.125
+		processing begun of material:  wire_000000127.124
+		registered as also a user of material:  wire_127095063.117
+		registered as also a user of material:  wire_038019019.117
+		registered as also a user of material:  wire_191127255.117
+		registered as also a user of material:  wire_082124165.117
+		registered as also a user of material:  wire_124165082.125
+		registered as also a user of material:  wire_063095127.117
+		registered as also a user of material:  wire_159255127.117
+		registered as also a user of material:  wire_082165145.125
+		registered as also a user of material:  wire_038000038.126
+		registered as also a user of material:  wire_165103082.125
+		registered as also a user of material:  wire_127063079.125
+		registered as also a user of material:  wire_084084084.117
+		registered as also a user of material:  wire_038038000.125
+		registered as also a user of material:  wire_220220220.133
+		registered as also a user of material:  wire_165041000.125
+		registered as also a user of material:  wire_082145165.125
+		registered as also a user of material:  wire_000000127.124
+		processing begun of multimaterial:  suburbia_map.Multimaterial#40
+		Custom split normals with tangents being used
+		num positions      :  200
+		num normals        :  200
+		num tangents       :  800
+		num uvs            :  400
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  decor_bars.005
+		processing begun of material:  wire_127095063.118
+		processing begun of material:  wire_038019019.118
+		processing begun of material:  wire_191127255.118
+		processing begun of material:  wire_082124165.118
+		processing begun of material:  wire_124165082.126
+		processing begun of material:  wire_063095127.118
+		processing begun of material:  wire_159255127.118
+		processing begun of material:  wire_082165145.126
+		processing begun of material:  wire_038000038.127
+		processing begun of material:  wire_165103082.126
+		processing begun of material:  wire_127063079.126
+		processing begun of material:  wire_084084084.118
+		processing begun of material:  wire_038038000.126
+		processing begun of material:  wire_220220220.134
+		processing begun of material:  wire_165041000.126
+		processing begun of material:  wire_082145165.126
+		processing begun of material:  wire_000000127.125
+		registered as also a user of material:  wire_127095063.118
+		registered as also a user of material:  wire_038019019.118
+		registered as also a user of material:  wire_191127255.118
+		registered as also a user of material:  wire_082124165.118
+		registered as also a user of material:  wire_124165082.126
+		registered as also a user of material:  wire_063095127.118
+		registered as also a user of material:  wire_159255127.118
+		registered as also a user of material:  wire_082165145.126
+		registered as also a user of material:  wire_038000038.127
+		registered as also a user of material:  wire_165103082.126
+		registered as also a user of material:  wire_127063079.126
+		registered as also a user of material:  wire_084084084.118
+		registered as also a user of material:  wire_038038000.126
+		registered as also a user of material:  wire_220220220.134
+		registered as also a user of material:  wire_165041000.126
+		registered as also a user of material:  wire_082145165.126
+		registered as also a user of material:  wire_000000127.125
+		processing begun of multimaterial:  suburbia_map.Multimaterial#41
+		Custom split normals with tangents being used
+		num positions      :  198
+		num normals        :  198
+		num tangents       :  792
+		num uvs            :  396
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  passage.001
+		processing begun of material:  wire_127095063.108
+		processing begun of material:  wire_038019019.108
+		processing begun of material:  wire_191127255.108
+		processing begun of material:  wire_082124165.108
+		processing begun of material:  wire_124165082.116
+		processing begun of material:  wire_063095127.108
+		processing begun of material:  wire_159255127.108
+		processing begun of material:  wire_082165145.116
+		processing begun of material:  wire_038000038.117
+		processing begun of material:  wire_165103082.116
+		processing begun of material:  wire_127063079.116
+		processing begun of material:  wire_084084084.108
+		processing begun of material:  wire_038038000.116
+		processing begun of material:  wire_220220220.124
+		processing begun of material:  wire_165041000.116
+		processing begun of material:  wire_082145165.116
+		processing begun of material:  wire_000000127.115
+		processing begun of material:  wire_127095063.110
+		processing begun of material:  wire_038019019.110
+		processing begun of material:  wire_191127255.110
+		processing begun of material:  wire_082124165.110
+		processing begun of material:  wire_124165082.118
+		processing begun of material:  wire_063095127.110
+		processing begun of material:  wire_159255127.110
+		processing begun of material:  wire_082165145.118
+		processing begun of material:  wire_038000038.119
+		processing begun of material:  wire_165103082.118
+		processing begun of material:  wire_127063079.118
+		processing begun of material:  wire_084084084.110
+		processing begun of material:  wire_038038000.118
+		processing begun of material:  wire_220220220.126
+		processing begun of material:  wire_165041000.118
+		processing begun of material:  wire_082145165.118
+		processing begun of material:  wire_000000127.117
+		registered as also a user of material:  wire_127095063.108
+		registered as also a user of material:  wire_038019019.108
+		registered as also a user of material:  wire_191127255.108
+		registered as also a user of material:  wire_082124165.108
+		registered as also a user of material:  wire_124165082.116
+		registered as also a user of material:  wire_063095127.108
+		registered as also a user of material:  wire_159255127.108
+		registered as also a user of material:  wire_082165145.116
+		registered as also a user of material:  wire_038000038.117
+		registered as also a user of material:  wire_165103082.116
+		registered as also a user of material:  wire_127063079.116
+		registered as also a user of material:  wire_084084084.108
+		registered as also a user of material:  wire_038038000.116
+		registered as also a user of material:  wire_220220220.124
+		registered as also a user of material:  wire_165041000.116
+		registered as also a user of material:  wire_082145165.116
+		registered as also a user of material:  wire_000000127.115
+		registered as also a user of material:  wire_127095063.110
+		registered as also a user of material:  wire_038019019.110
+		registered as also a user of material:  wire_191127255.110
+		registered as also a user of material:  wire_082124165.110
+		registered as also a user of material:  wire_124165082.118
+		registered as also a user of material:  wire_063095127.110
+		registered as also a user of material:  wire_159255127.110
+		registered as also a user of material:  wire_082165145.118
+		registered as also a user of material:  wire_038000038.119
+		registered as also a user of material:  wire_165103082.118
+		registered as also a user of material:  wire_127063079.118
+		registered as also a user of material:  wire_084084084.110
+		registered as also a user of material:  wire_038038000.118
+		registered as also a user of material:  wire_220220220.126
+		registered as also a user of material:  wire_165041000.118
+		registered as also a user of material:  wire_082145165.118
+		registered as also a user of material:  wire_000000127.117
+		processing begun of multimaterial:  suburbia_map.Multimaterial#42
+		Custom split normals with tangents being used
+		num positions      :  36
+		num normals        :  36
+		num tangents       :  144
+		num uvs            :  72
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  17
+	processing begun of mesh:  decor.010
+		processing begun of material:  wire_127095063.097
+		processing begun of material:  wire_038019019.097
+		processing begun of material:  wire_191127255.097
+		processing begun of material:  wire_082124165.097
+		processing begun of material:  wire_124165082.105
+		processing begun of material:  wire_063095127.097
+		processing begun of material:  wire_159255127.097
+		processing begun of material:  wire_082165145.105
+		processing begun of material:  wire_038000038.105
+		processing begun of material:  wire_165103082.105
+		processing begun of material:  wire_127063079.105
+		processing begun of material:  wire_084084084.097
+		processing begun of material:  wire_038038000.105
+		processing begun of material:  wire_220220220.113
+		processing begun of material:  wire_165041000.105
+		processing begun of material:  wire_082145165.105
+		processing begun of material:  wire_000000127.105
+		registered as also a user of material:  wire_127095063.097
+		registered as also a user of material:  wire_038019019.097
+		registered as also a user of material:  wire_191127255.097
+		registered as also a user of material:  wire_082124165.097
+		registered as also a user of material:  wire_124165082.105
+		registered as also a user of material:  wire_063095127.097
+		registered as also a user of material:  wire_159255127.097
+		registered as also a user of material:  wire_082165145.105
+		registered as also a user of material:  wire_038000038.105
+		registered as also a user of material:  wire_165103082.105
+		registered as also a user of material:  wire_127063079.105
+		registered as also a user of material:  wire_084084084.097
+		registered as also a user of material:  wire_038038000.105
+		registered as also a user of material:  wire_220220220.113
+		registered as also a user of material:  wire_165041000.105
+		registered as also a user of material:  wire_082145165.105
+		registered as also a user of material:  wire_000000127.105
+		processing begun of multimaterial:  suburbia_map.Multimaterial#43
+		Custom split normals with tangents being used
+		num positions      :  443
+		num normals        :  443
+		num tangents       :  1772
+		num uvs            :  886
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor.011
+		processing begun of material:  wire_127095063.098
+		processing begun of material:  wire_038019019.098
+		processing begun of material:  wire_191127255.098
+		processing begun of material:  wire_082124165.098
+		processing begun of material:  wire_124165082.106
+		processing begun of material:  wire_063095127.098
+		processing begun of material:  wire_159255127.098
+		processing begun of material:  wire_082165145.106
+		processing begun of material:  wire_038000038.106
+		processing begun of material:  wire_165103082.106
+		processing begun of material:  wire_127063079.106
+		processing begun of material:  wire_084084084.098
+		processing begun of material:  wire_038038000.106
+		processing begun of material:  wire_220220220.114
+		processing begun of material:  wire_165041000.106
+		processing begun of material:  wire_082145165.106
+		processing begun of material:  wire_000000127.106
+		registered as also a user of material:  wire_127095063.098
+		registered as also a user of material:  wire_038019019.098
+		registered as also a user of material:  wire_191127255.098
+		registered as also a user of material:  wire_082124165.098
+		registered as also a user of material:  wire_124165082.106
+		registered as also a user of material:  wire_063095127.098
+		registered as also a user of material:  wire_159255127.098
+		registered as also a user of material:  wire_082165145.106
+		registered as also a user of material:  wire_038000038.106
+		registered as also a user of material:  wire_165103082.106
+		registered as also a user of material:  wire_127063079.106
+		registered as also a user of material:  wire_084084084.098
+		registered as also a user of material:  wire_038038000.106
+		registered as also a user of material:  wire_220220220.114
+		registered as also a user of material:  wire_165041000.106
+		registered as also a user of material:  wire_082145165.106
+		registered as also a user of material:  wire_000000127.106
+		processing begun of multimaterial:  suburbia_map.Multimaterial#44
+		Custom split normals with tangents being used
+		num positions      :  443
+		num normals        :  443
+		num tangents       :  1772
+		num uvs            :  886
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor_bars.006
+		processing begun of material:  wire_127095063.117
+		processing begun of material:  wire_038019019.117
+		processing begun of material:  wire_191127255.117
+		processing begun of material:  wire_082124165.117
+		processing begun of material:  wire_124165082.125
+		processing begun of material:  wire_063095127.117
+		processing begun of material:  wire_159255127.117
+		processing begun of material:  wire_082165145.125
+		processing begun of material:  wire_038000038.126
+		processing begun of material:  wire_165103082.125
+		processing begun of material:  wire_127063079.125
+		processing begun of material:  wire_084084084.117
+		processing begun of material:  wire_038038000.125
+		processing begun of material:  wire_220220220.133
+		processing begun of material:  wire_165041000.125
+		processing begun of material:  wire_082145165.125
+		processing begun of material:  wire_000000127.124
+		registered as also a user of material:  wire_127095063.117
+		registered as also a user of material:  wire_038019019.117
+		registered as also a user of material:  wire_191127255.117
+		registered as also a user of material:  wire_082124165.117
+		registered as also a user of material:  wire_124165082.125
+		registered as also a user of material:  wire_063095127.117
+		registered as also a user of material:  wire_159255127.117
+		registered as also a user of material:  wire_082165145.125
+		registered as also a user of material:  wire_038000038.126
+		registered as also a user of material:  wire_165103082.125
+		registered as also a user of material:  wire_127063079.125
+		registered as also a user of material:  wire_084084084.117
+		registered as also a user of material:  wire_038038000.125
+		registered as also a user of material:  wire_220220220.133
+		registered as also a user of material:  wire_165041000.125
+		registered as also a user of material:  wire_082145165.125
+		registered as also a user of material:  wire_000000127.124
+		processing begun of multimaterial:  suburbia_map.Multimaterial#45
+		Custom split normals with tangents being used
+		num positions      :  200
+		num normals        :  200
+		num tangents       :  800
+		num uvs            :  400
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  decor_bars.007
+		processing begun of material:  wire_127095063.118
+		processing begun of material:  wire_038019019.118
+		processing begun of material:  wire_191127255.118
+		processing begun of material:  wire_082124165.118
+		processing begun of material:  wire_124165082.126
+		processing begun of material:  wire_063095127.118
+		processing begun of material:  wire_159255127.118
+		processing begun of material:  wire_082165145.126
+		processing begun of material:  wire_038000038.127
+		processing begun of material:  wire_165103082.126
+		processing begun of material:  wire_127063079.126
+		processing begun of material:  wire_084084084.118
+		processing begun of material:  wire_038038000.126
+		processing begun of material:  wire_220220220.134
+		processing begun of material:  wire_165041000.126
+		processing begun of material:  wire_082145165.126
+		processing begun of material:  wire_000000127.125
+		registered as also a user of material:  wire_127095063.118
+		registered as also a user of material:  wire_038019019.118
+		registered as also a user of material:  wire_191127255.118
+		registered as also a user of material:  wire_082124165.118
+		registered as also a user of material:  wire_124165082.126
+		registered as also a user of material:  wire_063095127.118
+		registered as also a user of material:  wire_159255127.118
+		registered as also a user of material:  wire_082165145.126
+		registered as also a user of material:  wire_038000038.127
+		registered as also a user of material:  wire_165103082.126
+		registered as also a user of material:  wire_127063079.126
+		registered as also a user of material:  wire_084084084.118
+		registered as also a user of material:  wire_038038000.126
+		registered as also a user of material:  wire_220220220.134
+		registered as also a user of material:  wire_165041000.126
+		registered as also a user of material:  wire_082145165.126
+		registered as also a user of material:  wire_000000127.125
+		processing begun of multimaterial:  suburbia_map.Multimaterial#46
+		Custom split normals with tangents being used
+		num positions      :  198
+		num normals        :  198
+		num tangents       :  792
+		num uvs            :  396
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  passage.007
+		processing begun of material:  wire_127095063.108
+		processing begun of material:  wire_038019019.108
+		processing begun of material:  wire_191127255.108
+		processing begun of material:  wire_082124165.108
+		processing begun of material:  wire_124165082.116
+		processing begun of material:  wire_063095127.108
+		processing begun of material:  wire_159255127.108
+		processing begun of material:  wire_082165145.116
+		processing begun of material:  wire_038000038.117
+		processing begun of material:  wire_165103082.116
+		processing begun of material:  wire_127063079.116
+		processing begun of material:  wire_084084084.108
+		processing begun of material:  wire_038038000.116
+		processing begun of material:  wire_220220220.124
+		processing begun of material:  wire_165041000.116
+		processing begun of material:  wire_082145165.116
+		processing begun of material:  wire_000000127.115
+		processing begun of material:  wire_127095063.110
+		processing begun of material:  wire_038019019.110
+		processing begun of material:  wire_191127255.110
+		processing begun of material:  wire_082124165.110
+		processing begun of material:  wire_124165082.118
+		processing begun of material:  wire_063095127.110
+		processing begun of material:  wire_159255127.110
+		processing begun of material:  wire_082165145.118
+		processing begun of material:  wire_038000038.119
+		processing begun of material:  wire_165103082.118
+		processing begun of material:  wire_127063079.118
+		processing begun of material:  wire_084084084.110
+		processing begun of material:  wire_038038000.118
+		processing begun of material:  wire_220220220.126
+		processing begun of material:  wire_165041000.118
+		processing begun of material:  wire_082145165.118
+		processing begun of material:  wire_000000127.117
+		registered as also a user of material:  wire_127095063.108
+		registered as also a user of material:  wire_038019019.108
+		registered as also a user of material:  wire_191127255.108
+		registered as also a user of material:  wire_082124165.108
+		registered as also a user of material:  wire_124165082.116
+		registered as also a user of material:  wire_063095127.108
+		registered as also a user of material:  wire_159255127.108
+		registered as also a user of material:  wire_082165145.116
+		registered as also a user of material:  wire_038000038.117
+		registered as also a user of material:  wire_165103082.116
+		registered as also a user of material:  wire_127063079.116
+		registered as also a user of material:  wire_084084084.108
+		registered as also a user of material:  wire_038038000.116
+		registered as also a user of material:  wire_220220220.124
+		registered as also a user of material:  wire_165041000.116
+		registered as also a user of material:  wire_082145165.116
+		registered as also a user of material:  wire_000000127.115
+		registered as also a user of material:  wire_127095063.110
+		registered as also a user of material:  wire_038019019.110
+		registered as also a user of material:  wire_191127255.110
+		registered as also a user of material:  wire_082124165.110
+		registered as also a user of material:  wire_124165082.118
+		registered as also a user of material:  wire_063095127.110
+		registered as also a user of material:  wire_159255127.110
+		registered as also a user of material:  wire_082165145.118
+		registered as also a user of material:  wire_038000038.119
+		registered as also a user of material:  wire_165103082.118
+		registered as also a user of material:  wire_127063079.118
+		registered as also a user of material:  wire_084084084.110
+		registered as also a user of material:  wire_038038000.118
+		registered as also a user of material:  wire_220220220.126
+		registered as also a user of material:  wire_165041000.118
+		registered as also a user of material:  wire_082145165.118
+		registered as also a user of material:  wire_000000127.117
+		processing begun of multimaterial:  suburbia_map.Multimaterial#47
+		Custom split normals with tangents being used
+		num positions      :  36
+		num normals        :  36
+		num tangents       :  144
+		num uvs            :  72
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  17
+	processing begun of mesh:  decor.008
+		processing begun of material:  wire_127095063.097
+		processing begun of material:  wire_038019019.097
+		processing begun of material:  wire_191127255.097
+		processing begun of material:  wire_082124165.097
+		processing begun of material:  wire_124165082.105
+		processing begun of material:  wire_063095127.097
+		processing begun of material:  wire_159255127.097
+		processing begun of material:  wire_082165145.105
+		processing begun of material:  wire_038000038.105
+		processing begun of material:  wire_165103082.105
+		processing begun of material:  wire_127063079.105
+		processing begun of material:  wire_084084084.097
+		processing begun of material:  wire_038038000.105
+		processing begun of material:  wire_220220220.113
+		processing begun of material:  wire_165041000.105
+		processing begun of material:  wire_082145165.105
+		processing begun of material:  wire_000000127.105
+		registered as also a user of material:  wire_127095063.097
+		registered as also a user of material:  wire_038019019.097
+		registered as also a user of material:  wire_191127255.097
+		registered as also a user of material:  wire_082124165.097
+		registered as also a user of material:  wire_124165082.105
+		registered as also a user of material:  wire_063095127.097
+		registered as also a user of material:  wire_159255127.097
+		registered as also a user of material:  wire_082165145.105
+		registered as also a user of material:  wire_038000038.105
+		registered as also a user of material:  wire_165103082.105
+		registered as also a user of material:  wire_127063079.105
+		registered as also a user of material:  wire_084084084.097
+		registered as also a user of material:  wire_038038000.105
+		registered as also a user of material:  wire_220220220.113
+		registered as also a user of material:  wire_165041000.105
+		registered as also a user of material:  wire_082145165.105
+		registered as also a user of material:  wire_000000127.105
+		processing begun of multimaterial:  suburbia_map.Multimaterial#48
+		Custom split normals with tangents being used
+		num positions      :  444
+		num normals        :  444
+		num tangents       :  1776
+		num uvs            :  888
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor.009
+		processing begun of material:  wire_127095063.098
+		processing begun of material:  wire_038019019.098
+		processing begun of material:  wire_191127255.098
+		processing begun of material:  wire_082124165.098
+		processing begun of material:  wire_124165082.106
+		processing begun of material:  wire_063095127.098
+		processing begun of material:  wire_159255127.098
+		processing begun of material:  wire_082165145.106
+		processing begun of material:  wire_038000038.106
+		processing begun of material:  wire_165103082.106
+		processing begun of material:  wire_127063079.106
+		processing begun of material:  wire_084084084.098
+		processing begun of material:  wire_038038000.106
+		processing begun of material:  wire_220220220.114
+		processing begun of material:  wire_165041000.106
+		processing begun of material:  wire_082145165.106
+		processing begun of material:  wire_000000127.106
+		registered as also a user of material:  wire_127095063.098
+		registered as also a user of material:  wire_038019019.098
+		registered as also a user of material:  wire_191127255.098
+		registered as also a user of material:  wire_082124165.098
+		registered as also a user of material:  wire_124165082.106
+		registered as also a user of material:  wire_063095127.098
+		registered as also a user of material:  wire_159255127.098
+		registered as also a user of material:  wire_082165145.106
+		registered as also a user of material:  wire_038000038.106
+		registered as also a user of material:  wire_165103082.106
+		registered as also a user of material:  wire_127063079.106
+		registered as also a user of material:  wire_084084084.098
+		registered as also a user of material:  wire_038038000.106
+		registered as also a user of material:  wire_220220220.114
+		registered as also a user of material:  wire_165041000.106
+		registered as also a user of material:  wire_082145165.106
+		registered as also a user of material:  wire_000000127.106
+		processing begun of multimaterial:  suburbia_map.Multimaterial#49
+		Custom split normals with tangents being used
+		num positions      :  443
+		num normals        :  443
+		num tangents       :  1772
+		num uvs            :  886
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor_bars.008
+		processing begun of material:  wire_127095063.117
+		processing begun of material:  wire_038019019.117
+		processing begun of material:  wire_191127255.117
+		processing begun of material:  wire_082124165.117
+		processing begun of material:  wire_124165082.125
+		processing begun of material:  wire_063095127.117
+		processing begun of material:  wire_159255127.117
+		processing begun of material:  wire_082165145.125
+		processing begun of material:  wire_038000038.126
+		processing begun of material:  wire_165103082.125
+		processing begun of material:  wire_127063079.125
+		processing begun of material:  wire_084084084.117
+		processing begun of material:  wire_038038000.125
+		processing begun of material:  wire_220220220.133
+		processing begun of material:  wire_165041000.125
+		processing begun of material:  wire_082145165.125
+		processing begun of material:  wire_000000127.124
+		registered as also a user of material:  wire_127095063.117
+		registered as also a user of material:  wire_038019019.117
+		registered as also a user of material:  wire_191127255.117
+		registered as also a user of material:  wire_082124165.117
+		registered as also a user of material:  wire_124165082.125
+		registered as also a user of material:  wire_063095127.117
+		registered as also a user of material:  wire_159255127.117
+		registered as also a user of material:  wire_082165145.125
+		registered as also a user of material:  wire_038000038.126
+		registered as also a user of material:  wire_165103082.125
+		registered as also a user of material:  wire_127063079.125
+		registered as also a user of material:  wire_084084084.117
+		registered as also a user of material:  wire_038038000.125
+		registered as also a user of material:  wire_220220220.133
+		registered as also a user of material:  wire_165041000.125
+		registered as also a user of material:  wire_082145165.125
+		registered as also a user of material:  wire_000000127.124
+		processing begun of multimaterial:  suburbia_map.Multimaterial#50
+		Custom split normals with tangents being used
+		num positions      :  207
+		num normals        :  207
+		num tangents       :  828
+		num uvs            :  414
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  decor_bars.009
+		processing begun of material:  wire_127095063.118
+		processing begun of material:  wire_038019019.118
+		processing begun of material:  wire_191127255.118
+		processing begun of material:  wire_082124165.118
+		processing begun of material:  wire_124165082.126
+		processing begun of material:  wire_063095127.118
+		processing begun of material:  wire_159255127.118
+		processing begun of material:  wire_082165145.126
+		processing begun of material:  wire_038000038.127
+		processing begun of material:  wire_165103082.126
+		processing begun of material:  wire_127063079.126
+		processing begun of material:  wire_084084084.118
+		processing begun of material:  wire_038038000.126
+		processing begun of material:  wire_220220220.134
+		processing begun of material:  wire_165041000.126
+		processing begun of material:  wire_082145165.126
+		processing begun of material:  wire_000000127.125
+		registered as also a user of material:  wire_127095063.118
+		registered as also a user of material:  wire_038019019.118
+		registered as also a user of material:  wire_191127255.118
+		registered as also a user of material:  wire_082124165.118
+		registered as also a user of material:  wire_124165082.126
+		registered as also a user of material:  wire_063095127.118
+		registered as also a user of material:  wire_159255127.118
+		registered as also a user of material:  wire_082165145.126
+		registered as also a user of material:  wire_038000038.127
+		registered as also a user of material:  wire_165103082.126
+		registered as also a user of material:  wire_127063079.126
+		registered as also a user of material:  wire_084084084.118
+		registered as also a user of material:  wire_038038000.126
+		registered as also a user of material:  wire_220220220.134
+		registered as also a user of material:  wire_165041000.126
+		registered as also a user of material:  wire_082145165.126
+		registered as also a user of material:  wire_000000127.125
+		processing begun of multimaterial:  suburbia_map.Multimaterial#51
+		Custom split normals with tangents being used
+		num positions      :  209
+		num normals        :  209
+		num tangents       :  836
+		num uvs            :  418
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  90
+	processing begun of mesh:  passage.005
+		processing begun of material:  wire_127095063.108
+		processing begun of material:  wire_038019019.108
+		processing begun of material:  wire_191127255.108
+		processing begun of material:  wire_082124165.108
+		processing begun of material:  wire_124165082.116
+		processing begun of material:  wire_063095127.108
+		processing begun of material:  wire_159255127.108
+		processing begun of material:  wire_082165145.116
+		processing begun of material:  wire_038000038.117
+		processing begun of material:  wire_165103082.116
+		processing begun of material:  wire_127063079.116
+		processing begun of material:  wire_084084084.108
+		processing begun of material:  wire_038038000.116
+		processing begun of material:  wire_220220220.124
+		processing begun of material:  wire_165041000.116
+		processing begun of material:  wire_082145165.116
+		processing begun of material:  wire_000000127.115
+		processing begun of material:  wire_127095063.110
+		processing begun of material:  wire_038019019.110
+		processing begun of material:  wire_191127255.110
+		processing begun of material:  wire_082124165.110
+		processing begun of material:  wire_124165082.118
+		processing begun of material:  wire_063095127.110
+		processing begun of material:  wire_159255127.110
+		processing begun of material:  wire_082165145.118
+		processing begun of material:  wire_038000038.119
+		processing begun of material:  wire_165103082.118
+		processing begun of material:  wire_127063079.118
+		processing begun of material:  wire_084084084.110
+		processing begun of material:  wire_038038000.118
+		processing begun of material:  wire_220220220.126
+		processing begun of material:  wire_165041000.118
+		processing begun of material:  wire_082145165.118
+		processing begun of material:  wire_000000127.117
+		registered as also a user of material:  wire_127095063.108
+		registered as also a user of material:  wire_038019019.108
+		registered as also a user of material:  wire_191127255.108
+		registered as also a user of material:  wire_082124165.108
+		registered as also a user of material:  wire_124165082.116
+		registered as also a user of material:  wire_063095127.108
+		registered as also a user of material:  wire_159255127.108
+		registered as also a user of material:  wire_082165145.116
+		registered as also a user of material:  wire_038000038.117
+		registered as also a user of material:  wire_165103082.116
+		registered as also a user of material:  wire_127063079.116
+		registered as also a user of material:  wire_084084084.108
+		registered as also a user of material:  wire_038038000.116
+		registered as also a user of material:  wire_220220220.124
+		registered as also a user of material:  wire_165041000.116
+		registered as also a user of material:  wire_082145165.116
+		registered as also a user of material:  wire_000000127.115
+		registered as also a user of material:  wire_127095063.110
+		registered as also a user of material:  wire_038019019.110
+		registered as also a user of material:  wire_191127255.110
+		registered as also a user of material:  wire_082124165.110
+		registered as also a user of material:  wire_124165082.118
+		registered as also a user of material:  wire_063095127.110
+		registered as also a user of material:  wire_159255127.110
+		registered as also a user of material:  wire_082165145.118
+		registered as also a user of material:  wire_038000038.119
+		registered as also a user of material:  wire_165103082.118
+		registered as also a user of material:  wire_127063079.118
+		registered as also a user of material:  wire_084084084.110
+		registered as also a user of material:  wire_038038000.118
+		registered as also a user of material:  wire_220220220.126
+		registered as also a user of material:  wire_165041000.118
+		registered as also a user of material:  wire_082145165.118
+		registered as also a user of material:  wire_000000127.117
+		processing begun of multimaterial:  suburbia_map.Multimaterial#52
+		Custom split normals with tangents being used
+		num positions      :  38
+		num normals        :  38
+		num tangents       :  152
+		num uvs            :  76
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  17
+	processing begun of mesh:  decor.004
+		processing begun of material:  wire_127095063.097
+		processing begun of material:  wire_038019019.097
+		processing begun of material:  wire_191127255.097
+		processing begun of material:  wire_082124165.097
+		processing begun of material:  wire_124165082.105
+		processing begun of material:  wire_063095127.097
+		processing begun of material:  wire_159255127.097
+		processing begun of material:  wire_082165145.105
+		processing begun of material:  wire_038000038.105
+		processing begun of material:  wire_165103082.105
+		processing begun of material:  wire_127063079.105
+		processing begun of material:  wire_084084084.097
+		processing begun of material:  wire_038038000.105
+		processing begun of material:  wire_220220220.113
+		processing begun of material:  wire_165041000.105
+		processing begun of material:  wire_082145165.105
+		processing begun of material:  wire_000000127.105
+		registered as also a user of material:  wire_127095063.097
+		registered as also a user of material:  wire_038019019.097
+		registered as also a user of material:  wire_191127255.097
+		registered as also a user of material:  wire_082124165.097
+		registered as also a user of material:  wire_124165082.105
+		registered as also a user of material:  wire_063095127.097
+		registered as also a user of material:  wire_159255127.097
+		registered as also a user of material:  wire_082165145.105
+		registered as also a user of material:  wire_038000038.105
+		registered as also a user of material:  wire_165103082.105
+		registered as also a user of material:  wire_127063079.105
+		registered as also a user of material:  wire_084084084.097
+		registered as also a user of material:  wire_038038000.105
+		registered as also a user of material:  wire_220220220.113
+		registered as also a user of material:  wire_165041000.105
+		registered as also a user of material:  wire_082145165.105
+		registered as also a user of material:  wire_000000127.105
+		processing begun of multimaterial:  suburbia_map.Multimaterial#53
+		Custom split normals with tangents being used
+		num positions      :  427
+		num normals        :  427
+		num tangents       :  1708
+		num uvs            :  854
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+	processing begun of mesh:  decor.005
+		processing begun of material:  wire_127095063.098
+		processing begun of material:  wire_038019019.098
+		processing begun of material:  wire_191127255.098
+		processing begun of material:  wire_082124165.098
+		processing begun of material:  wire_124165082.106
+		processing begun of material:  wire_063095127.098
+		processing begun of material:  wire_159255127.098
+		processing begun of material:  wire_082165145.106
+		processing begun of material:  wire_038000038.106
+		processing begun of material:  wire_165103082.106
+		processing begun of material:  wire_127063079.106
+		processing begun of material:  wire_084084084.098
+		processing begun of material:  wire_038038000.106
+		processing begun of material:  wire_220220220.114
+		processing begun of material:  wire_165041000.106
+		processing begun of material:  wire_082145165.106
+		processing begun of material:  wire_000000127.106
+		registered as also a user of material:  wire_127095063.098
+		registered as also a user of material:  wire_038019019.098
+		registered as also a user of material:  wire_191127255.098
+		registered as also a user of material:  wire_082124165.098
+		registered as also a user of material:  wire_124165082.106
+		registered as also a user of material:  wire_063095127.098
+		registered as also a user of material:  wire_159255127.098
+		registered as also a user of material:  wire_082165145.106
+		registered as also a user of material:  wire_038000038.106
+		registered as also a user of material:  wire_165103082.106
+		registered as also a user of material:  wire_127063079.106
+		registered as also a user of material:  wire_084084084.098
+		registered as also a user of material:  wire_038038000.106
+		registered as also a user of material:  wire_220220220.114
+		registered as also a user of material:  wire_165041000.106
+		registered as also a user of material:  wire_082145165.106
+		registered as also a user of material:  wire_000000127.106
+		processing begun of multimaterial:  suburbia_map.Multimaterial#54
+		Custom split normals with tangents being used
+		num positions      :  427
+		num normals        :  427
+		num tangents       :  1708
+		num uvs            :  854
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  249
+========= Writing of JSON file started =========
+	writing mesh:  border_sm4.006
+	writing mesh:  border_sm4.005
+	writing mesh:  fountain
+	writing mesh:  garden
+	writing mesh:  flowerpot
+	writing mesh:  flowerpot.002
+	writing mesh:  flowerpot.004
+	writing mesh:  flowerpot.005
+	writing mesh:  flowerpot.001
+	writing mesh:  flowerpot.003
+	writing mesh:  building
+	writing mesh:  ladder1
+	writing mesh:  border_lg1
+	writing mesh:  border_lg2
+	writing mesh:  border_sm1
+	writing mesh:  border_sm2
+	writing mesh:  border_sm3
+	writing mesh:  ladder1.003
+	writing mesh:  border_lg1.006
+	writing mesh:  border_lg2.006
+	writing mesh:  border_sm1.006
+	writing mesh:  border_sm2.006
+	writing mesh:  border_sm3.003
+	writing mesh:  building.004
+	writing mesh:  border_lg1.007
+	writing mesh:  border_lg1.001
+	writing mesh:  border_lg2.001
+	writing mesh:  border_sm1.001
+	writing mesh:  border_sm2.001
+	writing mesh:  border_sm3.001
+	writing mesh:  border_sm4.001
+	writing mesh:  building.001
+	writing mesh:  ladder2.001
+	writing mesh:  border_lg1.002
+	writing mesh:  border_lg2.002
+	writing mesh:  border_sm1.002
+	writing mesh:  border_sm2.002
+	writing mesh:  block.003
+	writing mesh:  block.001
+	writing mesh:  border_lg1.003
+	writing mesh:  border_lg2.003
+	writing mesh:  border_sm1.003
+	writing mesh:  border_sm2.003
+	writing mesh:  block.002
+	writing mesh:  border_sm1.004
+	writing mesh:  border_sm2.004
+	writing mesh:  border_sm4.003
+	writing mesh:  border_sm4.004
+	writing mesh:  ladder1.004
+	writing mesh:  border_lg1.005
+	writing mesh:  border_lg2.005
+	writing mesh:  border_sm1.005
+	writing mesh:  border_sm2.005
+	writing mesh:  border_sm3.002
+	writing mesh:  border_sm4.002
+	writing mesh:  building.002
+	writing mesh:  ladder1.002
+	writing mesh:  barricade
+	writing mesh:  barricade.001
+	writing mesh:  barricade.002
+	writing mesh:  barricade.003
+	writing mesh:  barricade.004
+	writing mesh:  barricade.005
+	writing mesh:  barricade.006
+	writing mesh:  barricade.007
+	writing mesh:  barricade.017
+	writing mesh:  barricade.016
+	writing mesh:  ladder1.001
+	writing mesh:  decor_bars.001
+	writing mesh:  decor_bars
+	writing mesh:  passage
+	writing mesh:  decor.001
+	writing mesh:  decor
+	writing mesh:  decor_bars.003
+	writing mesh:  decor_bars.002
+	writing mesh:  passage.006
+	writing mesh:  decor.006
+	writing mesh:  decor.007
+	writing mesh:  decor_bars.004
+	writing mesh:  decor_bars.005
+	writing mesh:  passage.001
+	writing mesh:  decor.010
+	writing mesh:  decor.011
+	writing mesh:  decor_bars.006
+	writing mesh:  decor_bars.007
+	writing mesh:  passage.007
+	writing mesh:  decor.008
+	writing mesh:  decor.009
+	writing mesh:  decor_bars.008
+	writing mesh:  decor_bars.009
+	writing mesh:  passage.005
+	writing mesh:  decor.004
+	writing mesh:  decor.005
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 20.623 secs

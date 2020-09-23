@@ -19,15 +19,15 @@ Exporter version: 6.4.3, Blender version: 2.83.3
 		processing begun of material:  grey dice
 		processing begun of material:  white part
 		processing begun of multimaterial:  dice.Multimaterial#0
-		num positions      :  1277
-		num normals        :  1277
+		num positions      :  19187
+		num normals        :  19187
 		num tangents       :  0
-		num uvs            :  2554
+		num uvs            :  38374
 		num uvs2           :  0
 		num colors         :  0
-		num triangles      :  1766
+		num triangles      :  35328
 ========= Writing of JSON file started =========
 	writing mesh:  Cube.001
 ========= Writing of JSON file completed =========
 ========= end of processing =========
-elapsed time:  0 min, 0.1812 secs
+elapsed time:  0 min, 3.297 secs

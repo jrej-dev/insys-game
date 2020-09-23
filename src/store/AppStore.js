@@ -38,6 +38,7 @@ export function StoreProvider({ children }) {
         socket: socketIOClient(ENDPOINT),
         canvasHeight: 400,
         userDetail: {},
+        tables: {},
         userTable: {},
         gameInfo: {},
         battleReport: false,
@@ -60,6 +61,9 @@ export function StoreProvider({ children }) {
         }, 
         clearTimer: () => {
             clearInterval(store.interval);
+        },
+        setTables: (payload) => {
+            store.tables = payload;
         },
         resetGame: () =>  {
             store.battleReport = false;
@@ -320,6 +324,29 @@ export function StoreProvider({ children }) {
                         console.log(err);
                     })                
             }
+        },
+        getTables: () => {
+            store.tables = {};
+            fetch(`${ENDPOINT}table`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            })
+                .then(response => response.json())
+                .then(response => {
+                    if (response.msg) {
+                        throw Error(response.msg);
+                    }
+                    runInAction(() => {
+                        store.tables = response;
+                    })
+                    return response
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         },
         getTableById: async (tableId) => {
             store.userTable = {};

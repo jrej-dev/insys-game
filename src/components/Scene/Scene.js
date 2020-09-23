@@ -17,12 +17,12 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   var advancedTexture = AdvancedDynamicTexture.CreateFullscreenUI(
     "sceneUI"
   );
- 
+
   advancedTexture.isForeground = true;
   var camera = new BABYLON.ArcRotateCamera("arcCamera",
     BABYLON.Tools.ToRadians(0),
     BABYLON.Tools.ToRadians(100),
-    780, new BABYLON.Vector3(-60, 400, 0), scene
+    900, new BABYLON.Vector3(-60, 300, 0), scene
   );
 
   const user = {
@@ -50,28 +50,35 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   camera.checkCollisions = true;
   camera.ellipsoid = new BABYLON.Vector3(1.5, 1, 1.5);
 
-  if (user.team === "teamBlack"){
-    camera.position = new BABYLON.Vector3(-700, 300, 0);
+  if (user.team === "teamBlack") {
+    camera.position = new BABYLON.Vector3(-900, 300, 0);
   } else {
-    camera.position = new BABYLON.Vector3(700, 300, 0);
+    camera.position = new BABYLON.Vector3(900, 300, 0);
   }
 
   //Setting lights and shadows
   var light = new BABYLON.PointLight("pointLight", new BABYLON.Vector3(75, 400, 150), scene);
-  light.intensity = 1;
+  light.intensity = 0.5;
   light.range = 5000;
 
-  var light2 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, -4900, 0), scene);
+  var light2 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, 100, 0), scene);
+  light2.intensity = 0.3;
+
+  var light3 = new BABYLON.HemisphericLight("hemiLight", new BABYLON.Vector3(0, -500, 0), scene);
   //Colored backlight => 
-  //light2.diffuse = new BABYLON.Color3(0.3, 0.2, 0.9);
-  light2.intensity = 0.7;
-  
+  light3.diffuse = new BABYLON.Color3(0.3, 0.2, 0.5);
+  light3.intensity = 1;
+
   var shadowGenerator = new BABYLON.ShadowGenerator(1024, light);
-  shadowGenerator.usePoissonSampling = true;
+  shadowGenerator.useExponentialShadowMap = false;
+  //shadowGenerator.usePoissonSampling = true;
 
   var hl = new BABYLON.HighlightLayer("hl1", scene);
   hl.innerGlow = false;
 
+  scene.autoClear = false; // Color buffer
+  scene.autoClearDepthAndStencil = false; // Depth and stencil, obviously
+  
   //Materials;
   var invisibleMaterial = new BABYLON.StandardMaterial("invisibleMaterial", scene);
   invisibleMaterial.alpha = 0;
@@ -90,20 +97,38 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   backgroundMaterial.opacityTexture = new BABYLON.Texture(`${publicURL}/Textures/OpacityTemplate.png`, scene);
   backgroundMaterial.backFaceCulling = false;
   background.material = backgroundMaterial;
-  background.translate(BABYLON.Axis.Y, -1, scene);
+  background.translate(BABYLON.Axis.Y, -51, scene);
   background.visibility = 0.4;
   background.receiveShadows = true;
 
   var boardMaterial = new BABYLON.StandardMaterial("boardMaterial", scene);
+  //Wood board
   boardMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_basecolor.jpg`, scene);
-  boardMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_normal.jpg`, scene);
-  boardMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
+  //boardMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_normal.jpg`, scene);
+  //boardMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Wood/Wood_021_ambientOcclusion.jpg`, scene);
 
-  var groundMaterial = new BABYLON.StandardMaterial("asphaltMaterial", scene);
-  groundMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
-  groundMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
-  groundMaterial.specularTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
-  groundMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
+  //Paper board
+  var paperMaterial = new BABYLON.StandardMaterial("paperMaterial", scene);
+  paperMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Paper/paper001_3K_Color.png`, scene);
+  //paperMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Paper/paper001_3K_norm.png`, scene);
+  //paperMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Paper/paper001_3K_roughness.png`, scene);
+
+  //Asphalt ground
+  var asphaltMaterial = new BABYLON.StandardMaterial("asphaltMaterial", scene);
+  asphaltMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_COLOR.jpg`, scene);
+  //asphaltMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_NRM.jpg`, scene);
+  //asphaltMaterial.specularTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_SPEC.jpg`, scene);
+  //asphaltMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Asphalt/Asphalt_001_OCC.jpg`, scene);
+
+
+  //Grass ground
+  var grassMaterial = new BABYLON.StandardMaterial("grassMaterial", scene);
+  grassMaterial.diffuseTexture = new BABYLON.Texture(`${publicURL}/Textures/Grass/Ground037_2K_Color.jpg`, scene);
+  //grassMaterial.bumpTexture = new BABYLON.Texture(`${publicURL}/Textures/Grass/Ground037_2K_Normal.jpg`, scene);
+  //grassMaterial.specularTexture = new BABYLON.Texture(`${publicURL}/Textures/Grass/Ground037_2K_Roughness.jpg`, scene);
+  //grassMaterial.ambientTexture = new BABYLON.Texture(`${publicURL}/Textures/Grass/Ground037_2K_AmbientOcclusion.jpg`, scene);
+  //grassMaterial.bumpTexture.level = 1;
+
 
   var miniMaterial = new BABYLON.StandardMaterial("plasticMaterial", scene);
   miniMaterial.diffuseColor = new BABYLON.Color3(220 / 255, 220 / 255, 220 / 255);
@@ -132,7 +157,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   var diceMatRed = new BABYLON.StandardMaterial("diceMatRed", scene);
   diceMatRed.diffuseColor = new BABYLON.Color3(164 / 255, 27 / 255, 7 / 255);
 
-  var gameAreaTemplate = 'if( vPositionW.z  < -340.){ discard; } if( vPositionW.z  > 340.){ discard; } if( vPositionW.x  > 450.){ discard; } if( vPositionW.x  < -450.){ discard; }';
+  var gameAreaTemplate = 'if( vPositionW.z  < -300.){ discard; } if( vPositionW.z  > 300.){ discard; } if( vPositionW.x  > 475.){ discard; } if( vPositionW.x  < -475.){ discard; }';
 
   var moveAreaMat = new CustomMaterial("moveAreaMat", scene);
   moveAreaMat.alpha = 0.25;
@@ -177,7 +202,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   var moveActionManager = new BABYLON.ActionManager(scene);
   var teamBlackActionManager = new BABYLON.ActionManager(scene);
   var teamWhiteActionManager = new BABYLON.ActionManager(scene);
-  
+
   var board;
   var map;
   BABYLON.SceneLoader.ImportMesh(
@@ -187,19 +212,35 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     scene,
     function (newMeshes) {
       board = newMeshes[0];
-      board.scaling = new BABYLON.Vector3(1150, 1200, 1000);
+      board.position = new BABYLON.Vector3(0, -30, 0)
+      board.scaling = new BABYLON.Vector3(1380, 1225, 1000);
       board.material = boardMaterial;
       shadowGenerator.getShadowMap().renderList.push(board);
 
-      map = BABYLON.MeshBuilder.CreateBox("map", { width: 808, height: 606, depth: 1 }, scene);
+      let box = BABYLON.MeshBuilder.CreateBox("box", { width: 950, height: 600, depth: 49 }, scene);
+      box.material = paperMaterial;
+      box.receiveShadows = true;
+      box.position = new BABYLON.Vector3(0, 0, 0);
+      box.rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(90), scene);
+
+      let bottom = BABYLON.MeshBuilder.CreateBox("bottom", { width: 970, height: 620, depth: 2 }, scene);
+      bottom.rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(90), scene);
+      bottom.position = new BABYLON.Vector3(0, -50, 0);
+      bottom.material = paperMaterial;
+      bottom.translate(BABYLON.Axis.Y, 25, scene);
+
+      map = BABYLON.MeshBuilder.CreateBox("map", { width: 950, height: 600, depth: 1 }, scene);
       map.rotate(BABYLON.Axis.X, BABYLON.Tools.ToRadians(90), scene);
-      map.material = groundMaterial;
+      map.position = new BABYLON.Vector3(0, 0, 0);
+      map.material = asphaltMaterial;
       map.receiveShadows = true;
       map.translate(BABYLON.Axis.Y, 25, scene);
       map.actionManager = mapActionManager;
     }
   );
-  //board is 24 inch to 32 inch;
+  //small board is 24 inch to 38 inch; (600x950)
+  //medium board is 32 inch to 48 inch; (800x1200)
+  //large board is 48 inch to 48 inch; (1200x1200)
 
   var actionToken;
   const importActionTokens = () => {
@@ -210,7 +251,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
       scene,
       function (newMeshes) {
         actionToken = BABYLON.Mesh.MergeMeshes(newMeshes);
-        actionToken.position = new BABYLON.Vector3(150, -18, 440);
+        actionToken.position = new BABYLON.Vector3(150, -68, 440);
         actionToken.scaling = new BABYLON.Vector3(800, 900, 800);
         actionToken.name = "token"
         actionToken.id = "token1"
@@ -282,7 +323,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
       dice6.rotation.y = BABYLON.Tools.ToRadians(90);
       dice6.rotation.x = BABYLON.Tools.ToRadians(90);
       dice6.setEnabled(false);
-      
+
       shadowGenerator.getShadowMap().renderList.push(dice1, dice2, dice3, dice4, dice5, dice6);
       dice.push(dice1, dice2, dice3, dice4, dice5, dice6);
     }
@@ -350,15 +391,15 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   }
 
   const getHeight = (mesh) => {
-    return mesh.getBoundingInfo().boundingBox.extendSize.y * 2 * mesh.scaling.y
+    return Math.abs(mesh.getBoundingInfo().boundingBox.extendSize.y * 2 * mesh.scaling.y);
   };
 
   const getWidth = (mesh) => {
-    return mesh.getBoundingInfo().boundingBox.extendSize.x * 2 * mesh.scaling.x
+    return Math.abs(mesh.getBoundingInfo().boundingBox.extendSize.x * 2 * mesh.scaling.x);
   };
 
   const getLength = (mesh) => {
-    return mesh.getBoundingInfo().boundingBox.extendSize.z * 2 * mesh.scaling.z
+    return Math.abs(mesh.getBoundingInfo().boundingBox.extendSize.z * 2 * mesh.scaling.z);
   };
 
   const getControlByName = (name) => {
@@ -403,7 +444,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     miniLOS.id = `${mini.id}lineOfSight`;
     miniLOS.name = `${mini.id}lineOfSight`;
     miniLOS.parent = mini;
-    miniLOS.position = new BABYLON.Vector3(0, 1, 0);
+    miniLOS.position = new BABYLON.Vector3(0, 3, 0);
     miniLOS.rotation.y = BABYLON.Tools.ToRadians(-90);
     miniLOS.setEnabled(false);
     miniLOS.material = team === "Black" ? lineOfSightMatB : lineOfSightMatW;
@@ -436,7 +477,20 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     return miniShield;
   }
   var clonedMini;
-  //STLRW
+
+  const createMoveArea = (mini) => {
+    var moveArea = BABYLON.MeshBuilder.CreateCylinder(`${mini.id}moveArea`, { height: 0.25, diameter: miniWidth * 8, tessellation: 256 }, scene);
+    moveArea.material = invisibleMaterial;
+    moveArea.actionManager = moveActionManager;
+    moveArea.setEnabled(false);
+    moveArea.parent = mini;
+    moveArea.position = new BABYLON.Vector3(0, 1, 0);
+
+
+    var moveArea2 = BABYLON.MeshBuilder.CreateCylinder(`${mini.id}moveArea2`, { height: 0.25, diameter: miniWidth * 8 + miniWidth, tessellation: 256 }, scene);
+    moveArea2.material = moveAreaMat;
+    moveArea2.parent = moveArea;
+  }
 
   var targetFurthestMini = (team) => {
     if (gameInfo.players[team].minis && gameInfo.players[team].minis.length > 0) {
@@ -463,24 +517,24 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
       scene,
       function (newMeshes) {
         let mini = BABYLON.Mesh.MergeMeshes(newMeshes);
-        mini.team = `team${team}`;  
+        mini.team = `team${team}`;
         if (miniData) {
           mini.position = new BABYLON.Vector3(miniData.position.x, miniData.position.y, miniData.position.z);
           mini.rotation = new BABYLON.Vector3(miniData.rotation.x, miniData.rotation.y, miniData.rotation.z);
           mini.id = miniData.id;
           mini.name = miniData.name;
-          if (miniData.name === "decor"){
+          if (miniData.name === "decor") {
             mini.isPickable = false;
           }
         } else {
           mini.translate(BABYLON.Axis.Y, 25, scene);
-          mini.translate(BABYLON.Axis.X, team === "Black" ? -300 : 300, scene);
+          mini.translate(BABYLON.Axis.X, team === "Black" ? -400 : 400, scene);
           mini.translate(BABYLON.Axis.Z, -200 + 200 * index, scene);
           mini.rotation.y = team === "Black" ? BABYLON.Tools.ToRadians(-90) : BABYLON.Tools.ToRadians(90);
           mini.id = `${team.toLowerCase()}Mini${index + 1}`;
           mini.name = gameInfo.players[mini.team].armyStats.units[miniUnit].name;
-        }   
-        mini.unit = miniUnit;  
+        }
+        mini.unit = miniUnit;
         mini.class = gameInfo.players[mini.team].armyStats.units[miniUnit].class;
         mini.material = miniMaterial;
         mini.actionManager = team === "Black" ? teamBlackActionManager : teamWhiteActionManager;
@@ -492,12 +546,13 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         createBase(mini, team);
         createLOS(mini, team);
         createShield(mini, team);
+        createMoveArea(mini);
         //createTextPlane(mini);
 
         shadowGenerator.getShadowMap().renderList.push(mini);
-        gameUpdate.addImportedMini(mini,`team${team}`, miniData);
-      
-        if (user.team === "teamWhite" && gameInfo.players.teamWhite.minis && gameInfo.players.teamWhite.minis.length > 0){
+        gameUpdate.addImportedMini(mini, `team${team}`, miniData);
+
+        if (user.team === "teamWhite" && gameInfo.players.teamWhite.minis && gameInfo.players.teamWhite.minis.length > 0) {
           targetFurthestMini("teamWhite");
         } else if (user.team === "teamBlack" && gameInfo.players.teamBlack.minis && gameInfo.players.teamBlack.minis.length > 0) {
           targetFurthestMini("teamBlack");
@@ -523,118 +578,128 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   importAllModels();
 
   var obstacles = [];
+  var ladders = [];
   BABYLON.SceneLoader.ImportMesh(
     "",
-    `${publicURL}/Models/`,
-    "container.babylon",
+    `${publicURL}/Models/Terrain/`,
+    "suburbia_map.babylon",
     scene,
     function (newMeshes) {
-      var container = BABYLON.Mesh.MergeMeshes(newMeshes);
+      newMeshes.forEach(mesh => {
+        mesh.translate(BABYLON.Axis.Y, 26, scene);
+        mesh.width = getWidth(mesh);
+        mesh.length = getLength(mesh);
+        mesh.height = getHeight(mesh);
+        mesh.freezeWorldMatrix();
+        mesh.material.freeze();
+        mesh.doNotSyncBoundingInfo = true;
+        //mesh.convertToUnIndexedMesh();
+        if (mesh.id.includes("grass")) {
+          mesh.dispose();
+        } else if (mesh.id.includes("ladder")) {
+          ladders.push(mesh)
+        } else if (!mesh.id.includes("decor")) {
+          obstacles.push(mesh);
+          mesh.name = "obstacle";
+          shadowGenerator.getShadowMap().renderList.push(mesh);
+          mesh.receiveShadows = true;
+        }
+      })
+      /*var container = BABYLON.Mesh.MergeMeshes(newMeshes);
 
       //container.material = diceMaterial;
       container.scaling = new BABYLON.Vector3(2, 2, 2);
       container.id = "obstacle1";
       container.name = "obstacle";
       container.receiveShadows = true;
-
       container.width = getWidth(container);
       container.length = getLength(container);
       container.height = getHeight(container);
-
+  
       var redMat = new BABYLON.StandardMaterial(scene);
       redMat.diffuseColor = new BABYLON.Color3(0.518, 0.271, 0.267);
-
+    
       var greyMat = new BABYLON.StandardMaterial(scene);
       greyMat.diffuseColor = new BABYLON.Color3(0.671, 0.663, 0.733);
-
+  
       var greenMat = new BABYLON.StandardMaterial(scene);
       greenMat.diffuseColor = new BABYLON.Color3(0.318, 0.502, 0.43);
-
+  
       var container0 = container.clone("obstacle")
       container0.position = new BABYLON.Vector3(22, 0, 2.5);
       var container2 = container.clone("obstacle")
       container2.position = new BABYLON.Vector3(-22, 0, 2.5);
-
+  
       var container02 = BABYLON.Mesh.MergeMeshes([container0, container2]);
       container02.material = redMat;
       container02.name = container02.id = "obstacle";
       container02.position = new BABYLON.Vector3(180, 50, 125);
       container0.dispose();
       container2.dispose();
-
+  
       var container3 = container.clone("obstacle")
       container3.position = new BABYLON.Vector3(100, 50, -125);
       container3.material = redMat;
-
+  
       var container4 = container.clone("obstacle")
       container4.position = new BABYLON.Vector3(150, 50, -125);
-
+  
       var container5 = container.clone("obstacle")
       container5.position = new BABYLON.Vector3(-100, 50, 125);
-
+  
       var container6 = container.clone("obstacle")
       container6.position = new BABYLON.Vector3(-150, 50, 125);
       container6.material = redMat;
-
+  
       var container7 = container.clone("obstacle")
       container7.position = new BABYLON.Vector3(22, 0, 2.5);
-
+  
       var container8 = container.clone("obstacle")
       container8.position = new BABYLON.Vector3(-22, 0, 2.5);
-
+  
       var container78 = BABYLON.Mesh.MergeMeshes([container7, container8]);
       container78.material = greenMat;
       container78.name = container78.id = "obstacle";
       container78.position = new BABYLON.Vector3(-180, 50, -125);
       container7.dispose();
       container8.dispose();
-
+  
       var container9 = container.clone("obstacle")
       container9.position = new BABYLON.Vector3(-180, 100, -150);
       container9.scaling.z = 1;
-
+  
       var container10 = container.clone("obstacle")
       container10.position = new BABYLON.Vector3(180, 100, 100);
       container10.scaling.z = 1;
       container10.material = greyMat;
-
+  
       var container11 = container.clone("obstacle")
       container11.position = new BABYLON.Vector3(250, 38, 150);
       container11.scaling.z = 1;
       container11.scaling.y = 1;
       container11.material = greenMat;
-
+  
       var container12 = container.clone("obstacle")
       container12.position = new BABYLON.Vector3(-250, 38, -100);
       container12.scaling.z = 1;
       container12.scaling.y = 1;
       container12.material = redMat;
-
+  
       shadowGenerator.getShadowMap().renderList.push(container02, container3, container4, container5, container6, container78, container9, container10, container11, container12);
       obstacles.push(container02, container3, container4, container5, container6, container78, container9, container10, container11, container12);
-
-      container.setEnabled(false);
+  
+      container.setEnabled(false);*/
     }
   );
-
-  var moveArea = BABYLON.MeshBuilder.CreateCylinder("moveArea", { height: 0.25, diameter: miniWidth * 8, tessellation: 256 }, scene);
-  moveArea.material = invisibleMaterial;
-  moveArea.actionManager = moveActionManager;
-  moveArea.setEnabled(false);
-  moveArea.position = new BABYLON.Vector3(0, 26, 0);
-
-  var moveArea2 = BABYLON.MeshBuilder.CreateCylinder("moveArea", { height: 0.25, diameter: miniWidth * 8 + miniWidth, tessellation: 256 }, scene);
-  moveArea2.material = moveAreaMat;
-  moveArea2.parent = moveArea;
 
   //Should import action tokens after switching Player
   var switchPlayer = () => {
     if (currentPlayer.team === "teamWhite") {
-      gameUpdate.setCurrentPlayer({name: enemyPlayer.name, team: "teamBlack" });
+      gameUpdate.setCurrentPlayer({ name: enemyPlayer.name, team: "teamBlack" });
       //camera.position = new BABYLON.Vector3(-700, 300, 0);
       //targetFurthestMini(currentPlayer.team);
     } else if (currentPlayer.team === "teamBlack") {
-      gameUpdate.setCurrentPlayer({name: enemyPlayer.name, team: "teamWhite" });
+      gameUpdate.setCurrentPlayer({ name: enemyPlayer.name, team: "teamWhite" });
       //camera.position = new BABYLON.Vector3(700, 300, 0);
       //targetFurthestMini(currentPlayer.team);
     }
@@ -650,22 +715,105 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     rotation: null
   };
 
+  const fragmentMesh = (mini, mesh, obstacle) => {
+    if (obstacle && obstacle.name.includes("obstacle")) {
+      let obstacleTemplateArea = `if( vPositionW.z < ${Math.round(obstacle.position.z - getLength(obstacle) / 2)}.){ discard; } if( vPositionW.z  > ${Math.round(obstacle.position.z + getLength(obstacle) / 2)}.){ discard; } if( vPositionW.x  > ${Math.round(obstacle.position.x + getWidth(obstacle) / 2)}.){ discard; } if( vPositionW.x  < ${Math.round(obstacle.position.x - getWidth(obstacle) / 2)}.){ discard; }`;
+      let highMat = new CustomMaterial("highMat", scene);
+      highMat.alpha = 0.25;
+      highMat.Fragment_Custom_Diffuse(obstacleTemplateArea);
+      mesh.material = highMat;
+      if (mesh.id.includes("lineOfSight")) {
+        highMat.diffuseColor = scene.getMaterialByName(mini.losMat[0]).diffuseColor;
+        mesh._children.forEach((los, index) => {
+          los.material = new CustomMaterial(`highMat${index}`, scene);
+          los.material.alpha = 0.25;
+          los.material.Fragment_Custom_Diffuse(obstacleTemplateArea);
+          los.material.diffuseColor = scene.getMaterialByName(mini.losMat[index + 1]).diffuseColor;
+        });
+      }
+    } else {
+      if (mesh.id.includes("lineOfSight")) {
+        lineOfSight.material = scene.getMaterialByName(mini.losMat[0]);
+        lineOfSight._children.forEach((los, index) => los.material = scene.getMaterialByName(mini.losMat[index + 1]));
+      } else if (mesh.id.includes("moveArea")) {
+        mesh.material = invisibleMaterial;
+      }
+    };
+  }
+
+  const showMoveArea = (mini) => {
+    let moveArea = scene.getMeshByName(`${mini.id}moveArea`);
+    let moveArea2 = scene.getMeshByName(`${mini.id}moveArea2`);
+    //if miniature is higher up lower moveArea to the ground
+    if (whatIsUnderneath(mini) && whatIsUnderneath(mini)[0].name.includes("obstacle")) {
+      //should be highest obstacle underneath
+      let heightArray = whatIsUnderneath(mini).map(obstacle => getHeight(obstacle)/2 + obstacle.position.y - 26);
+      let highestHeight = Math.max(...heightArray);
+      moveArea.position.y = 3 - highestHeight;
+    } else {
+      //overwise keep it at ground level;
+      moveArea.position.y = 1;
+    }
+    //display moveArea
+    moveArea.setEnabled(true);
+
+    //Go through obstacles 
+    obstacles.forEach(obstacle => {
+      if (isAccessible(mini, obstacle)) {
+        //clone movearea and fragment to obstacle. Fragment function here
+        if (scene.getMeshByName(`${obstacle.id}moveArea`)){
+          scene.getMeshByName(`${obstacle.id}moveArea`).dispose();
+        } else {
+          moveArea2.clone(`${obstacle.id}moveArea`);
+          let distanceToTop = (obstacle.position.y + getHeight(obstacle) / 2 - 24)
+          scene.getMeshByName(`${obstacle.id}moveArea`).translate(BABYLON.Axis.Y, distanceToTop, scene);
+          fragmentMesh(selected, scene.getMeshByName(`${obstacle.id}moveArea`), obstacle);
+        }
+      }
+    })
+  }
+
+  const hideMoveArea = (mini) => {
+    let moveArea = scene.getMeshByName(`${mini.id}moveArea`);
+    moveArea.setEnabled(false);
+    //disposeGroundMesh(mini, moveArea)
+    obstacles.forEach(obstacle => {
+      if (scene.getMeshByName(`${obstacle.id}moveArea`)) {
+        scene.getMeshByName(`${obstacle.id}moveArea`).dispose();
+      }
+    })
+  }
+
+  const showLineOfSight = (mini) => {
+    let lineOfSight = scene.getMeshByName(`${mini.id}lineOfSight`);
+    createGroundMesh(mini, lineOfSight);
+    if (whatIsUnderneath(mini) && whatIsUnderneath(mini)[0]) {
+      fragmentMesh(mini, lineOfSight, whatIsUnderneath(mini)[0]);
+    }
+    lineOfSight.setEnabled(true);
+  }
+
+  const hideLineOfSight = (mini) => {
+    let lineOfSight = scene.getMeshByName(`${mini.id}lineOfSight`);
+    lineOfSight.setEnabled(false);
+    lineOfSight.material = scene.getMaterialByName(mini.losMat[0]);
+    lineOfSight._children.forEach((los, index) => los.material = scene.getMaterialByName(mini.losMat[index + 1]));
+    disposeGroundMesh(mini, lineOfSight);
+  }
+
+
   const cancelTargeting = (socketCB) => {
     if (!socketCB) {
       socket.emit("cancelTargeting", gameInfo.tableNumber, selected.id, targets.map(target => target.id));
       advancedTexture.removeControl(rollButton);
-    } 
+    }
     targets.forEach(target => {
       hl.removeMesh(target);
-      //socket.emit("removeHighlight", gameInfo.tableNumber, target.id);
       if (scene.getMeshByName(`${selected.id}To${target.id}`)) {
         scene.removeMesh(scene.getMeshByName(`${selected.id}To${target.id}`));
       }
     });
     targets = [];
-    /*if (scene.getMeshByName("directLOS")) {
-      scene.getMeshByName("directLOS").dispose();
-    }*/
     gameInfo.players[enemyPlayer.team].minis.forEach(mini => {
       if (scene.getMeshByName(`${mini.id}To${selected.id}`)) {
         scene.removeMesh(scene.getMeshByName(`${mini.id}To${selected.id}`));
@@ -674,6 +822,52 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
       mini.diceAssigned = 0;
     })
   }
+
+  const createGroundMesh = (mini, mesh) => {
+    if (whatIsUnderneath(mini) && whatIsUnderneath(mini)[0].name.includes("obstacle")) {
+      if (scene.getMeshByName(mesh.id + mini.id + "Ground")) {
+        scene.getMeshByName(mesh.id + mini.id + "Ground").position.y = - mini.position.y + 28;
+        scene.getMeshByName(mesh.id + mini.id + "Ground").setEnabled(true);
+      } else {
+        mesh.clone(mesh.id + mini.id + "Ground").position.y = - mini.position.y + 28;
+        if (mesh.id.includes("lineOfSight")) {
+          scene.getMeshByName(mesh.id + mini.id + "Ground").material = scene.getMaterialByName(mini.losMat[0]);
+          scene.getMeshByName(mesh.id + mini.id + "Ground")._children.forEach((los, index) => los.material = scene.getMaterialByName(mini.losMat[index + 1]));
+        } else if (mesh.id.includes("moveArea")) {
+          scene.getMeshByName(mesh.id + mini.id + "Ground").material = invisibleMaterial;
+          scene.getMeshByName(mesh.id + mini.id + "Ground")._children[0].material = moveAreaMat;
+        }
+      }
+    } else {
+      disposeGroundMesh(mini, mesh);
+    }
+  }
+
+  const disposeGroundMesh = (mini, mesh) => {
+    if (scene.getMeshByName(mesh.id + mini.id + "Ground")) {
+      scene.getMeshByName(mesh.id + mini.id + "Ground").dispose();
+    }
+  }
+
+  const isAccessible = (mini, obstacle) => {
+    const isNotMap = obstacle.id !== map.id;
+    //if distance mini to obstacle is smaller than move area
+    const isCloseEnough = BABYLON.Vector3.Distance(mini.position, obstacle.position) < getWidth(mini) * 8;
+    //and obstacle width > half base mini 
+    const isThickEnough = getWidth(obstacle) > getWidth(mini) / 2 && getLength(obstacle) > getWidth(mini) / 2;
+    const isNotABarricade = !obstacle.id.includes("barricade");
+    //and accessible (height smaller than mini)
+    const isLowEnough = getHeight(obstacle) + obstacle.position.y < getHeight(mini) + mini.position.y;
+
+    //Higher obstacle can be reached with ladder
+    const isAtReach = closeLadder(mini) || isLowEnough;
+
+    if (isCloseEnough && isThickEnough && isNotMap && isNotABarricade && isAtReach) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   var selection = function (currentMesh, socketCB) {
     if (selected === currentMesh) {
@@ -686,14 +880,12 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
       }
       if (currentPlayer.turnActions > 0) {
         hl.addMesh(currentMesh, BABYLON.Color3.White());
-        hl.addMesh(moveArea, BABYLON.Color3.White());
         selected = currentMesh;
         cancelTargeting();
         previous.position = selected.position;
-        moveArea.position = new BABYLON.Vector3(currentMesh.position.x, 26, currentMesh.position.z)
         if (!socketCB) {
           socket.emit("selection", gameInfo.tableNumber, currentMesh.id);
-          moveArea.setEnabled(true);
+          showMoveArea(selected);
         }
       }
     }
@@ -708,25 +900,20 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         if (previous.position) {
           selected.position = previous.position;
           selected.rotation = previous.rotation;
-          moveArea.setEnabled(true);
-          moveArea.position = new BABYLON.Vector3(previous.position.x, 26, previous.position.z);
-          scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
-          if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-            scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
-          }
+
+          showMoveArea(selected);
+          hideLineOfSight(selected);
         }
         canvas.removeEventListener("mousemove", rotateOnMouseMove);
         rotate = false;
       } else if (!rotate) {
-        moveArea.setEnabled(false);
+        hideMoveArea(selected);
+
         hl.removeMesh(selected);
-        hl.removeMesh(moveArea);
         cancelTargeting();
         scene.removeMesh(clonedMini);
-        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
-        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
-        }
+
+        hideLineOfSight(selected);
         if (user.team === currentPlayer.team) {
           targetFurthestMini(currentPlayer.team);
         }
@@ -823,6 +1010,20 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     };
   };
 
+  const closeLadder = (mini) => {
+    let currentLadder;
+    ladders.forEach(ladder => {
+      let ladderBottom = new BABYLON.Vector2(ladder.position.x, ladder.position.z);
+      let miniBottom = new BABYLON.Vector2(mini.position.x, mini.position.z);
+      let distance = BABYLON.Vector2.Distance(ladderBottom, miniBottom);
+      if (distance < 25) {
+        console.log(ladder.id);
+        currentLadder = ladder;
+      }
+    })
+    return currentLadder;
+  }
+
   const isHigher = (mini1, mini2) => {
     if (mini1.position.y > mini2.position.y + mini2.height) {
       return true;
@@ -852,15 +1053,15 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     let hits4 = scene.multiPickWithRay(ray4);
 
     if (hits.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
-      return hits.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+      return hits.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)
     } else if (hits2.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
-      return hits2.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+      return hits2.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)
     } else if (hits3.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
-      return hits3.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+      return hits3.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)
     } else if (hits4.some(hit => hit.pickedMesh.name.includes("obstacle"))) {
-      return hits4.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)[0]
+      return hits4.filter(hit => hit.pickedMesh.name.includes("obstacle")).map(hit => hit.pickedMesh)
     } else if (hits.some(hit => hit.pickedMesh.name.includes("map"))) {
-      return hits.filter(hit => hit.pickedMesh.name.includes("map")).map(hit => hit.pickedMesh)[0]
+      return hits.filter(hit => hit.pickedMesh.name.includes("map")).map(hit => hit.pickedMesh)
     }
   };
 
@@ -896,35 +1097,27 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         //scene.hoverCursor = "url('./Cursors/melee.cur') 10 10, auto";
 
       } else if (rangeToTarget(selected, enemyTarget)) {
-        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true)
-        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
-        }
-        moveArea.setEnabled(false);
+        showLineOfSight(selected);
+        hideMoveArea(selected);
 
         //In range position
         //scene.hoverCursor = "url('./Cursors/aim.cur'), auto";
       } else if (!enemyTarget.intersectsMesh(selected, false) && !rangeToTarget(selected, enemyTarget)) {
         //scene.hoverCursor = "url('./Cursors/unavailable.cur') 15 15, auto";
-        moveArea.setEnabled(false);
-        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true)
-        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
-        }
-      }
+        hideMoveArea(selected);
+        showLineOfSight(selected);
+      } 
     }
   }
 
   var cancelLineOfSight = () => {
     if (selected) {
-      scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
+      hideLineOfSight(selected);
       scene.getMeshByName(`${selected.id}shield`).setEnabled(false);
-      gameInfo.players[enemyPlayer.team].minis.forEach(mini => scene.getMeshByName(`${mini.id}lineOfSight`).setEnabled(false));
-      if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-        scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
-      }
-      if (!rotate && targets.length === 0) {
-        moveArea.setEnabled(true);
+      gameInfo.players[enemyPlayer.team].minis.forEach(mini => hideLineOfSight(mini));
+
+      if (!rotate && targets.length === 0 && !scene.getMeshByName(`${selected.id}moveArea`)._isEnabled) {
+        showMoveArea(selected);
       }
       removeCoverLogo(selected);
       gameInfo.players[enemyPlayer.team].minis.forEach(mini => {
@@ -988,10 +1181,10 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     //check if rolls successful, remove any unsuccessful rolls
     var mini1Success = mini1Rolls.filter(roll => roll + mini1Mod >= gameInfo.players[mini1.team].armyStats.units[mini1.unit].range.success);
     var mini2Success = mini2Rolls.filter(roll => roll + mini2Mod >= gameInfo.players[mini2.team].armyStats.units[mini2.unit].defense.success);
-    
+
     gameUpdate.log(`${currentPlayer.name} rolls ${mini1Rolls.toString()} with ${mini1Mod === 0 ? 'no' : mini1Mod > 0 ? `a + ${mini1Mod}` : `a ${mini1Mod}`} modifier to dice roll.`);
 
-    if (mini1Success.length > 0){
+    if (mini1Success.length > 0) {
       gameUpdate.log(`${currentPlayer.name}'s success ${mini1Success.length > 1 ? 'rolls are' : 'roll is'} ${mini1Success.toString()}.`);
     } else {
       gameUpdate.log(`${currentPlayer.name} has no successful rolls.`);
@@ -999,7 +1192,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
 
     gameUpdate.log(`${enemyPlayer.name} rolls ${mini2Rolls.toString()} with ${mini2Mod === 0 ? 'no' : mini2Mod > 0 ? `a + ${mini2Mod}` : `a ${mini2Mod}`} modifier to dice roll.`);
 
-    if (mini2Success.length > 0){
+    if (mini2Success.length > 0) {
       gameUpdate.log(`${enemyPlayer.name}'s success ${mini2Success.length > 1 ? 'rolls are' : 'roll is'} ${mini2Success.toString()}.`);
     } else {
       gameUpdate.log(`${enemyPlayer.name} has no successful rolls.`);
@@ -1066,15 +1259,15 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     if (gameInfo.players.teamBlack.startActions === 0 && gameInfo.players.teamWhite.startActions === 0) {
       winner = "tie";
       gameUpdate.log(`Game Over. It's a tie! No Winners this time.`);
-      gameUpdate.gameOver({name:"none", team:"none"}, true);
+      gameUpdate.gameOver({ name: "none", team: "none" }, true);
     } else if (gameInfo.players.teamBlack.startActions === 0) {
       winner = "Team White";
       gameUpdate.log(`Game Over. ${gameInfo.players.teamWhite.name} wins!`);
-      gameUpdate.gameOver({name: gameInfo.players.teamWhite.name, team:"teamWhite"}, true);
+      gameUpdate.gameOver({ name: gameInfo.players.teamWhite.name, team: "teamWhite" }, true);
     } else if (gameInfo.players.teamWhite.startActions === 0) {
       winner = "Team Black";
       gameUpdate.log(`Game Over. ${gameInfo.players.teamBlack.name} wins!`);
-      gameUpdate.gameOver({name: gameInfo.players.teamBlack.name, team:"teamBlack"}, true);
+      gameUpdate.gameOver({ name: gameInfo.players.teamBlack.name, team: "teamBlack" }, true);
     } else {
       winner = undefined;
     }
@@ -1122,8 +1315,8 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
           var mini1Rolls = [];
           var modedRolls = [];
           var mini2Rolls = [];
-          
-          gameUpdate.log(`${gameInfo.players[mini1.team].name} is shooting the ${mini2.name}${response? ' in response' : ""} with the ${mini1.name} at range ${range.toUpperCase()}.`);
+
+          gameUpdate.log(`${gameInfo.players[mini1.team].name} is shooting the ${mini2.name}${response ? ' in response' : ""} with the ${mini1.name} at range ${range.toUpperCase()}.`);
           gameUpdate.log(`${gameInfo.players[mini1.team].name}'s target roll is ${response ? enemyPlayer.army.units[mini1.unit].range.success : currentPlayer.army.units[mini1.unit].range.success}+.`);
 
           // Check for enemy roll (Should be enemy line of sight when rotation is implemented!)
@@ -1182,10 +1375,10 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
             setTimeout(function () {
               gameUpdate.log(`The ${mini2.name} is killed!`);
               if (mini2.team.includes("White")) {
-                mini2.position = new BABYLON.Vector3(Math.floor(Math.random() * 250), 0, -440 + Math.floor(Math.random() * 30) - 15);
+                mini2.position = new BABYLON.Vector3(Math.floor(Math.random() * 250), -49, -440 + Math.floor(Math.random() * 30) - 15);
                 gameUpdate.movePlayerMini(mini2.id, mini2.team, mini2.position, mini2.rotation, true);
               } else {
-                mini2.position = new BABYLON.Vector3(- Math.floor(Math.random() * 250), 0, -440 + Math.floor(Math.random() * 30) - 15);
+                mini2.position = new BABYLON.Vector3(- Math.floor(Math.random() * 250), -49, -440 + Math.floor(Math.random() * 30) - 15);
                 gameUpdate.movePlayerMini(mini2.id, mini2.team, mini2.position, mini2.rotation, true);
               }
               mini2.name = "decor";
@@ -1219,10 +1412,10 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
             gameUpdate.log(`The ${mini1.name} is killed!`);
             setTimeout(function () {
               if (mini1.team.includes("White")) {
-                mini1.position = new BABYLON.Vector3(Math.floor(Math.random() * 250), 0, -440 + Math.floor(Math.random() * 30) - 15);
+                mini1.position = new BABYLON.Vector3(Math.floor(Math.random() * 250), -49, -440 + Math.floor(Math.random() * 30) - 15);
                 gameUpdate.movePlayerMini(mini1.id, mini1.team, mini1.position, mini1.rotation, true);
               } else {
-                mini1.position = new BABYLON.Vector3(- Math.floor(Math.random() * 250), 0, -440 + Math.floor(Math.random() * 30) - 15);
+                mini1.position = new BABYLON.Vector3(- Math.floor(Math.random() * 250), -49, -440 + Math.floor(Math.random() * 30) - 15);
                 gameUpdate.movePlayerMini(mini1.id, mini1.team, mini1.position, mini1.rotation, true);
               }
               mini1.name = "decor";
@@ -1303,54 +1496,8 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         previous.position = selected.position;
         selected.position = clonedMini.position;
       }
-      moveArea.position = new BABYLON.Vector3(selected.position.x, 26, selected.position.z);
-      moveArea.setEnabled(false);
-      scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true);
-
-      //Fragment diffuse on main LOS and creating ground LOS clone
-      if (whatIsUnderneath(selected) && whatIsUnderneath(selected).name.includes("obstacle")) {
-        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-          scene.getMeshByName(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
-          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(true);
-        } else {
-          scene.getMeshByName(`${selected.id}lineOfSight`).clone(`groundLOS${selected.id}`).position.y = - selected.position.y + 26;
-        }
-
-        if (scene.getMeshByName("groundMoveArea")) {
-          scene.getMeshByName("groundMoveArea").position.y = selected.position.y - selected.height / 2 - 5;
-        } else {
-          moveArea.clone("groundMoveArea");
-          scene.getMeshByName("groundMoveArea").parent = moveArea;
-          scene.getMeshByName("groundMoveArea").position = new BABYLON.Vector3(0, selected.position.y - selected.height / 2 - 5, 0);
-        }
-
-        let obstacleTemplateArea = `if( vPositionW.z  < ${Math.round(whatIsUnderneath(selected).position.z - getLength(whatIsUnderneath(selected)) / 2)}.){ discard; } if( vPositionW.z  > ${Math.round(whatIsUnderneath(selected).position.z + getLength(whatIsUnderneath(selected)) / 2)}.){ discard; } if( vPositionW.x  > ${Math.round(whatIsUnderneath(selected).position.x + getWidth(whatIsUnderneath(selected)) / 2)}.){ discard; } if( vPositionW.x  < ${Math.round(whatIsUnderneath(selected).position.x - getWidth(whatIsUnderneath(selected)) / 2)}.){ discard; }`;        let highMat = new CustomMaterial("highMat", scene);
-        highMat.alpha = 0.25;
-        highMat.Fragment_Custom_Diffuse(obstacleTemplateArea);
-        highMat.diffuseColor = scene.getMaterialByName(selected.losMat[0]).diffuseColor;
-
-        scene.getMeshByName(`${selected.id}lineOfSight`).material = highMat;
-        scene.getMeshByName(`${selected.id}lineOfSight`)._children.forEach((los, index) => {
-          los.material = new CustomMaterial(`highMat${index}`, scene);
-          los.material.alpha = 0.25;
-          los.material.Fragment_Custom_Diffuse(obstacleTemplateArea);
-          los.material.diffuseColor = scene.getMaterialByName(selected.losMat[index + 1]).diffuseColor;
-        });
-        scene.getMeshByName("groundMoveArea").material = new CustomMaterial(`highMoveMat`, scene);
-        scene.getMeshByName("groundMoveArea").material.alpha = 0.25;
-        scene.getMeshByName("groundMoveArea").material.Fragment_Custom_Diffuse(obstacleTemplateArea);
-        scene.getMeshByName("groundMoveArea")._children.forEach(child => child.setEnabled(false));
-      } else {
-        scene.getMeshByName(`${selected.id}lineOfSight`).material = scene.getMaterialByName(selected.losMat[0]);
-        scene.getMeshByName(`${selected.id}lineOfSight`)._children.forEach((los, index) => los.material = scene.getMaterialByName(selected.losMat[index + 1]));
-        moveArea2.material = moveAreaMat;
-        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-          scene.getMeshByName(`groundLOS${selected.id}`).dispose();
-        }
-        if (scene.getMeshByName("groundMoveArea")) {
-          scene.getMeshByName("groundMoveArea").dispose();
-        }
-      };
+      hideMoveArea(selected);
+      showLineOfSight(selected);
 
       previous.rotation = selected.rotation.clone();
       rotate = true;
@@ -1411,25 +1558,38 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
       )) {
         //Obstacle collision
         if (
-          !obstacles.filter(obstacle => getHeight(obstacle) + obstacle.position.y - (getHeight(obstacle) / 2) > getHeight(selected) + selected.position.y).some(obstacle =>
-            getGroundPosition(evt).x < obstacle.position.x + getWidth(obstacle) / 2 + getWidth(selected) / 2 &&
-            getGroundPosition(evt).x > obstacle.position.x - getWidth(obstacle) / 2 - getWidth(selected) / 2 &&
-            getGroundPosition(evt).z < obstacle.position.z + getLength(obstacle) / 2 + getWidth(selected) / 2 &&
-            getGroundPosition(evt).z > obstacle.position.z - getLength(obstacle) / 2 - getWidth(selected) / 2
-          )
+          closeLadder(selected) ? true :
+            !obstacles.filter(obstacle => getHeight(obstacle) + obstacle.position.y - (getHeight(obstacle) / 2) > getHeight(selected) + selected.position.y).some(obstacle =>
+              getGroundPosition(evt).x < obstacle.position.x + getWidth(obstacle) / 2 + getWidth(selected) / 3 &&
+              getGroundPosition(evt).x > obstacle.position.x - getWidth(obstacle) / 2 - getWidth(selected) / 3 &&
+              getGroundPosition(evt).z < obstacle.position.z + getLength(obstacle) / 2 + getWidth(selected) / 3 &&
+              getGroundPosition(evt).z > obstacle.position.z - getLength(obstacle) / 2 - getWidth(selected) / 3
+            )
         ) {
           //game area limits
-          if (getGroundPosition(evt).x > -388 && getGroundPosition(evt).x < 388 && getGroundPosition(evt).z > -285 && getGroundPosition(evt).z < 285) {
+          if (getGroundPosition(evt).x > -475 && getGroundPosition(evt).x < 475 && getGroundPosition(evt).z > -300 && getGroundPosition(evt).z < 300) {
             //Filtering out obstacles shorter than mini size. Allows vertical move.
-            var currentObstacle = obstacles.filter(obstacle => getHeight(obstacle) < getHeight(selected) + selected.position.y - 25).filter(obstacle =>
-              getGroundPosition(evt).x < obstacle.position.x + getWidth(obstacle) / 2 + getWidth(selected) / 2 &&
-              getGroundPosition(evt).x > obstacle.position.x - getWidth(obstacle) / 2 - getWidth(selected) / 2 &&
-              getGroundPosition(evt).z < obstacle.position.z + getLength(obstacle) / 2 + getWidth(selected) / 2 &&
-              getGroundPosition(evt).z > obstacle.position.z - getLength(obstacle) / 2 - getWidth(selected) / 2
-            );
+            var currentObstacle;
+            if (closeLadder(selected)) {
+              currentObstacle = obstacles.filter(obstacle =>
+                getGroundPosition(evt).x < obstacle.position.x + getWidth(obstacle) / 2 + getWidth(selected) / 2 &&
+                getGroundPosition(evt).x > obstacle.position.x - getWidth(obstacle) / 2 - getWidth(selected) / 2 &&
+                getGroundPosition(evt).z < obstacle.position.z + getLength(obstacle) / 2 + getWidth(selected) / 2 &&
+                getGroundPosition(evt).z > obstacle.position.z - getLength(obstacle) / 2 - getWidth(selected) / 2
+              );
+            } else {
+              currentObstacle = obstacles.filter(obstacle => getHeight(obstacle) < getHeight(selected) + selected.position.y - 25).filter(obstacle =>
+                getGroundPosition(evt).x < obstacle.position.x + getWidth(obstacle) / 2 + getWidth(selected) / 2 &&
+                getGroundPosition(evt).x > obstacle.position.x - getWidth(obstacle) / 2 - getWidth(selected) / 2 &&
+                getGroundPosition(evt).z < obstacle.position.z + getLength(obstacle) / 2 + getWidth(selected) / 2 &&
+                getGroundPosition(evt).z > obstacle.position.z - getLength(obstacle) / 2 - getWidth(selected) / 2
+              );
+            }
             if (currentObstacle && currentObstacle.length > 0) {
               //Vertical move
-              clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, getHeight(currentObstacle[0]) + 26, getGroundPosition(evt).z);
+              let heightArray = currentObstacle.filter(obstacle => !obstacle.id.includes("barricade")).map(obstacle => (obstacle.height / 2) + obstacle.position.y);
+              let highestHeight = Math.max(...heightArray);
+              clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, highestHeight, getGroundPosition(evt).z);
             } else {
               //Regular move
               clonedMini.position = new BABYLON.Vector3(getGroundPosition(evt).x, 25, getGroundPosition(evt).z);
@@ -1442,19 +1602,20 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
 
   var getGroundPosition = function () {
     // Use a predicate to get position on the ground
-    var pickinfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return mesh === map; });
+    var pickinfo = scene.pick(scene.pointerX, scene.pointerY);
+    //pickinfo = scene.pick(scene.pointerX, scene.pointerY, function (mesh) { return mesh === map});
     if (pickinfo.hit) {
       return pickinfo.pickedPoint;
+    } else {
+      return null;
     }
-
-    return null;
   }
 
   const addTarget = (enemyTargetId, socketCB) => {
     let enemyTarget = scene.getMeshByID(enemyTargetId);
-    if (!socketCB){
+    if (!socketCB) {
       advancedTexture.addControl(rollButton);
-    } 
+    }
     updateDiceStat();
     let targetColor = new BABYLON.Color3.Black();
     if (selected && !targets.some(target => target.id === enemyTarget.id)) {
@@ -1480,7 +1641,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
     if (target) {
       target.diceAssigned = 0;
     }
-      // Removed any target from the targets array with 0 dice assigned
+    // Removed any target from the targets array with 0 dice assigned
     targets.forEach((target, index) => {
       if (target.diceAssigned === 0) {
         targets.splice(index, 1);
@@ -1489,7 +1650,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         scene.removeMesh(scene.getMeshByName(`${selectedId}To${target.id}`));
         scene.removeMesh(scene.getMeshByName(`${target.id}To${selectedId}`));
       }
-    }); 
+    });
   }
 
   const calculateSuccess = (mini1, mini2) => {
@@ -1537,13 +1698,13 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
 
   const assignTarget = (enemyTargetId, socketCB) => {
     var enemyTarget = scene.getMeshByID(enemyTargetId);
-    if (!socketCB){
+    if (!socketCB) {
       socket.emit("assignTarget", gameInfo.tableNumber, enemyTargetId);
     }
 
     var whoHasMoreDice = targets.map(target => target.diceAssigned).indexOf(Math.max(...targets.filter(target => target.id !== enemyTarget.id).map(target => target.diceAssigned)));
     if (selected && enemyTarget && enemyTarget.id.includes("Mini") && rangeToTarget(selected, enemyTarget) && calculateSuccess(selected, enemyTarget) <= 6) {
-      moveArea.setEnabled(false);
+      hideMoveArea(selected);
       if (targets.length === 0) {
         enemyTarget.diceAssigned = currentPlayer.army.units[selected.unit].range.roll;
         addTarget(enemyTarget.id, socketCB);
@@ -1660,12 +1821,14 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
 
   moveActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
-      clonedMini = selected.clone();
-      clonedMini.position = selected.position;
-      clonedMini.isPickable = false;
-      clonedMini._children.forEach(child => child.setEnabled(false));
+      if (selected) {
+        clonedMini = selected.clone();
+        clonedMini.position = selected.position;
+        clonedMini.isPickable = false;
+        clonedMini._children.forEach(child => child.setEnabled(false));
 
-      clonedMini.material = transparentMaterial;
+        clonedMini.material = transparentMaterial;
+      }
       canvas.addEventListener("mousemove", onMouseMove, false);
       canvas.addEventListener("click", moveAction, false);
     })
@@ -1673,7 +1836,9 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
 
   moveActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function (ev) {
-      clonedMini.dispose();
+      if (clonedMini) {
+        clonedMini.dispose();
+      }
       canvas.removeEventListener("mousemove", onMouseMove);
       canvas.removeEventListener("click", moveAction);
     })
@@ -1682,7 +1847,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   mapActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function (ev) {
       if (selected && rotate) {
-        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(true)
+        showLineOfSight(selected);
       }
       if (rotate) {
         canvas.addEventListener("mousemove", rotateOnMouseMove, false);
@@ -1694,10 +1859,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
   mapActionManager.registerAction(
     new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function (ev) {
       if (selected && !rotate) {
-        scene.getMeshByName(`${selected.id}lineOfSight`).setEnabled(false);
-        if (scene.getMeshByName(`groundLOS${selected.id}`)) {
-          scene.getMeshByName(`groundLOS${selected.id}`).setEnabled(false);
-        }
+        hideLineOfSight(selected);
       }
       canvas.removeEventListener("mousemove", rotateOnMouseMove);
       canvas.removeEventListener("click", rotateAction);
@@ -1754,7 +1916,7 @@ const onSceneReady = (scene, gameInfo, gameUpdate, username, socket) => {
         if (rotate) {
           rotateAction(ev);
         } else {
-              //left click
+          //left click
           if (ev.sourceEvent.which === 1) {
             let currentMesh = ev.meshUnderPointer;
             scene.hoverCursor = "pointer";

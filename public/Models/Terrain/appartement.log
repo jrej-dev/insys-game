@@ -1,0 +1,157 @@
+Exporter version: 6.4.3, Blender version: 2.83.3
+========= Conversion from Blender to Babylon.js =========
+	Scene settings used :
+		Inline textures     :  false
+		Material Type       :  PBR
+		Positions Precision :  4
+		Normals Precision   :  3
+		UVs Precision       :  5
+		Vert Color Precision:  5
+		Mat Weight Precision:  2
+		Keep Z-up r-handed  :  no
+		Texture directory   :  C:\Users\jrejo\OneDrive\Documents\Coding\insys-game\public\Models\Terrain\
+	Python World class constructor completed
+	processing begun of camera (UniversalCamera):  Camera
+	processing begun of mesh:  building
+		processing begun of material:  wire_124165082.011
+		processing begun of material:  wire_220220220.011
+		processing begun of material:  wire_082165145.003
+		processing begun of material:  wire_038000038.003
+		processing begun of material:  wire_165103082.003
+		processing begun of material:  wire_127063079.003
+		processing begun of material:  wire_165041000.003
+		processing begun of material:  wire_082145165.003
+		processing begun of material:  wire_000000127.003
+		processing begun of material:  wire_220220220.003
+		processing begun of material:  wire_038038000.001
+		processing begun of multimaterial:  appartement.Multimaterial#0
+		Custom split normals with tangents being used
+		num positions      :  4330
+		num normals        :  4330
+		num tangents       :  17320
+		num uvs            :  8660
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  1602
+	processing begun of mesh:  ladder1
+		processing begun of material:  wire_127095063.004
+		processing begun of material:  wire_038019019.004
+		processing begun of material:  wire_191127255.004
+		processing begun of material:  wire_082124165.004
+		processing begun of material:  wire_124165082.004
+		processing begun of material:  wire_063095127.004
+		processing begun of material:  wire_159255127.004
+		processing begun of material:  wire_082165145.004
+		processing begun of material:  wire_038000038.004
+		processing begun of material:  wire_165103082.004
+		processing begun of material:  wire_127063079.004
+		processing begun of material:  wire_084084084.004
+		processing begun of material:  wire_038038000.004
+		processing begun of material:  wire_220220220.004
+		processing begun of material:  wire_165041000.004
+		processing begun of material:  wire_082145165.004
+		processing begun of material:  wire_000000127.004
+		processing begun of multimaterial:  appartement.Multimaterial#1
+		Custom split normals with tangents being used
+		num positions      :  1158
+		num normals        :  1158
+		num tangents       :  4632
+		num uvs            :  2316
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  582
+	processing begun of mesh:  ladder2
+		processing begun of material:  wire_127095063.005
+		processing begun of material:  wire_038019019.005
+		processing begun of material:  wire_191127255.005
+		processing begun of material:  wire_082124165.005
+		processing begun of material:  wire_124165082.005
+		processing begun of material:  wire_063095127.005
+		processing begun of material:  wire_159255127.005
+		processing begun of material:  wire_082165145.005
+		processing begun of material:  wire_038000038.005
+		processing begun of material:  wire_165103082.005
+		processing begun of material:  wire_127063079.005
+		processing begun of material:  wire_084084084.005
+		processing begun of material:  wire_038038000.005
+		processing begun of material:  wire_220220220.005
+		processing begun of material:  wire_165041000.005
+		processing begun of material:  wire_082145165.005
+		processing begun of material:  wire_000000127.005
+		processing begun of multimaterial:  appartement.Multimaterial#2
+		Custom split normals with tangents being used
+		num positions      :  1157
+		num normals        :  1157
+		num tangents       :  4628
+		num uvs            :  2314
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  582
+	processing begun of mesh:  border_lg1
+		processing begun of material:  Material.005
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_lg2
+		processing begun of material:  Material.004
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm1
+		processing begun of material:  Material.002
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm2
+		processing begun of material:  Material
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm3
+		processing begun of material:  Material.001
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of mesh:  border_sm4
+		processing begun of material:  Material.003
+		num positions      :  29
+		num normals        :  29
+		num tangents       :  0
+		num uvs            :  58
+		num uvs2           :  0
+		num colors         :  0
+		num triangles      :  12
+	processing begun of light (POINT):  Light
+========= Writing of JSON file started =========
+	writing mesh:  building
+	writing mesh:  ladder1
+	writing mesh:  ladder2
+	writing mesh:  border_lg1
+	writing mesh:  border_lg2
+	writing mesh:  border_sm1
+	writing mesh:  border_sm2
+	writing mesh:  border_sm3
+	writing mesh:  border_sm4
+========= Writing of JSON file completed =========
+========= end of processing =========
+elapsed time:  0 min, 0.864 secs

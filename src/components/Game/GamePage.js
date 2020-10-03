@@ -3,13 +3,13 @@ import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
 import { useHistory } from "react-router-dom";
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 
 //Components
-import Scene from '../Scene/Scene';
-import Player from '../Sidebar/Player';
-import History from '../Sidebar/History';
-import InfoBar from '../Sidebar/InfoBar';
+import Scene from '../scene/scene';
+import Player from '../sidebar/player';
+import History from '../sidebar/history';
+import InfoBar from '../sidebar/infobar';
 
 const GamePage = () => {
   const store = React.useContext(StoreContext);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Popper from "popper.js";
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 import { useHistory } from "react-router-dom";
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';

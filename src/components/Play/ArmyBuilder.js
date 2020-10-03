@@ -3,10 +3,10 @@ import { useHistory } from "react-router-dom";
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
-import StoreContext from '../../store/AppStore';
-import { armies } from '../../gameStats/armies';
+import StoreContext from '../../store/appstore';
+import { armies } from '../../gamestats/armies';
 //Component
-import UnitStack from './UnitStack';
+import UnitStack from './unitstack';
 
 const ArmyBuilder = () => {
   const store = React.useContext(StoreContext);

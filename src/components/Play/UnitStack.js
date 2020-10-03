@@ -1,5 +1,5 @@
 import React from 'react';
-import { armies } from '../../gameStats/armies';
+import { armies } from '../../gamestats/armies';
 
 const UnitStack = ({ army, unitId }) => {
     let unit = armies[army].units[unitId];

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
 import 'mobx-react-lite/batchingForReactDom';
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 
 const InitRoll = () => {
   const store = React.useContext(StoreContext);

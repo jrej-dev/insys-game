@@ -5,19 +5,19 @@ import {
   Route,
 } from "react-router-dom";
 import 'mobx-react-lite/batchingForReactDom';
-import StoreContext from './store/AppStore';
-import './App.scss';
+import StoreContext from './store/appstore';
+import './app.scss';
 
 //Components
-import Home from './components/Home/Home';
-import GamePage from './components/Game/GamePage';
+import Home from './components/home/home';
+import GamePage from './components/game/gamepage';
 
-import Lobby from './components/Play/Lobby';
-import ArmyBuilder from './components/Play/ArmyBuilder';
-import InitRoll from './components/Play/InitRoll';
-import Footer from './components/Nav/Footer';
-import Nav from './components/Nav/Nav';
-import TableBanner from './components/Nav/TableBanner';
+import Lobby from './components/play/lobby';
+import ArmyBuilder from './components/play/armybuilder';
+import InitRoll from './components/play/initroll';
+import Footer from './components/nav/footer';
+import Nav from './components/nav/nav';
+import TableBanner from './components/nav/tablebanner';
 
 const App = () => {
   const store = React.useContext(StoreContext);

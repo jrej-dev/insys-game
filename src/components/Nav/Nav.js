@@ -3,8 +3,8 @@ import { useHistory, withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 //Components
-import Menu from './Menu';
-import GameNav from './GameNav';
+import Menu from './menu';
+import GameNav from './gamenav';
 
 const Nav = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);

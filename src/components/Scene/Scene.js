@@ -3,7 +3,7 @@ import * as BABYLON from '@babylonjs/core';
 import * as GUI from '@babylonjs/gui';
 import { AdvancedDynamicTexture } from '@babylonjs/gui/2D';
 import { CustomMaterial } from '@babylonjs/materials';
-import SceneComponent from './SceneComponent';
+import SceneComponent from './scenecomponent';
 
 BABYLON.Animation.AllowMatricesInterpolation = true;
 

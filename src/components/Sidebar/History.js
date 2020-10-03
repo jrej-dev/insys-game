@@ -1,7 +1,7 @@
 import React from 'react';
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 
 
 const History = () => {

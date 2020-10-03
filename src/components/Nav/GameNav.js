@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 //import { createPortal } from 'react-dom';
-import GameMenu from './GameMenu';
+import GameMenu from './gamemenu';
 
 const GameNav = ({ preGame, build, init }) => {
     const [sound, /*setSound*/] = useState(false);

@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import { toJS } from 'mobx';
 import { useObserver } from 'mobx-react';
 import 'mobx-react-lite/batchingForReactDom';
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 //import { Link } from "react-router-dom";
-import { maps } from '../../gameStats/maps';
+import { maps } from '../../gamestats/maps';
 
 const Lobby = () => {
     var ENDPOINT = "https://insys-node.herokuapp.com/";

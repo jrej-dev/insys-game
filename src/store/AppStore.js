@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocalStore } from 'mobx-react';
 import { runInAction } from 'mobx';
-import { armies } from '../gameStats/armies';
+import { armies } from '../gamestats/armies';
 import socketIOClient from "socket.io-client";
 const StoreContext = React.createContext();
 

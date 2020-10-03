@@ -1,6 +1,6 @@
 import { Engine, Scene } from '@babylonjs/core';
 import React, { useEffect, useRef, useState } from 'react';
-import StoreContext from '../../store/AppStore';
+import StoreContext from '../../store/appstore';
 import { toJS, autorun } from 'mobx';
 
 export default (props) => {

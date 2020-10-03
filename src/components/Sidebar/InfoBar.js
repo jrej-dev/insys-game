@@ -1,8 +1,8 @@
 import React from 'react';
 import { useObserver } from 'mobx-react';
 import { toJS } from 'mobx';
-import StoreContext from '../../store/AppStore';
-import UnitCard from './UnitCard';
+import StoreContext from '../../store/appstore';
+import UnitCard from './unitcard';
 
 const InfoBar = ({ team }) => {
     const store = React.useContext(StoreContext);

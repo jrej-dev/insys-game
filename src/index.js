@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './tailwind.output.css';
 import './index.scss';
-import App from './App';
+import App from './app';
 import * as serviceWorker from './serviceWorker';
-import { StoreProvider } from './store/AppStore';
+import { StoreProvider } from './store/appstore';
 
 ReactDOM.render(
   <React.StrictMode>
